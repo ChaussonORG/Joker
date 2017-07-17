@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>F8F8F8</string>
+	<key>style</key>
+	<string>UIVisualEffectView</string>
+	<key>height</key>
+	<integer>49</integer>
+	<key>selectIndex</key>
+	<integer>0</integer>
+	<key>tabBarItems</key>
+	<array>
+		<dict>
+			<key>UIViewControllName</key>
+			<string>JKNewsListViewController</string>
+			<key>tabbarTitle</key>
+			<string>新鲜事</string>
+			<key>unselectedIconName</key>
+			<string>News</string>
+			<key>selectedIconName</key>
+			<string>NewsSelected</string>
+		</dict>
+		<dict>
+			<key>tabbarTitle</key>
+			<string>话题</string>
+			<key>UIViewControllName</key>
+			<string>JKTopicsListViewController</string>
+			<key>unselectedIconName</key>
+			<string>Topic</string>
+			<key>selectedIconName</key>
+			<string>TopicSelected</string>
+		</dict>
+		<dict>
+			<key>tabbarTitle</key>
+			<string>时间表</string>
+			<key>UIViewControllName</key>
+			<string>JKTimelineListViewController</string>
+			<key>unselectedIconName</key>
+			<string>Timeline</string>
+			<key>selectedIconName</key>
+			<string>TimelineSelected</string>
+		</dict>
+		<dict>
+			<key>tabbarTitle</key>
+			<string>我的</string>
+			<key>UIViewControllName</key>
+			<string>JKMeViewController</string>
+			<key>unselectedIconName</key>
+			<string>Me</string>
+			<key>selectedIconName</key>
+			<string>MeSelected</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string></string>
+</dict>
+</plist>

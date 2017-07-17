@@ -1,0 +1,1 @@
+../../../CHNetworking/CHNetworking/Classes/CHModel/CHClassInfo.h

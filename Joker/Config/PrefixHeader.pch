@@ -1,0 +1,40 @@
+//
+//  PrefixHeader.pch
+//  joker
+//
+//  Created by 肖松 on 15-6-15.
+//  Copyright (c) 2015年 chausson. All rights reserved.
+//
+
+#ifndef joker_PrefixHeader_pch
+#define joker_PrefixHeader_pch
+
+#ifdef DEBUG
+#define XSLog(...) NSLog(__VA_ARGS__);
+#define XSLog_METHOD NSLog(@"%s", __func__);
+#else
+#define XSLog(...);
+#endif // 开关Log
+#import "ToolsClass.h"
+#import "config.h"
+#import "TypeEnumClass.h"
+#import <SDBaseRequest/SDBaseRequest.h>
+#import <CHProgressHUD/CHProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+//#import "UIView+viewController.h"
+#import "ASNavigator.h"
+#import "JKStyleConfiguration.h"
+//#import "YXSpritesLoadingView.h"
+//#import "UIImage+BlurryImage.h"
+//#import "NSString+urlString.h"
+//#import "UIViewController+alertShow.h"
+//#import "UILabel+StringFrame.h"
+#define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define MainColor  [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1];
+
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#endif
