@@ -10,7 +10,13 @@
 #import "JKTopicCreateModel.h"
 @interface JKTopicCreateVM : NSObject
 
+@property (nonatomic , strong) NSString *type;
+@property (nonatomic , strong) NSString *projectId;
+
+@property (nonatomic , strong) NSString *relateWorkName;
 
 - (void)createTopicWithTitle:(NSString *)title
                         data:(NSArray <JKTopicCreateModel *>*)data;
+
+- (void)goToRelate;
 @end

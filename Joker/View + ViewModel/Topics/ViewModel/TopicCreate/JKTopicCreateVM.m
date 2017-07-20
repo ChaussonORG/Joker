@@ -9,13 +9,40 @@
 #import "JKTopicCreateVM.h"
 #import "ASNavigator.h"
 #import "JKTopicCreateApi.h"
+#import "JKTopicRelatedWorksListController.h"
+#import <CHProgressHUD/CHProgressHUD.h>
+
+@interface JKTopicCreateVM()<FetchRelateWorkDelegate>
+
+@end
 @implementation JKTopicCreateVM
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        
+        self.relateWorkName = @"关联作品";
+    }
+    return self;
+}
 
 - (void)createTopicWithTitle:(NSString *)title
                         data:(NSArray <JKTopicCreateModel *>*)data{
     
+    if (self.projectId.length == 0) {
+        
+        
+        [CHProgressHUD showPlainText:@"请选择关联作品"];
+        return;
+    }
     
     JKTopicCreateApi *api = [[JKTopicCreateApi alloc]init];
+    
+    api.projectId = self.projectId;
+    api.projectType = self.type;
+    api.title = title;
     
     api.topicContent = [NSMutableArray array];
     for (int i = 0; i < data.count; i++) {
@@ -48,21 +75,34 @@
         }
         
     }
-  
-    
+   
     [api startWithSuccessBlock:^(__kindof JKTopicCreateApi *request) {
-        
         
         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:NO];
         
-        
     } failureBlock:^(__kindof JKTopicCreateApi *request) {
-        
-        
         
     }];
     
+}
+
+- (void)goToRelate{
     
+    JKTopicRelatedWorksListController *vc = [[JKTopicRelatedWorksListController alloc]init];
+    
+    vc.viewModel.delegate = self;
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+}
+
+- (void)fetchRelateWork:(NSString *)workId relateType:(NSString *)type relateWorkName:(NSString *)name{
+    
+    self.projectId = workId;
+    
+    self.type = type;
+    
+    self.relateWorkName = name;
 }
 
 @end

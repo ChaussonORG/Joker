@@ -84,7 +84,7 @@
     
     self.dataSource = [NSMutableArray array];
     
-    self.view.backgroundColor = [JKStyleConfiguration screenSpareColor];
+    self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -107,7 +107,7 @@
     self.titlePlaceholder.textColor = [JKStyleConfiguration placeHolderColor];
     self.titlePlaceholder.text = @"请输入话题标题";
     self.titlePlaceholder.font = [JKStyleConfiguration hugeFont];
-    self.titlePlaceholder.frame = CGRectMake(10, 10, 150, 20);
+    self.titlePlaceholder.frame = CGRectMake(10, 25, 150, 20);
     [self.titleTextView addSubview:self.titlePlaceholder];
     
     
@@ -168,9 +168,38 @@
     self.emojiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.emojiBtn.frame = CGRectMake(self.imageBtn.frame.origin.x + self.imageBtn.frame.size.width + 31, 15, 22, 22);
     [self.emojiBtn setImage:[UIImage imageNamed:@"biaoqing"] forState:UIControlStateNormal];
-    [self.bottomView addSubview:self.emojiBtn];
+//    [self.bottomView addSubview:self.emojiBtn];
     [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.aboutBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.aboutBtn.frame = CGRectMake(ScreenWidth - 150 - 10, 15, 150, 22);
+//    [self.aboutBtn setTitle:@"关联作品 >" forState:UIControlStateNormal];
+    [self.aboutBtn setTitleColor:[JKStyleConfiguration blueKeywordColor] forState:UIControlStateNormal];
+    self.aboutBtn.titleLabel.font = [JKStyleConfiguration titleFont];
+    self.aboutBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    [self.aboutBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+    [self.bottomView addSubview:self.aboutBtn];
+    [self.aboutBtn addTarget:self action:@selector(clickAboutBtn) forControlEvents:UIControlEventTouchUpInside];
+
  
+    
+    [self binding];
+}
+- (void)binding{
+    @weakify(self);
+    [RACObserve(self, viewModel.relateWorkName) subscribeNext:^(NSString *x) {
+        @strongify(self);
+        
+        [self.aboutBtn setTitle:[NSString stringWithFormat:@"%@ >",x] forState:UIControlStateNormal];
+
+    }];
+    
+    
+}
+- (void)clickAboutBtn{
+    
+    [self.viewModel goToRelate];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

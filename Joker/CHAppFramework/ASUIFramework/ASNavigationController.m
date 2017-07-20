@@ -34,7 +34,15 @@
   @{NSFontAttributeName:[UIFont systemFontOfSize:17],
     
     NSForegroundColorAttributeName:[JKStyleConfiguration blackColor]}];
+    
+   
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = [JKStyleConfiguration lineColor];
+    lineView.frame = CGRectMake(0, 43, ScreenWidth, 0.3);
+    [self.navigationBar addSubview:lineView];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

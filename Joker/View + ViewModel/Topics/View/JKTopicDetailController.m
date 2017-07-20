@@ -9,7 +9,7 @@
 #import "JKTopicDetailController.h"
 #import "JKCommentListCell.h"
 #import "JKTopicDetailBottomView.h"
-@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate>
+@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,UIWebViewDelegate,ScrollTableViewDelegate>
 
 @property (nonatomic , strong) UIWebView *webView;
 
@@ -17,6 +17,7 @@
 
 @property (nonatomic , strong) JKTopicDetailBottomView *bottomView;
 
+@property (nonatomic , assign) CGFloat webHeight;
 
 @end
 
@@ -29,7 +30,7 @@
         
         self.viewModel = [[JKTopicDetailVM alloc]initWithTopicId:topicId];
         
-        
+        self.viewModel.delegate = self;
     }
     return self;
 }
@@ -54,9 +55,61 @@
     self.bottomView.frame = CGRectMake(0, self.tableView.frame.origin.y + self.tableView.frame.size.height, ScreenWidth, 45);
     [self.bottomView loadDataWithVM:self.viewModel.bottomVM];
     [self.view addSubview:self.bottomView];
+    
+    
+    [self setupWebView];
+    
     [self binding];
     // Do any additional setup after loading the view.
 }
+
+- (void)setupWebView{
+    
+    self.webView = [[UIWebView alloc]init];
+    self.webView.delegate = self;
+    
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    
+    NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight;"];
+    
+    
+    //    self.webViewHeight = [output floatValue];
+    
+    //    self.webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"content\").offsetHeight;"] floatValue];
+    
+    
+    CGRect frame = webView.frame;
+    frame.origin.x = 15;
+    frame.origin.y = 0;
+    frame.size.width = [UIScreen mainScreen].bounds.size.width - 30;
+    frame.size.height = 1;
+    
+    webView.frame = frame;
+    
+    frame.size.height = webView.scrollView.contentSize.height;
+    
+    webView.frame = frame;
+    
+    webView.scrollView.scrollEnabled = NO;
+    
+    NSLog(@"height: %f", frame.size.height);
+    //    self.webViewHeight = webView.scrollView.contentSize.height;
+    
+    
+    if (self.webHeight != frame.size.height) {
+        self.webHeight = frame.size.height;
+    }
+    
+    
+    //    self.viewModel.contentCellVM.cellHeight = webView.scrollView.contentSize.height + 10;
+    
+    //    [self.mainTableView reloadData];
+    
+}
+
 
 - (void)binding{
     
@@ -65,8 +118,52 @@
     [RACObserve(self, viewModel.cellVMs) subscribeNext:^(id x) {
         @strongify(self);
         
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self.tableView reloadData];
         
-        [self.tableView reloadData];
+        
+    }];
+    
+    [RACObserve(self, viewModel.topCellVMs) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        
+    }];
+    
+    
+    [RACObserve(self, viewModel.bottemCellVMs) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        
+    }];
+    
+    
+    [RACObserve(self, viewModel.detailHtmlStr) subscribeNext:^(NSString *x) {
+        @strongify(self)
+        //        NSURL *url = [NSURL URLWithString:x];
+        //        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        //        NSString *path = [[NSBundle mainBundle]bundlePath];
+        //        NSURL *baseURL = [NSURL fileURLWithPath:path];
+        
+        [self.webView loadHTMLString:x baseURL:nil];
+        
+        
+    }];
+    
+    [RACObserve(self, webHeight) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        self.webView.frame = CGRectMake(0, 0, ScreenWidth, self.webHeight);
+        
+        self.tableView.tableHeaderView = self.webView;
         
         
     }];
@@ -75,14 +172,26 @@
 
 #pragma mark UITableViewDelegate
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    
-//    return 3;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 3;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return self.viewModel.cellVMs.count;
+    if (section == 0) {
+        
+        return self.viewModel.topCellVMs.count;
+    }
+    else if (section == 1) {
+        
+        return self.viewModel.bottemCellVMs.count;
+    }
+    else{
+        
+        return self.viewModel.cellVMs.count;
+        
+    }
     
     
     
@@ -91,19 +200,40 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //    static NSString *cellId = @"cellId";
+    if (indexPath.section == 0) {
+        
+        JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        JKCommentListCellVM *cellVM = self.viewModel.topCellVMs[indexPath.row];
+        cellVM.delegate = self;
+        [cell loadDataWithVM: cellVM];
+        return cell;
+    }
+    else if (indexPath.section == 1) {
+        
+        JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        JKCommentListCellVM *cellVM = self.viewModel.bottemCellVMs[indexPath.row];
+        cellVM.delegate = self;
+        [cell loadDataWithVM: cellVM];
+        return cell;
+    }
+    else{
+        JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        JKCommentListCellVM *cellVM = self.viewModel.cellVMs[indexPath.row];
+        cellVM.delegate = self;
+        [cell loadDataWithVM: cellVM];
+        return cell;
+        
+    }
     
-    JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    
-    
-    JKCommentListCellVM *cellVM = self.viewModel.cellVMs[indexPath.row];
-    cellVM.delegate = self;
-    [cell loadDataWithVM: cellVM];
-    return cell;
     
 }
 
 - (void)refresh{
     
+    [self.tableView scrollsToTop];
     [self.tableView reloadData];
 }
 
@@ -111,8 +241,73 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    return self.viewModel.cellVMs[indexPath.row].cellHeight;
+    if (indexPath.section == 0) {
+        
+        return self.viewModel.topCellVMs[indexPath.row].cellHeight;
+    }
+    else if (indexPath.section == 1) {
+        
+        return self.viewModel.bottemCellVMs[indexPath.row].cellHeight;
+    }
+    else{
+        
+        return self.viewModel.cellVMs[indexPath.row].cellHeight;
+        
+    }
     
+   
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 40;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = [JKStyleConfiguration whiteColor];
+    
+    UIView *bgView = [[UIView alloc]init];
+    [view addSubview:bgView];
+    bgView.frame = CGRectMake(0, 0, ScreenWidth, 35);
+    bgView.backgroundColor = [JKStyleConfiguration grayBackgroundColor];
+    UILabel *label = [[UILabel alloc]init];
+    label.font = [JKStyleConfiguration subcontentFont];
+    label.textColor = [JKStyleConfiguration drakGrayTextColor];
+    label.frame = CGRectMake(10, 8, 120, 20);
+    
+    if (section == 0) {
+        
+        label.text = @"最客观评论";
+    }
+    else if (section == 1) {
+        
+        label.text = @"最不客观评论";
+    }
+    else{
+        
+        label.text = @"全部回复";
+        
+    }
+    
+    [view addSubview:label];
+    
+    return view;
+    
+}
+
+#pragma mark ScrollTableViewDelegate
+- (void)scrollsToTop{
+    
+//    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    
+//    
+//    
+//    [[self tableView] scrollToRowAtIndexPath:scrollIndexPath
+//                            atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x,0) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

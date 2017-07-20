@@ -32,6 +32,7 @@
 
 @property (nonatomic , strong) NSArray *attentFilterImages;
 
+
 @end
 
 @implementation JKTopicsListVM
@@ -161,8 +162,9 @@
     
     JKTopicListModelTopicContentBeans *bean = items.topicContentBeans[0];
     
-    cellVM.content = bean.content;
+//    cellVM.content = bean.content;
     
+    cellVM.content = items.title;
     
     CGSize nameLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.name, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
     
