@@ -187,6 +187,8 @@
     
     JKTopicsFilteredListController *vc = [[JKTopicsFilteredListController alloc]initWithTopicSort:sort];
     
+    vc.title = [NSString stringWithFormat:@"%@话题",self.attentFilterTitles[index]];
+    
     [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
 }

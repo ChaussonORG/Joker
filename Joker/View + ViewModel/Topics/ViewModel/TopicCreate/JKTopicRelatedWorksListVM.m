@@ -31,6 +31,7 @@
 - (void)reloadData{
      
     JKMyfavoriteWorksApi *api = [[JKMyfavoriteWorksApi alloc]init];
+    api.requestModel.limit = 200;
     
     [api startWithSuccessBlock:^(__kindof JKMyfavoriteWorksApi *request) {
         
