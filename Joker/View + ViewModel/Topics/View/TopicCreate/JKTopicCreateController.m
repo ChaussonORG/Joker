@@ -9,6 +9,8 @@
 #import "JKTopicCreateController.h"
 #import "YYTextView.h"
 #import "YYText.h"
+#import "HHTUserEditModel.h"
+#import "SDBaseResponse.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 
 #import <CHImagePicker/CHImagePicker.h>
@@ -38,6 +40,8 @@
 
 @property (nonatomic, strong) NSMutableArray  *photos;
 
+@property (nonatomic, strong) NSMutableArray  *photoUrls;
+
 /**
  * 索引数组 －>编辑时记录图片location
  * 1. 添加图片时，要记录该图片的location
@@ -60,6 +64,13 @@
         
     }
     return self;
+}
+
+- (NSMutableArray *)photoUrls{
+    if (!_photoUrls) {
+        _photoUrls = [NSMutableArray array];
+    }
+    return _photoUrls;
 }
 
 - (NSMutableArray *)photos{
@@ -250,15 +261,29 @@
 
 - (void)clickImageBtn{
     
-  
-    
     [self.contentView resignFirstResponder];
-    
+    @weakify(self)
     [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
         
-        [self setAttributeStringWithImage:(UIImage *)image];
+        [HHTUserEditModel updateAvatarBuy:image success:^(SDBaseResponse *userInfo) {
+           @strongify(self);
+            
+            NSArray *array = (NSArray *)userInfo.data;
+            
+            NSDictionary *data = [array objectAtIndex:0];
+            
+            NSString *imageUrl = [data objectForKey:@"url"];
+            
+            [self setAttributeStringWithImage:(UIImage *)image url:imageUrl];
+            
+            [self.contentView becomeFirstResponder];
+            
+        } failed:^{
+            
+        }];
         
-        [self.contentView becomeFirstResponder];
+        
+        
     }];
     
     
@@ -293,7 +318,7 @@
             
             modelImage.dataType = JKTopicDataImage;
             
-            modelImage.image = _photos[i];
+            modelImage.image = _photoUrls[i];
             
             [self.dataSource addObject:modelImage];
         }
@@ -388,12 +413,13 @@
 }
 
 /** 将图片插入到富文本中*/
-- (void)setAttributeStringWithImage:(UIImage *)image{
+- (void)setAttributeStringWithImage:(UIImage *)image url:(NSString *)imageUrl{
     // 1. 保存图片与图片的location
     
     if (self.locations.count == 0) {
         [self.photos addObject:image];
         [self.locations addObject:@(self.contentView.selectedRange.location)];
+        [self.photoUrls addObject:imageUrl];
     }
     else{
         NSInteger lastIndex = [[self.locations lastObject] integerValue];
@@ -401,6 +427,7 @@
             
             [self.photos addObject:image];
             [self.locations addObject:@(self.contentView.selectedRange.location)];
+            [self.photoUrls addObject:imageUrl];
         }
         else{
             NSInteger insertIndex = 0;
@@ -414,6 +441,7 @@
                 
                     if (self.contentView.selectedRange.location >frontIndex && self.contentView.selectedRange.location <= currentIndex) {
                         [self.photos insertObject:image atIndex:i];
+                        [self.photoUrls insertObject:imageUrl atIndex:i];
                         [self.locations insertObject:@(self.contentView.selectedRange.location) atIndex:i];
                         
                         insertIndex = i;
@@ -424,6 +452,7 @@
                     
                     if (self.contentView.selectedRange.location <= currentIndex) {
                         [self.photos insertObject:image atIndex:i];
+                        [self.photoUrls insertObject:imageUrl atIndex:i];
                         [self.locations insertObject:@(self.contentView.selectedRange.location) atIndex:i];
                        
                         

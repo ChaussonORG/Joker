@@ -10,7 +10,7 @@
 #import <SDBaseRequest/SDBaseRequest.h>
 #import "SDUploadImageAPI.h"
 //#import "TOYUserManager.h"
-//#import "HHTUploadImageApi.h"
+#import "HHTUploadImageApi.h"
 //#import "HHTUploadFileApi.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 @implementation HHTUserEditModel
@@ -32,31 +32,31 @@
         }
     }];
 }
-//+ (void)updateAvatarBuy:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler {
-//    NSString *name = [[NSUUID UUID] UUIDString];
-//    HHTUploadImageApi *imageUploader = [[HHTUploadImageApi alloc]initWithImage:image imageName:name fileName:name];
-//    
-//    [CHProgressHUD show:YES];
-//    [imageUploader startWithSuccessBlock:^(__kindof HHTUploadImageApi *request) {
-//        
-//        HHTUploadImageApi *uploader = (HHTUploadImageApi *)request;
-//        if (uploader.baseResponse.code == 200) {
-//            successHandler(uploader.baseResponse);
-//            
-//           
-//        } else {
-//            successHandler(uploader.baseResponse);
-//        }
-//         [CHProgressHUD hide:NO];
-//    } failureBlock:^(__kindof HHTUploadImageApi *request) {
-//        if (failedHandler) {
-//            failedHandler();
-//        }
-//         [CHProgressHUD hide:NO];
-//        
-//        [CHProgressHUD showPlainText:@"操作失败,请重新尝试"];
-//    }];
-//}
++ (void)updateAvatarBuy:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler {
+    NSString *name = [[NSUUID UUID] UUIDString];
+    HHTUploadImageApi *imageUploader = [[HHTUploadImageApi alloc]initWithImage:image imageName:name fileName:name];
+    
+    [CHProgressHUD show:YES];
+    [imageUploader startWithSuccessBlock:^(__kindof HHTUploadImageApi *request) {
+        
+        HHTUploadImageApi *uploader = (HHTUploadImageApi *)request;
+        if (uploader.baseResponse.code == 200) {
+            successHandler(uploader.baseResponse);
+            
+           
+        } else {
+            successHandler(uploader.baseResponse);
+        }
+         [CHProgressHUD hide:NO];
+    } failureBlock:^(__kindof HHTUploadImageApi *request) {
+        if (failedHandler) {
+            failedHandler();
+        }
+         [CHProgressHUD hide:NO];
+        
+        [CHProgressHUD showPlainText:@"操作失败,请重新尝试"];
+    }];
+}
 + (void)updateProfileInfo:(NSDictionary *)user success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler {
 
     SDUpdateProfileAPI *profileUpdater = [[SDUpdateProfileAPI alloc]initWithProfile:user];

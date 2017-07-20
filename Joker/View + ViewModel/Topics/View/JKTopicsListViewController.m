@@ -92,6 +92,7 @@ static CGFloat const OffsetY = -200;
     
     [super viewWillAppear:animated];
     
+    [self.viewModel requestData];
     
     self.navigationController.navigationBarHidden = YES;
 }

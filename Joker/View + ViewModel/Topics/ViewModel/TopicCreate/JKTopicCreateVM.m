@@ -60,11 +60,11 @@
             
             [api.topicContent addObject:dic];
         }
-        else if (model.dataType == JKTopicDataCharacter) {
+        else if (model.dataType == JKTopicDataImage) {
             
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
             
-            [dic setObject:model.content forKey:@"content"];
+            [dic setObject:model.image forKey:@"content"];
             
             [dic setObject:@"IMAGE" forKey:@"contentType"];
             
@@ -78,7 +78,12 @@
    
     [api startWithSuccessBlock:^(__kindof JKTopicCreateApi *request) {
         
-        [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:NO];
+        
+        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:NO];
+        }
+        
+        
         
     } failureBlock:^(__kindof JKTopicCreateApi *request) {
         

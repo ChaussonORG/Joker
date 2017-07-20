@@ -11,8 +11,6 @@
 
 @implementation JKMyfavoriteWorksApi
 
-
-
 - (NSString *)requestPathUrl{
     return @"/app/favorite";
 }
