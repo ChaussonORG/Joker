@@ -12,6 +12,7 @@
 #import "HHTGetString.h"
 #import "CHCommonMacro.h"
 #import "JKTopicCreateController.h"
+#import "JKUserManager.h"
 @interface JKTopicsListVM()
 
 @property (nonatomic , strong) NSArray *attentFilterTitles;
@@ -57,11 +58,23 @@
         
         self.attendCellViewModels = [NSMutableArray array];
         
-        self.isLogined =  YES;
-     
+       
+        [self checkLogin];
         
     }
     return self;
+}
+
+
+- (void)checkLogin{
+    
+    if ([[JKUserManager sharedData] isUserEffective]) {
+        self.isLogined = YES;
+    }
+    else{
+        self.isLogined = NO;
+    }
+    
 }
 
  
@@ -212,11 +225,13 @@
 
 - (void)createTopic{
     
-    
-    JKTopicCreateController *vc = [[JKTopicCreateController alloc]init];
-    
-    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
-    
+    if (self.isLogined) {
+        
+        JKTopicCreateController *vc = [[JKTopicCreateController alloc]init];
+        
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+  
     
 }
 @end

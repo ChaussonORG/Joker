@@ -17,8 +17,10 @@
 #import "KylinScrollView.h"
 #import "Masonry.h"
 #import "UIView+Kylin.h"
+#import "CHLoginModalController.h"
+#import "JKUserManager.h"
 
-@interface JKTopicsListViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,FilterTopicDelegate,GKFadeNavigationControllerDelegate,YLDroagViewDelegate>
+@interface JKTopicsListViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,FilterTopicDelegate,GKFadeNavigationControllerDelegate,YLDroagViewDelegate,CHLoginModalControllerDelegate>
 
 
 
@@ -92,6 +94,8 @@ static CGFloat const OffsetY = -200;
     
     [super viewWillAppear:animated];
     
+    [self.viewModel checkLogin];
+    
     [self.viewModel requestData];
     
     self.navigationController.navigationBarHidden = YES;
@@ -139,8 +143,14 @@ static CGFloat const OffsetY = -200;
 
 - (void)clickCreateTopicBtn{
     
+    [self.viewModel checkLogin];
     
-    [self.viewModel createTopic];
+    if (self.viewModel.isLogined) {
+        [self.viewModel createTopic];
+    }
+    else{
+        [self login];
+    }
     
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -339,6 +349,22 @@ static CGFloat const OffsetY = -200;
     [self.viewModel gotoTopicfilteredListWithIndex:index];
 }
 
+
+
+
+- (void)login
+{
+    CHLoginModalController *vc = [[CHLoginModalController alloc] init];
+    vc.delegate = self;
+    [[ASNavigator shareModalCenter].fetchCurrentViewController presentViewController:vc animated:YES completion:nil];
+}
+- (void)ch_willCompletionWithSuccess:(NSDictionary *)info
+{
+    [[JKUserManager sharedData] saveUserWithInfo:info];
+    
+    [self.viewModel checkLogin];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

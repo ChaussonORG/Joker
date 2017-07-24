@@ -7,7 +7,9 @@
 //
 
 #import "JKMeViewController.h"
-
+#import "JKLogOutApi.h"
+#import "CHTabBarViewController.h"
+#import "JKUserManager.h"
 @interface JKMeViewController ()
 
 @end
@@ -22,16 +24,30 @@
     
     btn.frame = CGRectMake(100, 100, 100, 100);
     btn.backgroundColor = [UIColor redColor];
-    
+    [btn setTitle:@"退出登录" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     
-//    [self.view addSubview:btn];
+    [self.view addSubview:btn];
     // Do any additional setup after loading the view.
 }
 
 - (void)clickBtn{
     
-    
+    JKLogOutApi *api = [[JKLogOutApi alloc] init];
+    [api startWithSuccessBlock:^(__kindof JKLogOutApi *request) {
+        if ([[request.response.responseJSONObject objectForKey:@"code"] isEqualToString:@"200"]) {
+            [[JKUserManager sharedData] disableCurrentUser];
+            [[CHNetworkConfig sharedInstance] clearHeaderFiled];
+            [[ASNavigator shareModalCenter] popHomeViewControllerWithAnimation:YES completion:^{
+//                if ([[[ASNavigator shareModalCenter] fetchCurrentViewController] isKindOfClass:[CHTabBarViewController class]]) {
+//                    CHTabBarViewController *tab = (CHTabBarViewController *)[[ASNavigator shareModalCenter]fetchCurrentViewController];
+//                    [tab.customTabBar setSelectIndex:0];
+//                }
+            }];
+        }
+    } failureBlock:^(__kindof JKLogOutApi *request) {
+        
+    }];
     
     
 }

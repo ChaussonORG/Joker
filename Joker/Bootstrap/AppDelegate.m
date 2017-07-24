@@ -9,7 +9,7 @@
 #import "ASNavigator.h"
 #import "ASNavigationController.h"
 #import "CHTabBarViewController.h"
-//#import "HHTUserManager.h"
+#import "JKUserManager.h"
 #import "CHNetworkConfig.h"
 #import "JKStyleConfiguration.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -47,11 +47,17 @@
     
     
     
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSString *token = @"NZxf%2FJmowivSDA%2Bm709UwJp3h4c2l7LME62UWPrTnnN1Ba9ohAgn9JHvuYxPYqeCiGBJpLmKZ4h8fQ%2BPPTIDkVdz93C50hf%2B%2Fg3c6%2FiwtZCi%2FGiSFbzG4nrPNkSf6YcYW19jE2pnLLcJzV5xXKZnQA%3D%3D";
-    [dic setObject:token forKey:@"token"];
+//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+//    NSString *token = @"NZxf%2FJmowivSDA%2Bm709UwJp3h4c2l7LME62UWPrTnnN1Ba9ohAgn9JHvuYxPYqeCiGBJpLmKZ4h8fQ%2BPPTIDkVdz93C50hf%2B%2Fg3c6%2FiwtZCi%2FGiSFbzG4nrPNkSf6YcYW19jE2pnLLcJzV5xXKZnQA%3D%3D";
+//    [dic setObject:token forKey:@"token"];
     
-    [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
+//    [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([JKUserManager sharedData].currentUser.token) {
+        [dic setObject:[JKUserManager sharedData].currentUser.token forKey:@"token"];
+        [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
+    }
     
     //     [[PLeakSniffer sharedInstance] installLeakSniffer];
     

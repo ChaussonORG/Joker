@@ -33,6 +33,22 @@
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
 		50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */; };
+		508DB6DE1F2598AA002ABF97 /* CHUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6C71F2598AA002ABF97 /* CHUserInfoModel.m */; };
+		508DB6DF1F2598AA002ABF97 /* CHLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6CB1F2598AA002ABF97 /* CHLoginButton.m */; };
+		508DB6E01F2598AA002ABF97 /* CHLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6CD1F2598AA002ABF97 /* CHLoginTextField.m */; };
+		508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6CF1F2598AA002ABF97 /* CHLoginViewController.m */; };
+		508DB6E21F2598AA002ABF97 /* CHLoginOperationWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6D21F2598AA002ABF97 /* CHLoginOperationWebController.m */; };
+		508DB6E31F2598AA002ABF97 /* CHLoginOperationWebViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6D41F2598AA002ABF97 /* CHLoginOperationWebViewModel.m */; };
+		508DB6E41F2598AA002ABF97 /* CHRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6D71F2598AA002ABF97 /* CHRegisterController.m */; };
+		508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6DA1F2598AA002ABF97 /* CHRestController.m */; };
+		508DB6E61F2598AA002ABF97 /* CHLoginModalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6DC1F2598AA002ABF97 /* CHLoginModalController.m */; };
+		508DB6E71F2598AA002ABF97 /* CHLoginModalController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508DB6DD1F2598AA002ABF97 /* CHLoginModalController.storyboard */; };
+		508DB6F01F259998002ABF97 /* CHSocialHandlerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6EA1F259998002ABF97 /* CHSocialHandlerData.m */; };
+		508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6EC1F259998002ABF97 /* CHSocialResponseData.m */; };
+		508DB6F21F259998002ABF97 /* CHSocialServiceCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6EF1F259998002ABF97 /* CHSocialServiceCenter.m */; };
+		508DB6F81F259C85002ABF97 /* JKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F51F259C85002ABF97 /* JKUser.m */; };
+		508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F71F259C85002ABF97 /* JKUserManager.m */; };
+		508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */; };
 		50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */; };
 		50AC9D231F0BA92000AA7AEC /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D221F0BA92000AA7AEC /* UIView+Extension.m */; };
 		50AC9D2D1F0D17D000AA7AEC /* JKTopicCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D2C1F0D17D000AA7AEC /* JKTopicCreateController.m */; };
@@ -171,6 +187,38 @@
 		506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListVM.m; sourceTree = "<group>"; };
 		50832FFA1F1DFC3100E810DE /* JKTopicRelatedWorksListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicRelatedWorksListController.h; sourceTree = "<group>"; };
 		50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicRelatedWorksListController.m; sourceTree = "<group>"; };
+		508DB6C61F2598AA002ABF97 /* CHUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHUserInfoModel.h; sourceTree = "<group>"; };
+		508DB6C71F2598AA002ABF97 /* CHUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHUserInfoModel.m; sourceTree = "<group>"; };
+		508DB6CA1F2598AA002ABF97 /* CHLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginButton.h; sourceTree = "<group>"; };
+		508DB6CB1F2598AA002ABF97 /* CHLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginButton.m; sourceTree = "<group>"; };
+		508DB6CC1F2598AA002ABF97 /* CHLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginTextField.h; sourceTree = "<group>"; };
+		508DB6CD1F2598AA002ABF97 /* CHLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginTextField.m; sourceTree = "<group>"; };
+		508DB6CE1F2598AA002ABF97 /* CHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginViewController.h; sourceTree = "<group>"; };
+		508DB6CF1F2598AA002ABF97 /* CHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginViewController.m; sourceTree = "<group>"; };
+		508DB6D11F2598AA002ABF97 /* CHLoginOperationWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginOperationWebController.h; sourceTree = "<group>"; };
+		508DB6D21F2598AA002ABF97 /* CHLoginOperationWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginOperationWebController.m; sourceTree = "<group>"; };
+		508DB6D31F2598AA002ABF97 /* CHLoginOperationWebViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginOperationWebViewModel.h; sourceTree = "<group>"; };
+		508DB6D41F2598AA002ABF97 /* CHLoginOperationWebViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginOperationWebViewModel.m; sourceTree = "<group>"; };
+		508DB6D61F2598AA002ABF97 /* CHRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHRegisterController.h; sourceTree = "<group>"; };
+		508DB6D71F2598AA002ABF97 /* CHRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHRegisterController.m; sourceTree = "<group>"; };
+		508DB6D91F2598AA002ABF97 /* CHRestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHRestController.h; sourceTree = "<group>"; };
+		508DB6DA1F2598AA002ABF97 /* CHRestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHRestController.m; sourceTree = "<group>"; };
+		508DB6DB1F2598AA002ABF97 /* CHLoginModalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginModalController.h; sourceTree = "<group>"; };
+		508DB6DC1F2598AA002ABF97 /* CHLoginModalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginModalController.m; sourceTree = "<group>"; };
+		508DB6DD1F2598AA002ABF97 /* CHLoginModalController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CHLoginModalController.storyboard; sourceTree = "<group>"; };
+		508DB6E91F259998002ABF97 /* CHSocialHandlerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSocialHandlerData.h; sourceTree = "<group>"; };
+		508DB6EA1F259998002ABF97 /* CHSocialHandlerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSocialHandlerData.m; sourceTree = "<group>"; };
+		508DB6EB1F259998002ABF97 /* CHSocialResponseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSocialResponseData.h; sourceTree = "<group>"; };
+		508DB6EC1F259998002ABF97 /* CHSocialResponseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSocialResponseData.m; sourceTree = "<group>"; };
+		508DB6ED1F259998002ABF97 /* CHSocialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSocialService.h; sourceTree = "<group>"; };
+		508DB6EE1F259998002ABF97 /* CHSocialServiceCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHSocialServiceCenter.h; sourceTree = "<group>"; };
+		508DB6EF1F259998002ABF97 /* CHSocialServiceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHSocialServiceCenter.m; sourceTree = "<group>"; };
+		508DB6F41F259C85002ABF97 /* JKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKUser.h; sourceTree = "<group>"; };
+		508DB6F51F259C85002ABF97 /* JKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKUser.m; sourceTree = "<group>"; };
+		508DB6F61F259C85002ABF97 /* JKUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKUserManager.h; sourceTree = "<group>"; };
+		508DB6F71F259C85002ABF97 /* JKUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKUserManager.m; sourceTree = "<group>"; };
+		508DB6FB1F25A221002ABF97 /* JKLogOutApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLogOutApi.h; sourceTree = "<group>"; };
+		508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLogOutApi.m; sourceTree = "<group>"; };
 		50AC9D071F0B5BF200AA7AEC /* JKTopicListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicListHeaderView.h; sourceTree = "<group>"; };
 		50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListHeaderView.m; sourceTree = "<group>"; };
 		50AC9D211F0BA92000AA7AEC /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -448,6 +496,114 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		508DB6C41F2598AA002ABF97 /* LoginFramework */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6C51F2598AA002ABF97 /* CHLoginBusiness */,
+				508DB6C81F2598AA002ABF97 /* CHLoginController */,
+				508DB6DB1F2598AA002ABF97 /* CHLoginModalController.h */,
+				508DB6DC1F2598AA002ABF97 /* CHLoginModalController.m */,
+				508DB6DD1F2598AA002ABF97 /* CHLoginModalController.storyboard */,
+			);
+			path = LoginFramework;
+			sourceTree = "<group>";
+		};
+		508DB6C51F2598AA002ABF97 /* CHLoginBusiness */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6C61F2598AA002ABF97 /* CHUserInfoModel.h */,
+				508DB6C71F2598AA002ABF97 /* CHUserInfoModel.m */,
+			);
+			path = CHLoginBusiness;
+			sourceTree = "<group>";
+		};
+		508DB6C81F2598AA002ABF97 /* CHLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6C91F2598AA002ABF97 /* CHLoginView */,
+				508DB6CE1F2598AA002ABF97 /* CHLoginViewController.h */,
+				508DB6CF1F2598AA002ABF97 /* CHLoginViewController.m */,
+				508DB6D01F2598AA002ABF97 /* CHLoginWebView */,
+				508DB6D51F2598AA002ABF97 /* CHOriginateRegister */,
+				508DB6D81F2598AA002ABF97 /* CHOriginateReset */,
+			);
+			path = CHLoginController;
+			sourceTree = "<group>";
+		};
+		508DB6C91F2598AA002ABF97 /* CHLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6CA1F2598AA002ABF97 /* CHLoginButton.h */,
+				508DB6CB1F2598AA002ABF97 /* CHLoginButton.m */,
+				508DB6CC1F2598AA002ABF97 /* CHLoginTextField.h */,
+				508DB6CD1F2598AA002ABF97 /* CHLoginTextField.m */,
+			);
+			path = CHLoginView;
+			sourceTree = "<group>";
+		};
+		508DB6D01F2598AA002ABF97 /* CHLoginWebView */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6D11F2598AA002ABF97 /* CHLoginOperationWebController.h */,
+				508DB6D21F2598AA002ABF97 /* CHLoginOperationWebController.m */,
+				508DB6D31F2598AA002ABF97 /* CHLoginOperationWebViewModel.h */,
+				508DB6D41F2598AA002ABF97 /* CHLoginOperationWebViewModel.m */,
+			);
+			path = CHLoginWebView;
+			sourceTree = "<group>";
+		};
+		508DB6D51F2598AA002ABF97 /* CHOriginateRegister */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6D61F2598AA002ABF97 /* CHRegisterController.h */,
+				508DB6D71F2598AA002ABF97 /* CHRegisterController.m */,
+			);
+			path = CHOriginateRegister;
+			sourceTree = "<group>";
+		};
+		508DB6D81F2598AA002ABF97 /* CHOriginateReset */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6D91F2598AA002ABF97 /* CHRestController.h */,
+				508DB6DA1F2598AA002ABF97 /* CHRestController.m */,
+			);
+			path = CHOriginateReset;
+			sourceTree = "<group>";
+		};
+		508DB6E81F259998002ABF97 /* CHSocialService */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6E91F259998002ABF97 /* CHSocialHandlerData.h */,
+				508DB6EA1F259998002ABF97 /* CHSocialHandlerData.m */,
+				508DB6EB1F259998002ABF97 /* CHSocialResponseData.h */,
+				508DB6EC1F259998002ABF97 /* CHSocialResponseData.m */,
+				508DB6ED1F259998002ABF97 /* CHSocialService.h */,
+				508DB6EE1F259998002ABF97 /* CHSocialServiceCenter.h */,
+				508DB6EF1F259998002ABF97 /* CHSocialServiceCenter.m */,
+			);
+			path = CHSocialService;
+			sourceTree = "<group>";
+		};
+		508DB6F31F259C85002ABF97 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6F41F259C85002ABF97 /* JKUser.h */,
+				508DB6F51F259C85002ABF97 /* JKUser.m */,
+				508DB6F61F259C85002ABF97 /* JKUserManager.h */,
+				508DB6F71F259C85002ABF97 /* JKUserManager.m */,
+			);
+			path = UserManager;
+			sourceTree = "<group>";
+		};
+		508DB6FA1F25A221002ABF97 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				508DB6FB1F25A221002ABF97 /* JKLogOutApi.h */,
+				508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		50AC9D291F0D178300AA7AEC /* TopicCreate */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +762,7 @@
 		D3973AE81EEEEC200076B246 /* CHAppFramework */ = {
 			isa = PBXGroup;
 			children = (
+				508DB6C41F2598AA002ABF97 /* LoginFramework */,
 				D3973AE91EEEEC200076B246 /* ASUIFramework */,
 				D3973B0E1EEEEC200076B246 /* TabBarFramework */,
 			);
@@ -786,6 +943,7 @@
 		D3973B481EEEEC200076B246 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				508DB6F31F259C85002ABF97 /* UserManager */,
 				D3973BB11EEF0C320076B246 /* Api */,
 			);
 			path = Service;
@@ -807,6 +965,7 @@
 		D3973B501EEEEC200076B246 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				508DB6E81F259998002ABF97 /* CHSocialService */,
 				502347471F18975500E82B8E /* YLDragZoomCycleView */,
 				50AF13051F08D619005B34AA /* ZWTopSelectVcView */,
 			);
@@ -846,6 +1005,7 @@
 		D3973BB11EEF0C320076B246 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				508DB6FA1F25A221002ABF97 /* Me */,
 				501F7E321EFAADE700FE1E35 /* TopicsApi */,
 			);
 			path = Api;
@@ -1088,6 +1248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				502347581F18975500E82B8E /* pageOther@2x.png in Resources */,
+				508DB6E71F2598AA002ABF97 /* CHLoginModalController.storyboard in Resources */,
 				502347571F18975500E82B8E /* pageCurrent@2x.png in Resources */,
 				D3973B531EEEEC200076B246 /* LaunchScreen.storyboard in Resources */,
 				D3973B711EEEEC200076B246 /* CHEnviroConfigure.plist in Resources */,
@@ -1166,6 +1327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3973B581EEEEC200076B246 /* UIImage+Scale.m in Sources */,
+				508DB6F01F259998002ABF97 /* CHSocialHandlerData.m in Sources */,
 				D3973B6B1EEEEC200076B246 /* CHTabBarModel.m in Sources */,
 				D3973B551EEEEC200076B246 /* HHTGetString.m in Sources */,
 				501E8A851F130EF800723C29 /* JKCommentListApi.m in Sources */,
@@ -1174,6 +1336,7 @@
 				D3973BE91EF2452A0076B246 /* main.m in Sources */,
 				502347561F18975500E82B8E /* HWWeakTimer.m in Sources */,
 				501F7E3E1EFAB2B500FE1E35 /* JKTopicsListApi.m in Sources */,
+				508DB6E41F2598AA002ABF97 /* CHRegisterController.m in Sources */,
 				D3973BEF1EF290190076B246 /* JKTopicListCellVM.m in Sources */,
 				D3973B571EEEEC200076B246 /* UIColor+Hex.m in Sources */,
 				502347551F18975500E82B8E /* GKFadeNavigationController.m in Sources */,
@@ -1187,6 +1350,7 @@
 				D3973B801EEEEC200076B246 /* UDIDTools.m in Sources */,
 				50AC9D331F0DDBC100AA7AEC /* JKTopicCreateApi.m in Sources */,
 				50AC9D3F1F0DE45300AA7AEC /* JKTopicDetailVM.m in Sources */,
+				508DB6DF1F2598AA002ABF97 /* CHLoginButton.m in Sources */,
 				D3973B591EEEEC200076B246 /* ASNavigationController.m in Sources */,
 				506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */,
 				50AC9D361F0DDC4A00AA7AEC /* JKTopicDetailApi.m in Sources */,
@@ -1197,32 +1361,39 @@
 				50AC9D2D1F0D17D000AA7AEC /* JKTopicCreateController.m in Sources */,
 				50DA8B651F1B73FA00530F49 /* JKTopicDetailCommentListModel.m in Sources */,
 				50AC9D391F0DDCD600AA7AEC /* JKTopicDetailModel.m in Sources */,
+				508DB6F21F259998002ABF97 /* CHSocialServiceCenter.m in Sources */,
 				D3973BDE1EF239B10076B246 /* JKNewsListViewController.m in Sources */,
 				501F57BA1F1F5057001D2C8A /* JKTopicRelatedWorksListVM.m in Sources */,
 				50DA8B5C1F18B78700530F49 /* UIView+Kylin.m in Sources */,
 				D3973B771EEEEC200076B246 /* JKDetailModel.m in Sources */,
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
+				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
 				50AC9D981F0EA7C900AA7AEC /* JKSubcommentListCellVM.m in Sources */,
 				501F57C01F1F5E88001D2C8A /* JKMyfavoriteWorksApi.m in Sources */,
 				D3973BE71EF23A160076B246 /* JKMeViewController.m in Sources */,
+				508DB6E01F2598AA002ABF97 /* CHLoginTextField.m in Sources */,
 				501F7E351EFAB1E100FE1E35 /* JKTopicListModel.m in Sources */,
 				50DA8B621F1B739700530F49 /* JKTopicDetailCommentListApi.m in Sources */,
 				50DA8B6B1F1B95DB00530F49 /* JKTopicDetailBottomVM.m in Sources */,
 				50AC9D961F0EA7C900AA7AEC /* JKCommentListCellVM.m in Sources */,
 				D3973B7C1EEEEC200076B246 /* NewsModel.m in Sources */,
 				501F57BD1F1F5DA6001D2C8A /* JKFilmCollectionViewCellVM.m in Sources */,
+				508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */,
 				D3973BF21EF290280076B246 /* JKTopicListCell.m in Sources */,
 				502347591F18975500E82B8E /* UIView+YLView.m in Sources */,
 				501F7E3B1EFAB1FC00FE1E35 /* JKCommonModel.m in Sources */,
 				50AC9D8D1F0EA7C100AA7AEC /* JKCommentOpenCell.m in Sources */,
 				D3973B761EEEEC200076B246 /* DetailModel.m in Sources */,
 				D3973B681EEEEC200076B246 /* CHBarItemViewModel.m in Sources */,
+				508DB6F81F259C85002ABF97 /* JKUser.m in Sources */,
 				501E8A881F130FD800723C29 /* JKCommentListModel.m in Sources */,
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
 				50AC9D301F0D17E300AA7AEC /* JKTopicCreateVM.m in Sources */,
+				508DB6E31F2598AA002ABF97 /* CHLoginOperationWebViewModel.m in Sources */,
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
+				508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */,
 				50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */,
 				D3973B6D1EEEEC200076B246 /* CHTabBarViewModel.m in Sources */,
 				D3973B521EEEEC200076B246 /* AppDelegate.m in Sources */,
@@ -1233,9 +1404,12 @@
 				D3973BA71EEEF0830076B246 /* BaseModel.m in Sources */,
 				501F57CA1F2099D2001D2C8A /* CTOCommentStarView.m in Sources */,
 				50AC9D3C1F0DE44200AA7AEC /* JKTopicDetailController.m in Sources */,
+				508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */,
 				D3973BEC1EF28A7A0076B246 /* JKTopicsListVM.m in Sources */,
 				50AC9D8E1F0EA7C100AA7AEC /* JKSubcommentListCell.m in Sources */,
+				508DB6E21F2598AA002ABF97 /* CHLoginOperationWebController.m in Sources */,
 				50AF130B1F08D619005B34AA /* ZWTopSelectVcView.m in Sources */,
+				508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */,
 				501F7E3A1EFAB1FC00FE1E35 /* JKCommonApi.m in Sources */,
 				501F57B71F1EFCD6001D2C8A /* JKTopicDetailTopcomentModel.m in Sources */,
 				5023475A1F18975500E82B8E /* YLDragZoomCycleView.m in Sources */,
@@ -1246,9 +1420,11 @@
 				D32953471EF3DD29002A9DE8 /* JKTopicFilterView.m in Sources */,
 				D3973B7A1EEEEC200076B246 /* JKCommentList.m in Sources */,
 				D3973B751EEEEC200076B246 /* ClassifyModel.m in Sources */,
+				508DB6DE1F2598AA002ABF97 /* CHUserInfoModel.m in Sources */,
 				50DA8B5B1F18B78700530F49 /* KylinScrollView.m in Sources */,
 				D3973BE41EF23A040076B246 /* JKTopicsListViewController.m in Sources */,
 				501F57B11F1E72CF001D2C8A /* JKFilmCollectionViewCell.m in Sources */,
+				508DB6E61F2598AA002ABF97 /* CHLoginModalController.m in Sources */,
 				D3973B721EEEEC200076B246 /* HHTBaseColorHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

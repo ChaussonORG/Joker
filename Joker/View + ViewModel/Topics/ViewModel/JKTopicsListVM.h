@@ -51,5 +51,6 @@ typedef NS_ENUM(NSInteger, JKTopicFilter){
 
 - (void)createTopic;
 
+- (void)checkLogin;
 
 @end
