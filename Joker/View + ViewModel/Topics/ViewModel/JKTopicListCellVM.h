@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TopicCommentDelegate <NSObject>
+
+- (void)commentTopicWithId:(NSString *)topicId;
+
+@end
+
+
 @interface JKTopicListCellVM : NSObject
 
+@property (nonatomic ,weak) id<TopicCommentDelegate>delegate;
 
 @property (nonatomic , strong) NSString *headerUrl;
 

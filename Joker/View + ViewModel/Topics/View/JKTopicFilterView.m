@@ -35,12 +35,17 @@
 
 - (void)setupSubviews{
     
+    UIView *line = [[UIView alloc]init];
+    line.backgroundColor = [JKStyleConfiguration lineColor];
+    line.frame = CGRectMake(0, 0, ScreenWidth, 1);
+    [self.contentView addSubview:line];
+    
     
     self.mainTitleLabel = [[UILabel alloc]init];
     self.mainTitleLabel.frame = CGRectMake(0, 0, ScreenWidth, 40);
     self.mainTitleLabel.textAlignment = NSTextAlignmentCenter;
-    self.mainTitleLabel.font = [JKStyleConfiguration subcontentFont];
-    self.mainTitleLabel.textColor = [JKStyleConfiguration lightGrayTextColor];
+    self.mainTitleLabel.font = [JKStyleConfiguration contentFont];
+    self.mainTitleLabel.textColor = [JKStyleConfiguration bbbbbbColor];
     [self addSubview:self.mainTitleLabel];
     
     
@@ -65,6 +70,7 @@
             imageView.backgroundColor = [JKStyleConfiguration grayBackgroundColor];
         }
         
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
 //        imageView.layer.cornerRadius = JKFilterImageWidth/2;
         imageView.layer.masksToBounds = YES;
         [btn addSubview:imageView];

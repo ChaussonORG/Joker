@@ -71,12 +71,12 @@
     
     self.timeLabel = [[UILabel alloc]init];
     self.timeLabel.font = [JKStyleConfiguration contentFont];
-    self.timeLabel.textColor = [JKStyleConfiguration grayTextColor];
+    self.timeLabel.textColor = [JKStyleConfiguration aaaaaaColor];
     
     
     self.relatedLabel = [[UILabel alloc]init];
     self.relatedLabel.font = [JKStyleConfiguration subcontentFont];
-    self.relatedLabel.textColor = [JKStyleConfiguration blackColor];
+    self.relatedLabel.textColor = [JKStyleConfiguration sixsixColor];
     self.relatedLabel.textAlignment =NSTextAlignmentRight;
     
     
@@ -87,7 +87,7 @@
     
     
     self.commentCountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.commentCountBtn setTitleColor:[JKStyleConfiguration grayTextColor] forState:UIControlStateNormal];
+    [self.commentCountBtn setTitleColor:[JKStyleConfiguration aaaaaaColor] forState:UIControlStateNormal];
     self.commentCountBtn.titleLabel.font = [JKStyleConfiguration subcontentFont];
     [self.commentCountBtn addTarget:self action:@selector(clickCommentCountBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.commentCountBtn setImage:[UIImage imageNamed:@"pinglun"] forState:UIControlStateNormal];
@@ -112,21 +112,11 @@
 
 - (void)prepareForLayout{
     
-    self.grayView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 8);
+    self.grayView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 6);
     
     self.headerView.frame = CGRectMake(25, self.grayView.frame.origin.y + self.grayView.frame.size.height + 15, 35, 35);
     
-//    self.topLineView.frame = CGRectMake(0, self.grayView.frame.origin.y + self.grayView.frame.size.height, [UIScreen mainScreen].bounds.size.width, 1);
-    
-//    self.itemNameLabel.frame = CGRectMake(15, self.topLineView.frame.size.height + self.topLineView.frame.origin.y + 10, 180, 20);
-//    
-//    
-//    self.itemTaskLabel.frame = CGRectMake(self.itemNameLabel.frame.origin.x , self.itemNameLabel.frame.size.height + self.itemNameLabel.frame.origin.y + 5, [UIScreen mainScreen].bounds.size.width - 50, 20);
-//    
-//    self.taskStatusLabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 70 - 20 ,self.itemNameLabel.frame.origin.y , 70, 20);
-//    
-    
-//    self.lineView.frame = CGRectMake(15, 64, [UIScreen mainScreen].bounds.size.width - 30, 1);
+ 
     
 }
 
@@ -161,7 +151,7 @@
         
         self.timeLabel.frame = CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y + self.nameLabel.frame.size.height, 120, 17);
         
-        self.relatedLabel.frame = CGRectMake(self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 10, self.nameLabel.frame.origin.y, [UIScreen mainScreen].bounds.size.width - (self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 10) - 25 , 35);
+        self.relatedLabel.frame = CGRectMake(self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50, self.nameLabel.frame.origin.y, [UIScreen mainScreen].bounds.size.width - (self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50) - 25 , 35);
         
         self.contentLabel.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y + self.headerView.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width - 50 , contentLabelHeight);
         
@@ -207,7 +197,7 @@
 - (void)clickCommentCountBtn{
     
     
-//    [self.viewModel gotoMaintainTaskItemsDetail];
+    [self.viewModel openTopicComment];
     
 }
 

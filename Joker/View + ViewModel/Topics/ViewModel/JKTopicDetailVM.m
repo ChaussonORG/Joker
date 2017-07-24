@@ -12,8 +12,10 @@
 #import "HHTGetString.h"
 #import "JKTopicDetailCommentListApi.h"
 #import "JKTopicDetailTopcomentApi.h"
+#import "JKUserManager.h"
+#import "CHLoginModalController.h"
 
-@interface JKTopicDetailVM()<TopicDetailBottomDelegate>
+@interface JKTopicDetailVM()<TopicDetailBottomDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , assign) NSInteger offset;
 
@@ -236,10 +238,30 @@
 - (void)reply{
     
     
-    
+    if ([[JKUserManager sharedData] isUserEffective]) {
+        
+        [CHProgressHUD showPlainText:@"评论功能沈亮还未设计"];
+        
+    }
+    else{
+        
+        [self login];
+    }
     
 }
 
+- (void)login
+{
+    CHLoginModalController *vc = [[CHLoginModalController alloc] init];
+    vc.delegate = self;
+    [[ASNavigator shareModalCenter].fetchCurrentViewController presentViewController:vc animated:YES completion:nil];
+}
+- (void)ch_willCompletionWithSuccess:(NSDictionary *)info
+{
+    [[JKUserManager sharedData] saveUserWithInfo:info];
+    
+    
+}
 
 
 

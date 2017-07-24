@@ -70,11 +70,11 @@
     
     
     if (IS_LOWER_IPHONE6_SCREEN) {
-        size = 10.0;
+        size = 11.0;
     }
     else{
         
-        size = 11.0;
+        size = 12.0;
     }
     
     return  PINGFANG_FONT(size);
@@ -335,6 +335,49 @@
 }
 
 
++ (UIColor *)aaaaaaColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration aaaaaaColorHex]];
+    
+}
+
++ (UIColor *)bbbbbbColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration bbbbbbColorHex]];
+    
+}
+
+
++ (UIColor *)ccccccColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration ccccccColorHex]];
+    
+}
+
++ (NSString *)aaaaaaColorHex{
+    return @"#aaaaaa";
+}
+
++ (NSString *)bbbbbbColorHex{
+    return @"#bbbbbb";
+}
+
++ (NSString *)ccccccColorHex{
+    return @"#cccccc";
+}
+
+
++ (UIColor *)sixsixColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration sixsixColorHex]];
+    
+}
+
++ (NSString *)sixsixColorHex{
+    return @"#666666";
+}
+
+
 + (NSString *)pickViewBgColorHex{
     return @"#E7E7E7";
 }
@@ -371,11 +414,11 @@
     return @"#FAFAFA";
 }
 + (NSString *)blackColorHex{
-    return @"#444444";
+    return @"#222222";
 }
 
 + (NSString *)lineColorHex{
-    return @"#D0D0D0";
+    return @"#eeeeee";
 }
 
 + (NSString *)borderColorHex{

@@ -53,7 +53,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:_filterTilteArr[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [JKStyleConfiguration titleFont];
-        [btn setTitleColor:[JKStyleConfiguration grayTextColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[JKStyleConfiguration bbbbbbColor] forState:UIControlStateNormal];
         
         [btn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateSelected];
         btn.tag = [[NSString stringWithFormat:@"%d%d",JKFilterTitleNum,i] integerValue];
@@ -74,7 +74,7 @@
             
             btn.selected = YES;
             
-            self.bottomLine.frame = CGRectMake(btn.frame.size.width/4, btn.frame.size.height + btn.frame.origin.y, btn.frame.size.width/2, 2);
+            self.bottomLine.frame = CGRectMake((btn.frame.size.width - 20)/2, btn.frame.size.height + btn.frame.origin.y, 20, 2);
             
         }
         
@@ -104,7 +104,7 @@
                 btn.selected = YES;
                 
                 CGRect lineRect = _bottomLine.frame;
-                lineRect.origin.x = btn.frame.origin.x + btn.frame.size.width/4;
+                lineRect.origin.x = btn.frame.origin.x + (btn.frame.size.width- 20)/2;
                 [UIView animateWithDuration:0.15f animations:^{
                     _bottomLine.frame = lineRect;
                 }];

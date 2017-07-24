@@ -74,6 +74,10 @@
             
             
         }
+        
+        if (cellViewModel.count < RequestLimit) {
+            self.isFinishRequestMoreData = YES;
+        }
                
         self.cellViewModels = [cellViewModel copy];
         
@@ -88,7 +92,57 @@
 - (void)requestMoreData{
     
 
+    JKTopicsListApi *api;
+    if (_sort == JKTopicFilm) {
+        
+        api = [[JKTopicsListApi alloc]initTopicFilm];
+        
+    }
+    else if (_sort == JKTopicTV) {
+        
+        
+        api = [[JKTopicsListApi alloc]initTopicTV];
+    }
+    else if (_sort == JKTopicCartoon) {
+        
+        api = [[JKTopicsListApi alloc]initTopicCartoon];
+        
+    }
+    else if (_sort == JKTopicGame) {
+        
+        api = [[JKTopicsListApi alloc]initTopicGame];
+        
+    }
+    else if (_sort == JKTopicVariety) {
+        
+        
+        api = [[JKTopicsListApi alloc]initTopicVariety];
+    }
+    api.favorite = YES;
     
+    api.requestModel.limit = RequestLimit;
+    
+    api.requestModel.offset = self.cellViewModels.count;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
+        
+        NSMutableArray <JKTopicListCellVM *>*cellViewModel = [NSMutableArray arrayWithArray:self.cellViewModels];
+        for (JKTopicListModelItems *items in request.model.data.items) {
+            
+            [cellViewModel addObject:[self assembleviewModelWithItem:items]];
+            
+            
+        }
+        if (cellViewModel.count == self.cellViewModels.count) {
+            self.isFinishRequestMoreData = YES;
+        }
+        self.cellViewModels = [cellViewModel copy];
+        
+    } failureBlock:^(__kindof JKTopicsListApi *request) {
+        
+        
+        
+    }];
     
     
 }
@@ -112,7 +166,7 @@
     
     JKTopicListModelTopicContentBeans *bean = items.topicContentBeans[0];
     
-    cellVM.content = bean.content;
+    cellVM.content = items.title;
     
     
     CGSize nameLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.name, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));

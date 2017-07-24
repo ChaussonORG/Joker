@@ -115,7 +115,7 @@
     [self.view addSubview:self.titleTextView];
     
     self.titlePlaceholder = [[UILabel alloc] init];
-    self.titlePlaceholder.textColor = [JKStyleConfiguration placeHolderColor];
+    self.titlePlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.titlePlaceholder.text = @"请输入话题标题";
     self.titlePlaceholder.font = [JKStyleConfiguration hugeFont];
     self.titlePlaceholder.frame = CGRectMake(10, 25, 150, 20);
@@ -155,7 +155,7 @@
     self.contentView.delegate = self;
     
     self.contentPlaceholder = [[UILabel alloc] init];
-    self.contentPlaceholder.textColor = [JKStyleConfiguration placeHolderColor];
+    self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.contentPlaceholder.text = @"请输入内容...";
     self.contentPlaceholder.font = [JKStyleConfiguration titleFont];
     self.contentPlaceholder.frame = CGRectMake(10, 10, 100, 20);
@@ -223,14 +223,14 @@
 -(UIBarButtonItem*)customRightButton{
     
     self.nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.nextBtn.frame=CGRectMake(15, 15, 40,30);
+    self.nextBtn.frame=CGRectMake(15, 15, 48,23);
     self.nextBtn.titleLabel.font = [JKStyleConfiguration subcontentFont];
     [self.nextBtn setAdjustsImageWhenHighlighted:NO];
     [self.nextBtn addTarget:self action:@selector(clickNextBtn) forControlEvents:UIControlEventTouchUpInside];
     self.nextBtn.userInteractionEnabled = YES;
-    [self.nextBtn setTitleColor:[JKStyleConfiguration lightGrayTextColor] forState:UIControlStateNormal];
+    [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
     [self.nextBtn setTitle:@"发送" forState:UIControlStateNormal];
-    self.nextBtn.layer.borderColor = [JKStyleConfiguration lightGrayTextColor].CGColor;
+    self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
     self.nextBtn.layer.borderWidth = 1;
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:self.nextBtn];
     

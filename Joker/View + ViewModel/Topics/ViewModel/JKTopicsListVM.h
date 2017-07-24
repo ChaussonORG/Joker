@@ -40,10 +40,12 @@ typedef NS_ENUM(NSInteger, JKTopicFilter){
 
 @property (nonatomic , strong , readonly) NSArray *attentFilterImages;
 
-
+@property (nonatomic , assign ,readonly) BOOL isFinishRequestMoreData;
 
 
 - (void)requestData;
+
+- (void)requestMoreData;
 
 - (void)changeTypeWithIndex:(NSInteger)index;
 

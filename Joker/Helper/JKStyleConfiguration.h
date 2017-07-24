@@ -96,6 +96,15 @@
 
 
 + (UIColor *)blueKeywordColor;
+
+
++ (UIColor *)aaaaaaColor;
+
++ (UIColor *)bbbbbbColor;
+
++ (UIColor *)ccccccColor;
+
++ (UIColor *)sixsixColor;
 /*
  *转换空字符串
  */

@@ -19,8 +19,9 @@
 #import "UIView+Kylin.h"
 #import "CHLoginModalController.h"
 #import "JKUserManager.h"
+#import <CHProgressHUD/CHProgressHUD.h>
 
-@interface JKTopicsListViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,FilterTopicDelegate,GKFadeNavigationControllerDelegate,YLDroagViewDelegate,CHLoginModalControllerDelegate>
+@interface JKTopicsListViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,FilterTopicDelegate,GKFadeNavigationControllerDelegate,YLDroagViewDelegate,TopicCommentDelegate,CHLoginModalControllerDelegate>
 
 
 
@@ -121,6 +122,14 @@ static CGFloat const OffsetY = -200;
     [self.view addSubview:self.topicsListTableView];
     self.topicsListTableView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
     self.topicsListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+    @weakify(self)
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        [self.viewModel requestMoreData];
+    }];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.topicsListTableView.mj_footer = footer;
+    
     //创建轮播图
     self.dragView = [[YLDragZoomCycleView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderHeight) andDataSource:self.viewModel.imageArr autoScroll:YES scrollInterval:2];
     self.dragView.delegate = self;
@@ -139,6 +148,9 @@ static CGFloat const OffsetY = -200;
     [self.view addSubview:self.createTopicBtn];
     self.createTopicBtn.backgroundColor = [UIColor redColor];
     
+    
+    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray];
+    self.headerView.delegate = self;
 }
 
 - (void)clickCreateTopicBtn{
@@ -226,8 +238,7 @@ static CGFloat const OffsetY = -200;
         
         if ([x boolValue]) {
             
-            self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray];
-            self.headerView.delegate = self;
+            
             self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 42);
             
             self.topicsListTableView.tableHeaderView = self.headerView;
@@ -252,6 +263,14 @@ static CGFloat const OffsetY = -200;
         [self.topicsListTableView reloadData];
         
         [self.topicsListTableView.mj_header endRefreshing];
+        
+        [self.topicsListTableView.mj_header endRefreshing];
+        
+        if (self.viewModel.isFinishRequestMoreData) {
+            [self.topicsListTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [self.topicsListTableView.mj_footer endRefreshing];
+        }
     }];
 
     
@@ -284,6 +303,10 @@ static CGFloat const OffsetY = -200;
         
         
         [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
+        
+        
+        cell.viewModel.delegate =self;
+        
          return cell;
     }
     else{
@@ -309,6 +332,10 @@ static CGFloat const OffsetY = -200;
             
             
             [cell loadDataWithVM:self.viewModel.attendCellViewModels[indexPath.row - 1]];
+            
+            cell.viewModel.delegate =self;
+            
+            
              return cell;
         }
     
@@ -371,6 +398,21 @@ static CGFloat const OffsetY = -200;
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)commentTopicWithId:(NSString *)topicId{
+    
+    [self.viewModel checkLogin];
+    
+    if (self.viewModel.isLogined) {
+        
+        [CHProgressHUD showPlainText:@"评论功能沈亮还未设计"];
+        
+    }
+    else{
+        
+        [self login];
+    }
+}
 /*
 #pragma mark - Navigation
 

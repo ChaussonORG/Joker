@@ -33,6 +33,7 @@
 
 @property (nonatomic , strong) NSArray *attentFilterImages;
 
+@property (nonatomic , assign) BOOL isFinishRequestMoreData;
 
 @end
 
@@ -107,6 +108,31 @@
     
 }
 
+- (void)requestMoreData{
+    
+    if (!self.isLogined) {
+        
+        self.topicFilterType = JKTopicLast;
+        
+        [self requestMoreTopicLastList];
+        
+    }
+    else{
+        
+        
+        if (self.topicFilterType == JKTopicLast) {
+            
+            [self requestMoreTopicLastList];
+            
+            [self requestMoreTopicAttendList];
+        }
+        else{
+            
+            [self requestMoreTopicAttendList];
+        }
+        
+    }
+}
 
 - (void)requestTopicLastList{
     
@@ -114,6 +140,8 @@
     
     api.favorite = NO;
  
+    api.requestModel.limit = RequestLimit;
+    
     [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
         
         NSMutableArray <JKTopicListCellVM *>*cellViewModel = [NSMutableArray array];
@@ -123,6 +151,11 @@
             
             
         }
+        
+        if (cellViewModel.count < RequestLimit) {
+            self.isFinishRequestMoreData = YES;
+        }
+
         self.cellViewModels = [cellViewModel copy];
         
     } failureBlock:^(__kindof JKTopicsListApi *request) {
@@ -130,12 +163,46 @@
     }];
     
 }
-
+- (void)requestMoreTopicLastList{
+    
+    JKTopicsListApi *api = [[JKTopicsListApi alloc]init];
+    
+    api.favorite = NO;
+    
+    api.requestModel.offset = self.cellViewModels.count;
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
+        
+        NSMutableArray <JKTopicListCellVM *>*cellViewModel = [NSMutableArray arrayWithArray:self.cellViewModels];
+        for (JKTopicListModelItems *items in request.model.data.items) {
+            
+            [cellViewModel addObject:[self assembleviewModelWithItem:items]];
+            
+            
+        }
+        if (cellViewModel.count == self.cellViewModels.count) {
+            self.isFinishRequestMoreData = YES;
+        }
+        
+        self.cellViewModels = [cellViewModel copy];
+        
+    } failureBlock:^(__kindof JKTopicsListApi *request) {
+        
+    }];
+    
+    
+    
+    
+}
 - (void)requestTopicAttendList{
     
     JKTopicsListApi *api = [[JKTopicsListApi alloc]init];
     
     api.favorite = YES;
+    
+    api.requestModel.limit = RequestLimit;
   
     [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
         
@@ -146,11 +213,48 @@
             
             
         }
+        
+        if (cellViewModel.count < RequestLimit) {
+            self.isFinishRequestMoreData = YES;
+        }
+
         self.attendCellViewModels = [cellViewModel copy];
         
     } failureBlock:^(__kindof JKTopicsListApi *request) {
         
     }];
+    
+}
+
+- (void)requestMoreTopicAttendList{
+    
+    JKTopicsListApi *api = [[JKTopicsListApi alloc]init];
+    
+    api.favorite = YES;
+    
+    api.requestModel.offset = self.attendCellViewModels.count;
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
+        
+        NSMutableArray <JKTopicListCellVM *>*cellViewModel = [NSMutableArray arrayWithArray:self.attendCellViewModels];
+        for (JKTopicListModelItems *items in request.model.data.items) {
+            
+            [cellViewModel addObject:[self assembleviewModelWithItem:items]];
+            
+            
+        }
+        
+        if (cellViewModel.count == self.attendCellViewModels.count) {
+            self.isFinishRequestMoreData = YES;
+        }
+        self.attendCellViewModels = [cellViewModel copy];
+        
+    } failureBlock:^(__kindof JKTopicsListApi *request) {
+        
+    }];
+    
     
 }
 
