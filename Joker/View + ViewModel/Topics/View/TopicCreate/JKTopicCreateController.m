@@ -118,7 +118,7 @@
     self.titlePlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.titlePlaceholder.text = @"请输入话题标题";
     self.titlePlaceholder.font = [JKStyleConfiguration hugeFont];
-    self.titlePlaceholder.frame = CGRectMake(10, 25, 150, 20);
+    self.titlePlaceholder.frame = CGRectMake(10, 30, 150, 20);
     [self.titleTextView addSubview:self.titlePlaceholder];
     
     
@@ -158,7 +158,7 @@
     self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.contentPlaceholder.text = @"请输入内容...";
     self.contentPlaceholder.font = [JKStyleConfiguration titleFont];
-    self.contentPlaceholder.frame = CGRectMake(10, 10, 100, 20);
+    self.contentPlaceholder.frame = CGRectMake(10, 30, 100, 20);
     [self.contentView addSubview:self.contentPlaceholder];
     
     
@@ -183,16 +183,24 @@
     [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
     
     self.aboutBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.aboutBtn.frame = CGRectMake(ScreenWidth - 150 - 10, 15, 150, 22);
+    self.aboutBtn.frame = CGRectMake(ScreenWidth - 150 - 10, 15, 130, 22);
 //    [self.aboutBtn setTitle:@"关联作品 >" forState:UIControlStateNormal];
+ 
     [self.aboutBtn setTitleColor:[JKStyleConfiguration blueKeywordColor] forState:UIControlStateNormal];
     self.aboutBtn.titleLabel.font = [JKStyleConfiguration titleFont];
     self.aboutBtn.titleLabel.textAlignment = NSTextAlignmentRight;
     [self.aboutBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [self.bottomView addSubview:self.aboutBtn];
     [self.aboutBtn addTarget:self action:@selector(clickAboutBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *arrow = [UIButton buttonWithType:UIButtonTypeCustom];
+    arrow.frame = CGRectMake(self.aboutBtn.frame.origin.x + self.aboutBtn.frame.size.width, 15, 20, 22);
+   
+    [arrow setImage:[UIImage imageNamed:@"guanlian"] forState:UIControlStateNormal];
+    
+    [arrow addTarget:self action:@selector(clickAboutBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottomView addSubview:arrow];
 
- 
     
     [self binding];
 }
@@ -201,7 +209,7 @@
     [RACObserve(self, viewModel.relateWorkName) subscribeNext:^(NSString *x) {
         @strongify(self);
         
-        [self.aboutBtn setTitle:[NSString stringWithFormat:@"%@ >",x] forState:UIControlStateNormal];
+        [self.aboutBtn setTitle:[NSString stringWithFormat:@"%@",x] forState:UIControlStateNormal];
 
     }];
     
