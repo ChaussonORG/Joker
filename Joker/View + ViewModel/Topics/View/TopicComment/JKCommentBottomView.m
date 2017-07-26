@@ -44,19 +44,19 @@
     
     
     self.turnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.turnBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.turnBtn setImage:[UIImage imageNamed:@"bianjix"] forState:UIControlStateNormal];
     [self addSubview:self.turnBtn];
     self.turnBtn.frame = CGRectMake(ScreenWidth - 20 - 20 - 30 - 20 - 30 - 20, 10, 20, 20);
     [self.turnBtn addTarget:self action:@selector(clickTurnBtn) forControlEvents:UIControlEventTouchUpInside];
-    self.turnBtn.backgroundColor = [UIColor redColor];
+    
     
     
     self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.deleteBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.deleteBtn setImage:[UIImage imageNamed:@"shanchux"] forState:UIControlStateNormal];
     [self addSubview:self.deleteBtn];
     self.deleteBtn.frame = CGRectMake(ScreenWidth - 20 - 20 - 30 - 20, 10, 20, 20);
     [self.deleteBtn addTarget:self action:@selector(clickDeleteBtn) forControlEvents:UIControlEventTouchUpInside];
-    self.deleteBtn.backgroundColor = [UIColor redColor];
+    
     
     
     self.commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];

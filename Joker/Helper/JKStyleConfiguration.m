@@ -386,7 +386,7 @@
     return @"#00A0DC";
 }
 + (NSString *)redColorHex{
-    return @"DB0000";
+    return @"#ff501e";
 }
 + (NSString *)orangeColorHex{
     return @"#F6A623";

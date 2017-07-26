@@ -8,6 +8,7 @@
 
 #import "JKTopicsFilteredListController.h"
 #import "JKTopicListCell.h"
+#import "CHLoginModalController.h"
 @interface JKTopicsFilteredListController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -15,7 +16,7 @@
 
 @property (nonatomic , strong) UIImageView *spareView;
 
-
+@property (nonatomic , strong) UIButton *createTopicBtn;
 @end
 
 @implementation JKTopicsFilteredListController
@@ -61,6 +62,17 @@
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.mainTableView.mj_footer = footer;
     
+    
+    self.createTopicBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    self.createTopicBtn.frame = CGRectMake((self.view.frame.size.width - 100)/2, ScreenHeight - 15 - 40 - 64, 100, 40);
+    //    [self.createTopicBtn setImage:[[UIImage imageNamed:@"dipinglun"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:(UIControlStateNormal)];
+    
+    [self.createTopicBtn setImage:[UIImage imageNamed:@"xiehuati"] forState:UIControlStateNormal];
+    [self.createTopicBtn addTarget:self action:@selector(clickCreateTopicBtn) forControlEvents:(UIControlEventTouchUpInside)];
+    self.createTopicBtn.layer.masksToBounds = YES;
+    self.createTopicBtn.layer.cornerRadius = 20;
+    [self.view addSubview:self.createTopicBtn];
+
     
 }
 
@@ -117,16 +129,11 @@
     return cell;
 }
 
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return self.viewModel.cellViewModels[indexPath.row].cellHeight;
-    
-    
+     
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -134,6 +141,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)clickCreateTopicBtn{
+    
+    [self.viewModel checkLogin];
+    
+    if (self.viewModel.isLogined) {
+        [self.viewModel createTopic];
+    }
+    else{
+        [self login];
+    }
+    
+}
+- (void)login
+{
+    CHLoginModalController *vc = [[CHLoginModalController alloc] init];
+    vc.delegate = self;
+    [[ASNavigator shareModalCenter].fetchCurrentViewController presentViewController:vc animated:YES completion:nil];
+}
+- (void)ch_willCompletionWithSuccess:(NSDictionary *)info
+{
+    [[JKUserManager sharedData] saveUserWithInfo:info];
+    
+ 
+    
+}
 /*
 #pragma mark - Navigation
 

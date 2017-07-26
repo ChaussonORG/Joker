@@ -10,12 +10,16 @@
 #import "JKTopicsListApi.h"
 #import "HHTGetString.h"
 #import "CHCommonMacro.h"
+#import "JKTopicCreateController.h"
+
 @interface JKTopicsFilteredListVM()
 
 @property (nonatomic , strong) NSMutableArray <JKTopicListCellVM *>*cellViewModels;
 
 
 @property (nonatomic , assign) BOOL isFinishRequestMoreData;
+
+@property (nonatomic , assign) BOOL isLogined;
 
 @end
 
@@ -184,4 +188,27 @@
     
 }
 
+- (void)checkLogin{
+    
+    if ([[JKUserManager sharedData] isUserEffective]) {
+        self.isLogined = YES;
+    }
+    else{
+        self.isLogined = NO;
+    }
+    
+}
+
+
+
+- (void)createTopic{
+ 
+        
+    JKTopicCreateController *vc = [[JKTopicCreateController alloc]init];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+    
+    
+}
 @end

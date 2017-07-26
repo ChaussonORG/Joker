@@ -54,11 +54,7 @@
 @property (nonatomic) GKFadeNavigationControllerNavigationBarVisibility navigationBarVisibility;
 
 @end
-static CGFloat const NavH = 64;
-static CGFloat const HeaderH = 150;
-static CGFloat const TitleViewH = 50;
-static CGFloat const UnderLineH = 3;
-static CGFloat const OffsetY = -200;
+
 @implementation JKTopicsListViewController
 
 
@@ -106,7 +102,7 @@ static CGFloat const OffsetY = -200;
     
     [super viewWillDisappear:animated];
     
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
     
 }
 
@@ -138,18 +134,18 @@ static CGFloat const OffsetY = -200;
     
     
     self.createTopicBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    self.createTopicBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height - 60 - 64, 50, 50);
+    self.createTopicBtn.frame = CGRectMake((self.view.frame.size.width - 100)/2, ScreenHeight - 104, 100, 40);
 //    [self.createTopicBtn setImage:[[UIImage imageNamed:@"dipinglun"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:(UIControlStateNormal)];
     
-    [self.createTopicBtn setImage:[UIImage imageNamed:@"dipinglun"] forState:UIControlStateNormal];
+    [self.createTopicBtn setImage:[UIImage imageNamed:@"xiehuati"] forState:UIControlStateNormal];
     [self.createTopicBtn addTarget:self action:@selector(clickCreateTopicBtn) forControlEvents:(UIControlEventTouchUpInside)];
     self.createTopicBtn.layer.masksToBounds = YES;
-    self.createTopicBtn.layer.cornerRadius = 25;
+    self.createTopicBtn.layer.cornerRadius = 20;
     [self.view addSubview:self.createTopicBtn];
-    self.createTopicBtn.backgroundColor = [UIColor redColor];
+
     
     
-    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray];
+    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration blackColor]];
     self.headerView.delegate = self;
 }
 

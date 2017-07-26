@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JKTimelineListVM.h"
 @interface JKTimelineListViewController : UIViewController
 
+
+@property (nonatomic , strong) JKTimelineListVM *viewModel;
 @end

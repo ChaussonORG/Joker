@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JKTopicListCellVM.h"
-
+#import "JKUserManager.h"
 typedef NS_ENUM(NSInteger, JKTopicSort){
     JKTopicFilm,
     JKTopicTV,
@@ -26,11 +26,16 @@ typedef NS_ENUM(NSInteger, JKTopicSort){
 
 @property (nonatomic , assign , readonly) JKTopicSort sort;
 
+@property (nonatomic , assign , readonly) BOOL isLogined;
 
 - (instancetype)initWithTopicSort:(JKTopicSort)sort;
 
 - (void)requestData;
 
 - (void)requestMoreData;
+
+- (void)createTopic;
+
+- (void)checkLogin;
 @end
 

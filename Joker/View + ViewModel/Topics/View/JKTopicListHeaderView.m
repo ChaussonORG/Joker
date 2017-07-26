@@ -12,26 +12,25 @@
 @interface JKTopicListHeaderView()
 
  
+@property (nonatomic , strong) UIColor *selectedColor;
 
-@property (nonatomic , strong) UIView *bottomLine;
 
 @end
 @implementation JKTopicListHeaderView
-- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr
+- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color
 {
     if (self = [super init]) {
     
         self.selectedIndex = 0;
         
         _filterTilteArr = filterTitleArr;
-       
+        _selectedColor = color;
         
         self.backgroundColor = [JKStyleConfiguration whiteColor];
         
         
         [self  setupUI];
         [self binding];
-        
         
     }
     return self;
@@ -41,9 +40,7 @@
 
 
 - (void)setupUI{
-    
-    
-    
+     
     self.bottomLine = [[UIView alloc]init];
     self.bottomLine.backgroundColor = [JKStyleConfiguration blackColor];
     [self addSubview:self.bottomLine];
@@ -55,7 +52,7 @@
         btn.titleLabel.font = [JKStyleConfiguration titleFont];
         [btn setTitleColor:[JKStyleConfiguration bbbbbbColor] forState:UIControlStateNormal];
         
-        [btn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateSelected];
+        [btn setTitleColor:_selectedColor forState:UIControlStateSelected];
         btn.tag = [[NSString stringWithFormat:@"%d%d",JKFilterTitleNum,i] integerValue];
         btn.frame = CGRectMake(i*viewWidth, 0, viewWidth,  40);
         

@@ -11,11 +11,12 @@
 #import "YYText.h"
 #import "HHTUserEditModel.h"
 #import "SDBaseResponse.h"
+#import "CHFaceBoard.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 
 #import <CHImagePicker/CHImagePicker.h>
 #define MARGIN 20.0
-@interface JKTopicCreateController ()<YYTextViewDelegate, UITextViewDelegate>
+@interface JKTopicCreateController ()<YYTextViewDelegate, UITextViewDelegate,CHFaceBoardDelegate>
 
 @property (nonatomic , strong) UITextView * titleTextView;
 
@@ -42,6 +43,8 @@
 
 @property (nonatomic, strong) NSMutableArray  *photoUrls;
 
+@property (nonatomic , strong)CHFaceBoard *faceView;
+
 /**
  * 索引数组 －>编辑时记录图片location
  * 1. 添加图片时，要记录该图片的location
@@ -49,7 +52,7 @@
  */
 @property (nonatomic, strong) NSMutableArray *locations;
 
-
+@property (nonatomic , assign) NSInteger uploadImageIndex;
 @end
 
 @implementation JKTopicCreateController
@@ -153,6 +156,7 @@
     self.contentView.contentInset = UIEdgeInsetsMake(4, 4, 4, -4);
     self.contentView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.contentView.delegate = self;
+    self.contentView.font = [JKStyleConfiguration titleFont];
     
     self.contentPlaceholder = [[UILabel alloc] init];
     self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
@@ -170,17 +174,28 @@
     [self.view addSubview:self.bottomView];
     
     
+    UIView *bottomLineView = [[UIView alloc]init];
+    bottomLineView.backgroundColor = [JKStyleConfiguration lineColor];
+    bottomLineView.frame = CGRectMake(0, 0, ScreenWidth, 1);
+    bottomLineView.backgroundColor = [JKStyleConfiguration lineColor];
+    [self.bottomView  addSubview:bottomLineView];
+    
+    
+    self.emojiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.emojiBtn.frame = CGRectMake(20, 15, 22, 22);
+    [self.emojiBtn setImage:[UIImage imageNamed:@"biaoqing"] forState:UIControlStateNormal];
+    [self.bottomView addSubview:self.emojiBtn];
+    [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     self.imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-     self.imageBtn.frame = CGRectMake(20, 15, 22, 22);
+    self.imageBtn.frame = CGRectMake(self.emojiBtn.frame.origin.x + self.emojiBtn.frame.size.width + 31, 15, 22, 22);
+
     [self.imageBtn setImage:[UIImage imageNamed:@"tupian"] forState:UIControlStateNormal];
     [self.imageBtn addTarget:self action:@selector(clickImageBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:self.imageBtn];
     
-    self.emojiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.emojiBtn.frame = CGRectMake(self.imageBtn.frame.origin.x + self.imageBtn.frame.size.width + 31, 15, 22, 22);
-    [self.emojiBtn setImage:[UIImage imageNamed:@"biaoqing"] forState:UIControlStateNormal];
-//    [self.bottomView addSubview:self.emojiBtn];
-    [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
+   
     
     self.aboutBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
     self.aboutBtn.frame = CGRectMake(ScreenWidth - 150 - 10, 15, 130, 22);
@@ -201,6 +216,12 @@
     [arrow addTarget:self action:@selector(clickAboutBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:arrow];
 
+     self.faceView = [[CHFaceBoard alloc]init];
+    self.faceView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, 258);
+//    self.faceView.hidden = YES;
+    self.faceView.delegate = self;
+    self.faceView.sendBtn.hidden = YES;
+//    [self.view addSubview:self.faceView];
     
     [self binding];
 }
@@ -249,32 +270,26 @@
 
 - (void)clickNextBtn{
     
-    [self postToServer];
+    self.uploadImageIndex = 0;
+    [self uploadImageWithIndex: self.uploadImageIndex];
     
-//    [self.viewModel createTopicWithTitle:self.titleTextView.text data:nil];
     
     
-}
-- (void)clickEmojiBtn{
     
- 
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    NSLog(@"%@",self.contentView.text);
-    
-    NSLog(@" +++ ++++++++ %@",self.contentView.attributedText);
-    
-    NSLog(@" ---------------------");
- 
 }
 
-- (void)clickImageBtn{
+- (void)uploadImageWithIndex:(NSInteger)index{
     
-    [self.contentView resignFirstResponder];
-    @weakify(self)
-    [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
+    if (index == self.photos.count) {
+        [self postToServer];
+    }
+    else{
         
+        UIImage *image = self.photos[index];
+        
+        @weakify(self)
         [HHTUserEditModel updateAvatarBuy:image success:^(SDBaseResponse *userInfo) {
-           @strongify(self);
+            @strongify(self);
             
             NSArray *array = (NSArray *)userInfo.data;
             
@@ -282,22 +297,75 @@
             
             NSString *imageUrl = [data objectForKey:@"url"];
             
-            [self setAttributeStringWithImage:(UIImage *)image url:imageUrl];
+            [self.photoUrls addObject:imageUrl];
             
-            [self.contentView becomeFirstResponder];
+            self.uploadImageIndex++;
+            [self uploadImageWithIndex:self.uploadImageIndex];
             
         } failed:^{
             
         }];
+        
+    }
+    
+    
+}
+- (void)clickEmojiBtn{
+    
+    if (self.contentView.inputView) {
+        
+        self.contentView.inputView = nil;
+    }
+    else{
+        
+        self.contentView.inputView = self.faceView;
+    }
+ 
+    [self.contentView resignFirstResponder];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 打开键盘
+        [self.contentView becomeFirstResponder];
+    });
+//    [UIView animateWithDuration:0.3f animations:^{
+//        
+//        // 更改输入框的位置
+//        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.height.equalTo(@(50));
+//            make.left.right.offset(0);
+//            make.bottom.equalTo(self.view.mas_bottom).offset(-(258));
+//        }];
+//        
+//        
+////        [self.faceView mas_remakeConstraints:^(MASConstraintMaker *make) {
+////            make.height.equalTo(@(216));
+////            make.left.right.offset(0);
+////            make.bottom.equalTo(self.view.mas_bottom);
+////        }];
+//    
+//    }];
+
+   
+ 
+}
+
+- (void)clickImageBtn{
+    
+    [self.contentView resignFirstResponder];
+
+    [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
+        
+        
+        [self setAttributeStringWithImage:(UIImage *)image];
+        
+        [self.contentView becomeFirstResponder];
         
         
         
     }];
     
     
-}
-
-
+} 
 /** 发送数据到服务器*/
 - (void)postToServer{
     NSLog(@"\n\n------------------");
@@ -421,13 +489,13 @@
 }
 
 /** 将图片插入到富文本中*/
-- (void)setAttributeStringWithImage:(UIImage *)image url:(NSString *)imageUrl{
+- (void)setAttributeStringWithImage:(UIImage *)image{
     // 1. 保存图片与图片的location
     
     if (self.locations.count == 0) {
         [self.photos addObject:image];
         [self.locations addObject:@(self.contentView.selectedRange.location)];
-        [self.photoUrls addObject:imageUrl];
+//        [self.photoUrls addObject:imageUrl];
     }
     else{
         NSInteger lastIndex = [[self.locations lastObject] integerValue];
@@ -435,7 +503,7 @@
             
             [self.photos addObject:image];
             [self.locations addObject:@(self.contentView.selectedRange.location)];
-            [self.photoUrls addObject:imageUrl];
+//            [self.photoUrls addObject:imageUrl];
         }
         else{
             NSInteger insertIndex = 0;
@@ -449,7 +517,7 @@
                 
                     if (self.contentView.selectedRange.location >frontIndex && self.contentView.selectedRange.location <= currentIndex) {
                         [self.photos insertObject:image atIndex:i];
-                        [self.photoUrls insertObject:imageUrl atIndex:i];
+//                        [self.photoUrls insertObject:imageUrl atIndex:i];
                         [self.locations insertObject:@(self.contentView.selectedRange.location) atIndex:i];
                         
                         insertIndex = i;
@@ -460,7 +528,7 @@
                     
                     if (self.contentView.selectedRange.location <= currentIndex) {
                         [self.photos insertObject:image atIndex:i];
-                        [self.photoUrls insertObject:imageUrl atIndex:i];
+//                        [self.photoUrls insertObject:imageUrl atIndex:i];
                         [self.locations insertObject:@(self.contentView.selectedRange.location) atIndex:i];
                        
                         
@@ -499,6 +567,9 @@
     //    [mutableAttr replaceCharactersInRange:range withAttributedString:imageAttr];
     NSMutableAttributedString *mutableAttr = [self.contentView.attributedText mutableCopy];
     [mutableAttr insertAttributedString:imageAttr atIndex:self.contentView.selectedRange.location];
+    
+    [mutableAttr addAttribute:NSFontAttributeName value:[JKStyleConfiguration titleFont] range:NSMakeRange(0, mutableAttr.length)];
+    
     self.contentView.attributedText = mutableAttr;
 }
 
@@ -646,8 +717,6 @@
             
         }
         
-      
-        
     }
     
     return YES;
@@ -657,6 +726,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)clickFaceBoard:(NSString *)string{
+     
+    [self.contentView insertText:string];
+    
+}
+
+- (void)cancelFaceMessage{
+    
+    
+    [self.contentView deleteBackward];
+}
 /*
  #pragma mark - Navigation
  
