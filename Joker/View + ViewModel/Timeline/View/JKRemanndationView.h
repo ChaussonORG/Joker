@@ -37,4 +37,6 @@
 @property (nonatomic , strong) UIButton *score3;
 
 @property (nonatomic , strong) UIButton *score4;
+
+@property (nonatomic , strong) UIView *grayView;
 @end

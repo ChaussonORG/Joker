@@ -47,7 +47,7 @@
     
 }
 + (UIFont *)titleFont{
-     
+    
     CGFloat size ;
     
     
@@ -64,7 +64,7 @@
 
 
 + (UIFont *)contentFont{
-
+    
     
     CGFloat size ;
     
@@ -92,6 +92,24 @@
     else{
         
         size = 13.0;
+    }
+    
+    
+    
+    return  PINGFANG_FONT(size);
+    
+}
++ (UIFont *)minContentFont{
+    
+    CGFloat size ;
+    
+    if (IS_LOWER_IPHONE6_SCREEN) {
+        
+        size = 9.0;
+    }
+    else{
+        
+        size = 10.0;
     }
     
     
@@ -182,8 +200,8 @@
     }
     
     return  PINGFANG_FONT(size);
-
-
+    
+    
 }
 
 + (UIFont *)veryHugeFont{
@@ -414,7 +432,7 @@
     return @"#FAFAFA";
 }
 + (NSString *)blackColorHex{
-    return @"#222222";
+    return @"#444444";
 }
 
 + (NSString *)lineColorHex{

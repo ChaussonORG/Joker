@@ -64,6 +64,9 @@
 + (UIFont *)MasterFont;
 
 
++ (UIFont *)minContentFont;
+
+
 + (UIFont *)veryHugeFont;
 
 #pragma mark Color
