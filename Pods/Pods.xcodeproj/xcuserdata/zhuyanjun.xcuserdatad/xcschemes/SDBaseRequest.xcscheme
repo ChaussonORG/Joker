@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BF6BBC464FCB5E145DE1EE75C614B653'
+               BlueprintIdentifier = 'B4C8A72840BB130949D4A248B36CE6DB'
                BlueprintName = 'SDBaseRequest'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSDBaseRequest.a'>

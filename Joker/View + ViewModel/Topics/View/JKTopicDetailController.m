@@ -260,6 +260,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
+    if (self.viewModel.topCellVMs.count == 0) {
+        if (section== 0) {
+            return 0.01;
+        }
+    }
+    
+    if (self.viewModel.bottemCellVMs.count == 0) {
+        if (section== 1) {
+            return 0.01;
+        }
+    }
+    
     return 40;
 }
 
@@ -267,7 +279,6 @@
     
     UIView *view = [[UIView alloc]init];
     view.backgroundColor = [JKStyleConfiguration whiteColor];
-    
     UIView *bgView = [[UIView alloc]init];
     [view addSubview:bgView];
     bgView.frame = CGRectMake(0, 0, ScreenWidth, 35);
@@ -279,15 +290,33 @@
     
     if (section == 0) {
         
-        label.text = @"最客观评论";
+        if (self.viewModel.topCellVMs.count > 0) {
+            label.text = @"最客观评论";
+        }
+        else{
+            bgView.hidden = YES;
+        }
+ 
     }
     else if (section == 1) {
+        if (self.viewModel.bottemCellVMs.count > 0) {
+            label.text = @"最不客观评论";
+        }
+        else{
+            bgView.hidden = YES;
+        }
         
-        label.text = @"最不客观评论";
     }
     else{
         
-        label.text = @"全部回复";
+        if (self.viewModel.cellVMs.count > 0) {
+             label.text = @"全部回复";
+        }
+        else{
+            
+             label.text = @"暂无回复";
+        }
+       
         
     }
     

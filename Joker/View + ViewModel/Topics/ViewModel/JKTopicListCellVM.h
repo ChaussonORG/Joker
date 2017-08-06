@@ -45,4 +45,6 @@
 
 - (void)openTopicComment;
 
+- (void)openWorkDetail;
+
 @end

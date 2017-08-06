@@ -43,6 +43,11 @@
 		502347591F18975500E82B8E /* UIView+YLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347501F18975500E82B8E /* UIView+YLView.m */; };
 		5023475A1F18975500E82B8E /* YLDragZoomCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347521F18975500E82B8E /* YLDragZoomCycleView.m */; };
 		5023475B1F18975500E82B8E /* YLZoomCycleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347541F18975500E82B8E /* YLZoomCycleViewCell.m */; };
+		505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86951F3768B5005B6A6C /* CHDownSheet.m */; };
+		505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86971F3768B5005B6A6C /* CHDownSheetCell.m */; };
+		505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86991F3768B5005B6A6C /* CHDownSheetModel.m */; };
+		505D86A11F3768B5005B6A6C /* CHImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D869B1F3768B5005B6A6C /* CHImagePicker.m */; };
+		505D86A21F3768B5005B6A6C /* UIViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
 		50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */; };
@@ -133,6 +138,8 @@
 		508DB6F81F259C85002ABF97 /* JKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F51F259C85002ABF97 /* JKUser.m */; };
 		508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F71F259C85002ABF97 /* JKUserManager.m */; };
 		508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */; };
+		50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */; };
+		50A311C21F2CF658003DA69D /* JKWorkDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */; };
 		50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */; };
 		50AC9D231F0BA92000AA7AEC /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D221F0BA92000AA7AEC /* UIView+Extension.m */; };
 		50AC9D2D1F0D17D000AA7AEC /* JKTopicCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D2C1F0D17D000AA7AEC /* JKTopicCreateController.m */; };
@@ -278,6 +285,16 @@
 		502347521F18975500E82B8E /* YLDragZoomCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDragZoomCycleView.m; sourceTree = "<group>"; };
 		502347531F18975500E82B8E /* YLZoomCycleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLZoomCycleViewCell.h; sourceTree = "<group>"; };
 		502347541F18975500E82B8E /* YLZoomCycleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLZoomCycleViewCell.m; sourceTree = "<group>"; };
+		505D86941F3768B5005B6A6C /* CHDownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheet.h; sourceTree = "<group>"; };
+		505D86951F3768B5005B6A6C /* CHDownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheet.m; sourceTree = "<group>"; };
+		505D86961F3768B5005B6A6C /* CHDownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheetCell.h; sourceTree = "<group>"; };
+		505D86971F3768B5005B6A6C /* CHDownSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheetCell.m; sourceTree = "<group>"; };
+		505D86981F3768B5005B6A6C /* CHDownSheetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheetModel.h; sourceTree = "<group>"; };
+		505D86991F3768B5005B6A6C /* CHDownSheetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheetModel.m; sourceTree = "<group>"; };
+		505D869A1F3768B5005B6A6C /* CHImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHImagePicker.h; sourceTree = "<group>"; };
+		505D869B1F3768B5005B6A6C /* CHImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHImagePicker.m; sourceTree = "<group>"; };
+		505D869C1F3768B5005B6A6C /* UIViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ImagePicker.h"; sourceTree = "<group>"; };
+		505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ImagePicker.m"; sourceTree = "<group>"; };
 		506C12691EF6E82700DF705F /* JKTopicsFilteredListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListController.h; sourceTree = "<group>"; };
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
@@ -401,6 +418,10 @@
 		508DB6F71F259C85002ABF97 /* JKUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKUserManager.m; sourceTree = "<group>"; };
 		508DB6FB1F25A221002ABF97 /* JKLogOutApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLogOutApi.h; sourceTree = "<group>"; };
 		508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLogOutApi.m; sourceTree = "<group>"; };
+		50A311BD1F2CF64A003DA69D /* JKWorkDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailController.h; sourceTree = "<group>"; };
+		50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDetailController.m; sourceTree = "<group>"; };
+		50A311C01F2CF658003DA69D /* JKWorkDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailVM.h; sourceTree = "<group>"; };
+		50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDetailVM.m; sourceTree = "<group>"; };
 		50AC9D071F0B5BF200AA7AEC /* JKTopicListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicListHeaderView.h; sourceTree = "<group>"; };
 		50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListHeaderView.m; sourceTree = "<group>"; };
 		50AC9D211F0BA92000AA7AEC /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -704,6 +725,31 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		505D86921F3768B5005B6A6C /* CHImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				505D86931F3768B5005B6A6C /* ChaussonSheet */,
+				505D869A1F3768B5005B6A6C /* CHImagePicker.h */,
+				505D869B1F3768B5005B6A6C /* CHImagePicker.m */,
+				505D869C1F3768B5005B6A6C /* UIViewController+ImagePicker.h */,
+				505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */,
+			);
+			path = CHImagePicker;
+			sourceTree = "<group>";
+		};
+		505D86931F3768B5005B6A6C /* ChaussonSheet */ = {
+			isa = PBXGroup;
+			children = (
+				505D86941F3768B5005B6A6C /* CHDownSheet.h */,
+				505D86951F3768B5005B6A6C /* CHDownSheet.m */,
+				505D86961F3768B5005B6A6C /* CHDownSheetCell.h */,
+				505D86971F3768B5005B6A6C /* CHDownSheetCell.m */,
+				505D86981F3768B5005B6A6C /* CHDownSheetModel.h */,
+				505D86991F3768B5005B6A6C /* CHDownSheetModel.m */,
+			);
+			path = ChaussonSheet;
+			sourceTree = "<group>";
+		};
 		508C550D1F26EA7A001F1A15 /* YJSliderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +945,33 @@
 				508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		50A311BA1F2CF62B003DA69D /* Works */ = {
+			isa = PBXGroup;
+			children = (
+				50A311BB1F2CF62B003DA69D /* View */,
+				50A311BC1F2CF62B003DA69D /* ViewModel */,
+			);
+			path = Works;
+			sourceTree = "<group>";
+		};
+		50A311BB1F2CF62B003DA69D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50A311BD1F2CF64A003DA69D /* JKWorkDetailController.h */,
+				50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		50A311BC1F2CF62B003DA69D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				50A311C01F2CF658003DA69D /* JKWorkDetailVM.h */,
+				50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		50AC9D291F0D178300AA7AEC /* TopicCreate */ = {
@@ -1262,6 +1335,7 @@
 		D3973B501EEEEC200076B246 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				505D86921F3768B5005B6A6C /* CHImagePicker */,
 				508C552F1F284467001F1A15 /* FaceBoard */,
 				508C550D1F26EA7A001F1A15 /* YJSliderView */,
 				508DB6E81F259998002ABF97 /* CHSocialService */,
@@ -1274,6 +1348,7 @@
 		D3973B511EEEEC200076B246 /* View + ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				50A311BA1F2CF62B003DA69D /* Works */,
 				D3973BD01EF2389F0076B246 /* Me */,
 				D3973BD31EF2389F0076B246 /* News */,
 				D3973BD61EF2389F0076B246 /* Timeline */,
@@ -1702,11 +1777,13 @@
 			files = (
 				D3973B581EEEEC200076B246 /* UIImage+Scale.m in Sources */,
 				508DB6F01F259998002ABF97 /* CHSocialHandlerData.m in Sources */,
+				505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */,
 				508C55AB1F2844A3001F1A15 /* UIImage+CHImage.m in Sources */,
 				508C551F1F26F1A7001F1A15 /* JKAnimationTimeLineController.m in Sources */,
 				D3973B6B1EEEEC200076B246 /* CHTabBarModel.m in Sources */,
 				508C55161F26EB09001F1A15 /* JKTimelineListVM.m in Sources */,
 				D3973B551EEEEC200076B246 /* HHTGetString.m in Sources */,
+				505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */,
 				501E8A851F130EF800723C29 /* JKCommentListApi.m in Sources */,
 				D3973B741EEEEC200076B246 /* YJLabel.m in Sources */,
 				50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */,
@@ -1771,6 +1848,7 @@
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
 				50AC9D301F0D17E300AA7AEC /* JKTopicCreateVM.m in Sources */,
+				505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */,
 				508DB6E31F2598AA002ABF97 /* CHLoginOperationWebViewModel.m in Sources */,
 				508C55701F284467001F1A15 /* CHFaceBoard.m in Sources */,
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
@@ -1778,6 +1856,7 @@
 				508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */,
 				50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */,
 				D3973B6D1EEEEC200076B246 /* CHTabBarViewModel.m in Sources */,
+				50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */,
 				D3973B521EEEEC200076B246 /* AppDelegate.m in Sources */,
 				D3973BB01EEEF3EE0076B246 /* ToolsClass.m in Sources */,
 				50DA8B681F1B744700530F49 /* JKTopicDetailBottomView.m in Sources */,
@@ -1803,8 +1882,11 @@
 				50AC9D231F0BA92000AA7AEC /* UIView+Extension.m in Sources */,
 				508C55131F26EA7A001F1A15 /* YJSliderView.m in Sources */,
 				508C55221F26F1B6001F1A15 /* JKGameTimeLineController.m in Sources */,
+				505D86A21F3768B5005B6A6C /* UIViewController+ImagePicker.m in Sources */,
 				D32953471EF3DD29002A9DE8 /* JKTopicFilterView.m in Sources */,
+				50A311C21F2CF658003DA69D /* JKWorkDetailVM.m in Sources */,
 				D3973B7A1EEEEC200076B246 /* JKCommentList.m in Sources */,
+				505D86A11F3768B5005B6A6C /* CHImagePicker.m in Sources */,
 				508C556F1F284467001F1A15 /* CHFaceBoard+EmojiHash.m in Sources */,
 				D3973B751EEEEC200076B246 /* ClassifyModel.m in Sources */,
 				508DB6DE1F2598AA002ABF97 /* CHUserInfoModel.m in Sources */,

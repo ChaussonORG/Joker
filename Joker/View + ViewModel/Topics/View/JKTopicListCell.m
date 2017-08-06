@@ -78,7 +78,9 @@
     self.relatedLabel.font = [JKStyleConfiguration subcontentFont];
     self.relatedLabel.textColor = [JKStyleConfiguration sixsixColor];
     self.relatedLabel.textAlignment =NSTextAlignmentRight;
-    
+    self.relatedLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickRelatedLabel)];
+    [self.relatedLabel addGestureRecognizer:tap];
     
     self.contentLabel = [[UILabel alloc]init];
     self.contentLabel.font = [JKStyleConfiguration titleFont];
@@ -199,6 +201,12 @@
     
     [self.viewModel openTopicComment];
     
+}
+
+- (void)clickRelatedLabel{
+    
+    
+    [self.viewModel openWorkDetail];
 }
 
 - (void)awakeFromNib {

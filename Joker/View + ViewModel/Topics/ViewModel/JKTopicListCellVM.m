@@ -9,6 +9,7 @@
 #import "JKTopicListCellVM.h"
 #import "JKTopicDetailController.h"
 #import "ASNavigator.h"
+#import "JKWorkDetailController.h"
 @implementation JKTopicListCellVM
 
 - (instancetype)init
@@ -36,6 +37,18 @@
 - (void)openTopicComment{
     
     [self.delegate commentTopicWithId:self.topicId];
+    
+}
+
+
+- (void)openWorkDetail{
+    
+    
+    JKWorkDetailController *vc = [[JKWorkDetailController alloc]initWithWorkId:self.projectId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES ];
+    
+    
     
 }
 @end

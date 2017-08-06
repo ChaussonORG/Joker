@@ -14,7 +14,7 @@
 #import "CHFaceBoard.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 
-#import <CHImagePicker/CHImagePicker.h>
+#import "CHImagePicker.h"
 #define MARGIN 20.0
 @interface JKTopicCreateController ()<YYTextViewDelegate, UITextViewDelegate,CHFaceBoardDelegate>
 
@@ -351,6 +351,7 @@
 
 - (void)clickImageBtn{
     
+    self.contentPlaceholder.hidden = YES;
     [self.contentView resignFirstResponder];
 
     [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
@@ -684,6 +685,20 @@
     }else{
         self.contentPlaceholder.hidden = NO;
         
+    }
+    
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0) {
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+
+    }
+    else{
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+    
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+
     }
 }
 
