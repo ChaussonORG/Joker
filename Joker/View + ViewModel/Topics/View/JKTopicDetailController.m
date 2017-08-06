@@ -147,13 +147,15 @@
     
     [RACObserve(self, viewModel.detailHtmlStr) subscribeNext:^(NSString *x) {
         @strongify(self)
-        //        NSURL *url = [NSURL URLWithString:x];
-        //        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                NSURL *url = [NSURL URLWithString:x];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
         //        NSString *path = [[NSBundle mainBundle]bundlePath];
         //        NSURL *baseURL = [NSURL fileURLWithPath:path];
         
-        [self.webView loadHTMLString:x baseURL:nil];
+        [self.webView loadRequest:request];
+        
+//        [self.webView loadHTMLString:x baseURL:nil];
         
         
     }];
