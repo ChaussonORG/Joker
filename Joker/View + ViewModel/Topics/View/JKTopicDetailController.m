@@ -72,42 +72,39 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
+    self.webView.scrollView.scrollEnabled = NO;
+    double delayInSeconds = 0.1;
+     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//
     
-    NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight;"];
-    
-    
-    //    self.webViewHeight = [output floatValue];
-    
-    //    self.webViewHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"content\").offsetHeight;"] floatValue];
-    
-    
-    CGRect frame = webView.frame;
-    frame.origin.x = 15;
-    frame.origin.y = 0;
-    frame.size.width = [UIScreen mainScreen].bounds.size.width - 30;
-    frame.size.height = 1;
-    
-    webView.frame = frame;
-    
-    frame.size.height = webView.scrollView.contentSize.height;
-    
-    webView.frame = frame;
-    
-    webView.scrollView.scrollEnabled = NO;
-    
-    NSLog(@"height: %f", frame.size.height);
-    //    self.webViewHeight = webView.scrollView.contentSize.height;
-    
-    
-    if (self.webHeight != frame.size.height) {
-        self.webHeight = frame.size.height;
-    }
-    
-    
-    //    self.viewModel.contentCellVM.cellHeight = webView.scrollView.contentSize.height + 10;
-    
-    //    [self.mainTableView reloadData];
-    
+//        CGRect frame = webView.frame;
+//        frame.origin.x = 15;
+//        frame.origin.y = 0;
+//        frame.size.width = [UIScreen mainScreen].bounds.size.width - 30;
+//        frame.size.height = 1;
+//        
+//        webView.frame = frame;
+//        
+//        frame.size.height = webView.scrollView.contentSize.height;
+//        
+//        webView.frame = frame;
+//        
+//        webView.scrollView.scrollEnabled = NO;
+//        
+//        NSLog(@"height: %f", frame.size.height);
+//        //    self.webViewHeight = webView.scrollView.contentSize.height;
+//        
+//        
+//        if (self.webHeight != frame.size.height) {
+//            self.webHeight = frame.size.height;
+//        }
+
+        NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+        
+        self.webHeight = [output floatValue];
+    });
+
 }
 
 

@@ -17,6 +17,7 @@
 //@property (strong ,nonatomic) NSArray <Optional,JKTopicDetailModelTopicReplayPojoList>*topicBottom5ReplayPojoList;
 
 @property (nonatomic, strong)NSString  *commentCount;
+@property (nonatomic, strong)NSString  *url;
 
 @end
 
