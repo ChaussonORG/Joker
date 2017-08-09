@@ -50,6 +50,11 @@
 		505D86A21F3768B5005B6A6C /* UIViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
+		507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */; };
+		507A67521F3A0D9500377C5E /* JKCommentCreatVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67511F3A0D9500377C5E /* JKCommentCreatVM.m */; };
+		507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67551F3AA00900377C5E /* JKCommentCreatApi.m */; };
+		507A675A1F3AA0F900377C5E /* JKCommentCreatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */; };
+		507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A675C1F3AD24100377C5E /* JKTopicSpareCommentCell.m */; };
 		50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */; };
 		508C55121F26EA7A001F1A15 /* DotCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C550F1F26EA7A001F1A15 /* DotCountLabel.m */; };
 		508C55131F26EA7A001F1A15 /* YJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C55111F26EA7A001F1A15 /* YJSliderView.m */; };
@@ -299,6 +304,16 @@
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
 		506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListVM.m; sourceTree = "<group>"; };
+		507A674D1F3A0D7A00377C5E /* JKCommentCreatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatController.h; sourceTree = "<group>"; };
+		507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatController.m; sourceTree = "<group>"; };
+		507A67501F3A0D9500377C5E /* JKCommentCreatVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatVM.h; sourceTree = "<group>"; };
+		507A67511F3A0D9500377C5E /* JKCommentCreatVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatVM.m; sourceTree = "<group>"; };
+		507A67541F3AA00900377C5E /* JKCommentCreatApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatApi.h; sourceTree = "<group>"; };
+		507A67551F3AA00900377C5E /* JKCommentCreatApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatApi.m; sourceTree = "<group>"; };
+		507A67581F3AA0F900377C5E /* JKCommentCreatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatModel.h; sourceTree = "<group>"; };
+		507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatModel.m; sourceTree = "<group>"; };
+		507A675B1F3AD24100377C5E /* JKTopicSpareCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicSpareCommentCell.h; sourceTree = "<group>"; };
+		507A675C1F3AD24100377C5E /* JKTopicSpareCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicSpareCommentCell.m; sourceTree = "<group>"; };
 		50832FFA1F1DFC3100E810DE /* JKTopicRelatedWorksListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicRelatedWorksListController.h; sourceTree = "<group>"; };
 		50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicRelatedWorksListController.m; sourceTree = "<group>"; };
 		508C550E1F26EA7A001F1A15 /* DotCountLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotCountLabel.h; sourceTree = "<group>"; };
@@ -750,6 +765,24 @@
 			path = ChaussonSheet;
 			sourceTree = "<group>";
 		};
+		507A67531F3A9F9500377C5E /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				507A67541F3AA00900377C5E /* JKCommentCreatApi.h */,
+				507A67551F3AA00900377C5E /* JKCommentCreatApi.m */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		507A67571F3AA0EA00377C5E /* CommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				507A67581F3AA0F900377C5E /* JKCommentCreatModel.h */,
+				507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */,
+			);
+			path = CommentModel;
+			sourceTree = "<group>";
+		};
 		508C550D1F26EA7A001F1A15 /* YJSliderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1040,8 @@
 				50AC9D891F0EA7C100AA7AEC /* JKCommentOpenCell.m */,
 				50AC9D8A1F0EA7C100AA7AEC /* JKSubcommentListCell.h */,
 				50AC9D8B1F0EA7C100AA7AEC /* JKSubcommentListCell.m */,
+				507A674D1F3A0D7A00377C5E /* JKCommentCreatController.h */,
+				507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */,
 			);
 			path = TopicComment;
 			sourceTree = "<group>";
@@ -1018,6 +1053,8 @@
 				50AC9D911F0EA7C900AA7AEC /* JKCommentListCellVM.m */,
 				50AC9D941F0EA7C900AA7AEC /* JKSubcommentListCellVM.h */,
 				50AC9D951F0EA7C900AA7AEC /* JKSubcommentListCellVM.m */,
+				507A67501F3A0D9500377C5E /* JKCommentCreatVM.h */,
+				507A67511F3A0D9500377C5E /* JKCommentCreatVM.m */,
 			);
 			path = TopicComment;
 			sourceTree = "<group>";
@@ -1219,6 +1256,7 @@
 		D3973B2C1EEEEC200076B246 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				507A67571F3AA0EA00377C5E /* CommentModel */,
 				500DC91B1EF8263E00ABF0A8 /* TopicModel */,
 				D3973BA31EEEF0830076B246 /* BaseModel.h */,
 				D3973BA41EEEF0830076B246 /* BaseModel.m */,
@@ -1379,6 +1417,7 @@
 		D3973BB11EEF0C320076B246 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				507A67531F3A9F9500377C5E /* Comment */,
 				508DB6FA1F25A221002ABF97 /* Me */,
 				501F7E321EFAADE700FE1E35 /* TopicsApi */,
 			);
@@ -1504,6 +1543,8 @@
 				506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */,
 				50AC9D3A1F0DE44200AA7AEC /* JKTopicDetailController.h */,
 				50AC9D3B1F0DE44200AA7AEC /* JKTopicDetailController.m */,
+				507A675B1F3AD24100377C5E /* JKTopicSpareCommentCell.h */,
+				507A675C1F3AD24100377C5E /* JKTopicSpareCommentCell.m */,
 				50DA8B661F1B744700530F49 /* JKTopicDetailBottomView.h */,
 				50DA8B671F1B744700530F49 /* JKTopicDetailBottomView.m */,
 			);
@@ -1788,6 +1829,7 @@
 				D3973B741EEEEC200076B246 /* YJLabel.m in Sources */,
 				50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */,
 				D3973BE91EF2452A0076B246 /* main.m in Sources */,
+				507A67521F3A0D9500377C5E /* JKCommentCreatVM.m in Sources */,
 				502347561F18975500E82B8E /* HWWeakTimer.m in Sources */,
 				501F7E3E1EFAB2B500FE1E35 /* JKTopicsListApi.m in Sources */,
 				508DB6E41F2598AA002ABF97 /* CHRegisterController.m in Sources */,
@@ -1801,6 +1843,7 @@
 				D3973BE11EF239D70076B246 /* JKTimelineListViewController.m in Sources */,
 				50AC9D8C1F0EA7C100AA7AEC /* JKCommentListCell.m in Sources */,
 				D3973B7D1EEEEC200076B246 /* UserInfoModel.m in Sources */,
+				507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */,
 				D3973BA81EEEF0830076B246 /* JKNewsModel.m in Sources */,
 				D3973B801EEEEC200076B246 /* UDIDTools.m in Sources */,
 				50AC9D331F0DDBC100AA7AEC /* JKTopicCreateApi.m in Sources */,
@@ -1809,6 +1852,7 @@
 				D3973B591EEEEC200076B246 /* ASNavigationController.m in Sources */,
 				506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */,
 				50AC9D361F0DDC4A00AA7AEC /* JKTopicDetailApi.m in Sources */,
+				507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */,
 				D3973B561EEEEC200076B246 /* NSError+SignalError.m in Sources */,
 				50AF130A1F08D619005B34AA /* ZWTopSelectButton.m in Sources */,
 				50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */,
@@ -1822,9 +1866,11 @@
 				501F57BA1F1F5057001D2C8A /* JKTopicRelatedWorksListVM.m in Sources */,
 				50DA8B5C1F18B78700530F49 /* UIView+Kylin.m in Sources */,
 				D3973B771EEEEC200076B246 /* JKDetailModel.m in Sources */,
+				507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */,
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
+				507A675A1F3AA0F900377C5E /* JKCommentCreatModel.m in Sources */,
 				50AC9D981F0EA7C900AA7AEC /* JKSubcommentListCellVM.m in Sources */,
 				501F57C01F1F5E88001D2C8A /* JKMyfavoriteWorksApi.m in Sources */,
 				D3973BE71EF23A160076B246 /* JKMeViewController.m in Sources */,

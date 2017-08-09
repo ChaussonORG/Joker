@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "JKTopicCreateModel.h"
+
+@protocol RefreshSendBtnStatusDelegate <NSObject>
+
+- (void)refreshSendBtn;
+
+@end
 @interface JKTopicCreateVM : NSObject
 
+
+@property (nonatomic ,weak) id<RefreshSendBtnStatusDelegate>delegate;
 @property (nonatomic , strong) NSString *type;
 @property (nonatomic , strong) NSString *projectId;
 

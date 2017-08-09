@@ -20,6 +20,7 @@
 #import "CHLoginModalController.h"
 #import "JKUserManager.h"
 #import <CHProgressHUD/CHProgressHUD.h>
+#import "JKCommentCreatController.h"
 
 @interface JKTopicsListViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,FilterTopicDelegate,GKFadeNavigationControllerDelegate,YLDroagViewDelegate,TopicCommentDelegate,CHLoginModalControllerDelegate>
 
@@ -395,13 +396,16 @@
 }
 
 
-- (void)commentTopicWithId:(NSString *)topicId{
+- (void)commentTopicWithId:(NSString *)topicId title:(NSString *)title{
     
     [self.viewModel checkLogin];
     
     if (self.viewModel.isLogined) {
-        
-        [CHProgressHUD showPlainText:@"评论功能沈亮还未设计"];
+    
+        JKCommentCreatController *vc = [[JKCommentCreatController alloc]init];
+        vc.viewModel.titleStr = [NSString stringWithFormat:@"回复：%@",title];
+        vc.viewModel.topicId = topicId;
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
         
     }
     else{

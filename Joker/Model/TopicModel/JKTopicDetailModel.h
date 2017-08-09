@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong)NSString  *commentCount;
 @property (nonatomic, strong)NSString  *url;
+@property (nonatomic, strong)NSString  *title;
 
 @end
 

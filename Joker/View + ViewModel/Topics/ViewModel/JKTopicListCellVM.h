@@ -10,7 +10,7 @@
 
 @protocol TopicCommentDelegate <NSObject>
 
-- (void)commentTopicWithId:(NSString *)topicId;
+- (void)commentTopicWithId:(NSString *)topicId title:(NSString *)title;
 
 @end
 

@@ -36,7 +36,7 @@
 
 - (void)openTopicComment{
     
-    [self.delegate commentTopicWithId:self.topicId];
+    [self.delegate commentTopicWithId:self.topicId title:self.content];
     
 }
 

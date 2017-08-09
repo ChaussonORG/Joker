@@ -9,6 +9,7 @@
 #import "JKTopicDetailController.h"
 #import "JKCommentListCell.h"
 #import "JKTopicDetailBottomView.h"
+#import "JKTopicSpareCommentCell.h"
 @interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,UIWebViewDelegate,ScrollTableViewDelegate>
 
 @property (nonatomic , strong) UIWebView *webView;
@@ -42,7 +43,7 @@
     
     self.view.backgroundColor = [JKStyleConfiguration screenSpareColor];
 
-    [self.viewModel requestData];
+    
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 45) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -63,6 +64,12 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.viewModel requestData];
+}
 - (void)setupWebView{
     
     self.webView = [[UIWebView alloc]init];
@@ -188,8 +195,13 @@
     }
     else{
         
-        return self.viewModel.cellVMs.count;
-        
+        if (self.viewModel.cellVMs.count > 0) {
+             return self.viewModel.cellVMs.count;
+        }
+        else{
+            return 1;
+        }
+ 
     }
     
     
@@ -217,13 +229,21 @@
         [cell loadDataWithVM: cellVM];
         return cell;
     }
-    else{
-        JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    else{ 
+        if (self.viewModel.cellVMs.count > 0) {
+            JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            
+            JKCommentListCellVM *cellVM = self.viewModel.cellVMs[indexPath.row];
+            cellVM.delegate = self;
+            [cell loadDataWithVM: cellVM];
+            return cell;
+        }
+        else{
+            JKTopicSpareCommentCell *cell =  [[JKTopicSpareCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            
+            return cell;
+        }
         
-        JKCommentListCellVM *cellVM = self.viewModel.cellVMs[indexPath.row];
-        cellVM.delegate = self;
-        [cell loadDataWithVM: cellVM];
-        return cell;
         
     }
     
@@ -250,8 +270,14 @@
     }
     else{
         
-        return self.viewModel.cellVMs[indexPath.row].cellHeight;
         
+        if (self.viewModel.cellVMs.count > 0) {
+            
+            return self.viewModel.cellVMs[indexPath.row].cellHeight;
+        }
+        else{
+            return 80;
+        }
     }
     
    
@@ -308,14 +334,7 @@
     }
     else{
         
-        if (self.viewModel.cellVMs.count > 0) {
-             label.text = @"全部回复";
-        }
-        else{
-            
-             label.text = @"暂无回复";
-        }
-       
+       label.text = @"全部回复";
         
     }
     

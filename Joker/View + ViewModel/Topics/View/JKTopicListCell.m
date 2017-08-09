@@ -162,7 +162,7 @@
     }];
     
     
-    [RACObserve(self, viewModel.commentCount) subscribeNext:^(id x) {
+    [RACObserve(self, viewModel.commentCount) subscribeNext:^(NSString *x) {
         @strongify(self);
         
         [self.commentCountBtn setTitle:x forState:UIControlStateNormal];

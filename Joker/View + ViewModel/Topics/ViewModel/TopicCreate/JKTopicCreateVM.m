@@ -108,6 +108,8 @@
     self.type = type;
     
     self.relateWorkName = name;
+    
+    [self.delegate refreshSendBtn];
 }
 
 @end

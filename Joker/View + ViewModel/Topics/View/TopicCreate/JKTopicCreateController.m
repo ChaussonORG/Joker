@@ -7,8 +7,6 @@
 //
 
 #import "JKTopicCreateController.h"
-#import "YYTextView.h"
-#import "YYText.h"
 #import "HHTUserEditModel.h"
 #import "SDBaseResponse.h"
 #import "CHFaceBoard.h"
@@ -16,7 +14,7 @@
 
 #import "CHImagePicker.h"
 #define MARGIN 20.0
-@interface JKTopicCreateController ()<YYTextViewDelegate, UITextViewDelegate,CHFaceBoardDelegate>
+@interface JKTopicCreateController ()<UITextViewDelegate,CHFaceBoardDelegate,RefreshSendBtnStatusDelegate>
 
 @property (nonatomic , strong) UITextView * titleTextView;
 
@@ -63,12 +61,28 @@
         
         
         self.viewModel = [[JKTopicCreateVM alloc]init];
-        
+        self.viewModel.delegate = self;
         
     }
     return self;
 }
-
+- (void)refreshSendBtn{
+    
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+        
+    }
+    else{
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+        
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+        
+    }
+    
+}
 - (NSMutableArray *)photoUrls{
     if (!_photoUrls) {
         _photoUrls = [NSMutableArray array];
@@ -113,7 +127,6 @@
     self.titleTextView = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 70)];
     self.titleTextView.userInteractionEnabled = YES;
     self.titleTextView.delegate = self;
-    //    self.titleTextView.textVerticalAlignment = YYTextVerticalAlignmentTop;
     self.titleTextView.font = [JKStyleConfiguration hugeFont];
     [self.view addSubview:self.titleTextView];
     
@@ -139,6 +152,21 @@
             }
             
         }
+        
+        if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+            
+            [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+            self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+            
+        }
+        else{
+            
+            [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+            
+            self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+            
+        }
+
     }];
     
     
@@ -247,6 +275,8 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.rightBarButtonItem = [self customRightButton];
+    
+    [self refreshSendBtn];
 }
 
 -(UIBarButtonItem*)customRightButton{
@@ -561,9 +591,9 @@
     // 2. 将图片插入到富文本中
     NSTextAttachment *attach = [[NSTextAttachment alloc] init];
     attach.image = image;
-//    CGFloat imageRate = image.size.width / image.size.height;
-//    attach.bounds = CGRectMake(0, 10, self.contentView.frame.size.width - MARGIN, (self.contentView.frame.size.width - MARGIN) / imageRate);
-    attach.bounds = CGRectMake(0, 10, self.contentView.frame.size.width - MARGIN, (self.contentView.frame.size.width - MARGIN) / 5*4);
+    CGFloat imageRate = image.size.width / image.size.height;
+    attach.bounds = CGRectMake(0, 10, self.contentView.frame.size.width - MARGIN, (self.contentView.frame.size.width - MARGIN) / imageRate);
+//    attach.bounds = CGRectMake(0, 10, self.contentView.frame.size.width - MARGIN, (self.contentView.frame.size.width - MARGIN) / 5*4);
     NSAttributedString *imageAttr = [NSAttributedString attributedStringWithAttachment:attach];
     //    [mutableAttr replaceCharactersInRange:range withAttributedString:imageAttr];
     NSMutableAttributedString *mutableAttr = [self.contentView.attributedText mutableCopy];
@@ -687,7 +717,7 @@
         
     }
     
-    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0) {
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
         self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;

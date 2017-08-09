@@ -110,6 +110,9 @@
 
 - (void)requestMoreData{
     
+    
+    
+    
     if (!self.isLogined) {
         
         self.topicFilterType = JKTopicLast;
@@ -136,6 +139,7 @@
 
 - (void)requestTopicLastList{
     
+    self.isFinishRequestMoreData  = NO;
     JKTopicsListApi *api = [[JKTopicsListApi alloc]init];
     
     api.favorite = NO;
@@ -227,6 +231,7 @@
 }
 
 - (void)requestMoreTopicAttendList{
+    self.isFinishRequestMoreData  = NO;
     
     JKTopicsListApi *api = [[JKTopicsListApi alloc]init];
     
