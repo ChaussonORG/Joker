@@ -12,6 +12,8 @@
 
 @property (nonatomic , assign) NSInteger offset;
 
+@property (nonatomic , assign) NSInteger page;
+
 @property (nonatomic , assign) NSInteger limit;
 
 @end

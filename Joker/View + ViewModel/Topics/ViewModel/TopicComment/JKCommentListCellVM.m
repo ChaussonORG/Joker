@@ -10,6 +10,11 @@
 #import "CHCommonMacro.h"
 #import "JKStyleConfiguration.h"
 #import "JKCommentListApi.h"
+#import "JKCommentCaiApi.h"
+#import "JKCommentZanApi.h"
+#import "JKCommentCreatController.h"
+
+
 @implementation JKCommentListCellVM
 - (instancetype)initWithTopicReplayId:(NSString *)topicReplayId;
 
@@ -22,37 +27,6 @@
     return self;
 }
 
-- (void)requestData{
-    
-    self.isSpread = YES;
-    self.tempSubTableViewHeight = 0;
-     
-    JKCommentListApi *api = [[JKCommentListApi alloc]initWithTopicReplayId:self.topicReplayId];
-
-    
-    [api startWithSuccessBlock:^(__kindof JKCommentListApi *request) {
-        NSMutableArray  <JKSubcommentListCellVM *>*cellViewModels = [NSMutableArray array];
-        
-        for (JKCommentListModelData *data in request.model.data) {
-            
-            [cellViewModels addObject:[self assembleViewModelWithData:data]];
-  
-        }
-  
-        self.cellHeight = self.contentLabelHeight + 120 + self.tempSubTableViewHeight;
-        
-        self.cellViewModels = [cellViewModels copy];
-        
-        [self.delegate refresh];
-    } failureBlock:^(__kindof JKCommentListApi *request) {
-        
-        
-        
-    }];
-    
- 
-    
-}
 
 
 
@@ -76,5 +50,138 @@
     
     return subcellVM;
     
+}
+
+
+- (void)favouriteAfterCai{
+    
+    JKCommentZanApi *api = [[JKCommentZanApi alloc]initWithTopicReplayId:self.topicReplayId];
+    
+    [api startWithSuccessBlock:^(__kindof JKCommentZanApi *request) {
+        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            [self criticismComment];
+            
+        }
+        else{
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }
+        
+        
+    } failureBlock:^(__kindof JKCommentZanApi *request) {
+        
+        [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+        
+        
+    }];
+    
+}
+
+- (void)favouriteComment{
+    
+
+    JKCommentZanApi *api = [[JKCommentZanApi alloc]initWithTopicReplayId:self.topicReplayId];
+    
+    [api startWithSuccessBlock:^(__kindof JKCommentZanApi *request) {
+        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            
+            [self.delegate refreshSuperTableView];
+            
+        }
+        else{
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }
+        
+        
+    } failureBlock:^(__kindof JKCommentZanApi *request) {
+        
+        [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+        
+        
+    }];
+}
+- (void)criticismAfterZan{
+    
+    JKCommentCaiApi *api = [[JKCommentCaiApi alloc]initWithTopicReplayId:self.topicReplayId];
+    
+    [api startWithSuccessBlock:^(__kindof JKCommentCaiApi *request) {
+        
+        
+        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            [self favouriteComment];
+            
+            
+        }
+        else{
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }
+        
+        
+        
+    } failureBlock:^(__kindof JKCommentCaiApi *request) {
+        
+        [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+        
+    }];
+
+    
+    
+    
+}
+- (void)criticismComment{
+    JKCommentCaiApi *api = [[JKCommentCaiApi alloc]initWithTopicReplayId:self.topicReplayId];
+    
+    [api startWithSuccessBlock:^(__kindof JKCommentCaiApi *request) {
+        
+        
+        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            [self.delegate refreshSuperTableView];
+            
+            
+        }
+        else{
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }
+        
+        
+        
+    } failureBlock:^(__kindof JKCommentCaiApi *request) {
+        
+        [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+        
+    }];
+ 
+}
+
+- (void)turnComment{
+    
+    
+}
+
+- (void)deleteComment{
+    
+    
+    
+}
+
+- (void)replyComment{
+    
+    
+    JKCommentCreatController *vc = [[JKCommentCreatController alloc]init];
+    
+    vc.viewModel.titleStr = [NSString stringWithFormat:@"回复：%@楼'%@'",self.floorCount,self.content];
+    
+    vc.viewModel.topicId = self.topicId;
+    
+    vc.viewModel.parentId = self.topicReplayId;
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
 }
 @end

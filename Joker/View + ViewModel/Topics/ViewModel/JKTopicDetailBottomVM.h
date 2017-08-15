@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define PAGELIMIT 20.0
+#define PAGELIMIT 10.0
 
 @protocol TopicDetailBottomDelegate <NSObject>
 

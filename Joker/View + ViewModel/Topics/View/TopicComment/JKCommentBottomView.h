@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CommentStatusDelegate <NSObject>
+
+- (void)favourComment;
+
+- (void)criticismComment;
+
+- (void)turnComment;
+
+- (void)deleteComment;
+
+- (void)replyComment;
+
+@end
+
 @interface JKCommentBottomView : UIView
 
 @property (nonatomic , strong) UIButton *favourBtn;
@@ -20,6 +34,7 @@
 
 @property (nonatomic , strong) UIButton *commentBtn;
 
+@property (nonatomic , weak) id<CommentStatusDelegate>delegate;
 
 
 @end

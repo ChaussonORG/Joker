@@ -81,7 +81,7 @@
     }
     
     
-    [self.delegate downWithOffset:self.currentPage*PAGELIMIT];
+    [self.delegate downWithOffset:(self.currentPage - 1)*PAGELIMIT];
 }
 
 - (void)reply{

@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "JKSubcommentListCellVM.h"
 
+typedef NS_ENUM(NSInteger, JKCommentStatus){
+    JKCommentZan,
+    JKCommentCai,
+    JKCommentWeipinglun,
+};
+
+
 @protocol refreshSuperTableViewDelegate <NSObject>
 
-- (void)refresh;
+- (void)refreshSuperTableView;
 
 @end
 
@@ -47,6 +54,10 @@
 @property (nonatomic , strong) NSString *disgustCount;
 
 @property (nonatomic , strong) NSString *topicReplayId;
+
+@property (nonatomic , strong) NSString *topicId;
+
+
 @property (nonatomic , weak) id<refreshSuperTableViewDelegate>delegate;
 
 
@@ -64,10 +75,26 @@
 
 @property (nonatomic , assign) float quoteViewHeight;
 
-
+@property (nonatomic , assign) JKCommentStatus commentStatus;
 
 
 - (instancetype)initWithTopicReplayId:(NSString *)topicReplayId;
+ 
 
-- (void)requestData;
+- (void)favouriteComment;
+
+- (void)criticismComment;
+
+- (void)turnComment;
+
+- (void)deleteComment;
+
+- (void)replyComment;
+
+//赞后踩
+- (void)favouriteAfterCai;
+
+
+//踩后赞
+- (void)criticismAfterZan;
 @end

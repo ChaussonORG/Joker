@@ -14,6 +14,8 @@
 
 - (void)scrollsToTop;
 
+- (void)scrollsToRowsIndex:(NSInteger)index;
+
 @end
 @interface JKTopicDetailVM : NSObject
 
@@ -31,8 +33,11 @@
 
 @property (nonatomic ,weak) id<ScrollTableViewDelegate>delegate;
 
+
 - (instancetype)initWithTopicId:(NSString *)topicId;
 
 
 - (void)requestData;
+
+- (void)requestMoreData;
 @end

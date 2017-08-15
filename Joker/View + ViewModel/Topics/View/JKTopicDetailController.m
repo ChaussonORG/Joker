@@ -43,13 +43,21 @@
     
     self.view.backgroundColor = [JKStyleConfiguration screenSpareColor];
 
-    
-    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 45) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource =self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+    @weakify(self)
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        [self.viewModel requestMoreData];
+    }];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.tableView.mj_footer = footer;
+    
+    
     
     
     self.bottomView = [[JKTopicDetailBottomView alloc]init];
@@ -63,7 +71,11 @@
     [self binding];
     // Do any additional setup after loading the view.
 }
-
+- (void)requestHeaderData{
+    
+    [self.viewModel requestData];
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -114,7 +126,14 @@
 
 }
 
-
+-(void)scrollsToRowsIndex:(NSInteger)index{
+    
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:2];
+    
+    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    
+}
 - (void)binding{
     
     
@@ -124,7 +143,12 @@
         
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
         [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView reloadData];
+
+        
+        [self.tableView.mj_header endRefreshing];
+        
+         [self.tableView.mj_footer endRefreshing];
+
         
         
     }];
@@ -135,6 +159,9 @@
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
         [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         
+        [self.tableView.mj_header endRefreshing];
+        
+        [self.tableView.mj_footer endRefreshing];
         
     }];
     
@@ -145,6 +172,9 @@
         NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
         [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         
+        [self.tableView.mj_header endRefreshing];
+        
+        [self.tableView.mj_footer endRefreshing];
         
     }];
     
@@ -215,27 +245,24 @@
         
         JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         
-        JKCommentListCellVM *cellVM = self.viewModel.topCellVMs[indexPath.row];
-        cellVM.delegate = self;
-        [cell loadDataWithVM: cellVM];
+    
+        [cell loadDataWithVM: self.viewModel.topCellVMs[indexPath.row]];
         return cell;
     }
     else if (indexPath.section == 1) {
         
         JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         
-        JKCommentListCellVM *cellVM = self.viewModel.bottemCellVMs[indexPath.row];
-        cellVM.delegate = self;
-        [cell loadDataWithVM: cellVM];
+        [cell loadDataWithVM: self.viewModel.bottemCellVMs[indexPath.row]];
         return cell;
     }
     else{ 
         if (self.viewModel.cellVMs.count > 0) {
             JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
-            JKCommentListCellVM *cellVM = self.viewModel.cellVMs[indexPath.row];
-            cellVM.delegate = self;
-            [cell loadDataWithVM: cellVM];
+            
+//            cellVM.delegate = self;
+            [cell loadDataWithVM:self.viewModel.cellVMs[indexPath.row]];
             return cell;
         }
         else{

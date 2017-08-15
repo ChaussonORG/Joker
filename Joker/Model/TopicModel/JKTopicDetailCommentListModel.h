@@ -40,7 +40,7 @@
 @property (nonatomic, strong)NSString  <Optional>*content;
 @property (nonatomic, strong)NSString  <Optional>*likeCount;
 @property (nonatomic, strong)NSString  <Optional>*disgustCount;
-//@property (nonatomic, strong)NSString  *evaluation;
+@property (nonatomic, strong)NSString  <Optional>*evaluation;
 @property (nonatomic, strong)NSString  <Optional>*createTime;
 
 @property (nonatomic, strong)JKTopicDetailCommentListModelReplyInfo <Optional>*replyInfo;
@@ -51,6 +51,8 @@
 @interface JKTopicDetailCommentListModel : JSONModel
 
 @property (nonatomic, strong) NSArray <Optional,JKTopicDetailCommentListModelTopicReplayPojoList>*items;
+
+@property (nonatomic , strong) NSString *total;
 
 
 //@property (assign ,nonatomic) int code;

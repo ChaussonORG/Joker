@@ -16,13 +16,15 @@
 #import "CHLoginModalController.h"
 #import "CHNetworkConfig.h"
 #import "JKCommentCreatController.h"
-@interface JKTopicDetailVM()<TopicDetailBottomDelegate,CHLoginModalControllerDelegate>
+@interface JKTopicDetailVM()<TopicDetailBottomDelegate,CHLoginModalControllerDelegate,refreshSuperTableViewDelegate>
 
 @property (nonatomic , assign) NSInteger offset;
 
 @property (nonatomic , strong) NSString *detailHtmlStr;
 
 @property (nonatomic , strong) NSString *title;
+
+@property  (nonatomic , assign) NSInteger commentCount;
 
 @end
 
@@ -138,16 +140,13 @@
     [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
         NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
-        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
-        
-        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
-        
+        self.commentCount = [request.model.total integerValue];
         
         for (int i = 0 ; i < request.model.items.count ; i ++) {
             
             JKTopicDetailCommentListModelTopicReplayPojoList *list  = request.model.items[i];
             
-            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:request.model.items.count - i]];
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - i]];
         }
     
         self.cellVMs = [cellViewModels copy];
@@ -161,9 +160,98 @@
     
 }
 
+- (void)requestMoreData{
+    
+    JKTopicDetailTopcomentApi *topApi = [[JKTopicDetailTopcomentApi alloc]initWithTopicId:self.topicId];
+    topApi.commentType = @"true";
+    
+    topApi.requestModel.limit = PAGELIMIT;
+    
+    topApi.requestModel.offset = 0;
+    
+    [topApi startWithSuccessBlock:^(__kindof JKTopicDetailTopcomentApi *request) {
+        
+        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+        
+        for (JKTopicDetailCommentListModelTopicReplayPojoList *list in request.model.data) {
+            
+            [topCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+            
+        }
+        self.topCellVMs = [topCellViewModels copy];
+        
+        
+    } failureBlock:^(__kindof JKTopicDetailTopcomentApi *request) {
+        
+        
+        
+    }];
+    
+    
+    JKTopicDetailTopcomentApi *bottomApi = [[JKTopicDetailTopcomentApi alloc]initWithTopicId:self.topicId];
+    
+    bottomApi.commentType = @"flase";
+    
+    bottomApi.requestModel.limit = PAGELIMIT;
+    
+    bottomApi.requestModel.offset = 0;
+    
+    [bottomApi startWithSuccessBlock:^(__kindof JKTopicDetailTopcomentApi *request) {
+        
+        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+        for (JKTopicDetailCommentListModelTopicReplayPojoList *list in request.model.data) {
+            
+            [bottomCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+            
+        }
+        self.bottemCellVMs = [bottomCellViewModels copy];
+        
+    } failureBlock:^(__kindof JKTopicDetailTopcomentApi *request) {
+        
+        
+        
+    }];
+    
+    JKTopicDetailCommentListApi *api = [[JKTopicDetailCommentListApi alloc]initWithTopicId:self.topicId];
+    
+    api.requestModel.limit = PAGELIMIT;
+    
+    api.requestModel.offset = self.cellVMs.count;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.cellVMs];
+        
+        self.commentCount = [request.model.total integerValue];
+        
+        for (NSInteger i = 0 ; i < request.model.items.count ; i ++) {
+            
+            JKTopicDetailCommentListModelTopicReplayPojoList *list  = request.model.items[i];
+            
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - cellViewModels.count]];
+        }
+        
+        self.cellVMs = [cellViewModels copy];
+        
+    } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        
+        
+    }];
+
+    
+    
+}
+
+
+
 - (JKCommentListCellVM *)assembleViewModelWithList:(JKTopicDetailCommentListModelTopicReplayPojoList                                                               *)list withIndex:(NSInteger)index{
     
     JKCommentListCellVM *cellVM = [[JKCommentListCellVM alloc]init];
+    
+    cellVM.delegate = self;
+    
+    cellVM.topicId = list.topicId;
+    
+    cellVM.topicReplayId = list.topicReplayId;
     
     cellVM.name = list.author.nickname;
     
@@ -173,6 +261,18 @@
     
     cellVM.disgustCount = list.disgustCount;
     
+    if ([list.evaluation isEqualToString:@"1"]) {
+        
+        cellVM.commentStatus = JKCommentZan;
+    }
+    else if ([list.evaluation isEqualToString:@"0"]) {
+        
+        cellVM.commentStatus  = JKCommentCai;
+    }
+    else{
+        
+        cellVM.commentStatus  = JKCommentWeipinglun;
+    }
     CGSize nameLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.name, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
     
     cellVM.nameLabelWeight = nameLabelSize.width;
@@ -215,7 +315,7 @@
         
     }else{
         
-        cellVM.floorCount = [NSString stringWithFormat:@"%ld层",index];
+        cellVM.floorCount = [NSString stringWithFormat:@"%ld",index];
     }
     
     cellVM.content = list.content;
@@ -230,7 +330,11 @@
   
     
 }
-
+- (void)refreshSuperTableView{
+    
+    [self requestData];
+    
+}
 - (void)refresh{
     
     self.offset = 0;
@@ -244,12 +348,70 @@
     
     self.offset = offset;
     
+    JKTopicDetailCommentListApi *api = [[JKTopicDetailCommentListApi alloc]initWithTopicId:self.topicId];
+    
+    api.requestModel.limit = offset + PAGELIMIT;
+    
+    api.requestModel.offset = 0;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        
+        self.commentCount = [request.model.total integerValue];
+        
+        for (int i = 0 ; i < request.model.items.count ; i ++) {
+            
+            JKTopicDetailCommentListModelTopicReplayPojoList *list  = request.model.items[i];
+            
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - i]];
+        }
+        
+        self.cellVMs = [cellViewModels copy];
+        
+        
+        [self.delegate scrollsToRowsIndex:offset];
+    } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        
+        
+        
+    }];
+
+    
 }
 
 - (void)downWithOffset:(NSInteger)offset{
     
     self.offset = offset;
     
+    JKTopicDetailCommentListApi *api = [[JKTopicDetailCommentListApi alloc]initWithTopicId:self.topicId];
+    
+    api.requestModel.limit = offset + PAGELIMIT;
+    
+    api.requestModel.offset = 0;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        
+        self.commentCount = [request.model.total integerValue];
+        
+        for (int i = 0 ; i < request.model.items.count ; i ++) {
+            
+            JKTopicDetailCommentListModelTopicReplayPojoList *list  = request.model.items[i];
+            
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - i]];
+        }
+        
+        self.cellVMs = [cellViewModels copy];
+        
+        [self.delegate scrollsToRowsIndex:offset];
+        
+        
+    } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {
+        
+        
+        
+    }];
+
 }
 
 - (void)reply{

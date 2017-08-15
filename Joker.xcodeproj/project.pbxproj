@@ -55,6 +55,8 @@
 		507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67551F3AA00900377C5E /* JKCommentCreatApi.m */; };
 		507A675A1F3AA0F900377C5E /* JKCommentCreatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */; };
 		507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A675C1F3AD24100377C5E /* JKTopicSpareCommentCell.m */; };
+		507A67601F3AF71000377C5E /* JKCommentZanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A675F1F3AF71000377C5E /* JKCommentZanApi.m */; };
+		507A67631F3AF71E00377C5E /* JKCommentCaiApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67621F3AF71E00377C5E /* JKCommentCaiApi.m */; };
 		50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */; };
 		508C55121F26EA7A001F1A15 /* DotCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C550F1F26EA7A001F1A15 /* DotCountLabel.m */; };
 		508C55131F26EA7A001F1A15 /* YJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508C55111F26EA7A001F1A15 /* YJSliderView.m */; };
@@ -314,6 +316,10 @@
 		507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatModel.m; sourceTree = "<group>"; };
 		507A675B1F3AD24100377C5E /* JKTopicSpareCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicSpareCommentCell.h; sourceTree = "<group>"; };
 		507A675C1F3AD24100377C5E /* JKTopicSpareCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicSpareCommentCell.m; sourceTree = "<group>"; };
+		507A675E1F3AF71000377C5E /* JKCommentZanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentZanApi.h; sourceTree = "<group>"; };
+		507A675F1F3AF71000377C5E /* JKCommentZanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentZanApi.m; sourceTree = "<group>"; };
+		507A67611F3AF71E00377C5E /* JKCommentCaiApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCaiApi.h; sourceTree = "<group>"; };
+		507A67621F3AF71E00377C5E /* JKCommentCaiApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCaiApi.m; sourceTree = "<group>"; };
 		50832FFA1F1DFC3100E810DE /* JKTopicRelatedWorksListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicRelatedWorksListController.h; sourceTree = "<group>"; };
 		50832FFB1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicRelatedWorksListController.m; sourceTree = "<group>"; };
 		508C550E1F26EA7A001F1A15 /* DotCountLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotCountLabel.h; sourceTree = "<group>"; };
@@ -770,6 +776,10 @@
 			children = (
 				507A67541F3AA00900377C5E /* JKCommentCreatApi.h */,
 				507A67551F3AA00900377C5E /* JKCommentCreatApi.m */,
+				507A675E1F3AF71000377C5E /* JKCommentZanApi.h */,
+				507A675F1F3AF71000377C5E /* JKCommentZanApi.m */,
+				507A67611F3AF71E00377C5E /* JKCommentCaiApi.h */,
+				507A67621F3AF71E00377C5E /* JKCommentCaiApi.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1831,6 +1841,7 @@
 				D3973BE91EF2452A0076B246 /* main.m in Sources */,
 				507A67521F3A0D9500377C5E /* JKCommentCreatVM.m in Sources */,
 				502347561F18975500E82B8E /* HWWeakTimer.m in Sources */,
+				507A67601F3AF71000377C5E /* JKCommentZanApi.m in Sources */,
 				501F7E3E1EFAB2B500FE1E35 /* JKTopicsListApi.m in Sources */,
 				508DB6E41F2598AA002ABF97 /* CHRegisterController.m in Sources */,
 				D3973BEF1EF290190076B246 /* JKTopicListCellVM.m in Sources */,
@@ -1874,6 +1885,7 @@
 				50AC9D981F0EA7C900AA7AEC /* JKSubcommentListCellVM.m in Sources */,
 				501F57C01F1F5E88001D2C8A /* JKMyfavoriteWorksApi.m in Sources */,
 				D3973BE71EF23A160076B246 /* JKMeViewController.m in Sources */,
+				507A67631F3AF71E00377C5E /* JKCommentCaiApi.m in Sources */,
 				508DB6E01F2598AA002ABF97 /* CHLoginTextField.m in Sources */,
 				501F7E351EFAB1E100FE1E35 /* JKTopicListModel.m in Sources */,
 				50DA8B621F1B739700530F49 /* JKTopicDetailCommentListApi.m in Sources */,

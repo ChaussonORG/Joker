@@ -37,6 +37,11 @@
         [data setObject:@(self.requestModel.offset) forKey:@"offset"];
     }
     
+    if (self.requestModel.page) {
+        [data setObject:@(self.requestModel.page) forKey:@"page"];
+    }
+    
+    
     if (self.commentType.length > 0) {
         
         [data setObject:self.commentType forKey:@"commentType"];

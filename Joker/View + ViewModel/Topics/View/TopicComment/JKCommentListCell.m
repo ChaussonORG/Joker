@@ -13,7 +13,7 @@
 #import "JKCommentBottomView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@interface JKCommentListCell()<UITableViewDelegate,UITableViewDataSource,CommentListOpenDelegate>
+@interface JKCommentListCell()<UITableViewDelegate,UITableViewDataSource,CommentListOpenDelegate,CommentStatusDelegate>
 
 @property (nonatomic , strong) UIView *lineView;
 
@@ -109,7 +109,7 @@
     [self.contentView addSubview:self.subTableView];
     
     self.bottomView = [[JKCommentBottomView alloc]init];
-    
+    self.bottomView.delegate = self;
     
     
     [self.contentView addSubview:self.headerView];
@@ -142,12 +142,20 @@
     
     RAC(self, timeLabel.text) = RACObserve(self, viewModel.time);
     
-    RAC(self, relatedLabel.text) = RACObserve(self, viewModel.floorCount);
+     @weakify(self);
+    [RACObserve(self, viewModel.floorCount) subscribeNext:^(NSString *x) {
+        @strongify(self);
+    
+        if ([x integerValue] > 0) {
+            self.relatedLabel.text = [NSString stringWithFormat:@"%@楼",x];
+        }
+        
+    }];
     
     RAC(self, contentLabel.text) = RACObserve(self, viewModel.content);
     
     RAC(self, quoteFloorLabel.text) = RACObserve(self, viewModel.quoteFloor);
-    @weakify(self);
+   
     [RACObserve(self, viewModel.quoteAutor) subscribeNext:^(NSString *x) {
         @strongify(self);
         
@@ -172,7 +180,25 @@
     
     RAC(self, quoteContentLabel.text) = RACObserve(self, viewModel.quoteContent);
     
-    
+//    
+//    [RACObserve(self, viewModel.commentStatus) subscribeNext:^(NSNumber *x) {
+//         @strongify(self);
+//        
+//        if (self.viewModel.commentStatus == JKCommentZan) {
+//            
+//            
+//        }
+//        else if (self.viewModel.commentStatus == JKCommentCai) {
+//            
+//            
+//        }
+//        else{
+//            
+//            
+//        }
+//        
+//    }];
+//    
     [[RACSignal combineLatest:@[RACObserve(self, viewModel.nameLabelWeight),
                                 RACObserve(self, viewModel.contentLabelHeight),
                                 RACObserve(self, viewModel.quoteFloorLabelWidth)
@@ -282,7 +308,6 @@
         return 4;
     }
     
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -303,7 +328,6 @@
     else{
         
         if (indexPath.row == 2) {
-            
             
             JKCommentOpenCell *cell =[[JKCommentOpenCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
@@ -369,11 +393,51 @@
    
     
 }
+ 
 
-- (void)openCommentList{
-     
-    [self.viewModel requestData];
+- (void)favourComment{
+    
+    if (self.viewModel.commentStatus == JKCommentCai) {
+        
+        [self.viewModel criticismAfterZan];
+    }
+    else{
+         [self.viewModel  favouriteComment];
+        
+    }
+   
 }
+
+- (void)criticismComment{
+    
+    if (self.viewModel.commentStatus == JKCommentZan) {
+        
+        [self.viewModel  favouriteAfterCai];
+        
+    }
+    else{
+        
+         [self.viewModel criticismComment];
+    }
+ 
+}
+
+- (void)turnComment{
+    
+    [self.viewModel turnComment];
+}
+
+- (void)deleteComment{
+    
+    [self.viewModel deleteComment];
+    
+}
+
+- (void)replyComment{
+    
+    [self.viewModel replyComment];
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

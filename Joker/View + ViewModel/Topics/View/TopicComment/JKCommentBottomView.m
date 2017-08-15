@@ -71,32 +71,32 @@
 - (void)clickFavourBtn{
     
     
-    
+    [self.delegate favourComment];
     
 }
 
 - (void)clickCriticismBtn{
     
     
-    
+    [self.delegate criticismComment];
 }
 
 - (void)clickTurnBtn{
     
-    
+    [self.delegate turnComment];
     
     
 }
 
 - (void)clickDeleteBtn{
     
-    
+    [self.delegate deleteComment];
     
 }
 
 - (void)clickCommentBtn{
     
-    
+    [self.delegate replyComment];
     
     
 }
