@@ -16,6 +16,7 @@
 #import "CHLoginModalController.h"
 #import "CHNetworkConfig.h"
 #import "JKCommentCreatController.h"
+#import "JKUserManager.h"
 @interface JKTopicDetailVM()<TopicDetailBottomDelegate,CHLoginModalControllerDelegate,refreshSuperTableViewDelegate>
 
 @property (nonatomic , assign) NSInteger offset;
@@ -280,8 +281,15 @@
     cellVM.time =  [HHTGetString timeStrwithTimestamp:list.createTime];
       
 //    cellVM.quoteFloor = [NSString stringWithFormat:@"引用%@楼 @",list.replyInfo.replyCommentFloor];
-    
-    
+    if ([list.author.userId isEqualToString:[JKUserManager sharedData].currentUser.userId]) {
+        
+        cellVM.isMyComment = YES;
+    }
+    else{
+        
+        cellVM.isMyComment = NO;
+        
+    }
     cellVM.quoteAutor = list.replyInfo.author.nickname;
     
     CGSize quoteAutorLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.quoteAutor, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));

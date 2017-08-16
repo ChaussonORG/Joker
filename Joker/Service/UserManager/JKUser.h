@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
 
 @interface JKUser : JSONModel<NSCoding ,NSCopying>
 
-@property (nonatomic ,assign) int userId;
+@property (nonatomic ,strong) NSString <Optional>* userId;
 @property (nonatomic ,strong) NSString <Optional>* age;
 @property (nonatomic ,strong) NSString <Optional>*username;
 @property (nonatomic ,strong) NSString <Optional>*nickname;

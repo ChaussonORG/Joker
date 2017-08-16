@@ -180,6 +180,23 @@
     
     RAC(self, quoteContentLabel.text) = RACObserve(self, viewModel.quoteContent);
     
+    [RACObserve(self, viewModel.isMyComment) subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        BOOL isMycomment = [x boolValue];
+        
+        if (isMycomment) {
+            self.bottomView.turnBtn.hidden = NO;
+            self.bottomView.deleteBtn.hidden = NO;
+            
+        }
+        else{
+            
+            self.bottomView.turnBtn.hidden = YES;
+            self.bottomView.deleteBtn.hidden = YES;
+        }
+         
+    }];
+    
 //    
 //    [RACObserve(self, viewModel.commentStatus) subscribeNext:^(NSNumber *x) {
 //         @strongify(self);

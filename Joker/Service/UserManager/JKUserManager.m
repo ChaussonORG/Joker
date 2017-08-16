@@ -100,8 +100,10 @@
         NSLog(@"%@", error);
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         NSString *token = [NSString stringWithFormat:@"%@", [info objectForKey:@"token"]];
+        NSString *userId = [NSString stringWithFormat:@"%@", [[info objectForKey:@"profile"] objectForKey:@"userId"]];
         [dic setObject:token forKey:@"token"];
         self.currentUser.token = token;
+        self.currentUser.userId = userId;
         [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
         NSLog(@"%@", error);
         [self saveUser];

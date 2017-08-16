@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong)NSString  <Optional>*nickname;
 @property (nonatomic, strong)NSString  <Optional>*icon;
+@property (nonatomic, strong)NSString  <Optional>*userId;
 
 
 @end

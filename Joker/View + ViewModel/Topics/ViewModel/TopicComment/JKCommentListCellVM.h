@@ -77,6 +77,7 @@ typedef NS_ENUM(NSInteger, JKCommentStatus){
 
 @property (nonatomic , assign) JKCommentStatus commentStatus;
 
+@property  (nonatomic , assign) BOOL isMyComment;
 
 - (instancetype)initWithTopicReplayId:(NSString *)topicReplayId;
  
