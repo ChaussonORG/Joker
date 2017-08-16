@@ -13,6 +13,7 @@
 #import "JKCommentCaiApi.h"
 #import "JKCommentZanApi.h"
 #import "JKCommentCreatController.h"
+#import "JKCommetDeleteApi.h"
 
 
 @implementation JKCommentListCellVM
@@ -163,14 +164,45 @@
 - (void)turnComment{
     
     
+    
 }
 
 - (void)deleteComment{
     
-    
+    UIAlertView *aAlertView=[[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要删除" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+    [aAlertView show];
     
 }
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==0)
+    {
+        JKCommetDeleteApi *api = [[JKCommetDeleteApi alloc]initWithTopicReplayId:self.topicReplayId];
+        
+        [api startWithSuccessBlock:^(__kindof JKCommetDeleteApi *request) {
+            
+            
+            if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+                
+                [self.delegate refreshSuperTableView];
+                
+                
+            }
+            else{
+                [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+                
+            }
+            
+            
+            
+        } failureBlock:^(__kindof JKCommetDeleteApi *request) {
+            
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }];
 
+    }
+}
 - (void)replyComment{
     
     

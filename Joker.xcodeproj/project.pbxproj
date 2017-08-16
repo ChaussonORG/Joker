@@ -43,6 +43,8 @@
 		502347591F18975500E82B8E /* UIView+YLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347501F18975500E82B8E /* UIView+YLView.m */; };
 		5023475A1F18975500E82B8E /* YLDragZoomCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347521F18975500E82B8E /* YLDragZoomCycleView.m */; };
 		5023475B1F18975500E82B8E /* YLZoomCycleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 502347541F18975500E82B8E /* YLZoomCycleViewCell.m */; };
+		50417CA91F43F16B00A2E12B /* JKCommetDeleteApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */; };
+		50417CAC1F43F17800A2E12B /* JKCommentTurnApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50417CAB1F43F17800A2E12B /* JKCommentTurnApi.m */; };
 		505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86951F3768B5005B6A6C /* CHDownSheet.m */; };
 		505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86971F3768B5005B6A6C /* CHDownSheetCell.m */; };
 		505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86991F3768B5005B6A6C /* CHDownSheetModel.m */; };
@@ -292,6 +294,10 @@
 		502347521F18975500E82B8E /* YLDragZoomCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLDragZoomCycleView.m; sourceTree = "<group>"; };
 		502347531F18975500E82B8E /* YLZoomCycleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLZoomCycleViewCell.h; sourceTree = "<group>"; };
 		502347541F18975500E82B8E /* YLZoomCycleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLZoomCycleViewCell.m; sourceTree = "<group>"; };
+		50417CA71F43F16B00A2E12B /* JKCommetDeleteApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommetDeleteApi.h; sourceTree = "<group>"; };
+		50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommetDeleteApi.m; sourceTree = "<group>"; };
+		50417CAA1F43F17800A2E12B /* JKCommentTurnApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentTurnApi.h; sourceTree = "<group>"; };
+		50417CAB1F43F17800A2E12B /* JKCommentTurnApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentTurnApi.m; sourceTree = "<group>"; };
 		505D86941F3768B5005B6A6C /* CHDownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheet.h; sourceTree = "<group>"; };
 		505D86951F3768B5005B6A6C /* CHDownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheet.m; sourceTree = "<group>"; };
 		505D86961F3768B5005B6A6C /* CHDownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheetCell.h; sourceTree = "<group>"; };
@@ -780,6 +786,10 @@
 				507A675F1F3AF71000377C5E /* JKCommentZanApi.m */,
 				507A67611F3AF71E00377C5E /* JKCommentCaiApi.h */,
 				507A67621F3AF71E00377C5E /* JKCommentCaiApi.m */,
+				50417CA71F43F16B00A2E12B /* JKCommetDeleteApi.h */,
+				50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */,
+				50417CAA1F43F17800A2E12B /* JKCommentTurnApi.h */,
+				50417CAB1F43F17800A2E12B /* JKCommentTurnApi.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1926,9 +1936,11 @@
 				50AC9D3C1F0DE44200AA7AEC /* JKTopicDetailController.m in Sources */,
 				508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */,
 				D3973BEC1EF28A7A0076B246 /* JKTopicsListVM.m in Sources */,
+				50417CAC1F43F17800A2E12B /* JKCommentTurnApi.m in Sources */,
 				50AC9D8E1F0EA7C100AA7AEC /* JKSubcommentListCell.m in Sources */,
 				508DB6E21F2598AA002ABF97 /* CHLoginOperationWebController.m in Sources */,
 				50AF130B1F08D619005B34AA /* ZWTopSelectVcView.m in Sources */,
+				50417CA91F43F16B00A2E12B /* JKCommetDeleteApi.m in Sources */,
 				508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */,
 				501F7E3A1EFAB1FC00FE1E35 /* JKCommonApi.m in Sources */,
 				501F57B71F1EFCD6001D2C8A /* JKTopicDetailTopcomentModel.m in Sources */,
