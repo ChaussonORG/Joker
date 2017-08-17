@@ -166,6 +166,7 @@
 		50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D9A1F0EAEC100AA7AEC /* JKCommentBottomView.m */; };
 		50AF130A1F08D619005B34AA /* ZWTopSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AF13071F08D619005B34AA /* ZWTopSelectButton.m */; };
 		50AF130B1F08D619005B34AA /* ZWTopSelectVcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AF13091F08D619005B34AA /* ZWTopSelectVcView.m */; };
+		50C042C01F44A2CE00AF34A8 /* JKCommentTurnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C042BF1F44A2CE00AF34A8 /* JKCommentTurnModel.m */; };
 		50DA8B5B1F18B78700530F49 /* KylinScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B581F18B78700530F49 /* KylinScrollView.m */; };
 		50DA8B5C1F18B78700530F49 /* UIView+Kylin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B5A1F18B78700530F49 /* UIView+Kylin.m */; };
 		50DA8B621F1B739700530F49 /* JKTopicDetailCommentListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B611F1B739700530F49 /* JKTopicDetailCommentListApi.m */; };
@@ -483,6 +484,8 @@
 		50AF13071F08D619005B34AA /* ZWTopSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectButton.m; sourceTree = "<group>"; };
 		50AF13081F08D619005B34AA /* ZWTopSelectVcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWTopSelectVcView.h; sourceTree = "<group>"; };
 		50AF13091F08D619005B34AA /* ZWTopSelectVcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWTopSelectVcView.m; sourceTree = "<group>"; };
+		50C042BE1F44A2CE00AF34A8 /* JKCommentTurnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentTurnModel.h; sourceTree = "<group>"; };
+		50C042BF1F44A2CE00AF34A8 /* JKCommentTurnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentTurnModel.m; sourceTree = "<group>"; };
 		50DA8B571F18B78700530F49 /* KylinScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KylinScrollView.h; sourceTree = "<group>"; };
 		50DA8B581F18B78700530F49 /* KylinScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KylinScrollView.m; sourceTree = "<group>"; };
 		50DA8B591F18B78700530F49 /* UIView+Kylin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Kylin.h"; sourceTree = "<group>"; };
@@ -799,6 +802,8 @@
 			children = (
 				507A67581F3AA0F900377C5E /* JKCommentCreatModel.h */,
 				507A67591F3AA0F900377C5E /* JKCommentCreatModel.m */,
+				50C042BE1F44A2CE00AF34A8 /* JKCommentTurnModel.h */,
+				50C042BF1F44A2CE00AF34A8 /* JKCommentTurnModel.m */,
 			);
 			path = CommentModel;
 			sourceTree = "<group>";
@@ -1905,6 +1910,7 @@
 				501F57BD1F1F5DA6001D2C8A /* JKFilmCollectionViewCellVM.m in Sources */,
 				508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */,
 				D3973BF21EF290280076B246 /* JKTopicListCell.m in Sources */,
+				50C042C01F44A2CE00AF34A8 /* JKCommentTurnModel.m in Sources */,
 				502347591F18975500E82B8E /* UIView+YLView.m in Sources */,
 				508C55281F27310E001F1A15 /* JKFilmTimeLineVM.m in Sources */,
 				501F7E3B1EFAB1FC00FE1E35 /* JKCommonModel.m in Sources */,

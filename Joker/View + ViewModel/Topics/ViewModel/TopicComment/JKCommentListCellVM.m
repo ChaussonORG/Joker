@@ -14,7 +14,7 @@
 #import "JKCommentZanApi.h"
 #import "JKCommentCreatController.h"
 #import "JKCommetDeleteApi.h"
-
+#import "JKCommentCreatController.h"
 
 @implementation JKCommentListCellVM
 - (instancetype)initWithTopicReplayId:(NSString *)topicReplayId;
@@ -162,6 +162,21 @@
 }
 
 - (void)turnComment{
+    
+    JKCommentCreatController *vc = [[JKCommentCreatController alloc]init];
+    
+    if (self.quoteFloor) {
+        vc.viewModel.titleStr = [NSString stringWithFormat:@"回复：%@%@发表的",self.quoteFloor,self.quoteAutor];
+        vc.viewModel.topicId = self.topicReplayId;
+    }
+    else{
+        vc.viewModel.titleStr = [NSString stringWithFormat:@"回复话题"];
+        vc.viewModel.topicId = self.topicReplayId;
+        
+    }
+    vc.viewModel.content = self.content;
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
     
     

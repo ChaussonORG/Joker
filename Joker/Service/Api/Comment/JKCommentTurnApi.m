@@ -10,4 +10,35 @@
 
 @implementation JKCommentTurnApi
 
+- (instancetype)initWithCommentTurnModel:(JKCommentTurnModel *)commentTurnModel
+{
+    self = [super init];
+    if (self) {
+        
+        _commentTurnModel = commentTurnModel;
+        
+        
+    }
+    return self;
+}
+- (CHRequestMethod)requestMethod{
+    return CHRequestMethodPut;
+}
+- (NSString *)requestPathUrl{
+    return @"/app/topic/replay/edit"; ;
+}
+
+- (NSDictionary *)requestParameter{
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    if (self.commentTurnModel.topicReplayId) {
+        [data setObject:self.commentTurnModel.topicReplayId forKey:@"topicReplayId"];
+    }
+    if (self.commentTurnModel.content) {
+        [data setObject:self.commentTurnModel.content forKey:@"content"];
+    }
+     
+    return data;
+}
 @end

@@ -7,7 +7,12 @@
 //
 
 #import "JKCommonApi.h"
-
+#import "JKCommentTurnModel.h"
 @interface JKCommentTurnApi : JKCommonApi
+@property (nonatomic , strong , readonly) JKCommentTurnModel *commentTurnModel;
 
+
+- (instancetype)init __unavailable;
+
+- (instancetype)initWithCommentTurnModel:(JKCommentTurnModel *)commentTurnModel;
 @end

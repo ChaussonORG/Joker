@@ -54,8 +54,10 @@
     
     [super viewDidLoad];
     
-    self.title = @"创建话题";
+    self.title = @"评论";
 
+    self.navigationItem.rightBarButtonItem = [self customRightButton];
+    
     self.restCharacter = 150;
     
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
@@ -92,6 +94,8 @@
     self.contentView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.contentView.delegate = self;
     self.contentView.font = [JKStyleConfiguration titleFont];
+    self.contentView.text = self.viewModel.content;
+    
     
     self.contentPlaceholder = [[UILabel alloc] init];
     self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
@@ -99,8 +103,25 @@
     self.contentPlaceholder.font = [JKStyleConfiguration titleFont];
     self.contentPlaceholder.frame = CGRectMake(10, 30, 100, 20);
     [self.contentView addSubview:self.contentPlaceholder];
-    
-    
+    if (self.contentView.text.length > 0) {
+        self.contentPlaceholder.hidden = YES;
+    }
+    else{
+        self.contentPlaceholder.hidden = NO;
+    }
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0) {
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+        self.nextBtn.enabled = YES;
+    }
+    else{
+        
+        [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+        
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+        self.nextBtn.enabled = NO;
+    }
     
     
     self.bottomView = [[UIView alloc]init];
@@ -123,7 +144,7 @@
     [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
 
     
-    
+     self.restCharacter = 150 - self.contentView.text.length;
     self.aboutBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
     self.aboutBtn.frame = CGRectMake(ScreenWidth - 150 - 10, 15, 150, 22);
     [self.aboutBtn setTitle:[NSString stringWithFormat:@"%ld",self.restCharacter ] forState:UIControlStateNormal];
@@ -161,7 +182,7 @@
     
     [super viewWillAppear:animated];
     
-    self.navigationItem.rightBarButtonItem = [self customRightButton];
+    
 }
 
 -(UIBarButtonItem*)customRightButton{
@@ -275,14 +296,14 @@
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
         self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
-        
+         self.nextBtn.enabled = YES;
     }
     else{
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
         
         self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
-        
+         self.nextBtn.enabled = NO;
     }
     
     self.restCharacter = 150 - self.contentView.text.length;

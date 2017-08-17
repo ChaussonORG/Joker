@@ -16,7 +16,7 @@
 
 @property (nonatomic , strong) NSString *parentId;
 
-@property (nonatomic , strong , readonly) NSString *content;
+@property (nonatomic , strong ) NSString *content;
 
 
 - (void)creatCommentWithContent:(NSString *)str;
