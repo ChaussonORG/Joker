@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JKFilmTimelineCellVM.h"
 typedef NS_ENUM(NSInteger, JKFilmTimeLineFilter){
     JKFilmCurrent,
     JKFilmFuture,
@@ -18,4 +19,8 @@ typedef NS_ENUM(NSInteger, JKFilmTimeLineFilter){
 
 @property (nonatomic , assign) JKFilmTimeLineFilter type;
 
+@property (nonatomic , strong , readonly) NSMutableArray <JKFilmTimelineCellVM *>*cellViewModels;
+
+
+- (void)requestData;
 @end

@@ -14,4 +14,11 @@
 
 
 + (NSString *)timeStrwithTimestamp:(NSString *)timestamp;
+
++ (NSString *)passWeekdayWithDate:(NSString *)passDate;
+
++ (NSString *)featureWeekdayWithDate:(NSString *)featureDate;
+
+
++ (NSString *)assembleMonthDayStrWithDate:(NSString *)date;
 @end

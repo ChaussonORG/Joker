@@ -8,6 +8,7 @@
 
 #import "JKFilmTimeLineController.h"
 #import "JKTopicListHeaderView.h"
+#import "JKFilmTimelineCell.h"
 @interface JKFilmTimeLineController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate>
 @property (nonatomic , strong) JKTopicListHeaderView *headerView;
 
@@ -36,7 +37,7 @@
     self.headerView.bottomLine.hidden = YES;
     [self.view addSubview:self.headerView];
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.headerView.frame.origin.y + self.headerView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 49 -(self.headerView.frame.origin.y + self.headerView.frame.size.height)) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.headerView.frame.origin.y + self.headerView.frame.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 49 -(self.headerView.frame.origin.y + self.headerView.frame.size.height) -64) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
@@ -44,18 +45,41 @@
     [self.view addSubview:self.mainTableView];
   
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
-    @weakify(self)
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-        @strongify(self)
-//        [self.viewModel requestMoreData];
+//    @weakify(self)
+//    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+//        @strongify(self)
+////        [self.viewModel requestMoreData];
+//    }];
+//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+//    self.mainTableView.mj_footer = footer;
+    
+    [self binding];
+    
+}
+- (void)binding{
+    
+    
+    @weakify(self);
+    [[RACSignal combineLatest:@[RACObserve(self, viewModel.type),
+                                RACObserve(self, viewModel.cellViewModels)]] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.mainTableView reloadData];
+        
+        [self.mainTableView.mj_header endRefreshing];
     }];
-    footer.stateLabel.font = [UIFont systemFontOfSize:12];
-    self.mainTableView.mj_footer = footer;
-    // Do any additional setup after loading the view.
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.viewModel requestData];
 }
 - (void)requestHeaderData{
     
-//    [self.viewModel requestData];
+    [self.viewModel requestData];
     
 }
 
@@ -64,13 +88,11 @@
     
     if (self.viewModel.type == JKFilmCurrent) {
         
-//        return self.viewModel.cellViewModels.count;
-        return 0;
+        return self.viewModel.cellViewModels.count;
     }
     else{
         
-//        return self.viewModel.attendCellViewModels.count + 1;
-        return 0;
+        return self.viewModel.cellViewModels.count;
     }
     
 }
@@ -78,8 +100,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellId = @"cellId";
+     
+    JKFilmTimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
     
-    return nil;
+    
+    [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
+    
+    return cell;
     
 }
 
@@ -89,31 +119,27 @@
     
     if (self.viewModel.type == JKFilmCurrent) {
         
-//        return self.viewModel.cellViewModels[indexPath.row].cellHeight;
-        
-        return 0;
+        return self.viewModel.cellViewModels[indexPath.row].cellHeight;
     }
     else{
         
-//        if (indexPath.row == 0) {
-//            
-//            return 120;
-//        }
-//        else{
-//            
-//            return self.viewModel.attendCellViewModels[indexPath.row - 1].cellHeight;
-//        }
-
-        return 0;
+        return self.viewModel.cellViewModels[indexPath.row].cellHeight;
     }
     
 }
 
 - (void)chooseTopicWithIndex:(NSInteger)index{
     
+    if (index == 0) {
+        
+        self.viewModel.type = JKFilmCurrent;
+    }
+    else{
+        
+        self.viewModel.type = JKFilmFuture;
+    }
     
-    
-    
+    [self.viewModel requestData];
 }
 
 

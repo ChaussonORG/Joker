@@ -10,7 +10,7 @@
 
 @interface JKRemanndationView : UIView
 
-@property (nonatomic , strong) UIView *iconView;
+@property (nonatomic , strong) UIImageView *iconView;
 
 @property (nonatomic , strong) UILabel *nameLabel;
 

@@ -178,6 +178,27 @@
  
     }];
     
+    [RACObserve(self, viewModel.commentStatus) subscribeNext:^(id x) {
+         @strongify(self);
+        
+        if (self.viewModel.commentStatus == JKCommentCai) {
+            
+            [self.bottomView.favourBtn setImage:[UIImage imageNamed:@"keguan"] forState:UIControlStateNormal];
+            [self.bottomView.criticismBtn setImage:[UIImage imageNamed:@"cai"] forState:UIControlStateNormal];
+        }
+        else if (self.viewModel.commentStatus == JKCommentZan) {
+            
+            [self.bottomView.favourBtn setImage:[UIImage imageNamed:@"zan"] forState:UIControlStateNormal];
+            [self.bottomView.criticismBtn setImage:[UIImage imageNamed:@"bukeguan"] forState:UIControlStateNormal];
+        }
+        else{
+            
+            [self.bottomView.favourBtn setImage:[UIImage imageNamed:@"keguan"] forState:UIControlStateNormal];
+            [self.bottomView.criticismBtn setImage:[UIImage imageNamed:@"bukeguan"] forState:UIControlStateNormal];
+        }
+        
+    }];
+    
     RAC(self, quoteContentLabel.text) = RACObserve(self, viewModel.quoteContent);
     
     [RACObserve(self, viewModel.isMyComment) subscribeNext:^(NSNumber *x) {

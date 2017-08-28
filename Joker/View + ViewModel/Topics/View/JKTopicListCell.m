@@ -153,7 +153,9 @@
         
         self.timeLabel.frame = CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y + self.nameLabel.frame.size.height, 120, 17);
         
-        self.relatedLabel.frame = CGRectMake(self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50, self.nameLabel.frame.origin.y, [UIScreen mainScreen].bounds.size.width - (self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50) - 25 , 35);
+        self.relatedLabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 20 - ([UIScreen mainScreen].bounds.size.width - (self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50) - 25)*3/4, self.nameLabel.frame.origin.y, ([UIScreen mainScreen].bounds.size.width - (self.nameLabel.frame.origin.x + self.nameLabel.frame.size.width + 50) - 25)*3/4 , 35);
+        
+        
         
         self.contentLabel.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y + self.headerView.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width - 50 , contentLabelHeight);
         

@@ -9,6 +9,7 @@
 #import "JKTopicsFilteredListController.h"
 #import "JKTopicListCell.h"
 #import "CHLoginModalController.h"
+
 @interface JKTopicsFilteredListController ()<UITableViewDelegate,UITableViewDataSource>
 
 

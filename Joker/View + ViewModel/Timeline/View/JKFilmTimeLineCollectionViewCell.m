@@ -1,14 +1,14 @@
 //
-//  JKFilmCollectionViewCell.m
+//  JKFilmTimeLineCollectionViewCell.m
 //  Joker
 //
-//  Created by 朱彦君 on 2017/7/19.
+//  Created by 朱彦君 on 2017/8/28.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKFilmCollectionViewCell.h"
+#import "JKFilmTimeLineCollectionViewCell.h"
 
-@implementation JKFilmCollectionViewCell
+@implementation JKFilmTimeLineCollectionViewCell
 - (instancetype) initWithFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
@@ -65,12 +65,12 @@
 }
 
 
-- (void)loadDataWithVM:(JKFilmCollectionViewCellVM *)viewModel{
+- (void)loadDataWithVM:(JKFilmTimeLineCollectionViewCellVM *)viewModel{
     [self setViewModel:viewModel];
     
     
 }
-- (void)setViewModel:(JKFilmCollectionViewCellVM *)viewModel{
+- (void)setViewModel:(JKFilmTimeLineCollectionViewCellVM *)viewModel{
     _viewModel = viewModel;
 }
 
@@ -87,16 +87,16 @@
     
     RAC(self,filmName.text) = RACObserve(self, viewModel.name);
     
-    [RACObserve(self, viewModel.joker_score) subscribeNext:^(NSString *x) {
+    [RACObserve(self, viewModel.jokerScore) subscribeNext:^(NSString *x) {
         @strongify(self);
         
         self.pointLabel.text = x;
         
-       CGFloat selectedCount = [self fetchSelectedCountWithScore:[x floatValue]];
+        CGFloat selectedCount = [self fetchSelectedCountWithScore:[x floatValue]];
         
         [self.starView refreshFrame:CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,60, 20) SelectedCount:selectedCount commentable:NO starMargin:1 starWidth:10];
         
-         self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
+        self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
     }];
     
     
@@ -155,13 +155,14 @@
     
     return selectedCount;
     
-
+    
 }
 
 - (void)clickCell{
     
-    [self.viewModel chosed];
+    
+    
+    
     
 }
-
 @end

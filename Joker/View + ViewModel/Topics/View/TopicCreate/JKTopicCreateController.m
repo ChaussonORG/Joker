@@ -210,14 +210,14 @@
     
     
     self.emojiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.emojiBtn.frame = CGRectMake(20, 15, 22, 22);
+    self.emojiBtn.frame = CGRectMake(15, 11, 30, 30);
     [self.emojiBtn setImage:[UIImage imageNamed:@"biaoqing"] forState:UIControlStateNormal];
     [self.bottomView addSubview:self.emojiBtn];
     [self.emojiBtn addTarget:self action:@selector(clickEmojiBtn) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.imageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.imageBtn.frame = CGRectMake(self.emojiBtn.frame.origin.x + self.emojiBtn.frame.size.width + 31, 15, 22, 22);
+    self.imageBtn.frame = CGRectMake(self.emojiBtn.frame.origin.x + self.emojiBtn.frame.size.width + 31, 11, 30, 30);
 
     [self.imageBtn setImage:[UIImage imageNamed:@"tupian"] forState:UIControlStateNormal];
     [self.imageBtn addTarget:self action:@selector(clickImageBtn) forControlEvents:UIControlEventTouchUpInside];

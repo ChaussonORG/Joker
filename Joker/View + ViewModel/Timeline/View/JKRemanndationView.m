@@ -29,21 +29,22 @@
     [self addSubview:self.iconView];
     
     self.favoriteView = [[UIImageView alloc]init];
-    self.favoriteView.frame = CGRectMake(ScreenWidth - 30 -20, 30, 20, 15);
+    self.favoriteView.frame = CGRectMake(ScreenWidth - 30 -20, 18, 20, 15);
     self.favoriteView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:self.favoriteView];
-    
+
     self.favoriteCountLabel = [[UILabel alloc]init];
     self.favoriteCountLabel.font = [JKStyleConfiguration minContentFont];
     self.favoriteCountLabel.textColor = [JKStyleConfiguration aaaaaaColor];
-    self.favoriteCountLabel.frame = CGRectMake(ScreenWidth - 30 - 15, self.favoriteView.frame.origin.y + self.favoriteView.frame.size.height, 30, 15);
+    self.favoriteCountLabel.frame = CGRectMake(ScreenWidth - 30 - 25, self.favoriteView.frame.origin.y + self.favoriteView.frame.size.height, 30, 15);
     self.favoriteCountLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.favoriteCountLabel];
+    
     
     self.nameLabel = [[UILabel alloc]init];
     self.nameLabel.font = [JKStyleConfiguration hugeFont];
     self.nameLabel.textColor = [JKStyleConfiguration blackColor];
-    self.nameLabel.frame = CGRectMake(self.iconView.frame.origin.x + self.iconView.frame.size.width + 15, 15, ScreenWidth - self.favoriteCountLabel.frame.origin.x - (self.iconView.frame.origin.x + self.iconView.frame.size.width + 15) - 10, 25);
+    self.nameLabel.frame = CGRectMake(self.iconView.frame.origin.x + self.iconView.frame.size.width + 15, 15, self.favoriteCountLabel.frame.origin.x - (self.iconView.frame.origin.x + self.iconView.frame.size.width + 15) - 10, 25);
     [self addSubview:self.nameLabel];
     
     
@@ -72,7 +73,7 @@
     self.lookPlayScore = [[UILabel alloc]init];
     self.lookPlayScore.font = [JKStyleConfiguration veryHugeFont];
     self.lookPlayScore.textColor = [JKStyleConfiguration blackColor];
-    self.lookPlayScore.frame = CGRectMake(0,self.lookPlayTitle.frame.size.width + self.lookPlayTitle.frame.origin.x + 5, self.lookPlayView.frame.size.width, self.lookPlayView.frame.size.height - 25);
+    self.lookPlayScore.frame = CGRectMake(0,self.lookPlayTitle.frame.size.height + self.lookPlayTitle.frame.origin.y + 5, self.lookPlayView.frame.size.width, self.lookPlayView.frame.size.height - 25);
     self.lookPlayScore.textAlignment = NSTextAlignmentCenter;
     [self.lookPlayView addSubview:self.lookPlayScore];
     
@@ -81,7 +82,7 @@
     self.contentLabelOne = [[UILabel alloc]init];
     self.contentLabelOne.font = [JKStyleConfiguration contentFont];
     self.contentLabelOne.textColor = [JKStyleConfiguration blackColor];
-    self.contentLabelOne.frame = CGRectMake(self.nameLabel.frame.origin.x, self.lineView.frame.origin.y + self.lineView.frame.size.height + 10, ScreenWidth - self.lookPlayView.frame.origin.x - 10 - self.nameLabel.frame.origin.x , 20);
+    self.contentLabelOne.frame = CGRectMake(self.nameLabel.frame.origin.x, self.lineView.frame.origin.y + self.lineView.frame.size.height + 10,  self.lookPlayView.frame.origin.x - 10 - self.nameLabel.frame.origin.x , 20);
     [self addSubview:self.contentLabelOne];
     
     
@@ -89,7 +90,7 @@
     self.contentLabelTwo.font = [JKStyleConfiguration contentFont];
     self.contentLabelTwo.textColor = [JKStyleConfiguration blackColor];
     self.contentLabelTwo.numberOfLines = 2;
-    self.contentLabelTwo.frame = CGRectMake(self.contentLabelOne.frame.origin.x, self.contentLabelOne.frame.origin.y + self.contentLabelOne.frame.size.height + 10, self.contentLabelOne.frame.size.width , 40);
+    self.contentLabelTwo.frame = CGRectMake(self.contentLabelOne.frame.origin.x, self.contentLabelOne.frame.origin.y + self.contentLabelOne.frame.size.height , self.contentLabelOne.frame.size.width , 40);
     [self addSubview:self.contentLabelTwo];
     
     
@@ -97,25 +98,31 @@
     [self.score1 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
     self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
     [self addSubview:self.score1];
+    self.score1.titleLabel.font = [JKStyleConfiguration contentFont];
+    [self.score1 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     
     self.score2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score2 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
     self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
     [self addSubview:self.score2];
+    self.score2.titleLabel.font = [JKStyleConfiguration contentFont];
+    [self.score2 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
     self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
     [self addSubview:self.score3];
-    
-    
+    self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
+    [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     self.score4 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score4 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
     self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
     [self addSubview:self.score4];
+    self.score4.titleLabel.font = [JKStyleConfiguration contentFont];
+    [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     
     self.grayView = [[UIView alloc]init];
