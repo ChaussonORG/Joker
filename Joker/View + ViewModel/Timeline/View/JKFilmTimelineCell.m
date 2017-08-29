@@ -130,7 +130,14 @@
         else{
             
             [self.contentView bringSubviewToFront:self.collectionView];
-            
+            for (UIView *view in self.contentView.subviews) {
+                
+                if ([view isKindOfClass:[JKRemanndationView class]]) {
+                    
+                    [view removeFromSuperview];
+                }
+                
+            }
            self.collectionView.frame = CGRectMake(0, self.viewModel.recommendViewHeight + self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height, ScreenWidth, self.viewModel.collectionViewHeight);
         }
         

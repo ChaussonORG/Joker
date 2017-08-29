@@ -97,8 +97,6 @@
                 
                 if (![tempDate isEqualToString:item.openDate]) {
                     
-                    
-                    
                     if (cellViewModels.count == 0) {
                         [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
                         
