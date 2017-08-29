@@ -1,32 +1,32 @@
 //
-//  JKTVTimeLineVM.m
+//  JKGameTimeLineVM.m
 //  Joker
 //
 //  Created by 朱彦君 on 2017/7/25.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKTVTimeLineVM.h"
+#import "JKGameTimeLineVM.h"
 #import "JKTimelineListApi.h"
 #import "CHCommonMacro.h"
 #import "HHTGetString.h"
-@interface JKTVTimeLineVM()
+@interface JKGameTimeLineVM()
 
-@property (nonatomic , strong) NSMutableArray <JKTVTimelineCellVM *>*cellViewModels;
+@property (nonatomic , strong) NSMutableArray <JKGameTimelineCellVM *>*cellViewModels;
 
 @end
 
 
-@implementation JKTVTimeLineVM
+@implementation JKGameTimeLineVM
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         
-        self.titlesArray = @[@"正 在 热 映",@"即 将 上 映"];
+        self.titlesArray = @[@"正 在 热 卖",@"即 将 上 市"];
         
-        self.type = JKTVCurrent;
+        self.type = JKGameCurrent;
         
         self.cellViewModels = [NSMutableArray array];
     }
@@ -36,9 +36,9 @@
 
 - (void)requestData{
     
-    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineTV];
+    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineGame];
     
-    if (self.type  == JKTVCurrent) {
+    if (self.type  == JKGameCurrent) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
         NSDate *datenow = [NSDate date];
@@ -78,9 +78,9 @@
     
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
         
-        NSMutableArray <JKTVTimelineCellVM *>*cellViewModels = [NSMutableArray array];
+        NSMutableArray <JKGameTimelineCellVM *>*cellViewModels = [NSMutableArray array];
         
-        NSMutableArray <JKTVTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
+        NSMutableArray <JKGameTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
         
         NSString *tempDate;
         
@@ -119,7 +119,7 @@
                 
             }
             
-            JKTVTimeLineCollectionViewCellVM *cellVM = [[JKTVTimeLineCollectionViewCellVM alloc]init];
+            JKGameTimeLineCollectionViewCellVM *cellVM = [[JKGameTimeLineCollectionViewCellVM alloc]init];
             
             cellVM.imageUrl = item.coverImgUrl;
             
@@ -129,43 +129,25 @@
             
             cellVM.belongType = item.belongType;
             
-            cellVM.jokerScore = item.jokerScore;
+            cellVM.jokerScore = item.joker_score;
             
-            cellVM.score1 = item.doubanScore;
+            cellVM.score1 = item.fami_score;
             
-            cellVM.score2 = item.imdbScore;
+            cellVM.score2 = item.ign_score;
             
-            cellVM.score3 = item.tomatoeScore;
+            cellVM.score3 = item.gs_score;
             
-            cellVM.score4 = item.mcScore;
+            cellVM.score4 = item.joker_score;
             
             cellVM.isfavorite = [item.favotite boolValue];
             
             cellVM.isRecommand = [item.recommend boolValue];
             
-            for (JKTimelineFilmModelDirector  *director in item.director) {
-                
-                if (cellVM.directors.length > 0) {
-                    cellVM.directors = [NSString stringWithFormat:@"%@/%@",cellVM.directors,director.name];
-                }
-                else{
-                    
-                    cellVM.directors = [NSString stringWithFormat:@"导演：%@",director.name];
-                    
-                }
-            }
+            cellVM.platform = item.platform;
             
-            for (JKTimelineFilmModelMainActor  *mainActor in item.mainActor) {
-                
-                if (cellVM.mainActors.length > 0) {
-                    cellVM.mainActors = [NSString stringWithFormat:@"%@/%@",cellVM.mainActors,mainActor.name];
-                }
-                else{
-                    
-                    cellVM.mainActors = [NSString stringWithFormat:@"主演：%@",mainActor.name];
-                    
-                }
-            }
+            cellVM.version = item.version;
+            
+            cellVM.language = item.language;
             
             [cellVMs addObject:cellVM];
             
@@ -190,9 +172,9 @@
     
 }
 
-- (JKTVTimelineCellVM *)assembleViewModelWithOpenDate:(NSString *)date andCellVMs:(NSMutableArray <JKTVTimeLineCollectionViewCellVM *>*)cellVMs isFirstDay:(BOOL)isfirstDay{
+- (JKGameTimelineCellVM *)assembleViewModelWithOpenDate:(NSString *)date andCellVMs:(NSMutableArray <JKGameTimeLineCollectionViewCellVM *>*)cellVMs isFirstDay:(BOOL)isfirstDay{
     
-    JKTVTimelineCellVM *cellVM = [[JKTVTimelineCellVM alloc]init];
+    JKGameTimelineCellVM *cellVM = [[JKGameTimelineCellVM alloc]init];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
@@ -200,7 +182,7 @@
     NSString *dateStr = [formatter stringFromDate:datenow];
     NSString *week;
     
-    if (self.type == JKTVCurrent) {
+    if (self.type == JKGameCurrent) {
         
         week = [HHTGetString passWeekdayWithDate:date];
     }
@@ -209,23 +191,26 @@
         
     }
     
-    
-    
-    if ([date containsString:dateStr]) {
+    if (date ) {
         
-        cellVM.date = [NSString stringWithFormat:@"今天/%@",week];
-        
+        if ( [date containsString:dateStr]) {
+            
+            cellVM.date = [NSString stringWithFormat:@"今天/%@",week];
+            
+        }
+        else{
+            
+            cellVM.date = [NSString stringWithFormat:@"%@/%@",[HHTGetString assembleMonthDayStrWithDate:date],week];
+        }
     }
-    else{
-        
-        cellVM.date = [NSString stringWithFormat:@"%@/%@",[HHTGetString assembleMonthDayStrWithDate:date],week];
-    }
     
-    if (isfirstDay && self.type == JKTVCurrent) {
+    
+    
+    if (isfirstDay && self.type == JKGameCurrent) {
         
         cellVM.isRecommend = YES;
         for (int i = 0; i < cellVMs.count; i ++) {
-            JKTVTimeLineCollectionViewCellVM *cellViewModel = cellVMs[i];
+            JKGameTimeLineCollectionViewCellVM *cellViewModel = cellVMs[i];
             
             if (cellViewModel.isRecommand) {
                 

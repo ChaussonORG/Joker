@@ -2,17 +2,16 @@
 //  JKTVTimeLineVM.h
 //  Joker
 //
-//  Created by 朱彦君 on 2017/7/26.
+//  Created by 朱彦君 on 2017/7/25.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-
+#import "JKTVTimelineCellVM.h"
 typedef NS_ENUM(NSInteger, JKTVTimeLineFilter){
     JKTVCurrent,
     JKTVFuture,
 };
-
 
 @interface JKTVTimeLineVM : NSObject
 
@@ -20,5 +19,8 @@ typedef NS_ENUM(NSInteger, JKTVTimeLineFilter){
 
 @property (nonatomic , assign) JKTVTimeLineFilter type;
 
+@property (nonatomic , strong , readonly) NSMutableArray <JKTVTimelineCellVM *>*cellViewModels;
 
+
+- (void)requestData;
 @end

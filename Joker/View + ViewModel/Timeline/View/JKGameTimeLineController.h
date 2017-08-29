@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JKGameTimeLineVM.h"
 @interface JKGameTimeLineController : UIViewController
+
+
+@property (nonatomic , strong) JKGameTimeLineVM *viewModel;
+
 
 @end

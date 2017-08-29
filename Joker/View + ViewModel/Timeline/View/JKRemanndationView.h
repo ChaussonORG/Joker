@@ -12,6 +12,8 @@
 
 @property (nonatomic , strong) UIImageView *iconView;
 
+@property (nonatomic , strong) UILabel *belongTypeLabel;
+
 @property (nonatomic , strong) UILabel *nameLabel;
 
 @property (nonatomic , strong) UIImageView *favoriteView;

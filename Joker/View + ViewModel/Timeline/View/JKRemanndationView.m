@@ -25,8 +25,20 @@
     
     self.iconView = [[UIImageView alloc]init];
     self.iconView.frame = CGRectMake(15, 15, 100, 140);
-    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:self.iconView];
+    
+    
+    
+    self.belongTypeLabel = [[UILabel alloc]init];
+    self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];
+    self.belongTypeLabel.textColor = [JKStyleConfiguration whiteColor];
+    self.belongTypeLabel.backgroundColor = [JKStyleConfiguration blackColor];
+    self.belongTypeLabel.textAlignment = NSTextAlignmentCenter;
+    self.belongTypeLabel.hidden = YES;
+    [self.iconView addSubview:self.belongTypeLabel];
+    self.belongTypeLabel.frame = CGRectMake(self.iconView.frame.size.width - 22, 0, 22, 15);
+    
     
     self.favoriteView = [[UIImageView alloc]init];
     self.favoriteView.frame = CGRectMake(ScreenWidth - 30 -20, 18, 20, 15);

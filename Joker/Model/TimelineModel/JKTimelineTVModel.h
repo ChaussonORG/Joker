@@ -1,21 +1,20 @@
 //
-//  JKTimelineFilmModel.h
+//  JKTimelineTVModel.h
 //  Joker
 //
-//  Created by 朱彦君 on 2017/8/24.
+//  Created by 朱彦君 on 2017/8/29.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
 #import <JSONModel/JSONModel.h>
 
-
-@class JKTimelineFilmModelMainActor;
-@protocol JKTimelineFilmModelMainActor <NSObject>
+@class JKTimelineTVModelMainActor;
+@protocol JKTimelineTVModelMainActor <NSObject>
 @end
 
 
 
-@interface JKTimelineFilmModelMainActor : JSONModel
+@interface JKTimelineTVModelMainActor : JSONModel
 @property (nonatomic, strong)NSString <Optional>*id;
 @property (nonatomic, strong)NSString <Optional>*name;
 @property (nonatomic, strong)NSString <Optional>*english_name;
@@ -45,13 +44,13 @@
 @end
 
 
-@class JKTimelineFilmModelDirector;
-@protocol JKTimelineFilmModelDirector <NSObject>
+@class JKTimelineTVModelDirector;
+@protocol JKTimelineTVModelDirector <NSObject>
 @end
 
 
 
-@interface JKTimelineFilmModelDirector : JSONModel
+@interface JKTimelineTVModelDirector : JSONModel
 @property (nonatomic, strong)NSString <Optional>*id;
 @property (nonatomic, strong)NSString <Optional>*name;
 @property (nonatomic, strong)NSString <Optional>*english_name;
@@ -80,11 +79,11 @@
 @end
 
 
-@class JKTimelineFilmModelItems;
-@protocol JKTimelineFilmModelItems <NSObject>
+@class JKTimelineTVModelItems;
+@protocol JKTimelineTVModelItems <NSObject>
 @end
 
-@interface JKTimelineFilmModelItems : JSONModel
+@interface JKTimelineTVModelItems : JSONModel
 @property (nonatomic, strong)NSString <Optional>*openDate;
 @property (nonatomic, strong)NSString <Optional>*name;
 @property (nonatomic, strong)NSString <Optional>*coverImgUrl;
@@ -97,28 +96,20 @@
 @property (nonatomic, strong)NSString <Optional>*imdbScore;
 @property (nonatomic, strong)NSString <Optional>*tomatoeScore;
 @property (nonatomic, strong)NSString <Optional>*mcScore;
-@property (nonatomic, strong)NSString <Optional>*belongType;
-@property (nonatomic, strong)NSString <Optional>*fami_score;
-@property (nonatomic, strong)NSString <Optional>*ign_score;
-@property (nonatomic, strong)NSString <Optional>*gs_score;
-@property (nonatomic, strong)NSString <Optional>*joker_score;
-@property (nonatomic, strong)NSString <Optional>*platform;
-@property (nonatomic, strong)NSString <Optional>*version;
-@property (nonatomic, strong)NSString <Optional>*language;
-@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*director;
-@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelMainActor>*mainActor;
+@property (nonatomic, strong)NSArray <Optional, JKTimelineTVModelDirector>*director;
+@property (nonatomic, strong)NSArray <Optional, JKTimelineTVModelMainActor>*mainActor;
 
 @end
 
-@interface JKTimelineFilmModelData : JSONModel
-@property (nonatomic, strong)NSArray <Optional,JKTimelineFilmModelItems>*items;
+@interface JKTimelineTVModelData : JSONModel
+@property (nonatomic, strong)NSArray <Optional,JKTimelineTVModelItems>*items;
 
 
 @end
 
 
-@interface JKTimelineFilmModel : JSONModel
-@property (strong ,nonatomic) JKTimelineFilmModelData <Optional>*data;
+@interface JKTimelineTVModel : JSONModel
+@property (strong ,nonatomic) JKTimelineTVModelData <Optional>*data;
 @property (assign ,nonatomic) int code;
 @property (copy ,nonatomic) NSString *message;
 @end

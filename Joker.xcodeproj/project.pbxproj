@@ -51,6 +51,16 @@
 		504931301F546993008FB164 /* JKFilmTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5049312F1F546993008FB164 /* JKFilmTimeLineCollectionViewCellVM.m */; };
 		504BA95E1F4F2D6000E33F08 /* JKTimelineFilmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 504BA95D1F4F2D6000E33F08 /* JKTimelineFilmModel.m */; };
 		504BA9621F4F2FBA00E33F08 /* JKTimelineListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504BA9611F4F2FBA00E33F08 /* JKTimelineListApi.m */; };
+		504C77011F55B9A10004AE70 /* JKTimelineTVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77001F55B9A10004AE70 /* JKTimelineTVModel.m */; };
+		504C77041F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77031F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.m */; };
+		504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77061F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m */; };
+		504C770A1F55BB3D0004AE70 /* JKTVTimelineCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77091F55BB3D0004AE70 /* JKTVTimelineCellVM.m */; };
+		504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C770C1F55BBC80004AE70 /* JKTVTimelineCell.m */; };
+		504C77101F55C0CB0004AE70 /* JKGameTimeLineVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C770F1F55C0CB0004AE70 /* JKGameTimeLineVM.m */; };
+		504C77131F55C1100004AE70 /* JKGameTimelineCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77121F55C1100004AE70 /* JKGameTimelineCellVM.m */; };
+		504C77161F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77151F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m */; };
+		504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77181F55C1650004AE70 /* JKGameTimelineCell.m */; };
+		504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */; };
 		505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86951F3768B5005B6A6C /* CHDownSheet.m */; };
 		505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86971F3768B5005B6A6C /* CHDownSheetCell.m */; };
 		505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86991F3768B5005B6A6C /* CHDownSheetModel.m */; };
@@ -317,6 +327,26 @@
 		504BA95D1F4F2D6000E33F08 /* JKTimelineFilmModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTimelineFilmModel.m; sourceTree = "<group>"; };
 		504BA9601F4F2FBA00E33F08 /* JKTimelineListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTimelineListApi.h; sourceTree = "<group>"; };
 		504BA9611F4F2FBA00E33F08 /* JKTimelineListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTimelineListApi.m; sourceTree = "<group>"; };
+		504C76FF1F55B9A10004AE70 /* JKTimelineTVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTimelineTVModel.h; sourceTree = "<group>"; };
+		504C77001F55B9A10004AE70 /* JKTimelineTVModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTimelineTVModel.m; sourceTree = "<group>"; };
+		504C77021F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVTimeLineCollectionViewCellVM.h; sourceTree = "<group>"; };
+		504C77031F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVTimeLineCollectionViewCellVM.m; sourceTree = "<group>"; };
+		504C77051F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVTimeLineCollectionViewCell.h; sourceTree = "<group>"; };
+		504C77061F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVTimeLineCollectionViewCell.m; sourceTree = "<group>"; };
+		504C77081F55BB3D0004AE70 /* JKTVTimelineCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVTimelineCellVM.h; sourceTree = "<group>"; };
+		504C77091F55BB3D0004AE70 /* JKTVTimelineCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVTimelineCellVM.m; sourceTree = "<group>"; };
+		504C770B1F55BBC80004AE70 /* JKTVTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVTimelineCell.h; sourceTree = "<group>"; };
+		504C770C1F55BBC80004AE70 /* JKTVTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVTimelineCell.m; sourceTree = "<group>"; };
+		504C770E1F55C0CB0004AE70 /* JKGameTimeLineVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimeLineVM.h; sourceTree = "<group>"; };
+		504C770F1F55C0CB0004AE70 /* JKGameTimeLineVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimeLineVM.m; sourceTree = "<group>"; };
+		504C77111F55C1100004AE70 /* JKGameTimelineCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimelineCellVM.h; sourceTree = "<group>"; };
+		504C77121F55C1100004AE70 /* JKGameTimelineCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimelineCellVM.m; sourceTree = "<group>"; };
+		504C77141F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimeLineCollectionViewCellVM.h; sourceTree = "<group>"; };
+		504C77151F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimeLineCollectionViewCellVM.m; sourceTree = "<group>"; };
+		504C77171F55C1650004AE70 /* JKGameTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimelineCell.h; sourceTree = "<group>"; };
+		504C77181F55C1650004AE70 /* JKGameTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimelineCell.m; sourceTree = "<group>"; };
+		504C771A1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimeLineCollectionViewCell.h; sourceTree = "<group>"; };
+		504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimeLineCollectionViewCell.m; sourceTree = "<group>"; };
 		505D86941F3768B5005B6A6C /* CHDownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheet.h; sourceTree = "<group>"; };
 		505D86951F3768B5005B6A6C /* CHDownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheet.m; sourceTree = "<group>"; };
 		505D86961F3768B5005B6A6C /* CHDownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheetCell.h; sourceTree = "<group>"; };
@@ -778,6 +808,8 @@
 			children = (
 				504BA95C1F4F2D6000E33F08 /* JKTimelineFilmModel.h */,
 				504BA95D1F4F2D6000E33F08 /* JKTimelineFilmModel.m */,
+				504C76FF1F55B9A10004AE70 /* JKTimelineTVModel.h */,
+				504C77001F55B9A10004AE70 /* JKTimelineTVModel.m */,
 			);
 			path = TimelineModel;
 			sourceTree = "<group>";
@@ -1565,8 +1597,16 @@
 				508C552D1F28310F001F1A15 /* JKRemanndationView.m */,
 				504931251F52FFDB008FB164 /* JKFilmTimelineCell.h */,
 				504931261F52FFDB008FB164 /* JKFilmTimelineCell.m */,
+				504C770B1F55BBC80004AE70 /* JKTVTimelineCell.h */,
+				504C770C1F55BBC80004AE70 /* JKTVTimelineCell.m */,
+				504C77171F55C1650004AE70 /* JKGameTimelineCell.h */,
+				504C77181F55C1650004AE70 /* JKGameTimelineCell.m */,
 				5049312B1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.h */,
 				5049312C1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.m */,
+				504C77051F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.h */,
+				504C77061F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m */,
+				504C771A1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.h */,
+				504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1580,10 +1620,20 @@
 				508C55271F27310E001F1A15 /* JKFilmTimeLineVM.m */,
 				508C55291F27A469001F1A15 /* JKTVTimeLineVM.h */,
 				508C552A1F27A469001F1A15 /* JKTVTimeLineVM.m */,
+				504C770E1F55C0CB0004AE70 /* JKGameTimeLineVM.h */,
+				504C770F1F55C0CB0004AE70 /* JKGameTimeLineVM.m */,
 				504931281F52FFEA008FB164 /* JKFilmTimelineCellVM.h */,
 				504931291F52FFEA008FB164 /* JKFilmTimelineCellVM.m */,
+				504C77081F55BB3D0004AE70 /* JKTVTimelineCellVM.h */,
+				504C77091F55BB3D0004AE70 /* JKTVTimelineCellVM.m */,
+				504C77111F55C1100004AE70 /* JKGameTimelineCellVM.h */,
+				504C77121F55C1100004AE70 /* JKGameTimelineCellVM.m */,
 				5049312E1F546993008FB164 /* JKFilmTimeLineCollectionViewCellVM.h */,
 				5049312F1F546993008FB164 /* JKFilmTimeLineCollectionViewCellVM.m */,
+				504C77021F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.h */,
+				504C77031F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.m */,
+				504C77141F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.h */,
+				504C77151F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1889,6 +1939,7 @@
 			files = (
 				D3973B581EEEEC200076B246 /* UIImage+Scale.m in Sources */,
 				508DB6F01F259998002ABF97 /* CHSocialHandlerData.m in Sources */,
+				504C770A1F55BB3D0004AE70 /* JKTVTimelineCellVM.m in Sources */,
 				505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */,
 				508C55AB1F2844A3001F1A15 /* UIImage+CHImage.m in Sources */,
 				508C551F1F26F1A7001F1A15 /* JKAnimationTimeLineController.m in Sources */,
@@ -1909,6 +1960,7 @@
 				508C55121F26EA7A001F1A15 /* DotCountLabel.m in Sources */,
 				D3973B571EEEEC200076B246 /* UIColor+Hex.m in Sources */,
 				502347551F18975500E82B8E /* GKFadeNavigationController.m in Sources */,
+				504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */,
 				501F57C61F1F5EBB001D2C8A /* JKMyfavoriteWorksModel.m in Sources */,
 				D3973B781EEEEC200076B246 /* JKGameDetailModel.m in Sources */,
 				506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */,
@@ -1937,12 +1989,14 @@
 				D3973BDE1EF239B10076B246 /* JKNewsListViewController.m in Sources */,
 				501F57BA1F1F5057001D2C8A /* JKTopicRelatedWorksListVM.m in Sources */,
 				50DA8B5C1F18B78700530F49 /* UIView+Kylin.m in Sources */,
+				504C77041F55BA660004AE70 /* JKTVTimeLineCollectionViewCellVM.m in Sources */,
 				D3973B771EEEEC200076B246 /* JKDetailModel.m in Sources */,
 				504BA9621F4F2FBA00E33F08 /* JKTimelineListApi.m in Sources */,
 				507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */,
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
+				504C77131F55C1100004AE70 /* JKGameTimelineCellVM.m in Sources */,
 				5049312D1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.m in Sources */,
 				507A675A1F3AA0F900377C5E /* JKCommentCreatModel.m in Sources */,
 				50AC9D981F0EA7C900AA7AEC /* JKSubcommentListCellVM.m in Sources */,
@@ -1954,6 +2008,8 @@
 				50DA8B621F1B739700530F49 /* JKTopicDetailCommentListApi.m in Sources */,
 				50DA8B6B1F1B95DB00530F49 /* JKTopicDetailBottomVM.m in Sources */,
 				50AC9D961F0EA7C900AA7AEC /* JKCommentListCellVM.m in Sources */,
+				504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */,
+				504C77011F55B9A10004AE70 /* JKTimelineTVModel.m in Sources */,
 				D3973B7C1EEEEC200076B246 /* NewsModel.m in Sources */,
 				501F57BD1F1F5DA6001D2C8A /* JKFilmCollectionViewCellVM.m in Sources */,
 				508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */,
@@ -1962,8 +2018,10 @@
 				502347591F18975500E82B8E /* UIView+YLView.m in Sources */,
 				508C55281F27310E001F1A15 /* JKFilmTimeLineVM.m in Sources */,
 				501F7E3B1EFAB1FC00FE1E35 /* JKCommonModel.m in Sources */,
+				504C77101F55C0CB0004AE70 /* JKGameTimeLineVM.m in Sources */,
 				5049312A1F52FFEA008FB164 /* JKFilmTimelineCellVM.m in Sources */,
 				50AC9D8D1F0EA7C100AA7AEC /* JKCommentOpenCell.m in Sources */,
+				504C77161F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m in Sources */,
 				D3973B761EEEEC200076B246 /* DetailModel.m in Sources */,
 				D3973B681EEEEC200076B246 /* CHBarItemViewModel.m in Sources */,
 				508DB6F81F259C85002ABF97 /* JKUser.m in Sources */,
@@ -1977,6 +2035,8 @@
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
 				508C552E1F28310F001F1A15 /* JKRemanndationView.m in Sources */,
 				508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */,
+				504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */,
+				504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */,
 				50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */,
 				D3973B6D1EEEEC200076B246 /* CHTabBarViewModel.m in Sources */,
 				50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */,

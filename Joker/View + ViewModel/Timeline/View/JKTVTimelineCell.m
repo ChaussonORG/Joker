@@ -1,14 +1,14 @@
 //
-//  JKFilmTimelineCell.m
+//  JKTVTimelineCell.m
 //  Joker
 //
 //  Created by 朱彦君 on 2017/8/27.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKFilmTimelineCell.h"
-#import "JKFilmTimeLineCollectionViewCell.h"
-@implementation JKFilmTimelineCell
+#import "JKTVTimelineCell.h"
+#import "JKTVTimeLineCollectionViewCell.h"
+@implementation JKTVTimelineCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -23,7 +23,7 @@
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-
+        
         [self binding];
     }
     
@@ -55,7 +55,7 @@
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     _collectionView.backgroundColor = [JKStyleConfiguration whiteColor];
-    [_collectionView registerClass:[JKFilmTimeLineCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+    [_collectionView registerClass:[JKTVTimeLineCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
     self.collectionView.scrollEnabled = NO;
     [self.contentView addSubview:self.collectionView];
     
@@ -64,7 +64,7 @@
 
 - (void)prepareForLayout{
     
-
+    
     
     
     
@@ -83,20 +83,20 @@
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
                 
-
+                
                 remanndationView.frame = CGRectMake(0, self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height + i * 180, ScreenWidth, 180);
                 
-                JKFilmTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
+                JKTVTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
                 
                 NSURL * imageURL = [NSURL URLWithString:cellVM.imageUrl];
-        
+                
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 
                 remanndationView.nameLabel.text = cellVM.name;
                 
                 remanndationView.favoriteCountLabel.text = cellVM.favoriteCount;
                 
-//                remanndationView.contentLabelOne.text = cellVM.directors;
+                //                remanndationView.contentLabelOne.text = cellVM.directors;
                 NSMutableAttributedString *Astr1 = [[NSMutableAttributedString alloc]initWithString:cellVM.directors];
                 
                 [Astr1 addAttribute:NSForegroundColorAttributeName value:[JKStyleConfiguration aaaaaaColor] range:NSMakeRange(0, cellVM.directors.length)];
@@ -109,7 +109,7 @@
                 remanndationView.contentLabelTwo.attributedText = Astr2;
                 
                 
-//                remanndationView.contentLabelTwo.text = cellVM.mainActors;
+                //                remanndationView.contentLabelTwo.text = cellVM.mainActors;
                 
                 [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
                 
@@ -120,7 +120,18 @@
                 [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
                 
                 remanndationView.lookPlayScore.text = cellVM.jokerScore;
-   
+                
+                if (cellVM.belongType.length > 0) {
+                    
+                    remanndationView.belongTypeLabel.hidden = NO;
+                    remanndationView.belongTypeLabel.text = cellVM.belongType;
+                }
+                else{
+                    
+                    remanndationView.belongTypeLabel.hidden = NO;
+                    
+                }
+                
                 [self.contentView addSubview:remanndationView];
                 
             }
@@ -131,16 +142,16 @@
             
             [self.contentView bringSubviewToFront:self.collectionView];
             
-           self.collectionView.frame = CGRectMake(0, self.viewModel.recommendViewHeight + self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height, ScreenWidth, self.viewModel.collectionViewHeight);
+            self.collectionView.frame = CGRectMake(0, self.viewModel.recommendViewHeight + self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height, ScreenWidth, self.viewModel.collectionViewHeight);
         }
         
         [self.collectionView reloadData];
     }];
-
+    
     
     RAC(self,dateLabel.text) = RACObserve(self, viewModel.date);
-
-
+    
+    
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
@@ -150,7 +161,7 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellIdentifier = @"UICollectionViewCell";
-    JKFilmTimeLineCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    JKTVTimeLineCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
     
@@ -170,12 +181,12 @@
     return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
-- (void)loadDataWithVM:(JKFilmTimelineCellVM *)viewModel{
+- (void)loadDataWithVM:(JKTVTimelineCellVM *)viewModel{
     
     [self setViewModel:viewModel];
     
 }
-- (void)setViewModel:(JKFilmTimelineCellVM *)viewModel{
+- (void)setViewModel:(JKTVTimelineCellVM *)viewModel{
     _viewModel = viewModel;
     
 }
@@ -187,7 +198,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
