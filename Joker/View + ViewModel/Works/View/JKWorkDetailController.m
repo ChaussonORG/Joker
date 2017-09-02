@@ -55,6 +55,12 @@
 @property (nonatomic , strong) UIButton *backBtn;
 
 @property (nonatomic , strong) PhotoCotentView *contentView;
+
+@property (nonatomic , strong) UIView *bottomView;
+
+@property (nonatomic , strong) UIButton *favoriteBtn;
+
+@property (nonatomic , strong) UIButton *commentBtn;
 @end
 
 @implementation JKWorkDetailController
@@ -81,10 +87,51 @@
     
     [self setupTableView];
     
+    [self setupBottomView];
+    
     self.backBtn = [self customLeftBackButton];
     
     [self binding];
     // Do any additional setup after loading the view.
+}
+- (void)setupBottomView{
+    
+    self.bottomView = [[UIView alloc]init];
+    self.bottomView.frame = CGRectMake(0, self.mainTableView.frame.size.height + self.mainTableView.frame.origin.y - 55 , ScreenWidth, 50) ;
+    [self.view addSubview:self.bottomView];
+    self.bottomView.backgroundColor = [UIColor whiteColor];
+     
+    self.favoriteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.favoriteBtn.frame = CGRectMake(0, 0, ScreenWidth/2- 0.5, 50);
+    [self.favoriteBtn addTarget:self action:@selector(clickFavoriteBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.favoriteBtn.titleLabel.font = [JKStyleConfiguration titleFont];
+    [self.favoriteBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
+    [self.bottomView addSubview:self.favoriteBtn];
+    
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = [JKStyleConfiguration lineColor];
+    lineView.frame = CGRectMake(self.favoriteBtn.frame.origin.x + self.favoriteBtn.frame.size.width , 14, 1, 20 );
+    [self.bottomView addSubview:lineView];
+    
+    self.commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.commentBtn.frame = CGRectMake(lineView.frame.origin.x + lineView.frame.size.width, 0, ScreenWidth/2- 0.5, 50);
+    [self.commentBtn addTarget:self action:@selector(clickCommentBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.commentBtn.titleLabel.font = [JKStyleConfiguration titleFont];
+    [self.commentBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
+    [self.bottomView addSubview:self.commentBtn];
+}
+
+- (void)clickFavoriteBtn{
+    
+    [self.viewModel favoriteWork];
+    
+    
+}
+
+- (void)clickCommentBtn{
+    
+    
+    [self.viewModel commentWork];
 }
 
 -(UIButton*)customLeftBackButton{
@@ -111,7 +158,7 @@
 }
 - (void)setupTableView{
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height ) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 30 ) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
@@ -120,7 +167,7 @@
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
         @strongify(self)
-//        [self.viewModel requestMoreData];
+        [self.viewModel requestMoreData];
     }];
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.mainTableView.mj_footer = footer;
@@ -287,6 +334,27 @@
     
         
     }];
+    
+    [RACObserve(self, viewModel.isfavorited) subscribeNext:^(NSNumber *x) {
+        @strongify(self)
+        
+        if (self.viewModel.isfavorited) {
+            
+            [self.favoriteBtn setImage:[UIImage imageNamed:@"guanzhu"] forState:UIControlStateNormal];
+        }
+        else{
+            [self.favoriteBtn setImage:[UIImage imageNamed:@"guanzhuan"] forState:UIControlStateNormal];
+            
+        }
+        
+        [self.favoriteBtn setTitle:[NSString stringWithFormat:@"关注 %@",self.viewModel.favoritedSize] forState:UIControlStateNormal];
+        
+         [self.favoriteBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+        
+        [self.commentBtn setTitle:[NSString stringWithFormat:@"评论 %@",self.viewModel.commentSize] forState:UIControlStateNormal];
+         [self.commentBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+        
+    }];
  
     [RACObserve(self, viewModel.workBgImage) subscribeNext:^(NSString *x) {
         @strongify(self)
@@ -361,11 +429,14 @@
     [RACObserve(self, viewModel.topicCellVMs) subscribeNext:^(id x) {
         
         [self.mainTableView reloadData];
+        [self.mainTableView.mj_footer endRefreshing];
     }];
     
     [RACObserve(self, viewModel.commentCellVMs) subscribeNext:^(id x) {
         
         [self.mainTableView reloadData];
+        
+        [self.mainTableView.mj_footer endRefreshing];
     }];
     
     
@@ -375,7 +446,7 @@
         @strongify(self);
         [self.mainTableView reloadData];
    
-       
+        [self.mainTableView.mj_footer endRefreshing];
     }];
 
 }
@@ -406,9 +477,13 @@
         
         if (section == 0) {
             
-            return self.viewModel.topCellVMs.count;
+            return self.viewModel.myCellVMs.count;
         }
         else if (section == 1) {
+            
+            return self.viewModel.topCellVMs.count;
+        }
+        else if (section == 2) {
             
             return self.viewModel.bottemCellVMs.count;
         }
@@ -475,10 +550,18 @@
             JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
             
+            [cell loadDataWithVM: self.viewModel.myCellVMs[indexPath.row]];
+            return cell;
+        }
+        else  if (indexPath.section == 1) {
+            
+            JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            
+            
             [cell loadDataWithVM: self.viewModel.topCellVMs[indexPath.row]];
             return cell;
         }
-        else if (indexPath.section == 1) {
+        else if (indexPath.section == 2) {
             
             JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
@@ -549,9 +632,13 @@
         
         if (indexPath.section == 0) {
             
-            return self.viewModel.topCellVMs[indexPath.row].cellHeight;
+            return self.viewModel.myCellVMs[indexPath.row].cellHeight;
         }
         else if (indexPath.section == 1) {
+            
+            return self.viewModel.topCellVMs[indexPath.row].cellHeight;
+        }
+        else if (indexPath.section == 2) {
             
             return self.viewModel.bottemCellVMs[indexPath.row].cellHeight;
         }
@@ -572,6 +659,125 @@
         return self.viewModel.topicCellVMs[indexPath.row].cellHeight;
     }
 
+
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    
+    if (self.viewModel.filterType == JKFilmDataInfo) {
+        return 0.01;
+    }
+    else if (self.viewModel.filterType == JKFilmDataComment ) {
+        
+        if (self.viewModel.myCellVMs.count == 0) {
+            if (section== 0) {
+                return 0.01;
+            }
+        }
+        
+        if (self.viewModel.topCellVMs.count == 0) {
+            if (section== 1) {
+                return 0.01;
+            }
+        }
+        
+        if (self.viewModel.bottemCellVMs.count == 0) {
+            if (section== 2) {
+                return 0.01;
+            }
+        }
+        
+        return 40;
+
+    }
+    else{
+        
+        return 0.01;
+    }
+    
+    
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    if (self.viewModel.filterType == JKFilmDataInfo) {
+        
+        return nil;
+    }
+    else if (self.viewModel.filterType == JKFilmDataComment ) {
+        UIView *view = [[UIView alloc]init];
+        view.backgroundColor = [JKStyleConfiguration whiteColor];
+        UIView *bgView = [[UIView alloc]init];
+        [view addSubview:bgView];
+        bgView.frame = CGRectMake(0, 0, ScreenWidth, 35);
+        bgView.backgroundColor = [JKStyleConfiguration grayBackgroundColor];
+        UILabel *label = [[UILabel alloc]init];
+        label.font = [JKStyleConfiguration subcontentFont];
+        label.textColor = [JKStyleConfiguration drakGrayTextColor];
+        label.frame = CGRectMake(10, 8, 120, 20);
+        
+        if (section == 0) {
+            
+            if (self.viewModel.myCellVMs.count > 0) {
+                label.text = @"我的评论";
+            }
+            else{
+                bgView.hidden = YES;
+            }
+            
+        }
+        else if (section == 1) {
+            
+            if (self.viewModel.topCellVMs.count > 0) {
+                label.text = @"最客观评论";
+            }
+            else{
+                bgView.hidden = YES;
+            }
+            
+        }
+        else if (section == 2) {
+            if (self.viewModel.bottemCellVMs.count > 0) {
+                label.text = @"最不客观评论";
+            }
+            else{
+                bgView.hidden = YES;
+            }
+            
+        }
+        else{
+            
+            label.text = @"全部回复";
+            
+        }
+        
+        [view addSubview:label];
+        
+        return view;
+
+    }
+    else{
+        
+        return nil;
+    }
+
+    
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    if (self.viewModel.filterType == JKFilmDataInfo) {
+        
+        return 1;
+    }
+    else if (self.viewModel.filterType == JKFilmDataComment ) {
+        
+        return  4;
+    }
+    else{
+        
+        return 1;
+    }
 
 }
 

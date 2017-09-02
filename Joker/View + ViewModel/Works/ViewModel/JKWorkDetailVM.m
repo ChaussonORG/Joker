@@ -12,11 +12,20 @@
 #import "CHCommonMacro.h"
 #import "HHTGetString.h"
 #import "JKUserManager.h"
-@interface JKWorkDetailVM()
+#import "JKWorkCommentApi.h"
+#import "JKFavoriteWorkApi.h"
+#import "JKUnfavoriteWorkApi.h"
+#import "JKWorkCommentCreatController.h"
+#import "CHLoginModalController.h"
+
+@interface JKWorkDetailVM()<refreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
 @property (nonatomic , assign) BOOL isLogined;
+
+@property  (nonatomic , assign) NSInteger commentCount;
+
 
 @end
 @implementation JKWorkDetailVM
@@ -47,10 +56,17 @@
 }
 - (void)requestData{
     
+    self.directorsArr = [NSMutableArray array];
+    
     JKFilmDetailApi *api = [[JKFilmDetailApi alloc]initWithWorkId:self.workId];
     
     [api startWithSuccessBlock:^(__kindof JKFilmDetailApi *request) {
         
+        self.favoritedSize = request.model.data.favoritedSize;
+        
+        self.commentSize = request.model.data.commentSize;
+        
+        self.isfavorited = [request.model.data.favorited boolValue];
         
         self.workImage = request.model.data.coverImage;
         
@@ -154,6 +170,7 @@
     
     [self requestTopicData];
     
+    [self requestCommentData];
 }
 
 - (void)requestTopicData{
@@ -184,6 +201,155 @@
         
     }];
 
+    
+}
+
+- (void)requestCommentData{
+    
+    JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
+    
+    api.commentType = @"MOVIE";
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
+        
+        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+        
+        for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.favourComment[i];
+            
+            [topCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+        }
+        
+        self.topCellVMs = [topCellViewModels copy];
+        
+        
+        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+        
+        for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.disgustComment[i];
+            
+            [bottomCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+        }
+        
+        self.bottemCellVMs = [bottomCellViewModels copy];
+        
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        
+        self.commentCount = [request.model.data.total integerValue];
+        
+        for (NSInteger i = 0 ; i < request.model.data.items.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.items[i];
+            
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - i]];
+        }
+        
+        self.commentCellVMs = [cellViewModels copy];
+        
+        
+        
+    } failureBlock:^(__kindof JKWorkCommentApi *request) {
+        
+        
+    }];
+    
+    
+}
+- (JKCommentListCellVM *)assembleViewModelWithList:(JKWorkCommentModelItems                                                               *)list withIndex:(NSInteger)index{
+    
+    JKCommentListCellVM *cellVM = [[JKCommentListCellVM alloc]init];
+    
+    cellVM.delegate = self;
+    
+    cellVM.topicId = list.extId;
+    
+    cellVM.topicReplayId = list.parentId;
+    
+    cellVM.name = list.appUser.nickname;
+    
+    cellVM.headerUrl = list.appUser.photo;
+    
+    cellVM.likeCount = list.favour;
+    
+    cellVM.disgustCount = list.disgust;
+    
+//    if ([list.evaluation isEqualToString:@"1"]) {
+//        
+//        cellVM.commentStatus = JKCommentZan;
+//    }
+//    else if ([list.evaluation isEqualToString:@"0"]) {
+//        
+//        cellVM.commentStatus  = JKCommentCai;
+//    }
+//    else{
+//        
+//        cellVM.commentStatus  = JKCommentWeipinglun;
+//    }
+    CGSize nameLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.name, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
+    
+    cellVM.nameLabelWeight = nameLabelSize.width;
+    
+//    cellVM.time =  [HHTGetString timeStrwithTimestamp:list.createTime];
+    
+//    if ([list.author.userId isEqualToString:[JKUserManager sharedData].currentUser.userId]) {
+//        
+//        cellVM.isMyComment = YES;
+//    }
+//    else{
+//        
+//        cellVM.isMyComment = NO;
+//        
+//    }
+//    cellVM.quoteAutor = list.replyInfo.author.nickname;
+    
+    CGSize quoteAutorLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.quoteAutor, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
+    
+    cellVM.quoteAutorLabelWidth = quoteAutorLabelSize.width;
+    
+//    cellVM.quoteContent = list.replyInfo.content;
+    
+    CGSize quoteContentLabelSize = CH_TRANSFORM_TEXTSIZE(cellVM.quoteContent, [JKStyleConfiguration titleFont], CGSizeMake([UIScreen mainScreen].bounds.size.width - 70, MAXFLOAT));
+    
+    cellVM.quoteContentLabelHeight = quoteContentLabelSize.height;
+    
+    if (cellVM.quoteContent) {
+        cellVM.quoteViewHeight = cellVM.quoteContentLabelHeight + 40 + 10;
+        
+        cellVM.quoteFloor = @"引用@";
+        
+        CGSize quoteFloorLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.quoteFloor, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
+        
+        cellVM.quoteFloorLabelWidth = quoteFloorLabelSize.width;
+    }
+    else{
+        
+        cellVM.quoteViewHeight = cellVM.quoteContentLabelHeight;
+    }
+    
+    
+    if (index == 0) {
+        
+        
+        
+    }else{
+        
+        cellVM.floorCount = [NSString stringWithFormat:@"%ld",index];
+    }
+    
+    cellVM.content = list.content;
+    
+    CGSize size = CH_TRANSFORM_TEXTSIZE(cellVM.content, [JKStyleConfiguration titleFont], CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, MAXFLOAT));
+    
+    cellVM.contentLabelHeight = size.height;
+    
+    cellVM.cellHeight = 75 + cellVM.contentLabelHeight + cellVM.quoteViewHeight + 45;
+    
+    return cellVM;
+    
     
 }
 
@@ -250,6 +416,204 @@
     else{
         self.isLogined = NO;
     }
+    
+}
+- (void)requestMoreData{
+    
+    if (self.filterType == JKFilmDataComment) {
+        
+        [self  requestMoreCommentData];
+    }
+    else if(self.filterType == JKFilmDataTopic){
+        
+        [self  requestMoreTopicData];
+        
+        
+    }
+    
+    
+    
+}
+
+- (void)requestMoreTopicData{
+    
+    
+    JKTopicsListApi *api = [[JKTopicsListApi alloc]initTopicFilm];
+    api.projectId = self.workId;
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKTopicsListApi *request) {
+        
+        NSMutableArray <JKTopicListCellVM *>*cellViewModel = [NSMutableArray array];
+        for (JKTopicListModelItems *items in request.model.data.items) {
+            
+            [cellViewModel addObject:[self assembleTopicViewModelWithItem:items]];
+            
+            
+        }
+        
+        //        if (cellViewModel.count < RequestLimit) {
+        //            self.isFinishRequestMoreData = YES;
+        //        }
+        
+        self.topicCellVMs = [cellViewModel copy];
+        
+    } failureBlock:^(__kindof JKTopicsListApi *request) {
+        
+    }];
+    
+    
+}
+
+- (void)requestMoreCommentData{
+    
+    JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
+    
+    api.commentType = @"MOVIE";
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
+        
+        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+        
+        for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.favourComment[i];
+            
+            [topCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+        }
+        
+        self.topCellVMs = [topCellViewModels copy];
+        
+        
+        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+        
+        for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.disgustComment[i];
+            
+            [bottomCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+        }
+        
+        self.bottemCellVMs = [bottomCellViewModels copy];
+        
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        
+        self.commentCount = [request.model.data.total integerValue];
+        
+        for (NSInteger i = 0 ; i < request.model.data.items.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.items[i];
+            
+            [cellViewModels addObject:[self assembleViewModelWithList:list withIndex:self.commentCount - i]];
+        }
+        
+        self.commentCellVMs = [cellViewModels copy];
+        
+        
+        
+    } failureBlock:^(__kindof JKWorkCommentApi *request) {
+        
+        
+    }];
+    
+    
+}
+
+
+- (void)favoriteWork{
+    
+    
+    
+    if ([[JKUserManager sharedData] isUserEffective]) {
+        
+        if (self.isfavorited) {
+            
+            JKUnfavoriteWorkApi *api = [[JKUnfavoriteWorkApi alloc]initWithWorkId:self.workId];
+            api.type = @"MOVIE";
+            
+            [api startWithSuccessBlock:^(__kindof JKUnfavoriteWorkApi *request) {
+                
+                if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+                    
+                    [self requestData];
+                }
+                else{
+                    
+                    [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"] ];
+                }
+                
+            } failureBlock:^(__kindof JKUnfavoriteWorkApi *request) {
+                
+                
+                [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"] ];
+            }];
+            
+        }
+        else{
+            
+            
+            JKFavoriteWorkApi *api = [[JKFavoriteWorkApi alloc]initWithWorkId:self.workId];
+            api.type = @"MOVIE";
+            
+            [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
+                
+                if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+                    
+                    [self requestData];
+                }
+                else{
+                    
+                    [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"] ];
+                }
+            } failureBlock:^(__kindof JKFavoriteWorkApi *request) {
+                
+                [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"] ];
+                
+            }];
+        }
+    }
+    else{
+        
+        [self login];
+    }
+    
+}
+
+- (void)commentWork{
+    [CHProgressHUD showPlainText:@"没有设计稿,不知道如何评分" ];
+    
+    return;
+    
+    if ([[JKUserManager sharedData] isUserEffective]) {
+        
+        JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
+        vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
+        vc.viewModel.extId = self.workId;
+        
+        vc.viewModel.commentType = @"MOVIE";
+        
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+    else{
+        
+        [self login];
+    }
+ 
+}
+
+- (void)login
+{
+    CHLoginModalController *vc = [[CHLoginModalController alloc] init];
+    vc.delegate = self;
+    [[ASNavigator shareModalCenter].fetchCurrentViewController presentViewController:vc animated:YES completion:nil];
+}
+- (void)ch_willCompletionWithSuccess:(NSDictionary *)info
+{
+    [[JKUserManager sharedData] saveUserWithInfo:info];
+    
     
 }
 

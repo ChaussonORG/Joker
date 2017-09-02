@@ -108,6 +108,8 @@
 + (UIColor *)ccccccColor;
 
 + (UIColor *)sixsixColor;
+
++ (UIColor *)twotwoColor;
 /*
  *转换空字符串
  */

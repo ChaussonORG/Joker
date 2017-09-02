@@ -391,6 +391,12 @@
     
 }
 
++ (UIColor *)twotwoColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration twotwoColorHex]];
+    
+}
+
 + (NSString *)sixsixColorHex{
     return @"#666666";
 }
@@ -488,6 +494,11 @@
     
 }
 
++ (NSString *)twotwoColorHex{
+    
+    return @"#222222";
+    
+}
 
 +(NSString*)convertNull:(id)object{
     

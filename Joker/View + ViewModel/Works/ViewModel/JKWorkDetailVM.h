@@ -61,9 +61,17 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 
 @property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*bottemCellVMs;
 
+@property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*myCellVMs;
+
 @property (nonatomic , strong) NSMutableArray <JKTopicListCellVM *>*topicCellVMs;
 
 @property (nonatomic , assign , readonly) BOOL isLogined;
+
+@property (nonatomic , strong) NSString *favoritedSize;
+
+@property (nonatomic , strong) NSString *commentSize;
+
+@property (nonatomic , assign) BOOL isfavorited;
 
 
 @property (nonatomic , assign) float directorsCellHeight;
@@ -81,6 +89,11 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 
 - (void)requestData;
 
+- (void)requestMoreData;
 
 - (void)checkLogin;
+
+- (void)favoriteWork;
+
+- (void)commentWork;
 @end

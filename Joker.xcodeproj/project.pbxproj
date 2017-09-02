@@ -91,6 +91,13 @@
 		5042533A1F5ACF23006DCB66 /* CoreSVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252F81F5ACF23006DCB66 /* CoreSVP.m */; };
 		5042533E1F5ACF23006DCB66 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253021F5ACF23006DCB66 /* LFRoundProgressView.m */; };
 		504253411F5ADE35006DCB66 /* PhotoCotentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253401F5ADE35006DCB66 /* PhotoCotentView.m */; };
+		504253441F5B065D006DCB66 /* JKWorkCommentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253431F5B065D006DCB66 /* JKWorkCommentApi.m */; };
+		504253471F5B0AA2006DCB66 /* JKWorkCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253461F5B0AA2006DCB66 /* JKWorkCommentModel.m */; };
+		5042534A1F5B2005006DCB66 /* JKFavoriteWorkApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253491F5B2005006DCB66 /* JKFavoriteWorkApi.m */; };
+		5042534D1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5042534C1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m */; };
+		504253501F5B2441006DCB66 /* JKWorkCommentCreatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */; };
+		504253531F5B26C7006DCB66 /* JKWorkCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */; };
+		504253561F5B26D8006DCB66 /* JKWorkCommentCreatVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */; };
 		50451D041F586470004BCFC6 /* JKFilmDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50451D031F586470004BCFC6 /* JKFilmDetailApi.m */; };
 		50451D071F58650A004BCFC6 /* JKFilmDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50451D061F58650A004BCFC6 /* JKFilmDetailModel.m */; };
 		504931271F52FFDB008FB164 /* JKFilmTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504931261F52FFDB008FB164 /* JKFilmTimelineCell.m */; };
@@ -452,6 +459,20 @@
 		504253021F5ACF23006DCB66 /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
 		5042533F1F5ADE35006DCB66 /* PhotoCotentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCotentView.h; sourceTree = "<group>"; };
 		504253401F5ADE35006DCB66 /* PhotoCotentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCotentView.m; sourceTree = "<group>"; };
+		504253421F5B065D006DCB66 /* JKWorkCommentApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentApi.h; sourceTree = "<group>"; };
+		504253431F5B065D006DCB66 /* JKWorkCommentApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentApi.m; sourceTree = "<group>"; };
+		504253451F5B0AA2006DCB66 /* JKWorkCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentModel.h; sourceTree = "<group>"; };
+		504253461F5B0AA2006DCB66 /* JKWorkCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentModel.m; sourceTree = "<group>"; };
+		504253481F5B2005006DCB66 /* JKFavoriteWorkApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFavoriteWorkApi.h; sourceTree = "<group>"; };
+		504253491F5B2005006DCB66 /* JKFavoriteWorkApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFavoriteWorkApi.m; sourceTree = "<group>"; };
+		5042534B1F5B2019006DCB66 /* JKUnfavoriteWorkApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKUnfavoriteWorkApi.h; sourceTree = "<group>"; };
+		5042534C1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKUnfavoriteWorkApi.m; sourceTree = "<group>"; };
+		5042534E1F5B2441006DCB66 /* JKWorkCommentCreatApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentCreatApi.h; sourceTree = "<group>"; };
+		5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCreatApi.m; sourceTree = "<group>"; };
+		504253511F5B26C7006DCB66 /* JKWorkCommentCreatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentCreatController.h; sourceTree = "<group>"; };
+		504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCreatController.m; sourceTree = "<group>"; };
+		504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentCreatVM.h; sourceTree = "<group>"; };
+		504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCreatVM.m; sourceTree = "<group>"; };
 		50451D021F586470004BCFC6 /* JKFilmDetailApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFilmDetailApi.h; sourceTree = "<group>"; };
 		50451D031F586470004BCFC6 /* JKFilmDetailApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFilmDetailApi.m; sourceTree = "<group>"; };
 		50451D051F58650A004BCFC6 /* JKFilmDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFilmDetailModel.h; sourceTree = "<group>"; };
@@ -1286,6 +1307,8 @@
 				504C77001F55B9A10004AE70 /* JKTimelineTVModel.m */,
 				50451D051F58650A004BCFC6 /* JKFilmDetailModel.h */,
 				50451D061F58650A004BCFC6 /* JKFilmDetailModel.m */,
+				504253451F5B0AA2006DCB66 /* JKWorkCommentModel.h */,
+				504253461F5B0AA2006DCB66 /* JKWorkCommentModel.m */,
 			);
 			path = TimelineModel;
 			sourceTree = "<group>";
@@ -1297,6 +1320,14 @@
 				504BA9611F4F2FBA00E33F08 /* JKTimelineListApi.m */,
 				50451D021F586470004BCFC6 /* JKFilmDetailApi.h */,
 				50451D031F586470004BCFC6 /* JKFilmDetailApi.m */,
+				504253421F5B065D006DCB66 /* JKWorkCommentApi.h */,
+				504253431F5B065D006DCB66 /* JKWorkCommentApi.m */,
+				504253481F5B2005006DCB66 /* JKFavoriteWorkApi.h */,
+				504253491F5B2005006DCB66 /* JKFavoriteWorkApi.m */,
+				5042534B1F5B2019006DCB66 /* JKUnfavoriteWorkApi.h */,
+				5042534C1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m */,
+				5042534E1F5B2441006DCB66 /* JKWorkCommentCreatApi.h */,
+				5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1571,6 +1602,8 @@
 				504252661F5AB14E006DCB66 /* JKWorkDesCell.m */,
 				504252681F5AB4A4006DCB66 /* JKWorkImageListCell.h */,
 				504252691F5AB4A4006DCB66 /* JKWorkImageListCell.m */,
+				504253511F5B26C7006DCB66 /* JKWorkCommentCreatController.h */,
+				504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1582,6 +1615,8 @@
 				50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */,
 				5042525F1F5A5D37006DCB66 /* JKFilmStaffCellVM.h */,
 				504252601F5A5D37006DCB66 /* JKFilmStaffCellVM.m */,
+				504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */,
+				504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2465,6 +2500,8 @@
 				502347551F18975500E82B8E /* GKFadeNavigationController.m in Sources */,
 				504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */,
 				501F57C61F1F5EBB001D2C8A /* JKMyfavoriteWorksModel.m in Sources */,
+				504253441F5B065D006DCB66 /* JKWorkCommentApi.m in Sources */,
+				504253501F5B2441006DCB66 /* JKWorkCommentCreatApi.m in Sources */,
 				D3973B781EEEEC200076B246 /* JKGameDetailModel.m in Sources */,
 				50451D041F586470004BCFC6 /* JKFilmDetailApi.m in Sources */,
 				506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */,
@@ -2473,7 +2510,9 @@
 				D3973B7D1EEEEC200076B246 /* UserInfoModel.m in Sources */,
 				507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */,
 				D3973BA81EEEF0830076B246 /* JKNewsModel.m in Sources */,
+				5042534A1F5B2005006DCB66 /* JKFavoriteWorkApi.m in Sources */,
 				D3973B801EEEEC200076B246 /* UDIDTools.m in Sources */,
+				504253471F5B0AA2006DCB66 /* JKWorkCommentModel.m in Sources */,
 				504253171F5ACF23006DCB66 /* NSObject+Extend.m in Sources */,
 				5042533A1F5ACF23006DCB66 /* CoreSVP.m in Sources */,
 				50AC9D331F0DDBC100AA7AEC /* JKTopicCreateApi.m in Sources */,
@@ -2549,6 +2588,7 @@
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
 				50AC9D301F0D17E300AA7AEC /* JKTopicCreateVM.m in Sources */,
+				504253561F5B26D8006DCB66 /* JKWorkCommentCreatVM.m in Sources */,
 				505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */,
 				508DB6E31F2598AA002ABF97 /* CHLoginOperationWebViewModel.m in Sources */,
 				508C55701F284467001F1A15 /* CHFaceBoard.m in Sources */,
@@ -2568,6 +2608,7 @@
 				50DA8B681F1B744700530F49 /* JKTopicDetailBottomView.m in Sources */,
 				508C55251F26F1DF001F1A15 /* JKVarietyTimeLineController.m in Sources */,
 				501F57B41F1EFC9D001D2C8A /* JKTopicDetailTopcomentApi.m in Sources */,
+				5042534D1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m in Sources */,
 				D3973B7B1EEEEC200076B246 /* WatchedModel.m in Sources */,
 				5042531E1F5ACF23006DCB66 /* UIImage+Cut.m in Sources */,
 				D3973BA71EEEF0830076B246 /* BaseModel.m in Sources */,
@@ -2606,6 +2647,7 @@
 				D3973B7A1EEEEC200076B246 /* JKCommentList.m in Sources */,
 				505D86A11F3768B5005B6A6C /* CHImagePicker.m in Sources */,
 				508C556F1F284467001F1A15 /* CHFaceBoard+EmojiHash.m in Sources */,
+				504253531F5B26C7006DCB66 /* JKWorkCommentCreatController.m in Sources */,
 				5042531F1F5ACF23006DCB66 /* UIImage+Extend.m in Sources */,
 				5042531B1F5ACF23006DCB66 /* UIDevice+Extend.m in Sources */,
 				D3973B751EEEEC200076B246 /* ClassifyModel.m in Sources */,
