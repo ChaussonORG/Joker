@@ -26,4 +26,8 @@
 
 @property (nonatomic , assign) float cellHeight;
 
+
+
+- (void)gotoDetailWithWorkId:(NSString *)workId;
+
 @end

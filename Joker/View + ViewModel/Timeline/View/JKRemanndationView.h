@@ -8,11 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ClickRemanndationViewDelegate <NSObject>
+
+- (void)clickHoleViewWithExtId:(NSString *)extId;
+
+@end
+
 @interface JKRemanndationView : UIView
+
+@property (nonatomic , weak) id<ClickRemanndationViewDelegate>delegate;
 
 @property (nonatomic , strong) UIImageView *iconView;
 
 @property (nonatomic , strong) UILabel *belongTypeLabel;
+
+@property (nonatomic , strong) UILabel *versionLabel;
+
+@property (nonatomic , strong) UILabel *laugageLabel;
 
 @property (nonatomic , strong) UILabel *nameLabel;
 
@@ -41,4 +53,6 @@
 @property (nonatomic , strong) UIButton *score4;
 
 @property (nonatomic , strong) UIView *grayView;
+
+@property (nonatomic , strong) NSString *extId;
 @end

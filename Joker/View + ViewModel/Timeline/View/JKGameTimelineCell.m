@@ -102,24 +102,50 @@
                 remanndationView.contentLabelTwo.text = [NSString stringWithFormat:@"%@ %@",cellVM.version,cellVM.language];
                 
                 [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
+                [remanndationView.score1 setImage:[UIImage imageNamed:@"Bitmap"] forState:UIControlStateNormal];
+                [remanndationView.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score2 setTitle:cellVM.score2 forState:UIControlStateNormal];
+                [remanndationView.score2 setImage:[UIImage imageNamed:@"g"] forState:UIControlStateNormal];
+                [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                
                 
                 [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
+                [remanndationView.score3 setImage:[UIImage imageNamed:@"tong"] forState:UIControlStateNormal];
+                [remanndationView.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
-                
+                [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
+                [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 remanndationView.lookPlayScore.text = cellVM.jokerScore;
                 
-                if (cellVM.belongType.length > 0) {
+                if (cellVM.version.length > 0) {
                     
-                    remanndationView.belongTypeLabel.hidden = NO;
-                    remanndationView.belongTypeLabel.text = cellVM.belongType;
+                    remanndationView.versionLabel.hidden = NO;
+                    remanndationView.versionLabel.text = cellVM.version;
                 }
                 else{
                     
-                    remanndationView.belongTypeLabel.hidden = NO;
+                    remanndationView.versionLabel.hidden = NO;
                     
+                }
+                if (cellVM.language.length > 0) {
+                    
+                    remanndationView.laugageLabel.hidden = NO;
+                    remanndationView.laugageLabel.text = cellVM.language;
+                }
+                else{
+                    
+                    remanndationView.laugageLabel.hidden = NO;
+                    
+                }
+                if (cellVM.isfavorite) {
+                    
+                    remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhu"];
+                }
+                else{
+                    
+                    remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhuan"];
                 }
                 
                 [self.contentView addSubview:remanndationView];

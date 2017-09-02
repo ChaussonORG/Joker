@@ -15,6 +15,8 @@
 
 @property (nonatomic , strong ,readonly) NSString *projectType;
 
+@property (nonatomic , strong) NSString *projectId;
+
 @property (nonatomic , assign) BOOL favorite;
 
 @property (nonatomic , assign) BOOL querySelf;

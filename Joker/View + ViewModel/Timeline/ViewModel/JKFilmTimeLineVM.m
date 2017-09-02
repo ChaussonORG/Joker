@@ -125,6 +125,8 @@
             
             cellVM.name = item.name;
             
+            cellVM.extId = item.extId;
+            
             cellVM.favoriteCount = item.collectQuantity;
             
             cellVM.jokerScore = item.jokerScore;

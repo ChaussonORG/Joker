@@ -35,4 +35,9 @@
 @property (nonatomic , strong) NSString *score3;
 
 @property (nonatomic , strong) NSString *score4;
+
+
+@property (nonatomic , strong) NSString *extId;
+
+- (void)gotoDetail;
 @end

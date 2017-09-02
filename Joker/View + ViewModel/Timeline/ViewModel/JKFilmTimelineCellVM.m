@@ -7,7 +7,7 @@
 //
 
 #import "JKFilmTimelineCellVM.h"
-
+#import "JKWorkDetailController.h"
 @implementation JKFilmTimelineCellVM
 
 - (instancetype)init
@@ -22,5 +22,15 @@
         
     }
     return self;
+}
+
+
+- (void)gotoDetailWithWorkId:(NSString *)workId{
+    
+    JKWorkDetailController *vc = [[JKWorkDetailController alloc]initWithWorkId:workId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+    
 }
 @end

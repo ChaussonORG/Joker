@@ -88,6 +88,10 @@
     }
     
     
+    if (self.projectId) {
+        [data setObject:self.projectId forKey:@"projectId"];
+    }
+    
     if (self.querySelf) {
         [data setObject:@(self.querySelf) forKey:@"querySelf"];
     }

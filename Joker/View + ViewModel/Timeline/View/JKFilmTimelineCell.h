@@ -10,7 +10,7 @@
 #import "JKFilmTimelineCellVM.h"
 #import "JKRemanndationView.h"
 
-@interface JKFilmTimelineCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface JKFilmTimelineCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ClickRemanndationViewDelegate>
 
 @property (nonatomic , strong) UILabel *dateLabel;
 

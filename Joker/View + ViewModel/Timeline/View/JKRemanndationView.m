@@ -15,6 +15,10 @@
     if (self) {
         
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickRemanndationView)];
+        
+        [self addGestureRecognizer:tap];
+        
         
         [self setupSubviews];
     }
@@ -39,6 +43,24 @@
     [self.iconView addSubview:self.belongTypeLabel];
     self.belongTypeLabel.frame = CGRectMake(self.iconView.frame.size.width - 22, 0, 22, 15);
     
+    self.versionLabel = [[UILabel alloc]init];
+    self.versionLabel.font = [JKStyleConfiguration minContentFont];
+    self.versionLabel.textColor = [JKStyleConfiguration whiteColor];
+    self.versionLabel.backgroundColor = [JKStyleConfiguration blackColor];
+    self.versionLabel.textAlignment = NSTextAlignmentCenter;
+    self.versionLabel.hidden = YES;
+    [self.iconView addSubview:self.versionLabel];
+    self.versionLabel.frame = CGRectMake(self.iconView.frame.size.width - 22, 0, 22, 15);
+    
+    
+    self.laugageLabel = [[UILabel alloc]init];
+    self.laugageLabel.font = [JKStyleConfiguration minContentFont];
+    self.laugageLabel.textColor = [JKStyleConfiguration whiteColor];
+    self.laugageLabel.backgroundColor = [JKStyleConfiguration blackColor];
+    self.laugageLabel.textAlignment = NSTextAlignmentCenter;
+    self.laugageLabel.hidden = YES;
+    [self.iconView addSubview:self.laugageLabel];
+    self.laugageLabel.frame = CGRectMake(self.versionLabel.frame.origin.x - 22- 1, 0, 22, 15);
     
     self.favoriteView = [[UIImageView alloc]init];
     self.favoriteView.frame = CGRectMake(ScreenWidth - 30 -20, 18, 20, 15);
@@ -108,7 +130,7 @@
     
     self.score1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score1 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
+    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x-5, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10 , 45, 20);
     [self addSubview:self.score1];
     self.score1.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score1 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -116,7 +138,7 @@
     
     self.score2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score2 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
+    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width + 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y+ 10 , 45, 20);
     [self addSubview:self.score2];
     self.score2.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score2 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -124,14 +146,14 @@
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
+    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width+ 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 45, 20);
     [self addSubview:self.score3];
     self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     self.score4 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score4 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y , 35, 20);
+    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width+ 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 45, 20);
     [self addSubview:self.score4];
     self.score4.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -142,6 +164,13 @@
     self.grayView.frame = CGRectMake(0, 170, ScreenWidth, 10);
     [self addSubview:self.grayView];
     
+    
+}
+
+
+- (void)clickRemanndationView{
+    
+    [self.delegate clickHoleViewWithExtId:self.extId];
     
 }
 @end

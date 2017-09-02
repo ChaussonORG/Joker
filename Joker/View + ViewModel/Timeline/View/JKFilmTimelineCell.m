@@ -82,12 +82,13 @@
             for (int i = 0 ; i < self.viewModel.recommendArr.count; i ++) {
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
-                
+               
+                remanndationView.delegate = self;
 
                 remanndationView.frame = CGRectMake(0, self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height + i * 180, ScreenWidth, 180);
                 
                 JKFilmTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
-                
+                remanndationView.extId = cellVM.extId;
                 NSURL * imageURL = [NSURL URLWithString:cellVM.imageUrl];
         
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
@@ -112,14 +113,32 @@
 //                remanndationView.contentLabelTwo.text = cellVM.mainActors;
                 
                 [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
+                [remanndationView.score1 setImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
+                 [remanndationView.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score2 setTitle:cellVM.score2 forState:UIControlStateNormal];
+                [remanndationView.score2 setImage:[UIImage imageNamed:@"imdb"] forState:UIControlStateNormal];
+                 [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                
                 
                 [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
+                [remanndationView.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
+                 [remanndationView.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
+                [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
+                 [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 remanndationView.lookPlayScore.text = cellVM.jokerScore;
+                
+                if (cellVM.isfavorite) {
+                    
+                     remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhu"];
+                }
+                else{
+                    
+                    remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhuan"];
+                }
    
                 [self.contentView addSubview:remanndationView];
                 
@@ -148,6 +167,13 @@
     RAC(self,dateLabel.text) = RACObserve(self, viewModel.date);
 
 
+}
+
+- (void)clickHoleViewWithExtId:(NSString *)extId{
+    
+    
+    [self.viewModel gotoDetailWithWorkId:extId];
+    
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     

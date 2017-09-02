@@ -102,6 +102,7 @@
 @property (nonatomic, strong)NSString <Optional>*ign_score;
 @property (nonatomic, strong)NSString <Optional>*gs_score;
 @property (nonatomic, strong)NSString <Optional>*joker_score;
+@property (nonatomic, strong)NSString <Optional>*mc_score;
 @property (nonatomic, strong)NSString <Optional>*platform;
 @property (nonatomic, strong)NSString <Optional>*version;
 @property (nonatomic, strong)NSString <Optional>*language;
