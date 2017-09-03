@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JKFilmStaffCellVM.h"
-#import "JKCommentListCellVM.h"
+#import "JKWorkCommentListCellVM.h"
 #import "JKTopicListCellVM.h"
 
 typedef NS_ENUM(NSInteger, JKFilmDataFilter){
@@ -56,12 +56,12 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 @property (nonatomic , strong) NSArray *imageArrs;
 
 
-@property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*commentCellVMs;
-@property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*topCellVMs;
+@property (nonatomic , strong) NSMutableArray <JKWorkCommentListCellVM *>*commentCellVMs;
+@property (nonatomic , strong) NSMutableArray <JKWorkCommentListCellVM *>*topCellVMs;
 
-@property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*bottemCellVMs;
+@property (nonatomic , strong) NSMutableArray <JKWorkCommentListCellVM *>*bottemCellVMs;
 
-@property (nonatomic , strong) NSMutableArray <JKCommentListCellVM *>*myCellVMs;
+@property (nonatomic , strong) NSMutableArray <JKWorkCommentListCellVM *>*myCellVMs;
 
 @property (nonatomic , strong) NSMutableArray <JKTopicListCellVM *>*topicCellVMs;
 

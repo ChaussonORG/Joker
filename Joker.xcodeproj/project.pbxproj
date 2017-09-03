@@ -121,6 +121,10 @@
 		505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86991F3768B5005B6A6C /* CHDownSheetModel.m */; };
 		505D86A11F3768B5005B6A6C /* CHImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D869B1F3768B5005B6A6C /* CHImagePicker.m */; };
 		505D86A21F3768B5005B6A6C /* UIViewController+ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */; };
+		50658B3F1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B3E1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m */; };
+		50658B421F5BDDF200B966E2 /* JKWorkCommentZanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B411F5BDDF200B966E2 /* JKWorkCommentZanApi.m */; };
+		50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */; };
+		50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
 		507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */; };
@@ -519,6 +523,14 @@
 		505D869B1F3768B5005B6A6C /* CHImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHImagePicker.m; sourceTree = "<group>"; };
 		505D869C1F3768B5005B6A6C /* UIViewController+ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ImagePicker.h"; sourceTree = "<group>"; };
 		505D869D1F3768B5005B6A6C /* UIViewController+ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ImagePicker.m"; sourceTree = "<group>"; };
+		50658B3D1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentCaiApi.h; sourceTree = "<group>"; };
+		50658B3E1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCaiApi.m; sourceTree = "<group>"; };
+		50658B401F5BDDF200B966E2 /* JKWorkCommentZanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentZanApi.h; sourceTree = "<group>"; };
+		50658B411F5BDDF200B966E2 /* JKWorkCommentZanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentZanApi.m; sourceTree = "<group>"; };
+		50658B431F5BDE9800B966E2 /* JKWorkCommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentListCell.h; sourceTree = "<group>"; };
+		50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentListCell.m; sourceTree = "<group>"; };
+		50658B461F5BDEBA00B966E2 /* JKWorkCommentListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentListCellVM.h; sourceTree = "<group>"; };
+		50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentListCellVM.m; sourceTree = "<group>"; };
 		506C12691EF6E82700DF705F /* JKTopicsFilteredListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListController.h; sourceTree = "<group>"; };
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
@@ -1370,6 +1382,10 @@
 				50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */,
 				50417CAA1F43F17800A2E12B /* JKCommentTurnApi.h */,
 				50417CAB1F43F17800A2E12B /* JKCommentTurnApi.m */,
+				50658B3D1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.h */,
+				50658B3E1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m */,
+				50658B401F5BDDF200B966E2 /* JKWorkCommentZanApi.h */,
+				50658B411F5BDDF200B966E2 /* JKWorkCommentZanApi.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -1604,6 +1620,8 @@
 				504252691F5AB4A4006DCB66 /* JKWorkImageListCell.m */,
 				504253511F5B26C7006DCB66 /* JKWorkCommentCreatController.h */,
 				504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */,
+				50658B431F5BDE9800B966E2 /* JKWorkCommentListCell.h */,
+				50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1617,6 +1635,8 @@
 				504252601F5A5D37006DCB66 /* JKFilmStaffCellVM.m */,
 				504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */,
 				504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */,
+				50658B461F5BDEBA00B966E2 /* JKWorkCommentListCellVM.h */,
+				50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2547,6 +2567,7 @@
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
 				504253231F5ACF23006DCB66 /* UIView+Extend.m in Sources */,
+				50658B3F1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m in Sources */,
 				504C77131F55C1100004AE70 /* JKGameTimelineCellVM.m in Sources */,
 				504253211F5ACF23006DCB66 /* UIImage+Water.m in Sources */,
 				5049312D1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.m in Sources */,
@@ -2602,6 +2623,7 @@
 				504253051F5ACF23006DCB66 /* PhotoBroswerLayout.m in Sources */,
 				50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */,
 				D3973B6D1EEEEC200076B246 /* CHTabBarViewModel.m in Sources */,
+				50658B421F5BDDF200B966E2 /* JKWorkCommentZanApi.m in Sources */,
 				50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */,
 				D3973B521EEEEC200076B246 /* AppDelegate.m in Sources */,
 				D3973BB01EEEF3EE0076B246 /* ToolsClass.m in Sources */,
@@ -2625,7 +2647,9 @@
 				508DB6E21F2598AA002ABF97 /* CHLoginOperationWebController.m in Sources */,
 				50AF130B1F08D619005B34AA /* ZWTopSelectVcView.m in Sources */,
 				50417CA91F43F16B00A2E12B /* JKCommetDeleteApi.m in Sources */,
+				50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */,
 				508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */,
+				50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */,
 				501F7E3A1EFAB1FC00FE1E35 /* JKCommonApi.m in Sources */,
 				501F57B71F1EFCD6001D2C8A /* JKTopicDetailTopcomentModel.m in Sources */,
 				504252671F5AB14E006DCB66 /* JKWorkDesCell.m in Sources */,

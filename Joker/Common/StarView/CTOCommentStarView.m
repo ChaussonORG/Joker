@@ -68,6 +68,10 @@
 
 - (void)setUpStar{
     
+    if (self.subviews.count > 0) {
+       [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];  
+    }
+    
     int selectedHoleStar = (int)_selectedCounts;
     
     BOOL isShowHalfStar;

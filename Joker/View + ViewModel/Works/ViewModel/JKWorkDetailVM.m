@@ -18,7 +18,7 @@
 #import "JKWorkCommentCreatController.h"
 #import "CHLoginModalController.h"
 
-@interface JKWorkDetailVM()<refreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKWorkDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
@@ -51,6 +51,8 @@
         self.bottemCellVMs = [NSMutableArray array];
         
         self.commentCellVMs = [NSMutableArray array];
+        
+        self.myCellVMs = [NSMutableArray array];
     }
     return self;
 }
@@ -214,7 +216,18 @@
     
     [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
         
-        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+        NSMutableArray <JKWorkCommentListCellVM *>*myCellViewModels = [NSMutableArray array];
+        
+        for (NSInteger i = 0 ; i < request.model.data.mineComment.count ; i ++) {
+            
+            JKWorkCommentModelItems *list  = request.model.data.mineComment[i];
+            
+            [myCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+        }
+        
+        self.myCellVMs = [myCellViewModels copy];
+        
+        NSMutableArray <JKWorkCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
         
         for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
             
@@ -226,7 +239,7 @@
         self.topCellVMs = [topCellViewModels copy];
         
         
-        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+        NSMutableArray <JKWorkCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
         
         for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
             
@@ -237,7 +250,7 @@
         
         self.bottemCellVMs = [bottomCellViewModels copy];
         
-        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        NSMutableArray <JKWorkCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
         self.commentCount = [request.model.data.total integerValue];
         
@@ -259,15 +272,28 @@
     
     
 }
-- (JKCommentListCellVM *)assembleViewModelWithList:(JKWorkCommentModelItems                                                               *)list withIndex:(NSInteger)index{
+
+- (NSString *)reviseString:(NSString *)string{
     
-    JKCommentListCellVM *cellVM = [[JKCommentListCellVM alloc]init];
+    double conversionValue = (double)[string doubleValue];
+    NSString *doubleString = [NSString stringWithFormat:@"%lf",conversionValue];
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    
+    
+    return [decNumber stringValue];
+}
+- (JKWorkCommentListCellVM *)assembleViewModelWithList:(JKWorkCommentModelItems                                                               *)list withIndex:(NSInteger)index{
+    
+    JKWorkCommentListCellVM *cellVM = [[JKWorkCommentListCellVM alloc]init];
+    
+    
+    cellVM.score =  [self reviseString:list.score];
     
     cellVM.delegate = self;
     
     cellVM.topicId = list.extId;
     
-    cellVM.topicReplayId = list.parentId;
+    cellVM.extId = list.parentId;
     
     cellVM.name = list.appUser.nickname;
     
@@ -474,9 +500,15 @@
     
     api.requestModel.limit = RequestLimit;
     
+    api.requestModel.offset = self.commentCellVMs.count;
+    
     [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
         
-        NSMutableArray <JKCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+        
+        
+        
+        
+        NSMutableArray <JKWorkCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
         
         for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
             
@@ -488,7 +520,7 @@
         self.topCellVMs = [topCellViewModels copy];
         
         
-        NSMutableArray <JKCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+        NSMutableArray <JKWorkCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
         
         for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
             
@@ -499,7 +531,7 @@
         
         self.bottemCellVMs = [bottomCellViewModels copy];
         
-        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
+        NSMutableArray <JKWorkCommentListCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.commentCellVMs];
         
         self.commentCount = [request.model.data.total integerValue];
         

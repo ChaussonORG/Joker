@@ -9,7 +9,7 @@
 #import "JKWorkDetailController.h"
 #import "JKTopicListHeaderView.h"
 #import "JKTopicListCell.h"
-#import "JKCommentListCell.h"
+#import "JKWorkCommentListCell.h"
 #import "JKTopicSpareCommentCell.h"
 #import "CHLoginModalController.h"
 #import "JKCommentCreatController.h"
@@ -440,6 +440,14 @@
     }];
     
     
+    [RACObserve(self, viewModel.myCellVMs) subscribeNext:^(id x) {
+        
+        [self.mainTableView reloadData];
+        
+        [self.mainTableView.mj_footer endRefreshing];
+    }];
+    
+    
     [[RACSignal combineLatest:@[RACObserve(self, viewModel.descCellHeight),
                                 RACObserve(self, viewModel.imagesCellHeight),
                                 RACObserve(self, viewModel.directorsCellHeight)]] subscribeNext:^(id x) {
@@ -547,7 +555,7 @@
         
         if (indexPath.section == 0) {
             
-            JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            JKWorkCommentListCell *cell =  [[JKWorkCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
             
             [cell loadDataWithVM: self.viewModel.myCellVMs[indexPath.row]];
@@ -555,7 +563,7 @@
         }
         else  if (indexPath.section == 1) {
             
-            JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            JKWorkCommentListCell *cell =  [[JKWorkCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
             
             [cell loadDataWithVM: self.viewModel.topCellVMs[indexPath.row]];
@@ -563,14 +571,14 @@
         }
         else if (indexPath.section == 2) {
             
-            JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            JKWorkCommentListCell *cell =  [[JKWorkCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
             [cell loadDataWithVM: self.viewModel.bottemCellVMs[indexPath.row]];
             return cell;
         }
         else{
             if (self.viewModel.commentCellVMs.count > 0) {
-                JKCommentListCell *cell =  [[JKCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+                JKWorkCommentListCell *cell =  [[JKWorkCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
                 
                 
                 //            cellVM.delegate = self;

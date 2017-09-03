@@ -41,6 +41,7 @@
 @property (nonatomic, strong)NSArray <Optional,JKWorkCommentModelItems>*items;
 @property (nonatomic, strong)NSArray <Optional,JKWorkCommentModelItems>*favourComment;
 @property (nonatomic, strong)NSArray <Optional,JKWorkCommentModelItems>*disgustComment;
+@property (nonatomic, strong)NSArray <Optional,JKWorkCommentModelItems>*mineComment;
 
 @property (nonatomic, strong)NSString <Optional>*total;
 
