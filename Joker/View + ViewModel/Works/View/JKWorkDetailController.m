@@ -102,7 +102,7 @@
 - (void)setupBottomView{
     
     self.bottomView = [[UIView alloc]init];
-    self.bottomView.frame = CGRectMake(0, self.mainTableView.frame.size.height + self.mainTableView.frame.origin.y - 55 , ScreenWidth, 50) ;
+    self.bottomView.frame = CGRectMake(0, self.mainTableView.frame.size.height + self.mainTableView.frame.origin.y - 45 , ScreenWidth, 50) ;
     [self.view addSubview:self.bottomView];
     self.bottomView.backgroundColor = [UIColor whiteColor];
      
