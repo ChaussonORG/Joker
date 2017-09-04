@@ -18,7 +18,7 @@
 #import "JKWorkDesCell.h"
 #import "JKWorkImageListCell.h"
 
-@interface JKWorkDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate>
+@interface JKWorkDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,WorkrefreshTableViewDelegate>
 
 @property (nonatomic , strong) UIView *workDetailView;
 
@@ -72,11 +72,16 @@
         
         self.viewModel = [[JKWorkDetailVM alloc]initWithWorkId:workId];
         
+        self.viewModel.delegate = self;
+        
         
     }
     return self;
 }
-
+- (void)tableViewReload{
+    
+    [self.viewModel requestData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
@@ -158,7 +163,7 @@
 }
 - (void)setupTableView{
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 30 ) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
@@ -180,7 +185,7 @@
     
     self.workDetailView = [[UIView alloc]init];
     self.workDetailView.backgroundColor = [UIColor whiteColor];
-    self.workDetailView.frame = CGRectMake(0, 0, ScreenWidth, 285);
+    self.workDetailView.frame = CGRectMake(0, 0, ScreenWidth, 290);
     
     
     self.workBgImageView = [[UIImageView alloc]init];
@@ -282,7 +287,7 @@
     [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
 
     
-    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration blackColor]];
+    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration blackColor] isLine:NO];
     self.headerView.delegate = self;
     
     self.headerView.frame = CGRectMake(0, 245, ScreenWidth, 40);
@@ -327,7 +332,9 @@
     [RACObserve(self, viewModel.workImage) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        [self.workImageView sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@"Launch"]];
+        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",x];
+        
+        [self.workImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:[UIImage imageNamed:@"Launch"]];
         
         
 //        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:x]]];

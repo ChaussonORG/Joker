@@ -22,7 +22,7 @@
     return self;
 }
 - (CHRequestMethod)requestMethod{
-    return CHRequestMethodPost;
+    return CHRequestMethodPut;
 }
 - (NSString *)requestPathUrl{
     return [NSString stringWithFormat:@"/app/comment/cai/%@",self.extId]; ;

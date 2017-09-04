@@ -109,8 +109,11 @@
             
             
         }
-        self.strTwo = [NSString stringWithFormat:@"%@/%@",self.strTwo,request.model.data.duration];
         
+        if (![request.model.data.duration isEqualToString:@"null分钟"]) {
+            self.strTwo = [NSString stringWithFormat:@"%@/%@",self.strTwo,request.model.data.duration];
+        }
+          
         
         self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
         
@@ -291,9 +294,9 @@
     
     cellVM.delegate = self;
     
-    cellVM.topicId = list.extId;
+//    cellVM.topicId = list.extId;
     
-    cellVM.extId = list.parentId;
+    cellVM.extId = list.id;
     
     cellVM.name = list.appUser.nickname;
     
@@ -321,15 +324,15 @@
     
 //    cellVM.time =  [HHTGetString timeStrwithTimestamp:list.createTime];
     
-//    if ([list.author.userId isEqualToString:[JKUserManager sharedData].currentUser.userId]) {
-//        
-//        cellVM.isMyComment = YES;
-//    }
-//    else{
-//        
-//        cellVM.isMyComment = NO;
-//        
-//    }
+    if ([list.appUser.userId isEqualToString:[JKUserManager sharedData].currentUser.userId]) {
+        
+        cellVM.isMyComment = YES;
+    }
+    else{
+        
+        cellVM.isMyComment = NO;
+        
+    }
 //    cellVM.quoteAutor = list.replyInfo.author.nickname;
     
     CGSize quoteAutorLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.quoteAutor, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
@@ -505,9 +508,6 @@
     [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
         
         
-        
-        
-        
         NSMutableArray <JKWorkCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
         
         for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
@@ -615,9 +615,7 @@
 }
 
 - (void)commentWork{
-    [CHProgressHUD showPlainText:@"没有设计稿,不知道如何评分" ];
-    
-    return;
+  
     
     if ([[JKUserManager sharedData] isUserEffective]) {
         
@@ -647,6 +645,13 @@
     [[JKUserManager sharedData] saveUserWithInfo:info];
     
     
+}
+
+-(void)refreshSuperTableView{
+    
+    
+    
+    [self.delegate tableViewReload];
 }
 
 @end

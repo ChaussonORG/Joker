@@ -125,6 +125,7 @@
 		50658B421F5BDDF200B966E2 /* JKWorkCommentZanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B411F5BDDF200B966E2 /* JKWorkCommentZanApi.m */; };
 		50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */; };
 		50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */; };
+		50658B8D1F5D5E3500B966E2 /* JWStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B8C1F5D5E3500B966E2 /* JWStarView.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
 		507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */; };
@@ -531,6 +532,8 @@
 		50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentListCell.m; sourceTree = "<group>"; };
 		50658B461F5BDEBA00B966E2 /* JKWorkCommentListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentListCellVM.h; sourceTree = "<group>"; };
 		50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentListCellVM.m; sourceTree = "<group>"; };
+		50658B8B1F5D5E3500B966E2 /* JWStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWStarView.h; sourceTree = "<group>"; };
+		50658B8C1F5D5E3500B966E2 /* JWStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWStarView.m; sourceTree = "<group>"; };
 		506C12691EF6E82700DF705F /* JKTopicsFilteredListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListController.h; sourceTree = "<group>"; };
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
@@ -921,6 +924,8 @@
 		501F57C71F2099D2001D2C8A /* StarView */ = {
 			isa = PBXGroup;
 			children = (
+				50658B8B1F5D5E3500B966E2 /* JWStarView.h */,
+				50658B8C1F5D5E3500B966E2 /* JWStarView.m */,
 				501F57C81F2099D2001D2C8A /* CTOCommentStarView.h */,
 				501F57C91F2099D2001D2C8A /* CTOCommentStarView.m */,
 			);
@@ -2634,6 +2639,7 @@
 				D3973B7B1EEEEC200076B246 /* WatchedModel.m in Sources */,
 				5042531E1F5ACF23006DCB66 /* UIImage+Cut.m in Sources */,
 				D3973BA71EEEF0830076B246 /* BaseModel.m in Sources */,
+				50658B8D1F5D5E3500B966E2 /* JWStarView.m in Sources */,
 				504BA95E1F4F2D6000E33F08 /* JKTimelineFilmModel.m in Sources */,
 				504253091F5ACF23006DCB66 /* PBPGView.m in Sources */,
 				5042530F1F5ACF23006DCB66 /* PhotoBroswerVC.m in Sources */,

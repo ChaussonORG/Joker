@@ -82,6 +82,7 @@
                 iconView.frame = CGRectMake(5, 0, 60, 60);
                 iconView.layer.masksToBounds = YES;
                 iconView.layer.cornerRadius = 30;
+                iconView.contentMode =  UIViewContentModeScaleAspectFill;
                 [cellView addSubview:iconView];
                 
                 UILabel *nameLabel = [[UILabel alloc]init];
@@ -122,6 +123,7 @@
                 iconView.layer.borderColor = [JKStyleConfiguration aaaaaaColor].CGColor;
                 iconView.layer.borderWidth = 1;
                 [cellView addSubview:iconView];
+                iconView.contentMode =  UIViewContentModeScaleAspectFill;
                 
                 UILabel *countLabel = [[UILabel alloc]init];
                 countLabel.font = [JKStyleConfiguration titleFont];
@@ -173,6 +175,7 @@
             iconView.layer.masksToBounds = YES;
             iconView.layer.cornerRadius = 30;
             [cellView addSubview:iconView];
+            iconView.contentMode =  UIViewContentModeScaleAspectFill;
             
             UILabel *nameLabel = [[UILabel alloc]init];
             nameLabel.font = [JKStyleConfiguration contentFont];
@@ -211,6 +214,7 @@
             iconView.layer.masksToBounds = YES;
             iconView.layer.cornerRadius = 30;
             [cellView addSubview:iconView];
+            iconView.contentMode =  UIViewContentModeScaleAspectFill;
             
             UILabel *nameLabel = [[UILabel alloc]init];
             nameLabel.font = [JKStyleConfiguration contentFont];

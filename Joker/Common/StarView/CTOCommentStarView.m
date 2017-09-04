@@ -99,7 +99,9 @@
             button.selected = YES;
             
         }
-    
+        
+        
+        button.imageView.contentMode = UIViewContentModeScaleToFill;
         
         if (i - _selectedCounts == 0.5) {
             if (isShowHalfStar) {

@@ -320,10 +320,6 @@
     
     
     
-    
-    
-    
-    
     [RACObserve(self, viewModel.disgustCount) subscribeNext:^(NSString *x) {
         @strongify(self);
         

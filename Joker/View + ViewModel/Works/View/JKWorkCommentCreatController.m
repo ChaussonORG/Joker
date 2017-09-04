@@ -9,7 +9,15 @@
 #import "JKWorkCommentCreatController.h"
 #import "CHFaceBoard.h"
 #import <CHProgressHUD/CHProgressHUD.h>
-@interface JKWorkCommentCreatController ()
+#import "JWStarView.h"
+@interface JKWorkCommentCreatController ()<UITextViewDelegate>
+
+@property (nonatomic , strong) UILabel * pointLabel;
+
+@property (nonatomic , strong) JWStarView *starView;
+
+@property (nonatomic , strong) UILabel * pointWordLabel;
+
 @property (nonatomic , strong) UILabel * titleTextView;
 
 @property (nonatomic , strong) UITextView *contentView;
@@ -70,19 +78,100 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    self.pointLabel = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth - 50)/2, 25, 45, 45)];
+    self.pointLabel.numberOfLines = 1;
+    self.pointLabel.userInteractionEnabled = YES;
+    self.pointLabel.textAlignment = NSTextAlignmentCenter;
+    self.pointLabel.font = [JKStyleConfiguration MasterFont];
+    self.pointLabel.text = @"0";
+    [self.view addSubview:self.pointLabel];
+ 
+    UILabel *fenLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.pointLabel.frame.origin.x + self.pointLabel.frame.size.width , 40, 50, 20)];
+    fenLabel.font = [JKStyleConfiguration titleFont];
+    fenLabel.text = @"分";
+    [self.view addSubview:fenLabel];
+    
+    
+    @weakify(self)
+    self.starView =[[JWStarView alloc]initWithFrame:CGRectMake(100 , self.pointLabel.frame.origin.y + self.pointLabel.frame.size.height + 5, ScreenWidth - 200, 30) numberOfStars:5 rateStyle:HalfStar finish:^(CGFloat currentScore) {
+        @strongify(self)
+        self.pointLabel.text = [NSString stringWithFormat:@"%d",(int)(currentScore*2)];
+        
+        NSString *commentWord;
+        switch ((int)(currentScore*2)) {
+            case 10:
+                commentWord = @"完美神作";
+                break;
+                
+            case 9:
+                commentWord = @"佳作";
+                break;
+                
+            case 8:
+                commentWord = @"佳作";
+                break;
+                
+            case 7:
+                commentWord = @"还可以，值得推荐";
+                break;
+                
+            case 6:
+                commentWord = @"及格";
+                break;
+                
+            case 5:
+                commentWord = @"浪费时间";
+                break;
+                
+            case 4:
+                commentWord = @"浪费时间";
+                break;
+                
+            case 3:
+                commentWord = @"生理不适";
+                break;
+                
+            case 2:
+                commentWord = @"生理不适";
+                break;
+            case 1:
+                commentWord = @"生理不适";
+                break;
+                
+            case 0:
+                commentWord = @"这是一坨屎";
+                break;
+            default:
+                break;
+        }
+        
+        self.viewModel.score = [NSString stringWithFormat:@"%d",(int)(currentScore*2)];
+        self.pointWordLabel.text = commentWord;
+        NSLog(@"star2----%f",currentScore);
+    }];
+     
+    [self.view addSubview:self.starView];
+    
+    self.pointWordLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.starView.frame.origin.y + self.starView.frame.size.height + 20 , ScreenWidth, 20)];
+    self.pointWordLabel.font = [JKStyleConfiguration titleFont];
+    self.pointWordLabel.text = @"这是一坨屎";
+    self.pointWordLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self.view addSubview:self.pointWordLabel];
+    
     self.titleTextView = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 70)];
     self.titleTextView.numberOfLines = 1;
     self.titleTextView.userInteractionEnabled = YES;
     self.titleTextView.font = [JKStyleConfiguration hugeFont];
-    [self.view addSubview:self.titleTextView];
+//    [self.view addSubview:self.titleTextView];
     self.titleTextView.text = self.viewModel.titleStr;
     
     UIView *lineView = [[UIView alloc]init];
     lineView.backgroundColor = [JKStyleConfiguration lineColor];
-    lineView.frame = CGRectMake(20, self.titleTextView.frame.origin.y + self.titleTextView.frame.size.height, ScreenWidth - 40, 1);
+    lineView.frame = CGRectMake(20, self.pointWordLabel.frame.origin.y + self.pointWordLabel.frame.size.height + 35, ScreenWidth - 40, 1);
     [self.view addSubview:lineView];
     
-    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 )];
+    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20,  lineView.frame.size.height +  lineView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 )];
     self.contentView.userInteractionEnabled = YES;
     //    self.contentView.textVerticalAlignment = YYTextVerticalAlignmentTop;
     [self.view addSubview:self.contentView];

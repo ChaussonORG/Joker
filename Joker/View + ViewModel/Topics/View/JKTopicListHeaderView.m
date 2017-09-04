@@ -17,7 +17,7 @@
 
 @end
 @implementation JKTopicListHeaderView
-- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color
+- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color isLine:(BOOL)isLine
 {
     if (self = [super init]) {
     
@@ -28,6 +28,7 @@
         
         self.backgroundColor = [JKStyleConfiguration whiteColor];
         
+        self.isSeperator = isLine;
         
         [self  setupUI];
         [self binding];
@@ -59,13 +60,17 @@
         [btn addTarget:self action:@selector(clickFilterBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
         
-        if (i != _filterTilteArr.count - 1) {
+        if (self.isSeperator) {
+            if (i != _filterTilteArr.count - 1) {
+                
+                UIView *line = [[UIView alloc]init];
+                line.backgroundColor = [JKStyleConfiguration lineColor];
+                line.frame = CGRectMake(btn.frame.origin.x + btn.frame.size.width, btn.frame.origin.y + 10, 1, 20);
+                [self addSubview:line];
+                
+            }
             
-            UIView *line = [[UIView alloc]init];
-            line.backgroundColor = [JKStyleConfiguration lineColor];
-            line.frame = CGRectMake(btn.frame.origin.x + btn.frame.size.width, btn.frame.origin.y + 10, 1, 20);
-            [self addSubview:line];
-            
+
         }
         if (i == self.selectedIndex) {
             
@@ -74,7 +79,6 @@
             self.bottomLine.frame = CGRectMake((btn.frame.size.width - 20)/2, btn.frame.size.height + btn.frame.origin.y, 20, 2);
             
         }
-        
     }
     
     

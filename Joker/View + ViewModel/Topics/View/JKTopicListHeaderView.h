@@ -16,7 +16,7 @@
 @end
 @interface JKTopicListHeaderView : UIView
 
-- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color;
+- (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color isLine:(BOOL)isLine;
 
 @property (nonatomic , weak) id<ChooseTopicDelegate>delegate;
 
@@ -24,6 +24,7 @@
 
 @property (nonatomic , assign) NSInteger selectedIndex;
 
+@property (nonatomic , assign) BOOL isSeperator;
 
 @property (nonatomic , strong) UIView *bottomLine;
 @end

@@ -18,7 +18,14 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 };
 
 
+@protocol WorkrefreshTableViewDelegate <NSObject>
+
+- (void)tableViewReload;
+
+@end
+
 @interface JKWorkDetailVM : NSObject
+@property (nonatomic , weak) id<WorkrefreshTableViewDelegate>delegate;
 
 @property (nonatomic , assign) JKFilmDataFilter filterType;
 

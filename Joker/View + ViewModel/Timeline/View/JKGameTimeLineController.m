@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     
-    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration redColor]];
+    self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration redColor] isLine:YES];
     self.headerView.delegate = self;
     self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 42);
     self.headerView.bottomLine.hidden = YES;
