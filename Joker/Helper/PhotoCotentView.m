@@ -21,7 +21,7 @@
     
     NSUInteger maxCol = 4;
     
-    CGFloat width = (ScreenWidth - 50)/4;
+    CGFloat width = (ScreenWidth - 35)/4;
     
     CGFloat height = width;
 
@@ -34,7 +34,7 @@
         
         NSUInteger col = idx / 4;
         
-        CGFloat x = 10 + row * (width + 10);
+        CGFloat x = 10 + row * (width + 5);
         
         CGFloat y = col * (height + 10);
         
@@ -66,7 +66,7 @@
         imageV.userInteractionEnabled = YES;
         
         //模式
-        imageV.contentMode=UIViewContentModeScaleAspectFit;
+        imageV.contentMode=UIViewContentModeScaleAspectFill;
         
         imageV.clipsToBounds = YES;
         

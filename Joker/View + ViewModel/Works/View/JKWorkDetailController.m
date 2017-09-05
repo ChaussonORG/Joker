@@ -20,6 +20,9 @@
 
 @interface JKWorkDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,WorkrefreshTableViewDelegate>
 
+
+@property (nonatomic , strong) UIImageView *bgImageView;
+
 @property (nonatomic , strong) UIView *workDetailView;
 
 @property (nonatomic ,strong) UIImageView *workBgImageView;
@@ -87,6 +90,14 @@
     self.navigationController.navigationBarHidden = YES;
     
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
+    
+    self.bgImageView = [[UIImageView alloc]init];
+    self.bgImageView.frame = CGRectMake(0, -20, ScreenWidth, ScreenHeight + 20);
+    [self.view addSubview:self.bgImageView];
+    
+    
+    
+    
     
     [self setupWorkDetailView];
     
@@ -164,7 +175,8 @@
 - (void)setupTableView{
     
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
-    self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
+    self.mainTableView.backgroundColor = [UIColor whiteColor];
+    
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -184,14 +196,21 @@
     
     
     self.workDetailView = [[UIView alloc]init];
-    self.workDetailView.backgroundColor = [UIColor whiteColor];
-    self.workDetailView.frame = CGRectMake(0, 0, ScreenWidth, 290);
+    self.workDetailView.backgroundColor = [UIColor clearColor];
+    self.workDetailView.frame = CGRectMake(0, 0, ScreenWidth, 287);
     
+    [self.workDetailView addSubview:self.bgImageView];
+    self.workDetailView.layer.masksToBounds = YES;
+    UIView *whiteView = [[UIView alloc]init];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.bgImageView addSubview:whiteView];
+    whiteView.frame = CGRectMake(0, 230, ScreenWidth, ScreenHeight);
     
     self.workBgImageView = [[UIImageView alloc]init];
-    self.workBgImageView.frame = CGRectMake(-70, -50, ScreenWidth + 140, 280);
+    self.workBgImageView.frame = CGRectMake(-70, -50, ScreenWidth + 140, 260);
     [self.workDetailView addSubview:self.workBgImageView];
     self.workBgImageView.contentMode = UIViewContentModeScaleToFill;
+    self.workBgImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     
     self.workImageView = [[UIImageView alloc]init];
     self.workImageView.frame = CGRectMake(20, 90, 110, 155);
@@ -366,20 +385,21 @@
     [RACObserve(self, viewModel.workBgImage) subscribeNext:^(NSString *x) {
         @strongify(self)
         
+        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:x]];
         
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            // 处理耗时操作的代码块...
-
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:x]]];
-            image  = [self coreBlurImage:image withBlurNumber:10];
-            //通知主线程刷新
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //回调或者说是通知主线程刷新，
-                
-                self.workBgImageView.image = image;
-            });
-            
-        });
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//            // 处理耗时操作的代码块...
+//
+//            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:x]]];
+//            image  = [self coreBlurImage:image withBlurNumber:10];
+//            //通知主线程刷新
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                //回调或者说是通知主线程刷新，
+//                
+//                self.workBgImageView.image = image;
+//            });
+//            
+//        });
         
     }];
     
