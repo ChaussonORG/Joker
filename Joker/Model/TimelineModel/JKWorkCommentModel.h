@@ -34,7 +34,7 @@
 @property (nonatomic, strong)NSString <Optional>*count;
 @property (nonatomic, strong)JKWorkCommentModelAppUser *appUser;
 
-
+@property (nonatomic, strong)NSString <Optional>*favotite;
 @end
 
 @interface JKWorkCommentModelData : JSONModel

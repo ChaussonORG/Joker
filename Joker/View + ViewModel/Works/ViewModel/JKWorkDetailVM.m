@@ -306,18 +306,18 @@
     
     cellVM.disgustCount = list.disgust;
     
-//    if ([list.evaluation isEqualToString:@"1"]) {
-//        
-//        cellVM.commentStatus = JKCommentZan;
-//    }
-//    else if ([list.evaluation isEqualToString:@"0"]) {
-//        
-//        cellVM.commentStatus  = JKCommentCai;
-//    }
-//    else{
-//        
-//        cellVM.commentStatus  = JKCommentWeipinglun;
-//    }
+    if ([list.favotite isEqualToString:@"1"]) {
+        
+        cellVM.commentStatus = JKWorkCommentZan;
+    }
+    else if ([list.favotite isEqualToString:@"0"]) {
+        
+        cellVM.commentStatus  = JKWorkCommentCai;
+    }
+    else{
+        
+        cellVM.commentStatus  = JKWorkCommentWeipinglun;
+    }
     CGSize nameLabelSize =  CH_TRANSFORM_TEXTSIZE(cellVM.name, [JKStyleConfiguration subcontentFont], CGSizeMake(MAXFLOAT, 18));
     
     cellVM.nameLabelWeight = nameLabelSize.width;
@@ -508,28 +508,28 @@
     [api startWithSuccessBlock:^(__kindof JKWorkCommentApi *request) {
         
         
-        NSMutableArray <JKWorkCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
-        
-        for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
-            
-            JKWorkCommentModelItems *list  = request.model.data.favourComment[i];
-            
-            [topCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
-        }
-        
-        self.topCellVMs = [topCellViewModels copy];
-        
-        
-        NSMutableArray <JKWorkCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
-        
-        for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
-            
-            JKWorkCommentModelItems *list  = request.model.data.disgustComment[i];
-            
-            [bottomCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
-        }
-        
-        self.bottemCellVMs = [bottomCellViewModels copy];
+//        NSMutableArray <JKWorkCommentListCellVM *>*topCellViewModels = [NSMutableArray array];
+//        
+//        for (NSInteger i = 0 ; i < request.model.data.favourComment.count ; i ++) {
+//            
+//            JKWorkCommentModelItems *list  = request.model.data.favourComment[i];
+//            
+//            [topCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+//        }
+//        
+//        self.topCellVMs = [topCellViewModels copy];
+//        
+//        
+//        NSMutableArray <JKWorkCommentListCellVM *>*bottomCellViewModels = [NSMutableArray array];
+//        
+//        for (NSInteger i = 0 ; i < request.model.data.disgustComment.count ; i ++) {
+//            
+//            JKWorkCommentModelItems *list  = request.model.data.disgustComment[i];
+//            
+//            [bottomCellViewModels addObject:[self assembleViewModelWithList:list withIndex:0]];
+//        }
+//        
+//        self.bottemCellVMs = [bottomCellViewModels copy];
         
         NSMutableArray <JKWorkCommentListCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.commentCellVMs];
         

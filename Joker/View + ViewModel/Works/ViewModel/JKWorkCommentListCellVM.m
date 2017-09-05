@@ -90,7 +90,7 @@
     [api startWithSuccessBlock:^(__kindof JKWorkCommentCaiApi *request) {
         
         
-        if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+        if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
             
             [self favouriteComment];
             

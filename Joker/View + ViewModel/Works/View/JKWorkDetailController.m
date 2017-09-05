@@ -64,6 +64,8 @@
 @property (nonatomic , strong) UIButton *favoriteBtn;
 
 @property (nonatomic , strong) UIButton *commentBtn;
+
+@property (nonatomic , strong) UIButton *shareBtn;
 @end
 
 @implementation JKWorkDetailController
@@ -84,6 +86,8 @@
 - (void)tableViewReload{
     
     [self.viewModel requestData];
+    
+    [self.mainTableView reloadData];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,8 +111,20 @@
     
     self.backBtn = [self customLeftBackButton];
     
+    self.shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.shareBtn setImage:[UIImage imageNamed:@"sharewhite"] forState:UIControlStateNormal];
+    [self.shareBtn addTarget:self action:@selector(clickShareBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.shareBtn.frame = CGRectMake(ScreenWidth - 15 - 25, 28, 25, 25);
+    [self.view addSubview:self.shareBtn];
+    
     [self binding];
     // Do any additional setup after loading the view.
+}
+- (void)clickShareBtn{
+    
+    
+    
+    
 }
 - (void)setupBottomView{
     
@@ -135,6 +151,7 @@
     self.commentBtn.titleLabel.font = [JKStyleConfiguration titleFont];
     [self.commentBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
     [self.bottomView addSubview:self.commentBtn];
+    [self.commentBtn setImage:[UIImage imageNamed:@"dipinglun"] forState:UIControlStateNormal];
 }
 
 - (void)clickFavoriteBtn{
@@ -157,7 +174,7 @@
     btn.frame=CGRectMake(20, 15, 80,50);
 //    [btn setTitle:@" 返回" forState:UIControlStateNormal];
     btn.titleLabel.font = [JKStyleConfiguration titleFont];
-    [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
     [btn setAdjustsImageWhenHighlighted:NO];
     [btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [btn addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];

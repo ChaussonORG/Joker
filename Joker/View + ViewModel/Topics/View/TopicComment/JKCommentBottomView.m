@@ -26,7 +26,7 @@
     self.favourBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.favourBtn setImage:[UIImage imageNamed:@"keguan"] forState:UIControlStateNormal]; 
     [self addSubview:self.favourBtn];
-    self.favourBtn.frame = CGRectMake(20, 10, 40, 20);
+    self.favourBtn.frame = CGRectMake(20, 10, 60, 20);
     [self.favourBtn addTarget:self action:@selector(clickFavourBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.favourBtn setTitleColor:[JKStyleConfiguration grayTextColor] forState:UIControlStateNormal];
      [self.favourBtn setTitleEdgeInsets:UIEdgeInsetsMake(- 2, 10, 0, 0)];
@@ -36,7 +36,7 @@
     self.criticismBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [self.criticismBtn setImage:[UIImage imageNamed:@"bukeguan"] forState:UIControlStateNormal];
     [self addSubview:self.criticismBtn];
-    self.criticismBtn.frame = CGRectMake(self.favourBtn.frame.size.width + self.favourBtn.frame.origin.x + 25, 10, 40, 20);
+    self.criticismBtn.frame = CGRectMake(self.favourBtn.frame.size.width + self.favourBtn.frame.origin.x + 25, 10, 60, 20);
     [self.criticismBtn addTarget:self action:@selector(clickCriticismBtn) forControlEvents:UIControlEventTouchUpInside];
      [self.criticismBtn setTitleColor:[JKStyleConfiguration grayTextColor] forState:UIControlStateNormal];
     [self.criticismBtn setTitleEdgeInsets:UIEdgeInsetsMake(- 2, 10, 0, 0)];

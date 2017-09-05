@@ -78,7 +78,7 @@
                 cellView.frame = CGRectMake(cellX, 46 +cellY, cellW, cellH);
                 
                 UIImageView *iconView = [[UIImageView alloc]init];
-                [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@""]];
+                [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@"touxiang"]];
                 iconView.frame = CGRectMake(5, 0, 60, 60);
                 iconView.layer.masksToBounds = YES;
                 iconView.layer.cornerRadius = 30;
