@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JKAnimationTimeLineVM.h"
 @interface JKAnimationTimeLineController : UIViewController
+
+
+@property (nonatomic , strong) JKAnimationTimeLineVM *viewModel;
+
 
 @end
