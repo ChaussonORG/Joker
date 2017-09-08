@@ -104,14 +104,21 @@
     // 创建 格式 对象
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // 设置 日期 格式 可以根据自己的需求 随时调整， 否则计算的结果可能为 nil
-    formatter.dateFormat = @"yyyy-MM-dd";
+    formatter.dateFormat = @"YYYY-MM-dd";
     // 将字符串日期 转换为 NSDate 类型
     NSDate *endDate = [formatter dateFromString:passDate];
+    
+    NSTimeZone *timeZone=[NSTimeZone systemTimeZone];
+    
+    NSInteger seconds=[timeZone secondsFromGMTForDate:endDate];
+    
+    NSDate *newDate=[endDate dateByAddingTimeInterval:seconds];
+ 
     // 判断当前日期 和 guoqu某个时刻日期 相差的天数
-    long days = [self daysFromDate:endDate toDate:[NSDate date]];
+    NSInteger days = [self daysFromDate:newDate toDate:[NSDate date]];
     // 将总天数 换算为 以 周 计算（假如 相差10天，其实就是等于 相差 1周零3天，只需要取3天，更加方便计算）
-    long day = days >= 7 ? days % 7 : days;
-    long week = ([self getNowWeekday] - day) >= 0 ? [self getNowWeekday] - day: ([self getNowWeekday] + 7 - day);
+    NSInteger day1 = days >= 7 ? days % 7 : days;
+    NSInteger week = ([self getNowWeekday] - day1 + 1) >= 0 ? [self getNowWeekday] - day1  + 1: ([self getNowWeekday] + 7 - day1  + 1);
     switch (week) {
         case 1:
             return @"周日";
@@ -131,7 +138,7 @@
         case 6:
             return @"周五";
             break;
-        case 0:
+        case 7:
             return @"周六";
             break;
             
@@ -145,35 +152,43 @@
     // 创建 格式 对象
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // 设置 日期 格式 可以根据自己的需求 随时调整， 否则计算的结果可能为 nil
-    formatter.dateFormat = @"yyyy-MM-dd";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
     // 将字符串日期 转换为 NSDate 类型
     NSDate *endDate = [formatter dateFromString:featureDate];
+    
+    NSTimeZone *timeZone=[NSTimeZone systemTimeZone];
+    
+    NSInteger seconds=[timeZone secondsFromGMTForDate:endDate];
+    
+    NSDate *newDate=[endDate dateByAddingTimeInterval:seconds];
+    
     // 判断当前日期 和 未来某个时刻日期 相差的天数
-    long days = [self daysFromDate:[NSDate date] toDate:endDate];
+    NSInteger days = [self daysFromDate:[NSDate date] toDate:newDate];
     // 将总天数 换算为 以 周 计算（假如 相差10天，其实就是等于 相差 1周零3天，只需要取3天，更加方便计算）
-    long day = days >= 7 ? days % 7 : days;
-    long week = [self getNowWeekday] + day;
+    NSInteger day = days >= 7 ? days % 7 : days;
+    NSInteger week = ([self getNowWeekday] - day + 1 ) >= 0 ? [self getNowWeekday] - day + 1  : ([self getNowWeekday] + 7 - day + 1  );
     switch (week) {
-        case 7:
-            return @"周日";
-            break;
         case 1:
-            return @"周一";
-            break;
-        case 2:
-            return @"周二";
-            break;
-        case 3:
-            return @"周三";
-            break;
-        case 4:
             return @"周四";
             break;
+        case 2:
+            return @"周三";
+            break;
+        case 3:
+            return @"周二";
+            break;
+        case 4:
+            return @"周一";
+            break;
         case 5:
-            return @"周五";
+            return @"周日";
             break;
         case 6:
             return @"周六";
+            break;
+        case 7:
+            return @"周五";
             break;
             
         default:
@@ -206,7 +221,7 @@
         // 之所以要 + 1，是因为 此处的days 计算的结果 不包含当天 和 最后一天\
         （如星期一 和 星期四，计算机 算的结果就是2天（星期二和星期三），日常算，星期一——星期四相差3天，所以需要+1）\
         对于时分 没有进行计算 可以忽略不计
-        return days;
+        return days + 1;
     }
 }
 

@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Timeline/ViewModel/JKAnimationTimeLineVM.m"
-            timestampString = "526320894.504155"
+            filePath = "Joker/Catagory/HHTGetString.m"
+            timestampString = "526529125.641265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-requestData"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "+featureWeekdayWithDate:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

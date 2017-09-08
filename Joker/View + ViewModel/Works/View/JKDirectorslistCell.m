@@ -96,7 +96,14 @@
                 UILabel *actLabel = [[UILabel alloc]init];
                 actLabel.font = [JKStyleConfiguration minContentFont];
                 actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
-                actLabel.text = cellVM.degree;
+                
+                if (cellVM.actName.length > 0) {
+                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                }
+                else{
+                    actLabel.text = cellVM.degree;
+                }
+                
                 actLabel.frame = CGRectMake(0, nameLabel.frame.size.height + nameLabel.frame.origin.y, cellW, 10);
                 actLabel.textAlignment = NSTextAlignmentCenter;
                 [cellView addSubview:actLabel];
@@ -188,7 +195,12 @@
             UILabel *actLabel = [[UILabel alloc]init];
             actLabel.font = [JKStyleConfiguration minContentFont];
             actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
-            actLabel.text = cellVM.degree;
+            if (cellVM.actName.length > 0) {
+                actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+            }
+            else{
+                actLabel.text = cellVM.degree;
+            }
             actLabel.frame = CGRectMake(0, nameLabel.frame.size.height + nameLabel.frame.origin.y, cellW, 10);
             actLabel.textAlignment = NSTextAlignmentCenter;
             [cellView addSubview:actLabel];
@@ -227,7 +239,12 @@
             UILabel *actLabel = [[UILabel alloc]init];
             actLabel.font = [JKStyleConfiguration minContentFont];
             actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
-            actLabel.text = cellVM.degree;
+            if (cellVM.actName.length > 0) {
+                actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+            }
+            else{
+                actLabel.text = cellVM.degree;
+            }
             actLabel.frame = CGRectMake(0, nameLabel.frame.size.height + nameLabel.frame.origin.y, cellW, 10);
             actLabel.textAlignment = NSTextAlignmentCenter;
             [cellView addSubview:actLabel];

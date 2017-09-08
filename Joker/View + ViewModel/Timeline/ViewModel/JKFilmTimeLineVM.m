@@ -40,7 +40,8 @@
     
     if (self.type  == JKFilmCurrent) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
         NSDate *datenow = [NSDate date];
         api.endDate = [formatter stringFromDate:datenow];
         NSInteger dis = 60; //前后的天数
@@ -58,7 +59,8 @@
     else{
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
         NSDate *datenow = [NSDate date];
         
 //        NSInteger dis = 30; //前后的天数
@@ -154,7 +156,9 @@
                     
                 }
             }
-            
+            if (cellVM.directors.length == 0) {
+                cellVM.directors = @"导演：";
+            }
             for (JKTimelineFilmModelMainActor  *mainActor in item.mainActor) {
                 
                 if (cellVM.mainActors.length > 0) {
@@ -166,13 +170,19 @@
                     
                 }
             }
-            
+            if (cellVM.mainActors.length == 0) {
+                cellVM.mainActors = @"主演：";
+            }
             [cellVMs addObject:cellVM];
             
         }
         
         if (cellViewModels.count == 0) {
-            [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            
+            if (cellVMs.count>0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            }
+            
         }
         else{
             

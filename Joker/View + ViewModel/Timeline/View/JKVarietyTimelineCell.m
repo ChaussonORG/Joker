@@ -1,14 +1,14 @@
 //
-//  JKFilmTimelineCell.m
+//  JKVarietyTimelineCell.m
 //  Joker
 //
 //  Created by 朱彦君 on 2017/8/27.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKFilmTimelineCell.h"
-#import "JKFilmTimeLineCollectionViewCell.h"
-@implementation JKFilmTimelineCell
+#import "JKVarietyTimelineCell.h"
+#import "JKVarietyTimeLineCollectionViewCell.h"
+@implementation JKVarietyTimelineCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -23,7 +23,7 @@
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-
+        
         [self binding];
     }
     
@@ -55,7 +55,7 @@
     _collectionView.dataSource=self;
     _collectionView.delegate=self;
     _collectionView.backgroundColor = [JKStyleConfiguration whiteColor];
-    [_collectionView registerClass:[JKFilmTimeLineCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+    [_collectionView registerClass:[JKVarietyTimeLineCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
     self.collectionView.scrollEnabled = NO;
     [self.contentView addSubview:self.collectionView];
     
@@ -64,7 +64,7 @@
 
 - (void)prepareForLayout{
     
-
+    
     
     
     
@@ -82,23 +82,21 @@
             for (int i = 0 ; i < self.viewModel.recommendArr.count; i ++) {
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
-               
-                remanndationView.delegate = self;
-
+                
+                
                 remanndationView.frame = CGRectMake(0, self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height + i * 180, ScreenWidth, 180);
                 
-                JKFilmTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
-                remanndationView.extId = cellVM.extId;
+                JKVarietyTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
                 
                 NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",cellVM.imageUrl]];
-        
+                
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 
                 remanndationView.nameLabel.text = cellVM.name;
                 
                 remanndationView.favoriteCountLabel.text = cellVM.favoriteCount;
                 
-//                remanndationView.contentLabelOne.text = cellVM.directors;
+                //                remanndationView.contentLabelOne.text = cellVM.directors;
                 NSMutableAttributedString *Astr1 = [[NSMutableAttributedString alloc]initWithString:cellVM.directors];
                 
                 [Astr1 addAttribute:NSForegroundColorAttributeName value:[JKStyleConfiguration aaaaaaColor] range:NSMakeRange(0, cellVM.directors.length)];
@@ -111,36 +109,51 @@
                 remanndationView.contentLabelTwo.attributedText = Astr2;
                 
                 
-//                remanndationView.contentLabelTwo.text = cellVM.mainActors;
-                
+                //                remanndationView.contentLabelTwo.text = cellVM.mainActors;
+                remanndationView.score1.hidden = YES ;
+                remanndationView.score2.hidden = YES ;
+                remanndationView.score3.hidden = YES ;
+                remanndationView.score4.hidden = YES ;
                 [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
                 [remanndationView.score1 setImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
-                 [remanndationView.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                [remanndationView.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score2 setTitle:cellVM.score2 forState:UIControlStateNormal];
                 [remanndationView.score2 setImage:[UIImage imageNamed:@"imdb"] forState:UIControlStateNormal];
-                 [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 
                 [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
                 [remanndationView.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
-                 [remanndationView.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                [remanndationView.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
                 [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
-                 [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
                 remanndationView.lookPlayScore.text = cellVM.jokerScore;
                 
+                //                if (cellVM.belongType.length > 0) {
+                //
+                //                    remanndationView.belongTypeLabel.hidden = NO;
+                //                    remanndationView.belongTypeLabel.text = cellVM.belongType;
+                //                }
+                //                else{
+                //
+                //                    remanndationView.belongTypeLabel.hidden = NO;
+                //
+                //                }
+                
                 if (cellVM.isfavorite) {
                     
-                     remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhu"];
+                    remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhu"];
                 }
                 else{
                     
                     remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhuan"];
                 }
-   
+                
+                
                 [self.contentView addSubview:remanndationView];
                 
             }
@@ -158,22 +171,15 @@
                 }
                 
             }
-           self.collectionView.frame = CGRectMake(0, self.viewModel.recommendViewHeight + self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height, ScreenWidth, self.viewModel.collectionViewHeight);
+            self.collectionView.frame = CGRectMake(0, self.viewModel.recommendViewHeight + self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height, ScreenWidth, self.viewModel.collectionViewHeight);
         }
         
         [self.collectionView reloadData];
     }];
-
+    
     
     RAC(self,dateLabel.text) = RACObserve(self, viewModel.date);
-
-
-}
-
-- (void)clickHoleViewWithExtId:(NSString *)extId{
     
-    
-    [self.viewModel gotoDetailWithWorkId:extId];
     
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -184,7 +190,7 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellIdentifier = @"UICollectionViewCell";
-    JKFilmTimeLineCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    JKVarietyTimeLineCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
     
@@ -204,12 +210,12 @@
     return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
-- (void)loadDataWithVM:(JKFilmTimelineCellVM *)viewModel{
+- (void)loadDataWithVM:(JKVarietyTimelineCellVM *)viewModel{
     
     [self setViewModel:viewModel];
     
 }
-- (void)setViewModel:(JKFilmTimelineCellVM *)viewModel{
+- (void)setViewModel:(JKVarietyTimelineCellVM *)viewModel{
     _viewModel = viewModel;
     
 }
@@ -221,7 +227,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

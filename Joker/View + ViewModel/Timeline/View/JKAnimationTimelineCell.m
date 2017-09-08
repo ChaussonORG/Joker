@@ -88,7 +88,7 @@
                 
                 JKAnimationTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
                 
-                NSURL * imageURL = [NSURL URLWithString:cellVM.imageUrl];
+                NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",cellVM.imageUrl]];
                 
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 
@@ -129,16 +129,16 @@
                 
                 remanndationView.lookPlayScore.text = cellVM.jokerScore;
                 
-                if (cellVM.belongType.length > 0) {
-                    
-                    remanndationView.belongTypeLabel.hidden = NO;
-                    remanndationView.belongTypeLabel.text = cellVM.belongType;
-                }
-                else{
-                    
-                    remanndationView.belongTypeLabel.hidden = NO;
-                    
-                }
+//                if (cellVM.belongType.length > 0) {
+//                    
+//                    remanndationView.belongTypeLabel.hidden = NO;
+//                    remanndationView.belongTypeLabel.text = cellVM.belongType;
+//                }
+//                else{
+//                    
+//                    remanndationView.belongTypeLabel.hidden = NO;
+//                    
+//                }
                 
                 if (cellVM.isfavorite) {
                     

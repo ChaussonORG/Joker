@@ -27,4 +27,6 @@
 @property (nonatomic , assign) BOOL isSeperator;
 
 @property (nonatomic , strong) UIView *bottomLine;
+
+- (void)changeSelectedUIWithIndex:(NSInteger)index;
 @end

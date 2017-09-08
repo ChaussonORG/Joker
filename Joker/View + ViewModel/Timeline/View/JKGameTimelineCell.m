@@ -89,7 +89,7 @@
                 
                 JKGameTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
                 
-                NSURL * imageURL = [NSURL URLWithString:cellVM.imageUrl];
+                NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",cellVM.imageUrl]];
                 
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 

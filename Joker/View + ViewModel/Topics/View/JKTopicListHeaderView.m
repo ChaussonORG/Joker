@@ -126,6 +126,39 @@
     
     
 }
+
+- (void)changeSelectedUIWithIndex:(NSInteger)index{
+    
+    NSInteger tag =  10 * JKFilterTitleNum+ index;
+    for (UIView *view in self.subviews) {
+        
+        if ([view isKindOfClass:[UIButton class]]) {
+            
+            UIButton * btn = (UIButton *)view;
+            if (btn.tag == tag) {
+                btn.selected = YES;
+                
+                CGRect lineRect = _bottomLine.frame;
+                lineRect.origin.x = btn.frame.origin.x + (btn.frame.size.width- 20)/2;
+                [UIView animateWithDuration:0.15f animations:^{
+                    _bottomLine.frame = lineRect;
+                }];
+            }
+            else{
+                
+                btn.selected = NO;
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+}
 - (void)binding{
     
     

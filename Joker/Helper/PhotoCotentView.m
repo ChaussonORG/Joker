@@ -58,7 +58,7 @@
         
         int width = (ScreenWidth - 50)/4;
         
-        image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_lfit,h_%d,w_%d",image,width,width];
+        image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_lfit,h_%d,w_%d",image,2*width,2*width];
         
         [imageV sd_setImageWithURL:[NSURL URLWithString:image]];
         

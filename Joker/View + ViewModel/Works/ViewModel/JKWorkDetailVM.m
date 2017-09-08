@@ -72,7 +72,7 @@
         
         self.workImage = request.model.data.coverImage;
         
-       self.workBgImage = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
+        self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
         
@@ -118,13 +118,13 @@
         self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
         
         
-        self.score1 = request.model.data.doubanScore;
+        self.score1 = [self reviseString:request.model.data.doubanScore];
         
-        self.score2 = request.model.data.imdbScore;
+        self.score2 = [self reviseString:request.model.data.imdbScore];
         
-        self.score3 = request.model.data.tomatoeScore;
+        self.score3 = [self reviseString:request.model.data.tomatoeScore];
         
-        self.score4 = request.model.data.mcScore;
+        self.score4 = [self reviseString:request.model.data.mcScore];
         
         self.jokerScore = request.model.data.jokerScore;
         
@@ -138,7 +138,7 @@
             [self.directorsArr addObject:[self assembleViewModelWithStaff:staff]];
         }
         
-        if (self.directorsArr.count%4 == 0) {
+        if (self.directorsArr.count%4 == 0 &&self.directorsArr.count<10) {
             self.directorsCellHeight =(self.directorsArr.count/4 )*110 +36;
         }
         else{

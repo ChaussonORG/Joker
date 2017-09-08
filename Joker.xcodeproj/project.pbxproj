@@ -254,6 +254,11 @@
 		50DA8B651F1B73FA00530F49 /* JKTopicDetailCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B641F1B73FA00530F49 /* JKTopicDetailCommentListModel.m */; };
 		50DA8B681F1B744700530F49 /* JKTopicDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B671F1B744700530F49 /* JKTopicDetailBottomView.m */; };
 		50DA8B6B1F1B95DB00530F49 /* JKTopicDetailBottomVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B6A1F1B95DB00530F49 /* JKTopicDetailBottomVM.m */; };
+		50F520AA1F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520A91F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m */; };
+		50F520AD1F613290004B59BF /* JKVarietyTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520AC1F613290004B59BF /* JKVarietyTimelineCell.m */; };
+		50F520B01F6132D7004B59BF /* JKVarietyTimeLineVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520AF1F6132D7004B59BF /* JKVarietyTimeLineVM.m */; };
+		50F520B31F613310004B59BF /* JKVarietyTimelineCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520B21F613310004B59BF /* JKVarietyTimelineCellVM.m */; };
+		50F520B61F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520B51F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m */; };
 		73BCE9B3985754C6611C910A /* libPods-Joker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4135C9B0D67F24FCCDC92B3 /* libPods-Joker.a */; };
 		D32953471EF3DD29002A9DE8 /* JKTopicFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D32953461EF3DD29002A9DE8 /* JKTopicFilterView.m */; };
 		D34338891EEECDA900F45C7E /* JokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34338881EEECDA900F45C7E /* JokerTests.m */; };
@@ -738,6 +743,16 @@
 		50DA8B671F1B744700530F49 /* JKTopicDetailBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicDetailBottomView.m; sourceTree = "<group>"; };
 		50DA8B691F1B95DB00530F49 /* JKTopicDetailBottomVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicDetailBottomVM.h; sourceTree = "<group>"; };
 		50DA8B6A1F1B95DB00530F49 /* JKTopicDetailBottomVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicDetailBottomVM.m; sourceTree = "<group>"; };
+		50F520A81F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimeLineCollectionViewCell.h; sourceTree = "<group>"; };
+		50F520A91F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimeLineCollectionViewCell.m; sourceTree = "<group>"; };
+		50F520AB1F613290004B59BF /* JKVarietyTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimelineCell.h; sourceTree = "<group>"; };
+		50F520AC1F613290004B59BF /* JKVarietyTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimelineCell.m; sourceTree = "<group>"; };
+		50F520AE1F6132D7004B59BF /* JKVarietyTimeLineVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimeLineVM.h; sourceTree = "<group>"; };
+		50F520AF1F6132D7004B59BF /* JKVarietyTimeLineVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimeLineVM.m; sourceTree = "<group>"; };
+		50F520B11F613310004B59BF /* JKVarietyTimelineCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimelineCellVM.h; sourceTree = "<group>"; };
+		50F520B21F613310004B59BF /* JKVarietyTimelineCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimelineCellVM.m; sourceTree = "<group>"; };
+		50F520B41F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimeLineCollectionViewCellVM.h; sourceTree = "<group>"; };
+		50F520B51F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimeLineCollectionViewCellVM.m; sourceTree = "<group>"; };
 		8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Joker/Pods-Joker.debug.xcconfig"; sourceTree = "<group>"; };
 		B4135C9B0D67F24FCCDC92B3 /* libPods-Joker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Joker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32953451EF3DD29002A9DE8 /* JKTopicFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicFilterView.h; sourceTree = "<group>"; };
@@ -2168,6 +2183,8 @@
 				504C77181F55C1650004AE70 /* JKGameTimelineCell.m */,
 				502C6CC41F5EF029009B93E4 /* JKAnimationTimelineCell.h */,
 				502C6CC51F5EF029009B93E4 /* JKAnimationTimelineCell.m */,
+				50F520AB1F613290004B59BF /* JKVarietyTimelineCell.h */,
+				50F520AC1F613290004B59BF /* JKVarietyTimelineCell.m */,
 				5049312B1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.h */,
 				5049312C1F54697B008FB164 /* JKFilmTimeLineCollectionViewCell.m */,
 				504C77051F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.h */,
@@ -2176,6 +2193,8 @@
 				504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */,
 				502C6CCD1F5EF0D8009B93E4 /* JKAnimationTimeLineCollectionViewCell.h */,
 				502C6CCE1F5EF0D8009B93E4 /* JKAnimationTimeLineCollectionViewCell.m */,
+				50F520A81F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.h */,
+				50F520A91F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2191,6 +2210,8 @@
 				508C552A1F27A469001F1A15 /* JKTVTimeLineVM.m */,
 				502C6CD01F5EF543009B93E4 /* JKAnimationTimeLineVM.h */,
 				502C6CD11F5EF543009B93E4 /* JKAnimationTimeLineVM.m */,
+				50F520AE1F6132D7004B59BF /* JKVarietyTimeLineVM.h */,
+				50F520AF1F6132D7004B59BF /* JKVarietyTimeLineVM.m */,
 				504C770E1F55C0CB0004AE70 /* JKGameTimeLineVM.h */,
 				504C770F1F55C0CB0004AE70 /* JKGameTimeLineVM.m */,
 				504931281F52FFEA008FB164 /* JKFilmTimelineCellVM.h */,
@@ -2199,6 +2220,8 @@
 				504C77091F55BB3D0004AE70 /* JKTVTimelineCellVM.m */,
 				502C6CC71F5EF046009B93E4 /* JKAnimationTimelineCellVM.h */,
 				502C6CC81F5EF046009B93E4 /* JKAnimationTimelineCellVM.m */,
+				50F520B11F613310004B59BF /* JKVarietyTimelineCellVM.h */,
+				50F520B21F613310004B59BF /* JKVarietyTimelineCellVM.m */,
 				504C77111F55C1100004AE70 /* JKGameTimelineCellVM.h */,
 				504C77121F55C1100004AE70 /* JKGameTimelineCellVM.m */,
 				5049312E1F546993008FB164 /* JKFilmTimeLineCollectionViewCellVM.h */,
@@ -2209,6 +2232,8 @@
 				504C77151F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m */,
 				502C6CCA1F5EF084009B93E4 /* JKAnimationTimeLineCollectionViewCellVM.h */,
 				502C6CCB1F5EF084009B93E4 /* JKAnimationTimeLineCollectionViewCellVM.m */,
+				50F520B41F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.h */,
+				50F520B51F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2523,6 +2548,7 @@
 				505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */,
 				504253251F5ACF23006DCB66 /* UIImage+ReMake.m in Sources */,
 				508C55AB1F2844A3001F1A15 /* UIImage+CHImage.m in Sources */,
+				50F520B31F613310004B59BF /* JKVarietyTimelineCellVM.m in Sources */,
 				508C551F1F26F1A7001F1A15 /* JKAnimationTimeLineController.m in Sources */,
 				5042530B1F5ACF23006DCB66 /* PBScrollView.m in Sources */,
 				D3973B6B1EEEEC200076B246 /* CHTabBarModel.m in Sources */,
@@ -2636,6 +2662,7 @@
 				D3973B761EEEEC200076B246 /* DetailModel.m in Sources */,
 				504253121F5ACF23006DCB66 /* CoreArchive.m in Sources */,
 				D3973B681EEEEC200076B246 /* CHBarItemViewModel.m in Sources */,
+				50F520B61F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m in Sources */,
 				508DB6F81F259C85002ABF97 /* JKUser.m in Sources */,
 				501E8A881F130FD800723C29 /* JKCommentListModel.m in Sources */,
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
@@ -2652,6 +2679,7 @@
 				504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */,
 				504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */,
 				504253201F5ACF23006DCB66 /* UIImage+FixOrientation.m in Sources */,
+				50F520AA1F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m in Sources */,
 				504253051F5ACF23006DCB66 /* PhotoBroswerLayout.m in Sources */,
 				50AC9D9B1F0EAEC100AA7AEC /* JKCommentBottomView.m in Sources */,
 				D3973B6D1EEEEC200076B246 /* CHTabBarViewModel.m in Sources */,
@@ -2673,6 +2701,7 @@
 				5042530F1F5ACF23006DCB66 /* PhotoBroswerVC.m in Sources */,
 				501F57CA1F2099D2001D2C8A /* CTOCommentStarView.m in Sources */,
 				50AC9D3C1F0DE44200AA7AEC /* JKTopicDetailController.m in Sources */,
+				50F520B01F6132D7004B59BF /* JKVarietyTimeLineVM.m in Sources */,
 				508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */,
 				D3973BEC1EF28A7A0076B246 /* JKTopicsListVM.m in Sources */,
 				504931271F52FFDB008FB164 /* JKFilmTimelineCell.m in Sources */,
@@ -2683,6 +2712,7 @@
 				50AF130B1F08D619005B34AA /* ZWTopSelectVcView.m in Sources */,
 				50417CA91F43F16B00A2E12B /* JKCommetDeleteApi.m in Sources */,
 				50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */,
+				50F520AD1F613290004B59BF /* JKVarietyTimelineCell.m in Sources */,
 				508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */,
 				50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */,
 				501F7E3A1EFAB1FC00FE1E35 /* JKCommonApi.m in Sources */,

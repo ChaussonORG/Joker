@@ -66,6 +66,13 @@
 @property (nonatomic , strong) UIButton *commentBtn;
 
 @property (nonatomic , strong) UIButton *shareBtn;
+
+@property (nonatomic , strong) UIView *naviBgView;
+
+@property (nonatomic , strong) JKTopicListHeaderView *naviHeaderView;
+
+@property (nonatomic , strong) UILabel *naviTitleLabel;
+
 @end
 
 @implementation JKWorkDetailController
@@ -97,6 +104,7 @@
     
     self.bgImageView = [[UIImageView alloc]init];
     self.bgImageView.frame = CGRectMake(0, -20, ScreenWidth, ScreenHeight + 20);
+    self.bgImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.bgImageView];
     
     
@@ -108,6 +116,30 @@
     [self setupTableView];
     
     [self setupBottomView];
+    
+    self.naviBgView = [[UIView alloc]init];
+    self.naviBgView.frame = CGRectMake(0, 0, ScreenWidth, 64 + 40 + 3);
+    self.naviBgView.backgroundColor = [JKStyleConfiguration whiteColor];
+    self.naviBgView.hidden = YES;
+    
+    [self.view addSubview:self.naviBgView];
+    
+    self.naviTitleLabel = [[UILabel alloc]init];
+    self.naviTitleLabel.textAlignment = NSTextAlignmentCenter;
+    self.naviTitleLabel.frame = CGRectMake(0, 20, ScreenWidth, 40);
+    self.naviTitleLabel.font = [JKStyleConfiguration naviTitleFont];
+    self.naviTitleLabel.textColor = [JKStyleConfiguration blackColor];
+    [self.naviBgView addSubview:self.naviTitleLabel];
+    
+    
+    self.naviHeaderView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration blackColor] isLine:NO];
+    self.naviHeaderView.delegate = self;
+    
+    self.naviHeaderView.frame = CGRectMake(0, 64, ScreenWidth, 40);
+    [self.naviBgView addSubview:self.naviHeaderView];
+    
+    
+    
     
     self.backBtn = [self customLeftBackButton];
     
@@ -171,7 +203,7 @@
     
     UIButton *btn= [UIButton buttonWithType:UIButtonTypeCustom];
     
-    btn.frame=CGRectMake(20, 15, 80,50);
+    btn.frame=CGRectMake(20, 15, 40,50);
 //    [btn setTitle:@" 返回" forState:UIControlStateNormal];
     btn.titleLabel.font = [JKStyleConfiguration titleFont];
     [btn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
@@ -353,7 +385,7 @@
 }
 - (void)binding{
     
-    RAC(self,nameLabel.text) = RACObserve(self, viewModel.name);
+ 
     
     RAC(self,strOneLabel.text) = RACObserve(self, viewModel.strOne);
     
@@ -365,6 +397,15 @@
     
     
     @weakify(self)
+    [RACObserve(self, viewModel.name) subscribeNext:^(NSString *x) {
+        @strongify(self)
+        
+        self.nameLabel.text = x;
+        
+        self.naviTitleLabel.text = x;
+        
+        
+    }];
     [RACObserve(self, viewModel.workImage) subscribeNext:^(NSString *x) {
         @strongify(self)
         
@@ -837,6 +878,11 @@
 
 - (void)chooseTopicWithIndex:(NSInteger)index{
     
+    [self.headerView changeSelectedUIWithIndex:index];
+    
+    [self.naviHeaderView changeSelectedUIWithIndex:index];
+    
+    
     
     if (index == 0) {
         
@@ -916,6 +962,30 @@
         
         return modelsM;
     }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    
+    if (self.mainTableView.contentOffset.y > 161 ) {
+        
+          self.naviBgView.hidden = NO;
+        
+        
+        [self.backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        
+        [self.shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    }
+    else{
+          self.naviBgView.hidden = YES;
+        
+        
+        [self.shareBtn setImage:[UIImage imageNamed:@"sharewhite"] forState:UIControlStateNormal];
+        [self.backBtn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
+    }
+    
+  
+    
 }
 
 - (void)didReceiveMemoryWarning {

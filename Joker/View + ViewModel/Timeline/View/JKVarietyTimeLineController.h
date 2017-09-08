@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JKVarietyTimeLineVM.h"
 @interface JKVarietyTimeLineController : UIViewController
+
+
+@property (nonatomic , strong) JKVarietyTimeLineVM *viewModel;
+
 
 @end

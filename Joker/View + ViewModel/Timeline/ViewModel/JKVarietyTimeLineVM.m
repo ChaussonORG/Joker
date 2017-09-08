@@ -1,23 +1,23 @@
 //
-//  JKAnimationTimeLineVM.m
+//  JKVarietyTimeLineVM.m
 //  Joker
 //
 //  Created by 朱彦君 on 2017/7/25.
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKAnimationTimeLineVM.h"
+#import "JKVarietyTimeLineVM.h"
 #import "JKTimelineListApi.h"
 #import "CHCommonMacro.h"
 #import "HHTGetString.h"
-@interface JKAnimationTimeLineVM()
+@interface JKVarietyTimeLineVM()
 
-@property (nonatomic , strong) NSMutableArray <JKAnimationTimelineCellVM *>*cellViewModels;
+@property (nonatomic , strong) NSMutableArray <JKVarietyTimelineCellVM *>*cellViewModels;
 
 @end
 
 
-@implementation JKAnimationTimeLineVM
+@implementation JKVarietyTimeLineVM
 
 - (instancetype)init
 {
@@ -26,7 +26,7 @@
         
         self.titlesArray = @[@"正 在 热 映",@"即 将 上 映"];
         
-        self.type = JKAnimationCurrent;
+        self.type = JKVarietyCurrent;
         
         self.cellViewModels = [NSMutableArray array];
     }
@@ -36,9 +36,9 @@
 
 - (void)requestData{
     
-    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineCartoon];
+    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineVariety];
     
-    if (self.type  == JKAnimationCurrent) {
+    if (self.type  == JKVarietyCurrent) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
         NSDate *datenow = [NSDate date];
@@ -78,9 +78,9 @@
     
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
         
-        NSMutableArray <JKAnimationTimelineCellVM *>*cellViewModels = [NSMutableArray array];
+        NSMutableArray <JKVarietyTimelineCellVM *>*cellViewModels = [NSMutableArray array];
         
-        NSMutableArray <JKAnimationTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
+        NSMutableArray <JKVarietyTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
         
         NSString *tempDate;
         
@@ -96,6 +96,8 @@
             else{
                 
                 if (![tempDate isEqualToString:item.openDate]) {
+                    
+                    
                     
                     if (cellViewModels.count == 0) {
                         [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
@@ -117,7 +119,7 @@
                 
             }
             
-            JKAnimationTimeLineCollectionViewCellVM *cellVM = [[JKAnimationTimeLineCollectionViewCellVM alloc]init];
+            JKVarietyTimeLineCollectionViewCellVM *cellVM = [[JKVarietyTimeLineCollectionViewCellVM alloc]init];
             
             cellVM.imageUrl = item.coverImgUrl;
             
@@ -141,34 +143,34 @@
             
             cellVM.isRecommand = [item.recommend boolValue];
             
-            for (JKTimelineFilmModelDirector  *director in item.supervision) {
+            for (JKTimelineFilmModelDirector  *director in item.hostList) {
                 
                 if (cellVM.directors.length > 0) {
                     cellVM.directors = [NSString stringWithFormat:@"%@/%@",cellVM.directors,director.name];
                 }
                 else{
                     
-                    cellVM.directors = [NSString stringWithFormat:@"监督：%@",director.name];
+                    cellVM.directors = [NSString stringWithFormat:@"主持人：%@",director.name];
                     
                 }
             }
             if (cellVM.directors.length == 0) {
-                cellVM.directors = @"监督：";
+                cellVM.directors = @"主持人：";
             }
-            for (JKTimelineFilmModelMainActor  *mainActor in item.soundActor) {
+            for (JKTimelineFilmModelMainActor  *mainActor in item.guestList) {
                 
                 if (cellVM.mainActors.length > 0) {
                     cellVM.mainActors = [NSString stringWithFormat:@"%@/%@",cellVM.mainActors,mainActor.name];
                 }
                 else{
                     
-                    cellVM.mainActors = [NSString stringWithFormat:@"声优：%@",mainActor.name];
+                    cellVM.mainActors = [NSString stringWithFormat:@"嘉宾：%@",mainActor.name];
                     
                 }
             }
             
             if (cellVM.mainActors.length == 0) {
-                cellVM.mainActors = @"声优：";
+                cellVM.mainActors = @"嘉宾：";
             }
             [cellVMs addObject:cellVM];
             
@@ -196,9 +198,9 @@
     
 }
 
-- (JKAnimationTimelineCellVM *)assembleViewModelWithOpenDate:(NSString *)date andCellVMs:(NSMutableArray <JKAnimationTimeLineCollectionViewCellVM *>*)cellVMs isFirstDay:(BOOL)isfirstDay{
+- (JKVarietyTimelineCellVM *)assembleViewModelWithOpenDate:(NSString *)date andCellVMs:(NSMutableArray <JKVarietyTimeLineCollectionViewCellVM *>*)cellVMs isFirstDay:(BOOL)isfirstDay{
     
-    JKAnimationTimelineCellVM *cellVM = [[JKAnimationTimelineCellVM alloc]init];
+    JKVarietyTimelineCellVM *cellVM = [[JKVarietyTimelineCellVM alloc]init];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
@@ -206,7 +208,7 @@
     NSString *dateStr = [formatter stringFromDate:datenow];
     NSString *week;
     
-    if (self.type == JKAnimationCurrent) {
+    if (self.type == JKVarietyCurrent) {
         
         week = [HHTGetString passWeekdayWithDate:date];
     }
@@ -227,11 +229,11 @@
         cellVM.date = [NSString stringWithFormat:@"%@/%@",[HHTGetString assembleMonthDayStrWithDate:date],week];
     }
     
-    if (isfirstDay && self.type == JKAnimationCurrent) {
+    if (isfirstDay && self.type == JKVarietyCurrent) {
         
         cellVM.isRecommend = YES;
         for (int i = 0; i < cellVMs.count; i ++) {
-            JKAnimationTimeLineCollectionViewCellVM *cellViewModel = cellVMs[i];
+            JKVarietyTimeLineCollectionViewCellVM *cellViewModel = cellVMs[i];
             
             if (cellViewModel.isRecommand) {
                 

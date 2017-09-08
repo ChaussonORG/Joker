@@ -109,6 +109,12 @@
 @property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*director;
 @property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelMainActor>*mainActor;
 
+
+@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*supervision;
+@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*soundActor;
+
+@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*hostList;
+@property (nonatomic, strong)NSArray <Optional, JKTimelineFilmModelDirector>*guestList;
 @end
 
 @interface JKTimelineFilmModelData : JSONModel
