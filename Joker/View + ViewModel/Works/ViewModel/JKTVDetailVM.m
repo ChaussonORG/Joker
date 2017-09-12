@@ -115,8 +115,9 @@
         }
         
         
-        self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
-        
+        if (request.model.data.releaseDate) {
+            self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
+        }
         
         self.score1 = [self reviseString:request.model.data.doubanScore];
         
@@ -130,7 +131,14 @@
         
         self.imageArrs = request.model.data.coverImageList;
         
-        self.desc = request.model.data.desc;
+        if (!request.model.data.desc) {
+            
+            self.desc = request.response.responseJSONObject[@"data"][@"desc"];
+        }
+        else{
+            self.desc = request.model.data.desc;
+        }
+        
         
         
         for (JKFilmDetailModelStaff *staff in request.model.data.staff) {

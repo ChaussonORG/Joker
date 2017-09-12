@@ -7,7 +7,7 @@
 //
 
 #import "JKGameTimelineCellVM.h"
-
+#import "JKGameDetailController.h"
 @implementation JKGameTimelineCellVM
 
 - (instancetype)init
@@ -22,5 +22,14 @@
         
     }
     return self;
+}
+
+- (void)gotoDetailWithWorkId:(NSString *)workId{
+    
+    
+    JKGameDetailController *vc = [[JKGameDetailController  alloc]initWithWorkId:workId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
 }
 @end

@@ -393,7 +393,7 @@
     
     RAC(self,strThreeLabel.text) = RACObserve(self, viewModel.strThree);
     
-    RAC(self,lookPlayScore.text) = RACObserve(self, viewModel.jokerScore);
+    
     
     
     @weakify(self)
@@ -406,6 +406,20 @@
         
         
     }];
+    
+    [RACObserve(self, viewModel.jokerScore) subscribeNext:^(NSString *x) {
+        @strongify(self)
+        if ([x integerValue] > 0) {
+            self.lookPlayScore.text = x;
+            self.lookPlayScore.font = [JKStyleConfiguration veryHugeFont];
+        }
+        else{
+            
+            self.lookPlayScore.text = @"暂无";
+            self.lookPlayScore.font = [JKStyleConfiguration subcontentFont];
+        }
+    }];
+    
     [RACObserve(self, viewModel.workImage) subscribeNext:^(NSString *x) {
         @strongify(self)
         

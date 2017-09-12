@@ -174,6 +174,9 @@
     
     
     
+    [self.viewModel gotoDetail];
+    
+
     
     
 }

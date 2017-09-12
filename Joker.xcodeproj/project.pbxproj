@@ -131,6 +131,9 @@
 		50521A2B1F67063A00AE8B00 /* JKAnimationDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A2A1F67063A00AE8B00 /* JKAnimationDetailController.m */; };
 		50521A2E1F67068100AE8B00 /* JKAnimationDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A2D1F67068100AE8B00 /* JKAnimationDetailVM.m */; };
 		50521A311F67077700AE8B00 /* JKAnimationDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A301F67077700AE8B00 /* JKAnimationDetailApi.m */; };
+		50521A341F683E8100AE8B00 /* JKGameDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A331F683E8100AE8B00 /* JKGameDetailApi.m */; };
+		50521A371F683EFA00AE8B00 /* JKGameDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A361F683EFA00AE8B00 /* JKGameDetailController.m */; };
+		50521A3A1F683F2100AE8B00 /* JKGameDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A391F683F2100AE8B00 /* JKGameDetailVM.m */; };
 		505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86951F3768B5005B6A6C /* CHDownSheet.m */; };
 		505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86971F3768B5005B6A6C /* CHDownSheetCell.m */; };
 		505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D86991F3768B5005B6A6C /* CHDownSheetModel.m */; };
@@ -564,6 +567,12 @@
 		50521A2D1F67068100AE8B00 /* JKAnimationDetailVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAnimationDetailVM.m; sourceTree = "<group>"; };
 		50521A2F1F67077700AE8B00 /* JKAnimationDetailApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAnimationDetailApi.h; sourceTree = "<group>"; };
 		50521A301F67077700AE8B00 /* JKAnimationDetailApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAnimationDetailApi.m; sourceTree = "<group>"; };
+		50521A321F683E8100AE8B00 /* JKGameDetailApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameDetailApi.h; sourceTree = "<group>"; };
+		50521A331F683E8100AE8B00 /* JKGameDetailApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameDetailApi.m; sourceTree = "<group>"; };
+		50521A351F683EFA00AE8B00 /* JKGameDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameDetailController.h; sourceTree = "<group>"; };
+		50521A361F683EFA00AE8B00 /* JKGameDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameDetailController.m; sourceTree = "<group>"; };
+		50521A381F683F2100AE8B00 /* JKGameDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameDetailVM.h; sourceTree = "<group>"; };
+		50521A391F683F2100AE8B00 /* JKGameDetailVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameDetailVM.m; sourceTree = "<group>"; };
 		505D86941F3768B5005B6A6C /* CHDownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheet.h; sourceTree = "<group>"; };
 		505D86951F3768B5005B6A6C /* CHDownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDownSheet.m; sourceTree = "<group>"; };
 		505D86961F3768B5005B6A6C /* CHDownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDownSheetCell.h; sourceTree = "<group>"; };
@@ -1401,6 +1410,8 @@
 				50521A241F65866C00AE8B00 /* JKTVDetailApi.m */,
 				50521A2F1F67077700AE8B00 /* JKAnimationDetailApi.h */,
 				50521A301F67077700AE8B00 /* JKAnimationDetailApi.m */,
+				50521A321F683E8100AE8B00 /* JKGameDetailApi.h */,
+				50521A331F683E8100AE8B00 /* JKGameDetailApi.m */,
 				504253421F5B065D006DCB66 /* JKWorkCommentApi.h */,
 				504253431F5B065D006DCB66 /* JKWorkCommentApi.m */,
 				504253481F5B2005006DCB66 /* JKFavoriteWorkApi.h */,
@@ -1699,6 +1710,8 @@
 				50521A1E1F65097C00AE8B00 /* JKTVDetailController.m */,
 				50521A291F67063A00AE8B00 /* JKAnimationDetailController.h */,
 				50521A2A1F67063A00AE8B00 /* JKAnimationDetailController.m */,
+				50521A351F683EFA00AE8B00 /* JKGameDetailController.h */,
+				50521A361F683EFA00AE8B00 /* JKGameDetailController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1712,6 +1725,8 @@
 				50521A211F6509DF00AE8B00 /* JKTVDetailVM.m */,
 				50521A2C1F67068100AE8B00 /* JKAnimationDetailVM.h */,
 				50521A2D1F67068100AE8B00 /* JKAnimationDetailVM.m */,
+				50521A381F683F2100AE8B00 /* JKGameDetailVM.h */,
+				50521A391F683F2100AE8B00 /* JKGameDetailVM.m */,
 				5042525F1F5A5D37006DCB66 /* JKFilmStaffCellVM.h */,
 				504252601F5A5D37006DCB66 /* JKFilmStaffCellVM.m */,
 				504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */,
@@ -2657,6 +2672,7 @@
 				D3973B561EEEEC200076B246 /* NSError+SignalError.m in Sources */,
 				50AF130A1F08D619005B34AA /* ZWTopSelectButton.m in Sources */,
 				504253191F5ACF23006DCB66 /* NSString+Password.m in Sources */,
+				50521A341F683E8100AE8B00 /* JKGameDetailApi.m in Sources */,
 				50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */,
 				504253061F5ACF23006DCB66 /* PhotoModel.m in Sources */,
 				D3973B5A1EEEEC200076B246 /* ASNavigator.m in Sources */,
@@ -2776,6 +2792,7 @@
 				504252671F5AB14E006DCB66 /* JKWorkDesCell.m in Sources */,
 				5023475A1F18975500E82B8E /* YLDragZoomCycleView.m in Sources */,
 				5042531D1F5ACF23006DCB66 /* UIImage+Color.m in Sources */,
+				50521A371F683EFA00AE8B00 /* JKGameDetailController.m in Sources */,
 				504253411F5ADE35006DCB66 /* PhotoCotentView.m in Sources */,
 				5023475B1F18975500E82B8E /* YLZoomCycleViewCell.m in Sources */,
 				504253041F5ACF23006DCB66 /* PBConst.m in Sources */,
@@ -2803,6 +2820,7 @@
 				50451D071F58650A004BCFC6 /* JKFilmDetailModel.m in Sources */,
 				504253181F5ACF23006DCB66 /* NSString+Extend.m in Sources */,
 				504253381F5ACF23006DCB66 /* UIImageView+SD.m in Sources */,
+				50521A3A1F683F2100AE8B00 /* JKGameDetailVM.m in Sources */,
 				504253111F5ACF23006DCB66 /* NSString+File.m in Sources */,
 				5042526A1F5AB4A4006DCB66 /* JKWorkImageListCell.m in Sources */,
 				504252641F5AB125006DCB66 /* JKDirectorslistCell.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKAnimationDetailController.h"
+#import "JKGameDetailController.h"
 #import "JKTopicListHeaderView.h"
 #import "JKTopicListCell.h"
 #import "JKWorkCommentListCell.h"
@@ -18,7 +18,7 @@
 #import "JKWorkDesCell.h"
 #import "JKWorkImageListCell.h"
 
-@interface JKAnimationDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,AnimationrefreshTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKGameDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,GamerefreshTableViewDelegate,CHLoginModalControllerDelegate>
 
 
 @property (nonatomic , strong) UIImageView *bgImageView;
@@ -57,7 +57,7 @@
 
 @property (nonatomic , strong) UIButton *backBtn;
 
-@property (nonatomic , strong) PhotoCotentView *contenAnimationiew;
+@property (nonatomic , strong) PhotoCotentView *contenGameiew;
 
 @property (nonatomic , strong) UIView *bottomView;
 
@@ -75,14 +75,14 @@
 
 @end
 
-@implementation JKAnimationDetailController
+@implementation JKGameDetailController
 
 - (instancetype)initWithWorkId:(NSString *)workId
 {
     self = [super init];
     if (self) {
         
-        self.viewModel = [[JKAnimationDetailVM alloc]initWithWorkId:workId];
+        self.viewModel = [[JKGameDetailVM alloc]initWithWorkId:workId];
         
         self.viewModel.delegate = self;
         
@@ -599,11 +599,11 @@
 #pragma mark UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         
         return 3;
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         
         if (section == 0) {
             
@@ -638,7 +638,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellId = @"cellId";
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         
         if (indexPath.row == 0) {
             
@@ -666,14 +666,14 @@
             
             [cell LoadUIWithTitle:@"图片" images:self.viewModel.imageArrs descLabelHeight:self.viewModel.imagesCellHeight - 36];
             
-            self.contenAnimationiew = cell.contentImageView;
+            self.contenGameiew = cell.contentImageView;
             
             return cell;
             
         }
         
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         
         if (indexPath.section == 0) {
             
@@ -741,7 +741,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         if (indexPath.row == 0) {
             
             return self.viewModel.directorsCellHeight;
@@ -758,7 +758,7 @@
             
         }
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         
         if (indexPath.section == 0) {
             
@@ -794,10 +794,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         return 0.01;
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         
         if (self.viewModel.myCellVMs.count == 0) {
             if (section== 0) {
@@ -829,11 +829,11 @@
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         
         return nil;
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         UIView *view = [[UIView alloc]init];
         view.backgroundColor = [JKStyleConfiguration whiteColor];
         UIView *bgView = [[UIView alloc]init];
@@ -896,11 +896,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    if (self.viewModel.filterType == JKAnimationDataInfo) {
+    if (self.viewModel.filterType == JKGameDataInfo) {
         
         return 1;
     }
-    else if (self.viewModel.filterType == JKAnimationDataComment ) {
+    else if (self.viewModel.filterType == JKGameDataComment ) {
         
         return  4;
     }
@@ -923,17 +923,17 @@
     
     if (index == 0) {
         
-        self.viewModel.filterType = JKAnimationDataInfo;
+        self.viewModel.filterType = JKGameDataInfo;
         
     }
     else if (index == 1) {
         
-        self.viewModel.filterType = JKAnimationDataComment;
+        self.viewModel.filterType = JKGameDataComment;
         
     }
     else{
         
-        self.viewModel.filterType = JKAnimationDataTopic;
+        self.viewModel.filterType = JKGameDataTopic;
         
         
     }
@@ -991,7 +991,7 @@
             pbModel.image_HD_U = networkImages[i];
             
             //源frame
-            UIImageView *imageV =(UIImageView *) weakSelf.contenAnimationiew.subviews[i];
+            UIImageView *imageV =(UIImageView *) weakSelf.contenGameiew.subviews[i];
             pbModel.sourceImageView = imageV;
             
             [modelsM addObject:pbModel];

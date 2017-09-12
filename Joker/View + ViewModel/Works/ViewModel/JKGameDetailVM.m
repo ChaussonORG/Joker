@@ -6,8 +6,8 @@
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKAnimationDetailVM.h"
-#import "JKAnimationDetailApi.h"
+#import "JKGameDetailVM.h"
+#import "JKGameDetailApi.h"
 #import "JKTopicsListApi.h"
 #import "CHCommonMacro.h"
 #import "HHTGetString.h"
@@ -18,7 +18,7 @@
 #import "JKWorkCommentCreatController.h"
 #import "CHLoginModalController.h"
 
-@interface JKAnimationDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKGameDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
@@ -28,7 +28,7 @@
 
 
 @end
-@implementation JKAnimationDetailVM
+@implementation JKGameDetailVM
 
 - (instancetype)initWithWorkId:(NSString *)workId
 {
@@ -42,7 +42,7 @@
         
         self.titlesArray = @[@"信 息",@"评 论",@"话 题"];
         
-        self.filterType = JKAnimationDataInfo;
+        self.filterType = JKGameDataInfo;
         
         self.topicCellVMs = [NSMutableArray array];
         
@@ -60,9 +60,9 @@
     
     self.directorsArr = [NSMutableArray array];
     
-    JKAnimationDetailApi *api = [[JKAnimationDetailApi alloc]initWithWorkId:self.workId];
+    JKGameDetailApi *api = [[JKGameDetailApi alloc]initWithWorkId:self.workId];
     
-    [api startWithSuccessBlock:^(__kindof JKAnimationDetailApi *request) {
+    [api startWithSuccessBlock:^(__kindof JKGameDetailApi *request) {
         
         self.favoritedSize = request.model.data.favoritedSize;
         
@@ -175,7 +175,7 @@
         
         
         
-    } failureBlock:^(__kindof JKAnimationDetailApi *request) {
+    } failureBlock:^(__kindof JKGameDetailApi *request) {
         
         
         
@@ -222,7 +222,7 @@
     
     JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
     
-    api.commentType = @"Animation";
+    api.commentType = @"GAME";
     
     api.requestModel.limit = RequestLimit;
     
@@ -458,11 +458,11 @@
 }
 - (void)requestMoreData{
     
-    if (self.filterType == JKAnimationDataComment) {
+    if (self.filterType == JKGameDataComment) {
         
         [self  requestMoreCommentData];
     }
-    else if(self.filterType == JKAnimationDataTopic){
+    else if(self.filterType == JKGameDataTopic){
         
         [self  requestMoreTopicData];
         
@@ -476,7 +476,7 @@
 - (void)requestMoreTopicData{
     
     
-    JKTopicsListApi *api = [[JKTopicsListApi alloc]initTopicCartoon];
+    JKTopicsListApi *api = [[JKTopicsListApi alloc]initTopicGame];
     api.projectId = self.workId;
     
     api.requestModel.limit = RequestLimit;
