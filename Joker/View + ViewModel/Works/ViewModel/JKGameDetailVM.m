@@ -116,7 +116,7 @@
         
         
         if (request.model.data.releaseDate) {
-            self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
+            self.strThree = [NSString stringWithFormat:@"%@上市",request.model.data.releaseDate];
         }
         
         

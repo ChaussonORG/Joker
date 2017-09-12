@@ -601,7 +601,7 @@
     
     if (self.viewModel.filterType == JKGameDataInfo) {
         
-        return 3;
+        return 2;
     }
     else if (self.viewModel.filterType == JKGameDataComment ) {
         
@@ -641,15 +641,6 @@
     if (self.viewModel.filterType == JKGameDataInfo) {
         
         if (indexPath.row == 0) {
-            
-            JKDirectorslistCell *cell=  [[JKDirectorslistCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            
-            [cell loadUIWithTitle:@"导演及演员" directors:self.viewModel.directorsArr];
-            
-            return cell;
-            
-        }
-        else if (indexPath.row == 1) {
             
             JKWorkDesCell *cell=  [[JKWorkDesCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
@@ -743,11 +734,6 @@
     
     if (self.viewModel.filterType == JKGameDataInfo) {
         if (indexPath.row == 0) {
-            
-            return self.viewModel.directorsCellHeight;
-            
-        }
-        else if (indexPath.row == 1) {
             
             return self.viewModel.descCellHeight;
             

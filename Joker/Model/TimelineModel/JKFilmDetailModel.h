@@ -45,6 +45,8 @@
 @property (nonatomic, strong)NSString <Optional>*favorited;
 @property (nonatomic, strong)NSString <Optional>*count;
 
+@property (nonatomic, strong)NSString <Optional>*animation_counts;
+
 
 @end
 

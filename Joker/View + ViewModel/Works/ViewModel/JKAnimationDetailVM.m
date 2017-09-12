@@ -88,35 +88,35 @@
             
         }
         
-        for (int i = 0 ; i <request.model.data.areas.count; i ++) {
-            
-            NSString *str2 = request.model.data.areas[i];
-            
-            if (i < 2) {
-                if (self.strTwo.length > 0) {
-                    self.strTwo = [NSString stringWithFormat:@"%@ %@",self.strTwo,str2];
-                }
-                else{
-                    self.strTwo = str2;
-                    
-                }
-                
-            }
-            else{
-                self.strTwo = [NSString stringWithFormat:@"%@...",self.strTwo];
-                
-            }
-            
-            
-        }
+//        for (int i = 0 ; i <request.model.data.areas.count; i ++) {
+//            
+//            NSString *str2 = request.model.data.areas[i];
+//            
+//            if (i < 2) {
+//                if (self.strTwo.length > 0) {
+//                    self.strTwo = [NSString stringWithFormat:@"%@ %@",self.strTwo,str2];
+//                }
+//                else{
+//                    self.strTwo = str2;
+//                    
+//                }
+//                
+//            }
+//            else{
+//                self.strTwo = [NSString stringWithFormat:@"%@...",self.strTwo];
+//                
+//            }
+//            
+//            
+//        }
         
-        if (request.model.data.count) {
-            self.strTwo = [NSString stringWithFormat:@"%@/%@集",self.strTwo,request.model.data.count];
+        if (request.model.data.animation_counts) {
+            self.strTwo = [NSString stringWithFormat:@"%@话",request.model.data.animation_counts];
         }
         
         
         if (request.model.data.releaseDate) {
-            self.strThree = [NSString stringWithFormat:@"%@上映",request.model.data.releaseDate];
+            self.strThree = [NSString stringWithFormat:@"%@首播",request.model.data.releaseDate];
         }
         
         
