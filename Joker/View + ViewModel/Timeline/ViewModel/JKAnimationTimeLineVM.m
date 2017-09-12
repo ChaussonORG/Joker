@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         
-        self.titlesArray = @[@"正 在 热 映",@"即 将 上 映"];
+        self.titlesArray = @[@"正 在 热 映",@"即 将 播 出"];
         
         self.type = JKAnimationCurrent;
         
@@ -122,6 +122,8 @@
             cellVM.imageUrl = item.coverImgUrl;
             
             cellVM.name = item.name;
+            
+            cellVM.extId = item.extId;
             
             cellVM.favoriteCount = item.collectQuantity;
             

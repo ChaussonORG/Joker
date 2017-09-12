@@ -172,7 +172,7 @@
 
 - (void)clickCell{
     
-    
+    [self.viewModel gotoDetail];
     
     
     

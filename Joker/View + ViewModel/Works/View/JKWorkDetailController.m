@@ -18,7 +18,7 @@
 #import "JKWorkDesCell.h"
 #import "JKWorkImageListCell.h"
 
-@interface JKWorkDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,WorkrefreshTableViewDelegate>
+@interface JKWorkDetailController ()<UITableViewDelegate,UITableViewDataSource,ChooseTopicDelegate,TopicCommentDelegate,PhotoBroswerVCDelegate,WorkrefreshTableViewDelegate,CHLoginModalControllerDelegate>
 
 
 @property (nonatomic , strong) UIImageView *bgImageView;
@@ -161,7 +161,7 @@
 - (void)setupBottomView{
     
     self.bottomView = [[UIView alloc]init];
-    self.bottomView.frame = CGRectMake(0, self.mainTableView.frame.size.height + self.mainTableView.frame.origin.y - 45 , ScreenWidth, 50) ;
+    self.bottomView.frame = CGRectMake(0, ScreenHeight - 50 , ScreenWidth, 50) ;
     [self.view addSubview:self.bottomView];
     self.bottomView.backgroundColor = [UIColor whiteColor];
      
@@ -223,7 +223,7 @@
 }
 - (void)setupTableView{
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 -44) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [UIColor whiteColor];
     
     self.mainTableView.delegate = self;
@@ -326,7 +326,7 @@
     
     self.score1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score1 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score1.frame = CGRectMake(self.strThreeLabel.frame.origin.x-5, 220 , 45, 20);
+    self.score1.frame = CGRectMake(self.strThreeLabel.frame.origin.x-5, 220 , 50, 20);
     [self.workDetailView  addSubview:self.score1];
     self.score1.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score1 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -334,7 +334,7 @@
     
     self.score2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score2 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width + 10, 220 , 45, 20);
+    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width , 220 , 50, 20);
     [self.workDetailView  addSubview:self.score2];
     self.score2.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score2 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -342,14 +342,14 @@
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width+ 10, 220, 45, 20);
+    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, 220, 50, 20);
     [self.workDetailView  addSubview:self.score3];
     self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
     
     self.score4 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score4 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width+ 10, 220, 45, 20);
+    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, 220, 50, 20);
     [self.workDetailView  addSubview:self.score4];
     self.score4.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -461,11 +461,22 @@
         
     }];
     
+    
     [RACObserve(self, viewModel.score1) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        [self.score1 setTitle:x forState:UIControlStateNormal];
-        [self.score1 setImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
+        if ([x integerValue] > 0) {
+            
+            [self.score1 setTitle:x forState:UIControlStateNormal];
+            [self.score1 setImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
+            
+        }
+        else{
+            
+            [self.score1 setTitle:@"暂无" forState:UIControlStateNormal];
+            [self.score1 setImage:[UIImage imageNamed:@"douban1"] forState:UIControlStateNormal];
+        }
+        
         [self.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
         
         
@@ -473,22 +484,32 @@
     [RACObserve(self, viewModel.score2) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        [self.score2 setTitle:x forState:UIControlStateNormal];
-        [self.score2 setImage:[UIImage imageNamed:@"imdb"] forState:UIControlStateNormal];
+        if ([x integerValue] > 0) {
+            [self.score2 setTitle:x forState:UIControlStateNormal];
+            [self.score2 setImage:[UIImage imageNamed:@"imdb"] forState:UIControlStateNormal];
+        }
+        else{
+            [self.score2 setTitle:@"暂无" forState:UIControlStateNormal];
+            [self.score2 setImage:[UIImage imageNamed:@"imdb1"] forState:UIControlStateNormal];
+            
+        }
+        
         [self.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
         
         
     }];
     [RACObserve(self, viewModel.score3) subscribeNext:^(NSString *x) {
         @strongify(self)
-        if (x) {
+        if ([x integerValue] > 0) {
             [self.score3 setTitle:x forState:UIControlStateNormal];
+            [self.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
         }
         else{
-            [self.score3 setTitle:@"0" forState:UIControlStateNormal];
+            [self.score3 setTitle:@"暂无" forState:UIControlStateNormal];
+            [self.score3 setImage:[UIImage imageNamed:@"fanqie1"] forState:UIControlStateNormal];
         }
         
-        [self.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
+        
         [self.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
         
         
@@ -497,14 +518,16 @@
         @strongify(self)
         
         
-        if (x) {
+        if ([x integerValue] > 0) {
+            [self.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
             [self.score4 setTitle:x forState:UIControlStateNormal];
         }
         else{
-            [self.score4 setTitle:@"0" forState:UIControlStateNormal];
+            [self.score4 setImage:[UIImage imageNamed:@"m1"] forState:UIControlStateNormal];
+            [self.score4 setTitle:@"暂无" forState:UIControlStateNormal];
         }
         
-        [self.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
+        
         [self.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
         
         

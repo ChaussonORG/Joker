@@ -158,11 +158,11 @@
     
     
     if (IS_LOWER_IPHONE6_SCREEN) {
-        size = 14.0;
+        size = 15.0;
     }
     else{
         
-        size = 15.0;
+        size = 16.0;
     }
     
     return  PINGFANG_FONT(size);

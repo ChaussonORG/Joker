@@ -79,6 +79,14 @@
                                 RACObserve(self, viewModel.collectionViewHeight)]] subscribeNext:^(id x) {
         @strongify(self);
         if (self.viewModel.isRecommend) {
+            for (UIView *view in self.contentView.subviews) {
+                
+                if ([view isKindOfClass:[JKRemanndationView class]]) {
+                    
+                    [view removeFromSuperview];
+                }
+                
+            }
             for (int i = 0 ; i < self.viewModel.recommendArr.count; i ++) {
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
@@ -131,7 +139,15 @@
                 [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
                 [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
-                remanndationView.lookPlayScore.text = cellVM.jokerScore;
+                if ([cellVM.jokerScore integerValue] > 0) {
+                    remanndationView.lookPlayScore.text = cellVM.jokerScore;
+                    remanndationView.lookPlayScore.font = [JKStyleConfiguration veryHugeFont];
+                }
+                else{
+                    
+                    remanndationView.lookPlayScore.text = @"暂无";
+                    remanndationView.lookPlayScore.font = [JKStyleConfiguration subcontentFont];
+                }
                 
                 //                if (cellVM.belongType.length > 0) {
                 //

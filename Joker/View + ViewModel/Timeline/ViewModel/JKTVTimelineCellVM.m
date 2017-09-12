@@ -7,7 +7,7 @@
 //
 
 #import "JKTVTimelineCellVM.h"
-
+#import "JKTVDetailController.h"
 @implementation JKTVTimelineCellVM
 
 - (instancetype)init
@@ -22,5 +22,14 @@
         
     }
     return self;
+}
+
+- (void)gotoDetailWithWorkId:(NSString *)workId{
+ 
+         
+    JKTVDetailController *vc = [[JKTVDetailController  alloc]initWithWorkId:workId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
 }
 @end

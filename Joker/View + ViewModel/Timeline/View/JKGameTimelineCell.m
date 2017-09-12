@@ -80,6 +80,14 @@
                                 RACObserve(self, viewModel.collectionViewHeight)]] subscribeNext:^(id x) {
         @strongify(self);
         if (self.viewModel.isRecommend) {
+            for (UIView *view in self.contentView.subviews) {
+                
+                if ([view isKindOfClass:[JKRemanndationView class]]) {
+                    
+                    [view removeFromSuperview];
+                }
+                
+            }
             for (int i = 0 ; i < self.viewModel.recommendArr.count; i ++) {
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
@@ -101,23 +109,64 @@
                 
                 remanndationView.contentLabelTwo.text = [NSString stringWithFormat:@"%@ %@",cellVM.version,cellVM.language];
                 
-                [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
-                [remanndationView.score1 setImage:[UIImage imageNamed:@"Bitmap"] forState:UIControlStateNormal];
+                if ([cellVM.score1 integerValue]>0) {
+                    [remanndationView.score1 setTitle:cellVM.score1 forState:UIControlStateNormal];
+                    [remanndationView.score1 setImage:[UIImage imageNamed:@"Bitmap"] forState:UIControlStateNormal];
+                }
+                else{
+                    [remanndationView.score1 setTitle:@"暂无" forState:UIControlStateNormal];
+                    [remanndationView.score1 setImage:[UIImage imageNamed:@"Bitmap1"] forState:UIControlStateNormal];
+                    
+                }
+                
                 [remanndationView.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                if ([cellVM.score2 integerValue]>0) {
+                    [remanndationView.score2 setTitle:cellVM.score2 forState:UIControlStateNormal];
+                    [remanndationView.score2 setImage:[UIImage imageNamed:@"g"] forState:UIControlStateNormal];
+                }
+                else{
+                    [remanndationView.score2 setTitle:@"暂无" forState:UIControlStateNormal];
+                    [remanndationView.score2 setImage:[UIImage imageNamed:@"g1"] forState:UIControlStateNormal];
+                    
+                }
                 
-                [remanndationView.score2 setTitle:cellVM.score2 forState:UIControlStateNormal];
-                [remanndationView.score2 setImage:[UIImage imageNamed:@"g"] forState:UIControlStateNormal];
                 [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
+                if ([cellVM.score3 integerValue]>0) {
+                    [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
+                    [remanndationView.score3 setImage:[UIImage imageNamed:@"tong"] forState:UIControlStateNormal];
+                }
+                else{
+                    [remanndationView.score3 setTitle:@"暂无" forState:UIControlStateNormal];
+                    [remanndationView.score3 setImage:[UIImage imageNamed:@"tong1"] forState:UIControlStateNormal];
+                    
+                }
                 
-                
-                [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
-                [remanndationView.score3 setImage:[UIImage imageNamed:@"tong"] forState:UIControlStateNormal];
                 [remanndationView.score3 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 
-                [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
-                [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
+                if ([cellVM.score4 integerValue]>0) {
+                    [remanndationView.score4 setTitle:cellVM.score4 forState:UIControlStateNormal];
+                    [remanndationView.score4 setImage:[UIImage imageNamed:@"m"] forState:UIControlStateNormal];
+                    
+                }
+                else{
+                    [remanndationView.score4 setTitle:@"暂无" forState:UIControlStateNormal];
+                    [remanndationView.score4 setImage:[UIImage imageNamed:@"m1"] forState:UIControlStateNormal];
+                    
+                    
+                }
+                
+              
+                
                 [remanndationView.score4 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
-                remanndationView.lookPlayScore.text = cellVM.jokerScore;
+                if ([cellVM.jokerScore integerValue] > 0) {
+                    remanndationView.lookPlayScore.text = cellVM.jokerScore;
+                    remanndationView.lookPlayScore.font = [JKStyleConfiguration veryHugeFont];
+                }
+                else{
+                    
+                    remanndationView.lookPlayScore.text = @"暂无";
+                    remanndationView.lookPlayScore.font = [JKStyleConfiguration subcontentFont];
+                }
                 
                 if (cellVM.version.length > 0) {
                     

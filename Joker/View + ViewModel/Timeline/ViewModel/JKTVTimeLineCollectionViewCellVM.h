@@ -37,4 +37,9 @@
 @property (nonatomic , strong) NSString *score4;
 
 @property (nonatomic , strong) NSString *belongType;
+
+
+@property (nonatomic , strong) NSString *extId;
+
+- (void)gotoDetail;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "JKDirectorslistCell.h"
-
+#import "JKWorkDirectorListController.h"
+#import "ASNavigator.h"
 @implementation JKDirectorslistCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
@@ -49,6 +50,9 @@
 
 
 - (void)loadUIWithTitle:(NSString *)title directors:(NSArray <JKFilmStaffCellVM*>*)directors{
+    self.title = title;
+    
+    self.directors = directors;
     
     self.mainTitleLabel.text = title;
     
@@ -177,7 +181,7 @@
             cellView.frame = CGRectMake(cellX, 46 +cellY, cellW, cellH);
             
             UIImageView *iconView = [[UIImageView alloc]init];
-            [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@""]];
+            [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@"touxiang"]];
             iconView.frame = CGRectMake(5, 0, 60, 60);
             iconView.layer.masksToBounds = YES;
             iconView.layer.cornerRadius = 30;
@@ -221,7 +225,7 @@
             cellView.frame = CGRectMake(cellX, 46 +cellY, cellW, cellH);
             
             UIImageView *iconView = [[UIImageView alloc]init];
-            [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@""]];
+            [iconView sd_setImageWithURL:[NSURL URLWithString:cellVM.img] placeholderImage:[UIImage imageNamed:@"touxiang"]];
             iconView.frame = CGRectMake(5, 0, 60, 60);
             iconView.layer.masksToBounds = YES;
             iconView.layer.cornerRadius = 30;
@@ -261,6 +265,10 @@
 
 - (void)clickAllBtn{
     
+    
+    JKWorkDirectorListController *vc = [[JKWorkDirectorListController alloc]initWithTitle:_title data:self.directors];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
     
     

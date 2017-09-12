@@ -141,7 +141,9 @@
         case 7:
             return @"周六";
             break;
-            
+        case 0:
+            return @"周六";
+            break;
         default:
             break;
     }
@@ -167,7 +169,7 @@
     NSInteger days = [self daysFromDate:[NSDate date] toDate:newDate];
     // 将总天数 换算为 以 周 计算（假如 相差10天，其实就是等于 相差 1周零3天，只需要取3天，更加方便计算）
     NSInteger day = days >= 7 ? days % 7 : days;
-    NSInteger week = ([self getNowWeekday] - day + 1 ) >= 0 ? [self getNowWeekday] - day + 1  : ([self getNowWeekday] + 7 - day + 1  );
+    NSInteger week = ([self getNowWeekday] - day + 2 ) >= 0 ? [self getNowWeekday] - day + 2  : ([self getNowWeekday] + 7 - day + 2  );
     switch (week) {
         case 1:
             return @"周四";
@@ -188,6 +190,9 @@
             return @"周六";
             break;
         case 7:
+            return @"周五";
+            break;
+        case 0:
             return @"周五";
             break;
             

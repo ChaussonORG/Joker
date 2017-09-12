@@ -127,6 +127,7 @@
             
             cellVM.belongType = item.belongType;
             
+            
             cellVM.jokerScore = item.joker_score;
             
             cellVM.score1 = item.ign_score;
@@ -152,7 +153,9 @@
         }
         
         if (cellViewModels.count == 0) {
-            [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            if (cellVMs.count>0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            }
         }
         else{
             

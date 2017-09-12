@@ -43,6 +43,7 @@
 @property (nonatomic, strong)NSString <Optional>*favoritedSize;
 @property (nonatomic, strong)NSString <Optional>*commentSize;
 @property (nonatomic, strong)NSString <Optional>*favorited;
+@property (nonatomic, strong)NSString <Optional>*count;
 
 
 @end

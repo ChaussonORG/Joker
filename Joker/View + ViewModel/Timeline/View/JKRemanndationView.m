@@ -98,16 +98,16 @@
     self.lookPlayTitle = [[UILabel alloc]init];
     self.lookPlayTitle.font = [JKStyleConfiguration middlecontentFont];
     self.lookPlayTitle.textColor = [JKStyleConfiguration blackColor];
-    self.lookPlayTitle.frame = CGRectMake(0, 5, self.lookPlayView.frame.size.width, 15);
+    self.lookPlayTitle.frame = CGRectMake(0, 10, self.lookPlayView.frame.size.width, 12);
     self.lookPlayTitle.textAlignment = NSTextAlignmentCenter;
     self.lookPlayTitle.text = @"看玩指数";
     [self.lookPlayView addSubview:self.lookPlayTitle];
     
     
     self.lookPlayScore = [[UILabel alloc]init];
-    self.lookPlayScore.font = [JKStyleConfiguration veryHugeFont];
+    self.lookPlayScore.font = [JKStyleConfiguration titleFont];
     self.lookPlayScore.textColor = [JKStyleConfiguration blackColor];
-    self.lookPlayScore.frame = CGRectMake(0,self.lookPlayTitle.frame.size.height + self.lookPlayTitle.frame.origin.y + 5, self.lookPlayView.frame.size.width, self.lookPlayView.frame.size.height - 25);
+    self.lookPlayScore.frame = CGRectMake(0,self.lookPlayTitle.frame.size.height + self.lookPlayTitle.frame.origin.y  , self.lookPlayView.frame.size.width, self.lookPlayView.frame.size.height - 25);
     self.lookPlayScore.textAlignment = NSTextAlignmentCenter;
     [self.lookPlayView addSubview:self.lookPlayScore];
     
@@ -130,34 +130,35 @@
     
     self.score1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score1 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x-5, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10 , 45, 20);
+    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x-5, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10 , 50, 20);
     [self addSubview:self.score1];
     self.score1.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score1 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
-    
+    self.score1.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.score2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score2 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width + 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y+ 10 , 45, 20);
+    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width , self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y+ 10 , 50, 20);
     [self addSubview:self.score2];
     self.score2.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score2 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
-    
+    self.score2.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width+ 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 45, 20);
+    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 50, 20);
     [self addSubview:self.score3];
     self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
+    self.score3.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.score4 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score4 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width+ 10, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 45, 20);
+    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 50, 20);
     [self addSubview:self.score4];
     self.score4.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
-    
+    self.score4.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.grayView = [[UIView alloc]init];
     self.grayView.backgroundColor = [JKStyleConfiguration screenSpareColor];

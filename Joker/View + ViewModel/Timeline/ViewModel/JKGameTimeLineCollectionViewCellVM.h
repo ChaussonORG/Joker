@@ -43,4 +43,11 @@
 @property (nonatomic , strong) NSString *version;
 
 @property (nonatomic , strong) NSString *language;
+
+
+@property (nonatomic , strong) NSString *extId;
+
+
+- (void)gotoDetail;
+
 @end

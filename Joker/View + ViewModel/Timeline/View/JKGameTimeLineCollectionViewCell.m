@@ -76,11 +76,11 @@
 
 
 - (void)loadDataWithVM:(JKGameTimeLineCollectionViewCellVM *)viewModel{
-    [self seGameiewModel:viewModel];
+    [self setViewModel:viewModel];
     
     
 }
-- (void)seGameiewModel:(JKGameTimeLineCollectionViewCellVM *)viewModel{
+- (void)setViewModel:(JKGameTimeLineCollectionViewCellVM *)viewModel{
     _viewModel = viewModel;
 }
 

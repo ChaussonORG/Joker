@@ -7,7 +7,15 @@
 //
 
 #import "JKAnimationTimeLineCollectionViewCellVM.h"
-
+#import "JKAnimationDetailController.h"
 @implementation JKAnimationTimeLineCollectionViewCellVM
 
+- (void)gotoDetail{
+    
+    
+    JKAnimationDetailController *vc = [[JKAnimationDetailController  alloc]initWithWorkId:self.extId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+}
 @end

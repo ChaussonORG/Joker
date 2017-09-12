@@ -12,5 +12,9 @@
 
 @property (nonatomic , strong) UILabel *mainTitleLabel;
 
+@property (nonatomic , strong) NSString *title;
+
+@property (nonatomic , strong) NSArray <JKFilmStaffCellVM*>*directors;
+
 - (void)loadUIWithTitle:(NSString *)title directors:(NSArray <JKFilmStaffCellVM*>*)directors;
 @end
