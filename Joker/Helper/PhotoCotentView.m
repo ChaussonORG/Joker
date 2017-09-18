@@ -39,8 +39,7 @@
         CGFloat y = col * (height + 10);
         
         CGRect frame = CGRectMake(x, y, width, height);
-        
-        NSLog(@"x = %f , y = %f , width = %f ,height = %f",frame.origin.x,frame.origin.y ,frame.size.width ,frame.size.height);
+
         
         subView.frame = frame;
     }];

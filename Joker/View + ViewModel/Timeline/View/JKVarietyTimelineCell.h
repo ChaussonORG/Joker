@@ -10,7 +10,7 @@
 #import "JKVarietyTimelineCellVM.h"
 #import "JKRemanndationView.h"
 
-@interface JKVarietyTimelineCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface JKVarietyTimelineCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ClickRemanndationViewDelegate>
 
 @property (nonatomic , strong) UILabel *dateLabel;
 

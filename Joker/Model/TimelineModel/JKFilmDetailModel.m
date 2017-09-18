@@ -8,6 +8,32 @@
 
 #import "JKFilmDetailModel.h"
 
+@implementation JKVarietyDetailModelImage
+
+
+
+@end
+
+@implementation JKVarietyDetailModelHostList
+
+
+
+@end
+
+@implementation JKVarietyDetailModelAreaList
+
+
+
+@end
+
+
+@implementation JKGameDetailModelLanguage
+
+@end
+
+@implementation JKGameDetailModelType
+
+@end
 
 
 @implementation JKFilmDetailModelStaff

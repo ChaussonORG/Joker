@@ -8,6 +8,88 @@
 
 #import <JSONModel/JSONModel.h>
 
+
+
+
+@class JKVarietyDetailModelImage;
+@protocol JKVarietyDetailModelImage <NSObject>
+@end
+@interface JKVarietyDetailModelImage : JSONModel
+
+@property (nonatomic, strong)NSString <Optional>*id;
+@property (nonatomic, strong)NSString <Optional>*name;
+@property (nonatomic, strong)NSString <Optional>*url;
+@end
+
+@class JKVarietyDetailModelHostList;
+@protocol JKVarietyDetailModelHostList <NSObject>
+@end
+@interface JKVarietyDetailModelHostList : JSONModel
+
+@property (nonatomic, strong)NSString <Optional>*id;
+@property (nonatomic, strong)NSString <Optional>*name;
+@property (nonatomic, strong)NSString <Optional>*english_name;
+@property (nonatomic, strong)NSString <Optional>*other_name;
+@property (nonatomic, strong)NSString <Optional>*gender;
+@property (nonatomic, strong)NSString <Optional>*nationality;
+@property (nonatomic, strong)NSString <Optional>*birthday;
+@property (nonatomic, strong)NSString <Optional>*birthplace;
+@property (nonatomic, strong)NSString <Optional>*bloodType;
+@property (nonatomic, strong)NSString <Optional>*age;
+@property (nonatomic, strong)NSString <Optional>*height;
+@property (nonatomic, strong)NSString <Optional>*constellation;
+@property (nonatomic, strong)NSString <Optional>*introduction;
+@property (nonatomic, strong)NSString <Optional>*country;
+@property (nonatomic, strong)NSString <Optional>*death_date;
+@property (nonatomic, strong)NSString <Optional>*reward;
+@property (nonatomic, strong)NSString <Optional>*professionName;
+@property (nonatomic, strong)NSString <Optional>*honorId;
+@property (nonatomic, strong)NSString <Optional>*honorName;
+@property (nonatomic, strong)NSString <Optional>*images;
+@property (nonatomic, strong)NSString <Optional>*professions;
+@property (nonatomic, strong)NSString <Optional>*img;
+@property (nonatomic, strong)NSString <Optional>*actorName;
+@property (nonatomic, strong)NSString <Optional>*professionId;
+@property (nonatomic, strong)NSString <Optional>*ralationId;
+@end
+
+@class JKVarietyDetailModelAreaList;
+@protocol JKVarietyDetailModelAreaList <NSObject>
+@end
+@interface JKVarietyDetailModelAreaList : JSONModel
+
+@property (nonatomic, strong)NSString <Optional>*id;
+@property (nonatomic, strong)NSString <Optional>*name;
+@property (nonatomic, strong)NSString <Optional>*ralationId;
+@end
+
+@class JKGameDetailModelLanguage;
+@protocol JKGameDetailModelLanguage <NSObject>
+@end
+@interface JKGameDetailModelLanguage : JSONModel
+
+@property (nonatomic, strong)NSString <Optional>*createTime;
+@property (nonatomic, strong)NSString <Optional>*lastUpdate;
+@property (nonatomic, strong)NSString <Optional>*id;
+@property (nonatomic, strong)NSString <Optional>*name;
+@property (nonatomic, strong)NSString <Optional>*category;
+@property (nonatomic, strong)NSString <Optional>*ralationId;
+@end
+
+@class JKGameDetailModelType;
+@protocol JKGameDetailModelType <NSObject>
+@end
+@interface JKGameDetailModelType : JSONModel
+
+@property (nonatomic, strong)NSString <Optional>*createTime;
+@property (nonatomic, strong)NSString <Optional>*lastUpdate;
+@property (nonatomic, strong)NSString <Optional>*id;
+@property (nonatomic, strong)NSString <Optional>*name;
+@property (nonatomic, strong)NSString <Optional>*category;
+@property (nonatomic, strong)NSString <Optional>*ralationId;
+@end
+
+
 @class JKFilmDetailModelStaff;
 @protocol JKFilmDetailModelStaff <NSObject>
 @end
@@ -46,8 +128,23 @@
 @property (nonatomic, strong)NSString <Optional>*count;
 
 @property (nonatomic, strong)NSString <Optional>*animation_counts;
+@property (nonatomic, strong)NSString <Optional>*release_date_global;
+@property (nonatomic, strong)NSString <Optional>*game_platform;
+@property (nonatomic, strong)NSArray <Optional, JKGameDetailModelType>*gameType;
+@property (nonatomic, strong)NSArray <Optional, JKGameDetailModelLanguage>*gameLanguage;
+@property (nonatomic, strong)NSString <Optional>*favotiteCount;
 
+@property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelAreaList>*areaList;
+@property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelHostList>*hostList;
+@property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelHostList>*guestList;
+@property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelImage>*imageList;
+@property (nonatomic, strong)NSString <Optional>*platform;
 
+@property (nonatomic, strong)NSString <Optional>*introduce;
+
+@property (nonatomic, strong)NSString <Optional>*coverImg;
+
+@property (nonatomic, strong)NSString <Optional>*openDate;
 @end
 
 

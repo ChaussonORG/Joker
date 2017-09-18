@@ -125,6 +125,9 @@
 		504C77161F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77151F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m */; };
 		504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C77181F55C1650004AE70 /* JKGameTimelineCell.m */; };
 		504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */; };
+		504CAE721F7020C400D27FFE /* JKCommentCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE711F7020C400D27FFE /* JKCommentCountApi.m */; };
+		504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */; };
+		504CAE791F70321400D27FFE /* JKSendCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE781F70321400D27FFE /* JKSendCodeApi.m */; };
 		50521A1F1F65097C00AE8B00 /* JKTVDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A1E1F65097C00AE8B00 /* JKTVDetailController.m */; };
 		50521A221F6509DF00AE8B00 /* JKTVDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A211F6509DF00AE8B00 /* JKTVDetailVM.m */; };
 		50521A251F65866C00AE8B00 /* JKTVDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A241F65866C00AE8B00 /* JKTVDetailApi.m */; };
@@ -241,6 +244,9 @@
 		508DB6F81F259C85002ABF97 /* JKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F51F259C85002ABF97 /* JKUser.m */; };
 		508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F71F259C85002ABF97 /* JKUserManager.m */; };
 		508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */; };
+		50A28AF61F6D2336001E881F /* JKMEListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AF51F6D2336001E881F /* JKMEListCell.m */; };
+		50A28AF91F6D23DF001E881F /* JKMEListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */; };
+		50A28AFC1F6D23EB001E881F /* JKMEVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AFB1F6D23EB001E881F /* JKMEVM.m */; };
 		50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */; };
 		50A311C21F2CF658003DA69D /* JKWorkDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */; };
 		50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */; };
@@ -267,6 +273,9 @@
 		50DA8B651F1B73FA00530F49 /* JKTopicDetailCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B641F1B73FA00530F49 /* JKTopicDetailCommentListModel.m */; };
 		50DA8B681F1B744700530F49 /* JKTopicDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B671F1B744700530F49 /* JKTopicDetailBottomView.m */; };
 		50DA8B6B1F1B95DB00530F49 /* JKTopicDetailBottomVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DA8B6A1F1B95DB00530F49 /* JKTopicDetailBottomVM.m */; };
+		50E0C2CC1F698715004A5969 /* JKVarietyDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E0C2CB1F698715004A5969 /* JKVarietyDetailApi.m */; };
+		50E0C2CF1F69875D004A5969 /* JKVarietyDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E0C2CE1F69875D004A5969 /* JKVarietyDetailController.m */; };
+		50E0C2D21F698789004A5969 /* JKVarietyDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E0C2D11F698789004A5969 /* JKVarietyDetailVM.m */; };
 		50F520AA1F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520A91F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m */; };
 		50F520AD1F613290004B59BF /* JKVarietyTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520AC1F613290004B59BF /* JKVarietyTimelineCell.m */; };
 		50F520B01F6132D7004B59BF /* JKVarietyTimeLineVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520AF1F6132D7004B59BF /* JKVarietyTimeLineVM.m */; };
@@ -555,6 +564,12 @@
 		504C77181F55C1650004AE70 /* JKGameTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimelineCell.m; sourceTree = "<group>"; };
 		504C771A1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKGameTimeLineCollectionViewCell.h; sourceTree = "<group>"; };
 		504C771B1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKGameTimeLineCollectionViewCell.m; sourceTree = "<group>"; };
+		504CAE701F7020C400D27FFE /* JKCommentCountApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCountApi.h; sourceTree = "<group>"; };
+		504CAE711F7020C400D27FFE /* JKCommentCountApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCountApi.m; sourceTree = "<group>"; };
+		504CAE731F7020D600D27FFE /* JKFavoriteCountApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFavoriteCountApi.h; sourceTree = "<group>"; };
+		504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFavoriteCountApi.m; sourceTree = "<group>"; };
+		504CAE771F70321400D27FFE /* JKSendCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKSendCodeApi.h; sourceTree = "<group>"; };
+		504CAE781F70321400D27FFE /* JKSendCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKSendCodeApi.m; sourceTree = "<group>"; };
 		50521A1D1F65097C00AE8B00 /* JKTVDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVDetailController.h; sourceTree = "<group>"; };
 		50521A1E1F65097C00AE8B00 /* JKTVDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVDetailController.m; sourceTree = "<group>"; };
 		50521A201F6509DF00AE8B00 /* JKTVDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVDetailVM.h; sourceTree = "<group>"; };
@@ -730,6 +745,12 @@
 		508DB6F71F259C85002ABF97 /* JKUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKUserManager.m; sourceTree = "<group>"; };
 		508DB6FB1F25A221002ABF97 /* JKLogOutApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLogOutApi.h; sourceTree = "<group>"; };
 		508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLogOutApi.m; sourceTree = "<group>"; };
+		50A28AF41F6D2336001E881F /* JKMEListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMEListCell.h; sourceTree = "<group>"; };
+		50A28AF51F6D2336001E881F /* JKMEListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMEListCell.m; sourceTree = "<group>"; };
+		50A28AF71F6D23DF001E881F /* JKMEListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKMEListCellVM.h; path = "Joker/View + ViewModel/Me/View/JKMEListCellVM.h"; sourceTree = SOURCE_ROOT; };
+		50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKMEListCellVM.m; path = "Joker/View + ViewModel/Me/View/JKMEListCellVM.m"; sourceTree = SOURCE_ROOT; };
+		50A28AFA1F6D23EB001E881F /* JKMEVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKMEVM.h; path = "Joker/View + ViewModel/Me/View/JKMEVM.h"; sourceTree = SOURCE_ROOT; };
+		50A28AFB1F6D23EB001E881F /* JKMEVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKMEVM.m; path = "Joker/View + ViewModel/Me/View/JKMEVM.m"; sourceTree = SOURCE_ROOT; };
 		50A311BD1F2CF64A003DA69D /* JKWorkDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailController.h; sourceTree = "<group>"; };
 		50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDetailController.m; sourceTree = "<group>"; };
 		50A311C01F2CF658003DA69D /* JKWorkDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailVM.h; sourceTree = "<group>"; };
@@ -782,6 +803,12 @@
 		50DA8B671F1B744700530F49 /* JKTopicDetailBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicDetailBottomView.m; sourceTree = "<group>"; };
 		50DA8B691F1B95DB00530F49 /* JKTopicDetailBottomVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicDetailBottomVM.h; sourceTree = "<group>"; };
 		50DA8B6A1F1B95DB00530F49 /* JKTopicDetailBottomVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicDetailBottomVM.m; sourceTree = "<group>"; };
+		50E0C2CA1F698715004A5969 /* JKVarietyDetailApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyDetailApi.h; sourceTree = "<group>"; };
+		50E0C2CB1F698715004A5969 /* JKVarietyDetailApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyDetailApi.m; sourceTree = "<group>"; };
+		50E0C2CD1F69875D004A5969 /* JKVarietyDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyDetailController.h; sourceTree = "<group>"; };
+		50E0C2CE1F69875D004A5969 /* JKVarietyDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyDetailController.m; sourceTree = "<group>"; };
+		50E0C2D01F698789004A5969 /* JKVarietyDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyDetailVM.h; sourceTree = "<group>"; };
+		50E0C2D11F698789004A5969 /* JKVarietyDetailVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyDetailVM.m; sourceTree = "<group>"; };
 		50F520A81F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimeLineCollectionViewCell.h; sourceTree = "<group>"; };
 		50F520A91F61320F004B59BF /* JKVarietyTimeLineCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimeLineCollectionViewCell.m; sourceTree = "<group>"; };
 		50F520AB1F613290004B59BF /* JKVarietyTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKVarietyTimelineCell.h; sourceTree = "<group>"; };
@@ -1412,6 +1439,8 @@
 				50521A301F67077700AE8B00 /* JKAnimationDetailApi.m */,
 				50521A321F683E8100AE8B00 /* JKGameDetailApi.h */,
 				50521A331F683E8100AE8B00 /* JKGameDetailApi.m */,
+				50E0C2CA1F698715004A5969 /* JKVarietyDetailApi.h */,
+				50E0C2CB1F698715004A5969 /* JKVarietyDetailApi.m */,
 				504253421F5B065D006DCB66 /* JKWorkCommentApi.h */,
 				504253431F5B065D006DCB66 /* JKWorkCommentApi.m */,
 				504253481F5B2005006DCB66 /* JKFavoriteWorkApi.h */,
@@ -1422,6 +1451,15 @@
 				5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */,
 			);
 			path = Timeline;
+			sourceTree = "<group>";
+		};
+		504CAE761F7031F300D27FFE /* login */ = {
+			isa = PBXGroup;
+			children = (
+				504CAE771F70321400D27FFE /* JKSendCodeApi.h */,
+				504CAE781F70321400D27FFE /* JKSendCodeApi.m */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		505D86921F3768B5005B6A6C /* CHImagePicker */ = {
@@ -1674,6 +1712,10 @@
 			children = (
 				508DB6FB1F25A221002ABF97 /* JKLogOutApi.h */,
 				508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */,
+				504CAE701F7020C400D27FFE /* JKCommentCountApi.h */,
+				504CAE711F7020C400D27FFE /* JKCommentCountApi.m */,
+				504CAE731F7020D600D27FFE /* JKFavoriteCountApi.h */,
+				504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1712,6 +1754,8 @@
 				50521A2A1F67063A00AE8B00 /* JKAnimationDetailController.m */,
 				50521A351F683EFA00AE8B00 /* JKGameDetailController.h */,
 				50521A361F683EFA00AE8B00 /* JKGameDetailController.m */,
+				50E0C2CD1F69875D004A5969 /* JKVarietyDetailController.h */,
+				50E0C2CE1F69875D004A5969 /* JKVarietyDetailController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1727,6 +1771,8 @@
 				50521A2D1F67068100AE8B00 /* JKAnimationDetailVM.m */,
 				50521A381F683F2100AE8B00 /* JKGameDetailVM.h */,
 				50521A391F683F2100AE8B00 /* JKGameDetailVM.m */,
+				50E0C2D01F698789004A5969 /* JKVarietyDetailVM.h */,
+				50E0C2D11F698789004A5969 /* JKVarietyDetailVM.m */,
 				5042525F1F5A5D37006DCB66 /* JKFilmStaffCellVM.h */,
 				504252601F5A5D37006DCB66 /* JKFilmStaffCellVM.m */,
 				504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */,
@@ -2156,6 +2202,7 @@
 		D3973BB11EEF0C320076B246 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				504CAE761F7031F300D27FFE /* login */,
 				504BA95F1F4F2F1300E33F08 /* Timeline */,
 				507A67531F3A9F9500377C5E /* Comment */,
 				508DB6FA1F25A221002ABF97 /* Me */,
@@ -2178,6 +2225,8 @@
 			children = (
 				D3973BE51EF23A160076B246 /* JKMeViewController.h */,
 				D3973BE61EF23A160076B246 /* JKMeViewController.m */,
+				50A28AF41F6D2336001E881F /* JKMEListCell.h */,
+				50A28AF51F6D2336001E881F /* JKMEListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2185,6 +2234,10 @@
 		D3973BD21EF2389F0076B246 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				50A28AF71F6D23DF001E881F /* JKMEListCellVM.h */,
+				50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */,
+				50A28AFA1F6D23EB001E881F /* JKMEVM.h */,
+				50A28AFB1F6D23EB001E881F /* JKMEVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2627,6 +2680,7 @@
 				50521A2E1F67068100AE8B00 /* JKAnimationDetailVM.m in Sources */,
 				50376CF91F629928009511FF /* JKWorkDirectorListCell.m in Sources */,
 				5042530D1F5ACF23006DCB66 /* PhotoItemView.m in Sources */,
+				50A28AFC1F6D23EB001E881F /* JKMEVM.m in Sources */,
 				502C6CCF1F5EF0D8009B93E4 /* JKAnimationTimeLineCollectionViewCell.m in Sources */,
 				504253241F5ACF23006DCB66 /* UIWindow+Launch.m in Sources */,
 				50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */,
@@ -2712,6 +2766,8 @@
 				5042531C1F5ACF23006DCB66 /* UIFont+Extend.m in Sources */,
 				5042530A1F5ACF23006DCB66 /* PBSaveBtn.m in Sources */,
 				50AC9D961F0EA7C900AA7AEC /* JKCommentListCellVM.m in Sources */,
+				504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */,
+				50E0C2D21F698789004A5969 /* JKVarietyDetailVM.m in Sources */,
 				504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */,
 				504C77011F55B9A10004AE70 /* JKTimelineTVModel.m in Sources */,
 				50376CF61F629905009511FF /* JKWorkDirectorListController.m in Sources */,
@@ -2724,6 +2780,7 @@
 				50C042C01F44A2CE00AF34A8 /* JKCommentTurnModel.m in Sources */,
 				502347591F18975500E82B8E /* UIView+YLView.m in Sources */,
 				504253161F5ACF23006DCB66 /* NSDate+Extend.m in Sources */,
+				504CAE791F70321400D27FFE /* JKSendCodeApi.m in Sources */,
 				508C55281F27310E001F1A15 /* JKFilmTimeLineVM.m in Sources */,
 				501F7E3B1EFAB1FC00FE1E35 /* JKCommonModel.m in Sources */,
 				504C77101F55C0CB0004AE70 /* JKGameTimeLineVM.m in Sources */,
@@ -2742,11 +2799,13 @@
 				50AC9D301F0D17E300AA7AEC /* JKTopicCreateVM.m in Sources */,
 				504253561F5B26D8006DCB66 /* JKWorkCommentCreatVM.m in Sources */,
 				505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */,
+				504CAE721F7020C400D27FFE /* JKCommentCountApi.m in Sources */,
 				508DB6E31F2598AA002ABF97 /* CHLoginOperationWebViewModel.m in Sources */,
 				508C55701F284467001F1A15 /* CHFaceBoard.m in Sources */,
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
 				504253151F5ACF23006DCB66 /* NSArray+Extend.m in Sources */,
 				508C552E1F28310F001F1A15 /* JKRemanndationView.m in Sources */,
+				50A28AF91F6D23DF001E881F /* JKMEListCellVM.m in Sources */,
 				508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */,
 				504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */,
 				504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */,
@@ -2786,6 +2845,7 @@
 				50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */,
 				50F520AD1F613290004B59BF /* JKVarietyTimelineCell.m in Sources */,
 				508DB6E51F2598AA002ABF97 /* CHRestController.m in Sources */,
+				50E0C2CF1F69875D004A5969 /* JKVarietyDetailController.m in Sources */,
 				50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */,
 				501F7E3A1EFAB1FC00FE1E35 /* JKCommonApi.m in Sources */,
 				501F57B71F1EFCD6001D2C8A /* JKTopicDetailTopcomentModel.m in Sources */,
@@ -2800,6 +2860,7 @@
 				50376CFF1F629CD6009511FF /* JKWorkDirectorListCellVM.m in Sources */,
 				D3973B691EEEEC200076B246 /* CHCustomTabBar.m in Sources */,
 				D3973B7F1EEEEC200076B246 /* HHTUserEditModel.m in Sources */,
+				50A28AF61F6D2336001E881F /* JKMEListCell.m in Sources */,
 				50AC9D231F0BA92000AA7AEC /* UIView+Extension.m in Sources */,
 				508C55131F26EA7A001F1A15 /* YJSliderView.m in Sources */,
 				508C55221F26F1B6001F1A15 /* JKGameTimeLineController.m in Sources */,
@@ -2830,6 +2891,7 @@
 				501F57B11F1E72CF001D2C8A /* JKFilmCollectionViewCell.m in Sources */,
 				502C6CC61F5EF029009B93E4 /* JKAnimationTimelineCell.m in Sources */,
 				508C55191F26F17A001F1A15 /* JKFilmTimeLineController.m in Sources */,
+				50E0C2CC1F698715004A5969 /* JKVarietyDetailApi.m in Sources */,
 				508DB6E61F2598AA002ABF97 /* CHLoginModalController.m in Sources */,
 				D3973B721EEEEC200076B246 /* HHTBaseColorHelper.m in Sources */,
 			);

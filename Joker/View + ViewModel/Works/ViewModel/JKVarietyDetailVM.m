@@ -6,8 +6,8 @@
 //  Copyright © 2017年 朱彦君. All rights reserved.
 //
 
-#import "JKGameDetailVM.h"
-#import "JKGameDetailApi.h"
+#import "JKVarietyDetailVM.h"
+#import "JKVarietyDetailApi.h"
 #import "JKTopicsListApi.h"
 #import "CHCommonMacro.h"
 #import "HHTGetString.h"
@@ -18,7 +18,7 @@
 #import "JKWorkCommentCreatController.h"
 #import "CHLoginModalController.h"
 
-@interface JKGameDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKVarietyDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
@@ -28,7 +28,7 @@
 
 
 @end
-@implementation JKGameDetailVM
+@implementation JKVarietyDetailVM
 
 - (instancetype)initWithWorkId:(NSString *)workId
 {
@@ -42,7 +42,7 @@
         
         self.titlesArray = @[@"信 息",@"评 论",@"话 题"];
         
-        self.filterType = JKGameDataInfo;
+        self.filterType = JKVarietyDataInfo;
         
         self.topicCellVMs = [NSMutableArray array];
         
@@ -60,9 +60,11 @@
     
     self.directorsArr = [NSMutableArray array];
     
-    JKGameDetailApi *api = [[JKGameDetailApi alloc]initWithWorkId:self.workId];
+    self.imageArrs = [NSMutableArray array];
     
-    [api startWithSuccessBlock:^(__kindof JKGameDetailApi *request) {
+    JKVarietyDetailApi *api = [[JKVarietyDetailApi alloc]initWithWorkId:self.workId];
+    
+    [api startWithSuccessBlock:^(__kindof JKVarietyDetailApi *request) {
         
         self.favoritedSize = request.model.data.favotiteCount;
         
@@ -70,21 +72,21 @@
         
         self.isfavorited = [request.model.data.favorited boolValue];
         
-        self.workImage = request.model.data.coverImage;
+        self.workImage = request.model.data.coverImg;
         
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
         
-        for (int i = 0; i < request.model.data.gameType.count; i ++) {
-            JKGameDetailModelType *type = request.model.data.gameType[i];
+        for (int i = 0 ; i < request.model.data.areaList.count ; i ++   ) {
+            JKVarietyDetailModelAreaList *str1 = request.model.data.areaList[i];
             
             if (i < 2) {
                 if (self.strOne.length > 0) {
-                    self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,type.name];
+                    self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1.name];
                 }
                 else{
-                    self.strOne = type.name;
+                    self.strOne = str1.name;
                     
                 }
             }
@@ -92,24 +94,17 @@
                 self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
                 
             }
-
-        }
-        
-        self.strTwo = request.model.data.game_platform;
-    
-        for (int i = 0 ; i <request.model.data.gameLanguage.count; i ++) {
             
-            JKGameDetailModelLanguage *str2 = request.model.data.gameLanguage[i];
             
-            if ([str2.name containsString:@"中文"]) {
-                self.strTwo = [NSString stringWithFormat:@"%@/中文",self.strTwo];
-            }
             
         }
+  
+        
+         self.strTwo = request.model.data.platform;
         
         
-        if (request.model.data.release_date_global) {
-            self.strThree = [NSString stringWithFormat:@"%@上市", [HHTGetString timeStrwithTimestamp:request.model.data.release_date_global]];
+        if (request.model.data.openDate) {
+            self.strThree = [NSString stringWithFormat:@"%@首播",request.model.data.openDate];
         }
         
         
@@ -123,21 +118,32 @@
         
         self.jokerScore = request.model.data.jokerScore;
         
-        self.imageArrs = request.model.data.coverImageList;
-        
-        if (!request.model.data.desc) {
+        for (JKVarietyDetailModelImage *image in request.model.data.imageList) {
             
-            self.desc = request.response.responseJSONObject[@"data"][@"desc"];
+            
+            [self.imageArrs addObject:image.url];
+            
+        }
+        
+        if (!request.model.data.introduce) {
+            
+            self.desc = request.response.responseJSONObject[@"data"][@"introduce"];
         }
         else{
-            self.desc = request.model.data.desc;
+            self.desc = request.model.data.introduce;
         }
         
         
         
-        for (JKFilmDetailModelStaff *staff in request.model.data.staff) {
+        for (JKVarietyDetailModelHostList *host in request.model.data.hostList) {
             
-            [self.directorsArr addObject:[self assembleViewModelWithStaff:staff]];
+            [self.directorsArr addObject:[self assembleViewModelWithStaff:host isHost:YES]];
+        }
+        
+        for (JKVarietyDetailModelHostList * guest in request.model.data.guestList) {
+            
+             [self.directorsArr addObject:[self assembleViewModelWithStaff:guest isHost:NO]];
+            
         }
         
         if (self.directorsArr.count%4 == 0 &&self.directorsArr.count<10) {
@@ -168,7 +174,7 @@
         
         
         
-    } failureBlock:^(__kindof JKGameDetailApi *request) {
+    } failureBlock:^(__kindof JKVarietyDetailApi *request) {
         
         
         
@@ -215,7 +221,7 @@
     
     JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
     
-    api.commentType = @"GAME";
+    api.commentType = @"Variety";
     
     api.requestModel.limit = RequestLimit;
     
@@ -423,17 +429,26 @@
     
 }
 
-- (JKFilmStaffCellVM *)assembleViewModelWithStaff:(JKFilmDetailModelStaff *)staff{
+- (JKFilmStaffCellVM *)assembleViewModelWithStaff:(JKVarietyDetailModelHostList *)staff isHost:(BOOL)isHost{
     
     JKFilmStaffCellVM *cellVM = [[JKFilmStaffCellVM alloc]init];
     
-    cellVM.personId = staff.personId;
+    cellVM.personId = staff.id;
     
     cellVM.name = staff.name;
     
-    cellVM.actName = staff.actName;
+    cellVM.actName = staff.actorName;
     
-    cellVM.degree = staff.degree;
+    if (isHost) {
+        
+        cellVM.degree = @"主持人";
+        
+    }
+    else{
+        
+        cellVM.degree = @"嘉宾";
+    }
+    
     
     cellVM.img = staff.img;
     
@@ -451,11 +466,11 @@
 }
 - (void)requestMoreData{
     
-    if (self.filterType == JKGameDataComment) {
+    if (self.filterType == JKVarietyDataComment) {
         
         [self  requestMoreCommentData];
     }
-    else if(self.filterType == JKGameDataTopic){
+    else if(self.filterType == JKVarietyDataTopic){
         
         [self  requestMoreTopicData];
         
@@ -469,7 +484,7 @@
 - (void)requestMoreTopicData{
     
     
-    JKTopicsListApi *api = [[JKTopicsListApi alloc]initTopicGame];
+    JKTopicsListApi *api = [[JKTopicsListApi alloc]initTopicVariety];
     api.projectId = self.workId;
     
     api.requestModel.limit = RequestLimit;

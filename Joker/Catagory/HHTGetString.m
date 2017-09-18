@@ -107,10 +107,14 @@
     formatter.dateFormat = @"YYYY-MM-dd";
     // 将字符串日期 转换为 NSDate 类型
     NSDate *endDate = [formatter dateFromString:passDate];
+     NSDate *date = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
     
     NSTimeZone *timeZone=[NSTimeZone systemTimeZone];
     
-    NSInteger seconds=[timeZone secondsFromGMTForDate:endDate];
+    NSInteger seconds=[timeZone secondsFromGMTForDate:localeDate];
     
     NSDate *newDate=[endDate dateByAddingTimeInterval:seconds];
  
@@ -153,15 +157,27 @@
 + (NSString *)featureWeekdayWithDate:(NSString *)featureDate{
     // 创建 格式 对象
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    
+    NSDate *date = [NSDate date];
+    
+    
+    
     // 设置 日期 格式 可以根据自己的需求 随时调整， 否则计算的结果可能为 nil
-    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
+    //formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    //[formatter setTimeZone:GTMzone];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
     // 将字符串日期 转换为 NSDate 类型
     NSDate *endDate = [formatter dateFromString:featureDate];
     
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
+    
     NSTimeZone *timeZone=[NSTimeZone systemTimeZone];
     
-    NSInteger seconds=[timeZone secondsFromGMTForDate:endDate];
+    NSInteger seconds=[timeZone secondsFromGMTForDate:localeDate];
     
     NSDate *newDate=[endDate dateByAddingTimeInterval:seconds];
     
@@ -202,7 +218,7 @@
             return @"周五";
             break;
         case 0:
-            return @"周五";
+            return @"周日";
             break;
             
         default:

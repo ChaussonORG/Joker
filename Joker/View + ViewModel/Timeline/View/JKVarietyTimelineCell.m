@@ -91,11 +91,11 @@
                 
                 JKRemanndationView *remanndationView = [[JKRemanndationView alloc]init];
                 
-                
+                remanndationView.delegate = self;
                 remanndationView.frame = CGRectMake(0, self.dateLabel.frame.origin.y + self.dateLabel.frame.size.height + i * 180, ScreenWidth, 180);
                 
                 JKVarietyTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
-                
+                remanndationView.extId = cellVM.extId;
                 NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",cellVM.imageUrl]];
                 
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
@@ -235,6 +235,13 @@
     _viewModel = viewModel;
     
 }
+- (void)clickHoleViewWithExtId:(NSString *)extId{
+    
+    
+    [self.viewModel gotoDetailWithWorkId:extId];
+    
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -211,7 +211,7 @@
 
 - (void)didSelectedItem:(NSInteger)item {
     
-    NSLog(@"选择了第%ld张图片",item+1);
+    //NSLog(@"选择了第%ld张图片",item+1);
 }
 
 

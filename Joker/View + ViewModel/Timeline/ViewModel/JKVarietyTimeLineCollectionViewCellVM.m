@@ -7,7 +7,15 @@
 //
 
 #import "JKVarietyTimeLineCollectionViewCellVM.h"
-
+#import "JKVarietyDetailController.h"
 @implementation JKVarietyTimeLineCollectionViewCellVM
 
+- (void)gotoDetail{
+    
+    
+    JKVarietyDetailController *vc = [[JKVarietyDetailController  alloc]initWithWorkId:self.extId];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+}
 @end

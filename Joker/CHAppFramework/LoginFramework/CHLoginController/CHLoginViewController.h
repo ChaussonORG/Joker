@@ -9,14 +9,27 @@
 #import "CHLoginModalController.h"
 
 @interface CHLoginViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
-@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
-@property (weak, nonatomic) IBOutlet UIButton *backBtn;
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *passWordText;
+@property (strong, nonatomic) UIButton *forgetBtn;
+@property (strong, nonatomic) UIButton *registerBtn;
+@property (strong, nonatomic)  UIButton *backBtn;
+@property (strong, nonatomic)  UIButton *loginBtn;
+@property (strong, nonatomic)  UITextField *username;
+@property (strong, nonatomic)  UITextField *passWordText;
 @property (nonatomic ,weak) CHLoginModalController *loginModalViewController;
 @property (strong, nonatomic)  UIButton *qqLoginBtn;
 @property (strong, nonatomic) UIButton *wechatLoginBtn;
+@property (strong, nonatomic) UIButton *weiboLoginBtn;
+@property (strong, nonatomic) UIView *loginbgView;
+@property (strong, nonatomic) UILabel *disanfangline;
+@property (strong, nonatomic) UIView *registerbgView;
+@property (strong, nonatomic)  UITextField *registerUsername;
+@property (strong, nonatomic)  UITextField *registerPassWordText;
+@property (strong, nonatomic)  UITextField *registerCodeText;
+@property (strong, nonatomic) UIButton *sendCodeBtn;
+@property (strong, nonatomic) UIButton *nextBtn;
+@property (strong, nonatomic) UIButton *haveAccountBtn;
 
+@property (strong, nonatomic) UILabel *readProtolLabel;
+
+@property (strong, nonatomic) UIButton *openProtolBtn;
 @end
