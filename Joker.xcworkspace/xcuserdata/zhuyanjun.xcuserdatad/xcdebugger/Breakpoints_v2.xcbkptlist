@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-            timestampString = "527447365.527271"
+            timestampString = "527448383.98431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-clickSendCodeBtn"
             landmarkType = "7">
             <Locations>
@@ -52,11 +52,11 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhuyanjun/Desktop/Joker/Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-                  timestampString = "527447379.356164"
+                  timestampString = "527448385.176324"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
                   offsetFromSymbolStart = "52">
                </Location>
                <Location
@@ -67,11 +67,11 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhuyanjun/Desktop/Joker/Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-                  timestampString = "527447379.357971"
+                  timestampString = "527448385.178305"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>

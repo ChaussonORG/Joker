@@ -38,6 +38,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     self.view.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     
+    
+    self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    self.backBtn.frame = CGRectMake(15, 33, 20, 20);
+    [self.view addSubview:self.backBtn];
+    
+    
     [self setUploginViews];
     
     [self setUpRegisterViews];
@@ -73,8 +80,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     self.sendCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.sendCodeBtn.frame = CGRectMake(self.registerbgView.frame.size.width - 28 - 30,  self.registerUsername.frame.origin.y - 4 , 28, 28);
+    [self.sendCodeBtn setImage:[UIImage imageNamed:@"sendCode"] forState:UIControlStateNormal];
     [self.sendCodeBtn setTitleColor:[JKStyleConfiguration whiteColor] forState:UIControlStateNormal];
-    self.sendCodeBtn.backgroundColor = [JKStyleConfiguration twotwoColor];
+//    self.sendCodeBtn.backgroundColor = [JKStyleConfiguration twotwoColor];
     self.sendCodeBtn.titleLabel.font = [JKStyleConfiguration hugeFont];
 //    self.sendCodeBtn.layer.cornerRadius = 20;
 //    self.sendCodeBtn.layer.masksToBounds = YES;
@@ -284,16 +292,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.weiboLoginBtn.layer.cornerRadius = 25;
     self.weiboLoginBtn.layer.masksToBounds = YES;
     [self.view addSubview:self.weiboLoginBtn];
-    [self.weiboLoginBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.weiboLoginBtn setImage:[UIImage imageNamed:@"weibo"] forState:UIControlStateNormal];
     
     
     
     self.wechatLoginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.wechatLoginBtn.frame = CGRectMake(ScreenWidth + 15, self.weiboLoginBtn.frame.origin.y , 50, 50);
+    self.wechatLoginBtn.frame = CGRectMake(ScreenWidth/2 + 15, self.weiboLoginBtn.frame.origin.y , 50, 50);
     self.wechatLoginBtn.layer.cornerRadius = 25;
     self.wechatLoginBtn.layer.masksToBounds = YES;
     [self.view addSubview:self.weiboLoginBtn];
-    [self.wechatLoginBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.wechatLoginBtn setImage:[UIImage imageNamed:@"wechat"] forState:UIControlStateNormal];
     [self.view addSubview:self.wechatLoginBtn];
     
     
@@ -307,8 +315,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     self.qqLoginBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 + 20, [UIScreen mainScreen].bounds.size.height - 20 - 44 , 44, 44);
     
-    self.wechatLoginBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 44 - 20, [UIScreen mainScreen].bounds.size.height - 20 - 44 , 44, 44);
-    
+//    self.wechatLoginBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 44 - 20, [UIScreen mainScreen].bounds.size.height - 20 - 44 , 44, 44);
+//    
     
 }
 - (void)loadUI

@@ -147,7 +147,7 @@
     
     
     self.setBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.setBtn setImage:[UIImage imageNamed:@"shezhi"] forState:UIControlStateNormal];
+    [self.setBtn setImage:[UIImage imageNamed:@"baishezhi"] forState:UIControlStateNormal];
     [self.headerView addSubview:self.setBtn];
     self.setBtn.frame = CGRectMake(ScreenWidth - 25 - 15, 30, 25, 25);
 

@@ -64,7 +64,7 @@
     
     
     self.arrowView = [[UIImageView alloc]init];
-    self.arrowView.image = [UIImage imageNamed:@"jiantouyou"];
+    self.arrowView.image = [UIImage imageNamed:@"youjiantou"];
     self.arrowView.frame = CGRectMake(ScreenWidth - 20 - 6, 24, 6, 12);
     [self.contentView addSubview:self.arrowView];
     
