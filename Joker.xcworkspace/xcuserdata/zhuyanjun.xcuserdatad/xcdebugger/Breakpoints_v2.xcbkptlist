@@ -35,46 +35,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-            timestampString = "527448383.98431"
+            filePath = "Joker/Common/perfectUserInfo/JKPerfectUserInfoController.m"
+            timestampString = "527535001.822977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-clickSendCodeBtn"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-clickFinishBtn"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[CHLoginViewController clickSendCodeBtn]_block_invoke"
-                  moduleName = "Joker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuyanjun/Desktop/Joker/Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-                  timestampString = "527448385.176324"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__41-[CHLoginViewController clickSendCodeBtn]_block_invoke_2"
-                  moduleName = "Joker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuyanjun/Desktop/Joker/Joker/CHAppFramework/LoginFramework/CHLoginController/CHLoginViewController.m"
-                  timestampString = "527448385.178305"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

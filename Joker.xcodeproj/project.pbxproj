@@ -128,6 +128,10 @@
 		504CAE721F7020C400D27FFE /* JKCommentCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE711F7020C400D27FFE /* JKCommentCountApi.m */; };
 		504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */; };
 		504CAE791F70321400D27FFE /* JKSendCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE781F70321400D27FFE /* JKSendCodeApi.m */; };
+		504CAE7D1F70E8BB00D27FFE /* JKPerfectUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE7C1F70E8BB00D27FFE /* JKPerfectUserInfoController.m */; };
+		504CAE801F70F8F700D27FFE /* JKIconCommitApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE7F1F70F8F700D27FFE /* JKIconCommitApi.m */; };
+		504CAE831F711DF700D27FFE /* JKRegisterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE821F711DF700D27FFE /* JKRegisterApi.m */; };
+		504CAE861F71209800D27FFE /* JKPerfectInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 504CAE851F71209800D27FFE /* JKPerfectInfoApi.m */; };
 		50521A1F1F65097C00AE8B00 /* JKTVDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A1E1F65097C00AE8B00 /* JKTVDetailController.m */; };
 		50521A221F6509DF00AE8B00 /* JKTVDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A211F6509DF00AE8B00 /* JKTVDetailVM.m */; };
 		50521A251F65866C00AE8B00 /* JKTVDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50521A241F65866C00AE8B00 /* JKTVDetailApi.m */; };
@@ -570,6 +574,14 @@
 		504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFavoriteCountApi.m; sourceTree = "<group>"; };
 		504CAE771F70321400D27FFE /* JKSendCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKSendCodeApi.h; sourceTree = "<group>"; };
 		504CAE781F70321400D27FFE /* JKSendCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKSendCodeApi.m; sourceTree = "<group>"; };
+		504CAE7B1F70E8BB00D27FFE /* JKPerfectUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPerfectUserInfoController.h; sourceTree = "<group>"; };
+		504CAE7C1F70E8BB00D27FFE /* JKPerfectUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPerfectUserInfoController.m; sourceTree = "<group>"; };
+		504CAE7E1F70F8F700D27FFE /* JKIconCommitApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKIconCommitApi.h; sourceTree = "<group>"; };
+		504CAE7F1F70F8F700D27FFE /* JKIconCommitApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKIconCommitApi.m; sourceTree = "<group>"; };
+		504CAE811F711DF700D27FFE /* JKRegisterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKRegisterApi.h; sourceTree = "<group>"; };
+		504CAE821F711DF700D27FFE /* JKRegisterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKRegisterApi.m; sourceTree = "<group>"; };
+		504CAE841F71209800D27FFE /* JKPerfectInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPerfectInfoApi.h; sourceTree = "<group>"; };
+		504CAE851F71209800D27FFE /* JKPerfectInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPerfectInfoApi.m; sourceTree = "<group>"; };
 		50521A1D1F65097C00AE8B00 /* JKTVDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVDetailController.h; sourceTree = "<group>"; };
 		50521A1E1F65097C00AE8B00 /* JKTVDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTVDetailController.m; sourceTree = "<group>"; };
 		50521A201F6509DF00AE8B00 /* JKTVDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTVDetailVM.h; sourceTree = "<group>"; };
@@ -1458,8 +1470,23 @@
 			children = (
 				504CAE771F70321400D27FFE /* JKSendCodeApi.h */,
 				504CAE781F70321400D27FFE /* JKSendCodeApi.m */,
+				504CAE7E1F70F8F700D27FFE /* JKIconCommitApi.h */,
+				504CAE7F1F70F8F700D27FFE /* JKIconCommitApi.m */,
+				504CAE811F711DF700D27FFE /* JKRegisterApi.h */,
+				504CAE821F711DF700D27FFE /* JKRegisterApi.m */,
+				504CAE841F71209800D27FFE /* JKPerfectInfoApi.h */,
+				504CAE851F71209800D27FFE /* JKPerfectInfoApi.m */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		504CAE7A1F70E8A400D27FFE /* perfectUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				504CAE7B1F70E8BB00D27FFE /* JKPerfectUserInfoController.h */,
+				504CAE7C1F70E8BB00D27FFE /* JKPerfectUserInfoController.m */,
+			);
+			path = perfectUserInfo;
 			sourceTree = "<group>";
 		};
 		505D86921F3768B5005B6A6C /* CHImagePicker */ = {
@@ -1988,6 +2015,7 @@
 		D3973B1D1EEEEC200076B246 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				504CAE7A1F70E8A400D27FFE /* perfectUserInfo */,
 				501F57C71F2099D2001D2C8A /* StarView */,
 				501F57AE1F1E729A001D2C8A /* FilmCell */,
 				D3973B1E1EEEEC200076B246 /* Request&Model */,
@@ -2694,6 +2722,7 @@
 				508DB6E41F2598AA002ABF97 /* CHRegisterController.m in Sources */,
 				D3973BEF1EF290190076B246 /* JKTopicListCellVM.m in Sources */,
 				508C55121F26EA7A001F1A15 /* DotCountLabel.m in Sources */,
+				504CAE831F711DF700D27FFE /* JKRegisterApi.m in Sources */,
 				D3973B571EEEEC200076B246 /* UIColor+Hex.m in Sources */,
 				502347551F18975500E82B8E /* GKFadeNavigationController.m in Sources */,
 				504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */,
@@ -2725,6 +2754,7 @@
 				50521A311F67077700AE8B00 /* JKAnimationDetailApi.m in Sources */,
 				D3973B561EEEEC200076B246 /* NSError+SignalError.m in Sources */,
 				50AF130A1F08D619005B34AA /* ZWTopSelectButton.m in Sources */,
+				504CAE801F70F8F700D27FFE /* JKIconCommitApi.m in Sources */,
 				504253191F5ACF23006DCB66 /* NSString+Password.m in Sources */,
 				50521A341F683E8100AE8B00 /* JKGameDetailApi.m in Sources */,
 				50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */,
@@ -2793,6 +2823,7 @@
 				D3973B681EEEEC200076B246 /* CHBarItemViewModel.m in Sources */,
 				50F520B61F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m in Sources */,
 				508DB6F81F259C85002ABF97 /* JKUser.m in Sources */,
+				504CAE861F71209800D27FFE /* JKPerfectInfoApi.m in Sources */,
 				501E8A881F130FD800723C29 /* JKCommentListModel.m in Sources */,
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
@@ -2830,6 +2861,7 @@
 				504BA95E1F4F2D6000E33F08 /* JKTimelineFilmModel.m in Sources */,
 				504253091F5ACF23006DCB66 /* PBPGView.m in Sources */,
 				5042530F1F5ACF23006DCB66 /* PhotoBroswerVC.m in Sources */,
+				504CAE7D1F70E8BB00D27FFE /* JKPerfectUserInfoController.m in Sources */,
 				501F57CA1F2099D2001D2C8A /* CTOCommentStarView.m in Sources */,
 				50AC9D3C1F0DE44200AA7AEC /* JKTopicDetailController.m in Sources */,
 				50F520B01F6132D7004B59BF /* JKVarietyTimeLineVM.m in Sources */,

@@ -13,7 +13,28 @@
 #import "HHTUploadImageApi.h"
 //#import "HHTUploadFileApi.h"
 #import <CHProgressHUD/CHProgressHUD.h>
+#import "JKIconCommitApi.h"
 @implementation HHTUserEditModel
+
++ (void)updateIcon:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler{
+    
+    NSString *name = [[NSUUID UUID] UUIDString];
+    JKIconCommitApi *imageUploader = [[JKIconCommitApi alloc]initWithImage:image imageName:name fileName:name];
+    [imageUploader startWithSuccessBlock:^(__kindof CHBaseRequest *request) {
+        
+        JKIconCommitApi *uploader = (JKIconCommitApi *)request;
+        if (uploader.baseResponse.code == 200) {
+            successHandler(uploader.baseResponse);
+        } else {
+            successHandler(uploader.baseResponse);
+        }
+    } failureBlock:^(__kindof CHBaseRequest *request) {
+        if (failedHandler) {
+            failedHandler();
+        }
+    }];
+
+}
 
 + (void)updateAvatar:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler {
     NSString *name = [[NSUUID UUID] UUIDString];

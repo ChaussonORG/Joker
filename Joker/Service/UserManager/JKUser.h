@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
 @property (nonatomic ,strong) NSString <Optional>*cellphone;
 @property (assign) NSInteger hidden;
 @property (assign) BOOL vipMember;
+@property (nonatomic ,strong) NSString <Optional>*birthday;
 
 //
 @property (nonatomic ,strong) NSString <Optional>*token;

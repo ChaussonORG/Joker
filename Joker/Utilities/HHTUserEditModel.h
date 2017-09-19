@@ -17,4 +17,6 @@
 + (void)updateAvatarBuy:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler;
 
 + (void)updateFile:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler;
+
++ (void)updateIcon:(UIImage *)image success:(void (^) (id userInfo))successHandler failed:(void (^) (void))failedHandler;
 @end

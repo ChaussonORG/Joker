@@ -107,6 +107,8 @@
 
 + (UIColor *)ccccccColor;
 
++ (UIColor *)eeeeeeColor;
+
 + (UIColor *)sixsixColor;
 
 + (UIColor *)twotwoColor;

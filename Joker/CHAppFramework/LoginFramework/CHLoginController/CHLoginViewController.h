@@ -32,4 +32,6 @@
 @property (strong, nonatomic) UILabel *readProtolLabel;
 
 @property (strong, nonatomic) UIButton *openProtolBtn;
+
+@property (nonatomic , strong) UIImageView *logoView;
 @end
