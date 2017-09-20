@@ -171,7 +171,7 @@
             self.imagesCellHeight =(self.imageArrs.count/4 )*((ScreenWidth - 35)/4) +36 + 50;
         }
         else{
-            self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10) + 36 + 50;
+            self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10)  ;
         }
         
         

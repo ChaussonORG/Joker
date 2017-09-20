@@ -88,6 +88,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.registerUsername.placeholder = @"手机号";
     self.registerUsername.frame = CGRectMake(30,titleLabel.frame.size.height + titleLabel.frame.origin.y + 25 , 200 , 20);
     [self.registerbgView addSubview:self.registerUsername];
+    self.registerUsername.keyboardType = UIKeyboardTypeNumberPad;
     
     self.sendCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.sendCodeBtn.frame = CGRectMake(self.registerbgView.frame.size.width - 28 - 30,  self.registerUsername.frame.origin.y - 4 , 28, 28);
@@ -338,6 +339,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.username.font = [JKStyleConfiguration overstrikingFont];;
     self.username.frame = CGRectMake(photoLabel.frame.origin.x + photoLabel.frame.size.width + 30, photoLabel.frame.origin.y , 200 , 20);
     [self.loginbgView addSubview:self.username];
+    self.username.keyboardType = UIKeyboardTypeNumberPad;
     
     UIView *usernameline = [[UIView alloc]init];
     usernameline.frame = CGRectMake(photoLabel.frame.origin.x, photoLabel.frame.size.height + photoLabel.frame.origin.y + 10, self.loginbgView.frame.size.width - 2 * photoLabel.frame.origin.x, 1);

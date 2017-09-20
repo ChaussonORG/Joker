@@ -97,7 +97,7 @@
                 
                 JKAnimationTimeLineCollectionViewCellVM *cellVM = self.viewModel.recommendArr[i];
                 remanndationView.extId = cellVM.extId;
-                NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",cellVM.imageUrl]];
+                NSURL * imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_200,w_280",cellVM.imageUrl]];
                 
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 
@@ -142,7 +142,7 @@
                 
                 [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 if ([cellVM.score3 integerValue]>0) {
-                    [remanndationView.score3 setTitle:cellVM.score3 forState:UIControlStateNormal];
+                    [remanndationView.score3 setTitle:[NSString stringWithFormat:@"%ld%%",[cellVM.score3 integerValue]*10] forState:UIControlStateNormal];
                     [remanndationView.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
                 }
                 else{

@@ -50,6 +50,7 @@
     [api startWithSuccessBlock:^(__kindof JKLogOutApi *request) {
         if ([[request.response.responseJSONObject objectForKey:@"code"] isEqualToString:@"200"]) {
             [[JKUserManager sharedData] disableCurrentUser];
+            [self.delegate refreshUI];
             [[CHNetworkConfig sharedInstance] clearHeaderFiled];
             [[ASNavigator shareModalCenter] popHomeViewControllerWithAnimation:YES completion:^{
                 //                if ([[[ASNavigator shareModalCenter] fetchCurrentViewController] isKindOfClass:[CHTabBarViewController class]]) {

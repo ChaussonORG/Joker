@@ -11,7 +11,7 @@
 #import "CHTabBarViewController.h"
 
 #import "JKMEListCell.h"
-@interface JKMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JKMeViewController ()<UITableViewDelegate,UITableViewDataSource,MeControllerDelegate>
 
 
 @property (nonatomic , strong) UIView *headerView;
@@ -104,7 +104,10 @@
         
     }];
 }
-
+- (void)refreshUI{
+    
+    [self.viewModel initData];
+}
 - (void)setupSubviews{
     
     self.headerView = [[UIView alloc]init];
@@ -174,6 +177,7 @@
     static NSString *cellId = @"cellId";
     JKMEListCell *cell=  [[JKMEListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
  
+    cell.viewModel.delegate = self;
     
     [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
     

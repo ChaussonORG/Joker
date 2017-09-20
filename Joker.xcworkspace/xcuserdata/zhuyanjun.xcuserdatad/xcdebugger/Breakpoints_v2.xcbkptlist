@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Works/ViewModel/JKTVDetailVM.m"
-            timestampString = "526925766.590304"
+            filePath = "Joker/Common/perfectUserInfo/JKPerfectUserInfoController.m"
+            timestampString = "527535001.822977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-requestData"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-clickFinishBtn"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Joker/Common/perfectUserInfo/JKPerfectUserInfoController.m"
-            timestampString = "527535001.822977"
+            filePath = "Joker/View + ViewModel/Timeline/ViewModel/JKTVTimeLineVM.m"
+            timestampString = "527615895.740551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-clickFinishBtn"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-requestData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

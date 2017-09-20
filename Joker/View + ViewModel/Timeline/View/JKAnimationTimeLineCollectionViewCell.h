@@ -20,6 +20,7 @@
 
 @property (nonatomic , strong) UILabel *pointLabel;
 
+@property (nonatomic , strong) UILabel *unpointLabel;
 
 @property (nonatomic , strong) JKAnimationTimeLineCollectionViewCellVM *viewModel;
 

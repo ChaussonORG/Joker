@@ -151,6 +151,8 @@
 		50658B451F5BDE9800B966E2 /* JKWorkCommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B441F5BDE9800B966E2 /* JKWorkCommentListCell.m */; };
 		50658B481F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */; };
 		50658B8D1F5D5E3500B966E2 /* JWStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50658B8C1F5D5E3500B966E2 /* JWStarView.m */; };
+		5068B8C41F72B7EB00677752 /* JKMEListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B8C11F72B7EB00677752 /* JKMEListCellVM.m */; };
+		5068B8C51F72B7EB00677752 /* JKMEVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B8C31F72B7EB00677752 /* JKMEVM.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
 		507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */; };
@@ -249,8 +251,6 @@
 		508DB6F91F259C85002ABF97 /* JKUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6F71F259C85002ABF97 /* JKUserManager.m */; };
 		508DB6FD1F25A221002ABF97 /* JKLogOutApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */; };
 		50A28AF61F6D2336001E881F /* JKMEListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AF51F6D2336001E881F /* JKMEListCell.m */; };
-		50A28AF91F6D23DF001E881F /* JKMEListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */; };
-		50A28AFC1F6D23EB001E881F /* JKMEVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A28AFB1F6D23EB001E881F /* JKMEVM.m */; };
 		50A311BF1F2CF64A003DA69D /* JKWorkDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */; };
 		50A311C21F2CF658003DA69D /* JKWorkDetailVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A311C11F2CF658003DA69D /* JKWorkDetailVM.m */; };
 		50AC9D091F0B5BF200AA7AEC /* JKTopicListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AC9D081F0B5BF200AA7AEC /* JKTopicListHeaderView.m */; };
@@ -620,6 +620,10 @@
 		50658B471F5BDEBA00B966E2 /* JKWorkCommentListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentListCellVM.m; sourceTree = "<group>"; };
 		50658B8B1F5D5E3500B966E2 /* JWStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWStarView.h; sourceTree = "<group>"; };
 		50658B8C1F5D5E3500B966E2 /* JWStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWStarView.m; sourceTree = "<group>"; };
+		5068B8C01F72B7EB00677752 /* JKMEListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMEListCellVM.h; sourceTree = "<group>"; };
+		5068B8C11F72B7EB00677752 /* JKMEListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMEListCellVM.m; sourceTree = "<group>"; };
+		5068B8C21F72B7EB00677752 /* JKMEVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMEVM.h; sourceTree = "<group>"; };
+		5068B8C31F72B7EB00677752 /* JKMEVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMEVM.m; sourceTree = "<group>"; };
 		506C12691EF6E82700DF705F /* JKTopicsFilteredListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListController.h; sourceTree = "<group>"; };
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
@@ -759,10 +763,6 @@
 		508DB6FC1F25A221002ABF97 /* JKLogOutApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLogOutApi.m; sourceTree = "<group>"; };
 		50A28AF41F6D2336001E881F /* JKMEListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKMEListCell.h; sourceTree = "<group>"; };
 		50A28AF51F6D2336001E881F /* JKMEListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKMEListCell.m; sourceTree = "<group>"; };
-		50A28AF71F6D23DF001E881F /* JKMEListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKMEListCellVM.h; path = "Joker/View + ViewModel/Me/View/JKMEListCellVM.h"; sourceTree = SOURCE_ROOT; };
-		50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKMEListCellVM.m; path = "Joker/View + ViewModel/Me/View/JKMEListCellVM.m"; sourceTree = SOURCE_ROOT; };
-		50A28AFA1F6D23EB001E881F /* JKMEVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JKMEVM.h; path = "Joker/View + ViewModel/Me/View/JKMEVM.h"; sourceTree = SOURCE_ROOT; };
-		50A28AFB1F6D23EB001E881F /* JKMEVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JKMEVM.m; path = "Joker/View + ViewModel/Me/View/JKMEVM.m"; sourceTree = SOURCE_ROOT; };
 		50A311BD1F2CF64A003DA69D /* JKWorkDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailController.h; sourceTree = "<group>"; };
 		50A311BE1F2CF64A003DA69D /* JKWorkDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDetailController.m; sourceTree = "<group>"; };
 		50A311C01F2CF658003DA69D /* JKWorkDetailVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDetailVM.h; sourceTree = "<group>"; };
@@ -1514,6 +1514,17 @@
 			path = ChaussonSheet;
 			sourceTree = "<group>";
 		};
+		5068B8BF1F72B7EB00677752 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5068B8C01F72B7EB00677752 /* JKMEListCellVM.h */,
+				5068B8C11F72B7EB00677752 /* JKMEListCellVM.m */,
+				5068B8C21F72B7EB00677752 /* JKMEVM.h */,
+				5068B8C31F72B7EB00677752 /* JKMEVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		507A67531F3A9F9500377C5E /* Comment */ = {
 			isa = PBXGroup;
 			children = (
@@ -2242,8 +2253,8 @@
 		D3973BD01EF2389F0076B246 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				5068B8BF1F72B7EB00677752 /* ViewModel */,
 				D3973BD11EF2389F0076B246 /* View */,
-				D3973BD21EF2389F0076B246 /* ViewModel */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -2257,17 +2268,6 @@
 				50A28AF51F6D2336001E881F /* JKMEListCell.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D3973BD21EF2389F0076B246 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				50A28AF71F6D23DF001E881F /* JKMEListCellVM.h */,
-				50A28AF81F6D23DF001E881F /* JKMEListCellVM.m */,
-				50A28AFA1F6D23EB001E881F /* JKMEVM.h */,
-				50A28AFB1F6D23EB001E881F /* JKMEVM.m */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D3973BD31EF2389F0076B246 /* News */ = {
@@ -2653,7 +2653,7 @@
 		};
 		D413BA26C17EB53763A43F5C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2661,14 +2661,14 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Joker/Pods-Joker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2491E9CC62BB2281982D447 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2676,7 +2676,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Joker/Pods-Joker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -2708,7 +2708,6 @@
 				50521A2E1F67068100AE8B00 /* JKAnimationDetailVM.m in Sources */,
 				50376CF91F629928009511FF /* JKWorkDirectorListCell.m in Sources */,
 				5042530D1F5ACF23006DCB66 /* PhotoItemView.m in Sources */,
-				50A28AFC1F6D23EB001E881F /* JKMEVM.m in Sources */,
 				502C6CCF1F5EF0D8009B93E4 /* JKAnimationTimeLineCollectionViewCell.m in Sources */,
 				504253241F5ACF23006DCB66 /* UIWindow+Launch.m in Sources */,
 				50832FFC1F1DFC3100E810DE /* JKTopicRelatedWorksListController.m in Sources */,
@@ -2828,6 +2827,7 @@
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
 				50AC9D301F0D17E300AA7AEC /* JKTopicCreateVM.m in Sources */,
+				5068B8C51F72B7EB00677752 /* JKMEVM.m in Sources */,
 				504253561F5B26D8006DCB66 /* JKWorkCommentCreatVM.m in Sources */,
 				505D86A01F3768B5005B6A6C /* CHDownSheetModel.m in Sources */,
 				504CAE721F7020C400D27FFE /* JKCommentCountApi.m in Sources */,
@@ -2836,7 +2836,6 @@
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
 				504253151F5ACF23006DCB66 /* NSArray+Extend.m in Sources */,
 				508C552E1F28310F001F1A15 /* JKRemanndationView.m in Sources */,
-				50A28AF91F6D23DF001E881F /* JKMEListCellVM.m in Sources */,
 				508DB6F11F259998002ABF97 /* CHSocialResponseData.m in Sources */,
 				504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */,
 				504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */,
@@ -2903,6 +2902,7 @@
 				D3973B7A1EEEEC200076B246 /* JKCommentList.m in Sources */,
 				505D86A11F3768B5005B6A6C /* CHImagePicker.m in Sources */,
 				508C556F1F284467001F1A15 /* CHFaceBoard+EmojiHash.m in Sources */,
+				5068B8C41F72B7EB00677752 /* JKMEListCellVM.m in Sources */,
 				504253531F5B26C7006DCB66 /* JKWorkCommentCreatController.m in Sources */,
 				50521A2B1F67063A00AE8B00 /* JKAnimationDetailController.m in Sources */,
 				5042531F1F5ACF23006DCB66 /* UIImage+Extend.m in Sources */,

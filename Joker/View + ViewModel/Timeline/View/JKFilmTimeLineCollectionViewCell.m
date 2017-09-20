@@ -48,7 +48,15 @@
     self.pointLabel.font = [JKStyleConfiguration contentFont];
     self.pointLabel.textColor = [JKStyleConfiguration lightGrayTextColor];
     
+    
+    self.unpointLabel = [[UILabel alloc]init];
+    self.unpointLabel.font = [JKStyleConfiguration contentFont];
+    self.unpointLabel.textColor = [JKStyleConfiguration lightGrayTextColor];
+    self.unpointLabel.text = @"暂无评分";
+    [self.contentView addSubview:self.unpointLabel];
+    
     [self.contentView addSubview:self.filmImage];
+    
     [self.contentView addSubview:self.filmName];
     [self.contentView addSubview:self.starView];
     [self.contentView addSubview:self.pointLabel];
@@ -59,7 +67,8 @@
     
     
     self.starView.frame = CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,65, 20);
-    
+    self.unpointLabel.frame = CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,65, 20);
+    self.unpointLabel.hidden = YES;
     
     self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
 }
@@ -80,7 +89,7 @@
     [RACObserve(self, viewModel.imageUrl) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",x];
+        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_200,w_280",x];
         NSURL * imageURL = [NSURL URLWithString:image];
         [self.filmImage sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
         
@@ -98,6 +107,19 @@
         [self.starView refreshFrame:CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,60, 20) SelectedCount:selectedCount commentable:NO starMargin:1 starWidth:10];
         
         self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
+        
+        if (selectedCount == 0) {
+            self.unpointLabel.hidden = NO;
+            
+            self.pointLabel.hidden = YES;
+            self.starView.hidden = YES;
+        }
+        else{
+            
+            self.unpointLabel.hidden = YES;
+            self.pointLabel.hidden = NO;
+            self.starView.hidden = NO;
+        }
     }];
     
     

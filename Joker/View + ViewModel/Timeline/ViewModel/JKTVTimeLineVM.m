@@ -24,7 +24,7 @@
     self = [super init];
     if (self) {
         
-        self.titlesArray = @[@"正 在 热 映",@"即 将 播 出"];
+        self.titlesArray = @[@"正 在 热 播",@"即 将 播 出"];
         
         self.type = JKTVCurrent;
         

@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "JKUserManager.h"
+
+@protocol MeControllerDelegate <NSObject>
+
+- (void)refreshUI;
+
+@end
 @interface JKMEListCellVM : NSObject
 
 @property (nonatomic , strong) NSString *title;
 
 @property (nonatomic , assign) BOOL isRed;
 
-
+@property (nonatomic , assign) id<MeControllerDelegate>delegate;
 - (void)goNext;
 
 
