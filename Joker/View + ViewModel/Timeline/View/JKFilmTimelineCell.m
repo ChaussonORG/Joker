@@ -144,8 +144,8 @@
                 
                  [remanndationView.score2 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
                 if ([cellVM.score3 integerValue]>0) {
+                    [remanndationView.score3 setTitle:[NSString stringWithFormat:@"%.f%%",[cellVM.score3 floatValue]*10] forState:UIControlStateNormal];
                     
-                    [remanndationView.score3 setTitle:[NSString stringWithFormat:@"%ld%%",[cellVM.score3 integerValue]*10] forState:UIControlStateNormal];
                     [remanndationView.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
                 }
                 else{

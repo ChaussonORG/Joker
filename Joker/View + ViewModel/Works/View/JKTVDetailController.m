@@ -514,7 +514,7 @@
     [RACObserve(self, viewModel.score3) subscribeNext:^(NSString *x) {
         @strongify(self)
         if ([x integerValue] > 0) {
-            [self.score3 setTitle:[NSString stringWithFormat:@"%ld%%",[x integerValue]*10] forState:UIControlStateNormal];
+            [self.score3 setTitle:[NSString stringWithFormat:@"%.f%%",[x floatValue]*10] forState:UIControlStateNormal];
              [self.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
         }
         else{
