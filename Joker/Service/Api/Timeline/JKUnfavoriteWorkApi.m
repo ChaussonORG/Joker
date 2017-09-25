@@ -21,7 +21,7 @@
     return self;
 }
 - (CHRequestMethod)requestMethod{
-    return CHRequestMethodDelete;
+    return CHRequestMethodPost;
 }
 
 - (NSString *)requestPathUrl{

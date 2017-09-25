@@ -75,7 +75,7 @@
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
-        
+        self.strOne = @"";
         for (NSString *str1 in request.model.data.types) {
             
             if (self.strOne.length > 0) {
@@ -87,7 +87,7 @@
             }
            
         }
-        
+        self.strTwo = @"";
         for (int i = 0 ; i <request.model.data.areas.count; i ++) {
             
             NSString *str2 = request.model.data.areas[i];

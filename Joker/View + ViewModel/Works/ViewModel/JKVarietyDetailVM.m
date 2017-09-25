@@ -77,7 +77,7 @@
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
-        
+        self.strOne = @"";
         for (int i = 0 ; i < request.model.data.areaList.count ; i ++   ) {
             JKVarietyDetailModelAreaList *str1 = request.model.data.areaList[i];
             
@@ -581,7 +581,7 @@
         if (self.isfavorited) {
             
             JKUnfavoriteWorkApi *api = [[JKUnfavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"VARIETY";
             
             [api startWithSuccessBlock:^(__kindof JKUnfavoriteWorkApi *request) {
                 
@@ -605,7 +605,7 @@
             
             
             JKFavoriteWorkApi *api = [[JKFavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"VARIETY";
             
             [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
                 
@@ -640,7 +640,7 @@
         vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
         vc.viewModel.extId = self.workId;
         
-        vc.viewModel.commentType = @"MOVIE";
+        vc.viewModel.commentType = @"VARIETY";
         
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }

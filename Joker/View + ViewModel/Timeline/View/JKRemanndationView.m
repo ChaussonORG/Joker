@@ -146,7 +146,7 @@
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 50, 20);
+    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 55, 20);
     [self addSubview:self.score3];
     self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];

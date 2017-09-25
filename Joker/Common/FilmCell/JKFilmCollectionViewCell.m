@@ -80,7 +80,8 @@
     [RACObserve(self, viewModel.imageUrl) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        NSURL * imageURL = [NSURL URLWithString:x];
+        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_200,w_280",x];
+        NSURL * imageURL = [NSURL URLWithString:image];
         [self.filmImage sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
         
     }];

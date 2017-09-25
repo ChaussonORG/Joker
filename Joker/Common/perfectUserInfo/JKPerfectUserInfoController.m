@@ -39,6 +39,8 @@
 
 @property (nonatomic , strong) NSString *brithDayStr;
 
+@property (nonatomic , strong) UIButton *stepBtn;
+
 @end
 
 @implementation JKPerfectUserInfoController

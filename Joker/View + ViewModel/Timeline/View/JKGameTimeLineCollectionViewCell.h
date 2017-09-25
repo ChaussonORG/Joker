@@ -16,6 +16,10 @@
 
 @property (nonatomic , strong) UILabel *GameName;
 
+@property (nonatomic , strong) UILabel *versionLabel;
+
+@property (nonatomic , strong) UILabel *laugageLabel;
+
 @property (nonatomic , strong) CTOCommentStarView *starView;
 
 @property (nonatomic , strong) UILabel *pointLabel;

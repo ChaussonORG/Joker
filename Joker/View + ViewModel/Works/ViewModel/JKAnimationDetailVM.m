@@ -75,7 +75,7 @@
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
-        
+        self.strOne =@"";
         for (NSString *str1 in request.model.data.types) {
             
             if (self.strOne.length > 0) {
@@ -115,8 +115,8 @@
         }
         
         
-        if (request.model.data.releaseDate) {
-            self.strThree = [NSString stringWithFormat:@"%@首播",request.model.data.releaseDate];
+        if (request.model.data.release_date_global) {
+            self.strThree = [NSString stringWithFormat:@"%@首播",request.model.data.release_date_global];
         }
         
         
@@ -438,7 +438,7 @@
     
     cellVM.name = staff.name;
     
-    cellVM.actName = staff.actName;
+    cellVM.actName = staff.degree;
     
     cellVM.degree = staff.degree;
     
@@ -573,7 +573,7 @@
         if (self.isfavorited) {
             
             JKUnfavoriteWorkApi *api = [[JKUnfavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"ANIMATION";
             
             [api startWithSuccessBlock:^(__kindof JKUnfavoriteWorkApi *request) {
                 
@@ -597,7 +597,7 @@
             
             
             JKFavoriteWorkApi *api = [[JKFavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"ANIMATION";
             
             [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
                 
@@ -632,7 +632,7 @@
         vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
         vc.viewModel.extId = self.workId;
         
-        vc.viewModel.commentType = @"MOVIE";
+        vc.viewModel.commentType = @"ANIMATION";
         
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }

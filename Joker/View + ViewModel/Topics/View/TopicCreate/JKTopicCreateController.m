@@ -274,6 +274,9 @@
     
     [super viewWillAppear:animated];
     
+     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    
     self.navigationItem.rightBarButtonItem = [self customRightButton];
     
     [self refreshSendBtn];

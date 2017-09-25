@@ -15,11 +15,14 @@
 
 @property (nonatomic , strong ,readonly) NSString *axisType;
 
-@property (nonatomic , strong) NSString *startDate;
-
-@property (nonatomic , strong) NSString *endDate;
+//@property (nonatomic , strong) NSString *startDate;
+//
+//@property (nonatomic , strong) NSString *endDate;
 
 @property (nonatomic , strong) NSString* sortOrder;
+
+@property (nonatomic , strong) NSString *queryType;
+
 
 - (instancetype)initTimelineFilm;
 

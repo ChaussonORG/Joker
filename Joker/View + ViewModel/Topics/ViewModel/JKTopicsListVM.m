@@ -280,6 +280,8 @@
     
     cellVM.topicId = items.topicId;
     
+    cellVM.projectType = items.projectType;
+    
     cellVM.projectId = items.projectId;
     
     JKTopicListModelTopicContentBeans *bean = items.topicContentBeans[0];

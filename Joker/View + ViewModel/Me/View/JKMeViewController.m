@@ -57,6 +57,10 @@
     
     [super viewWillAppear:animated];
     
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    
     self.navigationController.navigationBarHidden = YES;
     
     [self.viewModel initData];
@@ -125,6 +129,8 @@
     self.iconView.layer.cornerRadius = 74/2;
     self.iconView.layer.masksToBounds = YES;
     self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+    self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.iconView.layer.borderWidth = 1;
     
     self.nameLabel = [[UILabel alloc]init];
     self.nameLabel.frame = CGRectMake(0, self.iconView.frame.size.height + self.iconView.frame.origin.y , ScreenWidth, 30);

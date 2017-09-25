@@ -41,7 +41,7 @@
     self.belongTypeLabel.textColor = [JKStyleConfiguration whiteColor];
     self.belongTypeLabel.backgroundColor = [JKStyleConfiguration blackColor];
     self.belongTypeLabel.textAlignment = NSTextAlignmentCenter;
-    
+    self.belongTypeLabel.hidden = YES;
     
     self.GameName = [[UILabel alloc]init];
     self.GameName.font = [JKStyleConfiguration subcontentFont];
@@ -68,6 +68,26 @@
     self.GameImage.frame = CGRectMake((self.frame.size.width - 100)/2, 0, 100, 140);
     
     self.belongTypeLabel.frame = CGRectMake(self.GameImage.frame.size.width - 22, 0, 22, 15);
+    
+    self.versionLabel = [[UILabel alloc]init];
+    self.versionLabel.font = [JKStyleConfiguration minContentFont];
+    self.versionLabel.textColor = [JKStyleConfiguration whiteColor];
+    self.versionLabel.backgroundColor = [JKStyleConfiguration blackColor];
+    self.versionLabel.textAlignment = NSTextAlignmentCenter;
+//    self.versionLabel.hidden = YES;
+    [self.GameImage addSubview:self.versionLabel];
+    self.versionLabel.frame = CGRectMake(self.GameImage.frame.size.width - 22, 0, 22, 15);
+    
+    
+    self.laugageLabel = [[UILabel alloc]init];
+    self.laugageLabel.font = [JKStyleConfiguration minContentFont];
+    self.laugageLabel.textColor = [JKStyleConfiguration whiteColor];
+    self.laugageLabel.backgroundColor = [JKStyleConfiguration blackColor];
+    self.laugageLabel.textAlignment = NSTextAlignmentCenter;
+//    self.laugageLabel.hidden = YES;
+    [self.GameImage addSubview:self.laugageLabel];
+    self.laugageLabel.frame = CGRectMake(self.versionLabel.frame.origin.x - 22- 1, 0, 22, 15);
+    
     
     self.GameName.frame = CGRectMake(self.GameImage.frame.origin.x, self.GameImage.frame.origin.y + self.GameImage.frame.size.height + 5 , 100, 20);
     
@@ -104,6 +124,11 @@
     RAC(self,GameName.text) = RACObserve(self, viewModel.name);
     
     RAC(self,belongTypeLabel.text) = RACObserve(self, viewModel.belongType);
+    
+    RAC(self,versionLabel.text) = RACObserve(self, viewModel.version);
+    
+    RAC(self,laugageLabel.text) = RACObserve(self, viewModel.language);
+    
     
     [RACObserve(self, viewModel.jokerScore) subscribeNext:^(NSString *x) {
         @strongify(self);

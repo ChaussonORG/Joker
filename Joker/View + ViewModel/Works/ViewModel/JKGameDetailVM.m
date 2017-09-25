@@ -60,6 +60,8 @@
     
     self.directorsArr = [NSMutableArray array];
     
+    self.imageArrs = [NSMutableArray array];
+    
     JKGameDetailApi *api = [[JKGameDetailApi alloc]initWithWorkId:self.workId];
     
     [api startWithSuccessBlock:^(__kindof JKGameDetailApi *request) {
@@ -75,7 +77,7 @@
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
-        
+        self.strOne =@"";
         for (int i = 0; i < request.model.data.gameType.count; i ++) {
             JKGameDetailModelType *type = request.model.data.gameType[i];
             
@@ -103,6 +105,8 @@
             
             if ([str2.name containsString:@"中文"]) {
                 self.strTwo = [NSString stringWithFormat:@"%@/中文",self.strTwo];
+                
+                break ;
             }
             
         }
@@ -123,11 +127,15 @@
         
         self.jokerScore = request.model.data.jokerScore;
         
-        self.imageArrs = request.model.data.coverImageList;
+        for (JKVarietyDetailModelImage *image in request.model.data.gameImage) {
+            
+            [self.imageArrs addObject:image.url];
+            
+        }
         
         if (!request.model.data.desc) {
             
-            self.desc = request.response.responseJSONObject[@"data"][@"desc"];
+            self.desc = [JKStyleConfiguration convertNull:request.response.responseJSONObject[@"data"][@"desc"]];
         }
         else{
             self.desc = request.model.data.desc;
@@ -566,7 +574,7 @@
         if (self.isfavorited) {
             
             JKUnfavoriteWorkApi *api = [[JKUnfavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"GAME";
             
             [api startWithSuccessBlock:^(__kindof JKUnfavoriteWorkApi *request) {
                 
@@ -590,7 +598,7 @@
             
             
             JKFavoriteWorkApi *api = [[JKFavoriteWorkApi alloc]initWithWorkId:self.workId];
-            api.type = @"MOVIE";
+            api.type = @"GAME";
             
             [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
                 
@@ -625,7 +633,7 @@
         vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
         vc.viewModel.extId = self.workId;
         
-        vc.viewModel.commentType = @"MOVIE";
+        vc.viewModel.commentType = @"GAME";
         
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }

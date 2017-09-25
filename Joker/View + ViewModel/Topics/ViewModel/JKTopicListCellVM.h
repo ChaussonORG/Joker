@@ -41,6 +41,8 @@
 
 @property (nonatomic , strong) NSString *projectId;
 
+@property (nonatomic , strong) NSString *projectType;
+
 - (void)openTopicDetail;
 
 - (void)openTopicComment;

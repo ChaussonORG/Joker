@@ -85,16 +85,22 @@
         [data setObject:self.axisType forKey:@"axisType"];
     }
     
-    if (self.startDate) {
-        
-        [data setObject:self.startDate forKey:@"startDate"];
+    if (self.queryType) {
+        [data setObject:self.queryType forKey:@"queryType"];
     }
     
     
-    if (self.endDate) {
-        
-        [data setObject:self.endDate forKey:@"endDate"];
-    }
+    
+//    if (self.startDate) {
+//
+//        [data setObject:self.startDate forKey:@"startDate"];
+//    }
+//
+//
+//    if (self.endDate) {
+//
+//        [data setObject:self.endDate forKey:@"endDate"];
+//    }
     
     if (self.sortOrder) {
         

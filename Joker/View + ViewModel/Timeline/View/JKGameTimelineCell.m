@@ -102,6 +102,10 @@
                 
                 [remanndationView.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
                 
+                remanndationView.laugageLabel.text = cellVM.language;
+                
+                remanndationView.versionLabel.text = cellVM.version;
+                
                 remanndationView.nameLabel.text = cellVM.name;
                 
                 remanndationView.favoriteCountLabel.text = cellVM.favoriteCount;

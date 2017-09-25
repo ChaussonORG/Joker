@@ -39,40 +39,40 @@
     JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineGame];
     
     if (self.type  == JKGameCurrent) {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        NSDate *datenow = [NSDate date];
-        api.endDate = [formatter stringFromDate:datenow];
-        NSInteger dis = 60; //前后的天数
-        NSDate* theDate;
-        NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
-        //之后的天数
-        theDate = [datenow initWithTimeIntervalSinceNow: - oneDay*dis ];
-        api.startDate = [formatter stringFromDate:theDate];
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+//        NSDate *datenow = [NSDate date];
+//        api.endDate = [formatter stringFromDate:datenow];
+//        NSInteger dis = 60; //前后的天数
+//        NSDate* theDate;
+//        NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
+//        //之后的天数
+//        theDate = [datenow initWithTimeIntervalSinceNow: - oneDay*dis ];
+//        api.startDate = [formatter stringFromDate:theDate];
+//
+//        api.sortOrder = @"desc";
         
-        api.sortOrder = @"desc";
         
-        
-        
+        api.queryType = @"reying";
     }
     else{
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        NSDate *datenow = [NSDate date];
-        
-        //        NSInteger dis = 30; //前后的天数
-        NSDate* theDate;
-        NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
-        //之后的天数
-        theDate = [datenow initWithTimeIntervalSinceNow: +oneDay*1 ];
-        api.startDate = [formatter stringFromDate:theDate];
-        theDate = [datenow initWithTimeIntervalSinceNow: +oneDay*31 ];
-        api.endDate = [formatter stringFromDate:theDate];
-        
-        api.sortOrder = @"asc";
-        
-        
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+//        NSDate *datenow = [NSDate date];
+//
+//        //        NSInteger dis = 30; //前后的天数
+//        NSDate* theDate;
+//        NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
+//        //之后的天数
+//        theDate = [datenow initWithTimeIntervalSinceNow: +oneDay*1 ];
+//        api.startDate = [formatter stringFromDate:theDate];
+//        theDate = [datenow initWithTimeIntervalSinceNow: +oneDay*31 ];
+//        api.endDate = [formatter stringFromDate:theDate];
+//
+//        api.sortOrder = @"asc";
+//
+        api.queryType = @"jijiang";
     }
     api.requestModel.limit = 1000;
     
@@ -128,6 +128,10 @@
             cellVM.favoriteCount = item.collectQuantity;
             
             cellVM.belongType = item.belongType;
+            
+            cellVM.language = item.language;
+            
+            cellVM.version = item.version;
             
             
             cellVM.jokerScore = item.joker_score;

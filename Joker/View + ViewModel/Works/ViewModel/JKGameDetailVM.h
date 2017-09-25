@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, JKGameDataFilter){
 
 @property (nonatomic , strong) NSString *desc;
 
-@property (nonatomic , strong) NSArray *imageArrs;
+@property (nonatomic , strong) NSMutableArray *imageArrs;
 
 
 @property (nonatomic , strong) NSMutableArray <JKWorkCommentListCellVM *>*commentCellVMs;

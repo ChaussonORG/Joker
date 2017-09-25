@@ -96,12 +96,15 @@
     
     [self.viewModel requestData];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
+   
     
 //    self.navigationController.navigationBarHidden = NO;
     

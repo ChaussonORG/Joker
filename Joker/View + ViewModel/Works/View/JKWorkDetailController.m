@@ -342,7 +342,7 @@
     
     self.score3 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score3 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, 220, 50, 20);
+    self.score3.frame = CGRectMake(self.score2.frame.origin.x + self.score2.frame.size.width, 220, 55, 20);
     [self.workDetailView  addSubview:self.score3];
     self.score3.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score3 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -643,7 +643,7 @@
 
             JKDirectorslistCell *cell=  [[JKDirectorslistCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
-            [cell loadUIWithTitle:@"导演及演员" directors:self.viewModel.directorsArr];
+            [cell loadUIWithTitle:@"人物" directors:self.viewModel.directorsArr];
             
             return cell;
 

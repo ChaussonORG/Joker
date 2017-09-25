@@ -111,6 +111,7 @@
 @property (nonatomic, strong)NSArray <Optional>*coverImageList;
 @property (nonatomic, strong)NSArray <Optional>*areas;
 @property (nonatomic, strong)NSArray <Optional>*types;
+@property (nonatomic, strong)NSArray <Optional>*leixing;
 @property (nonatomic, strong)NSString <Optional>*duration;
 @property (nonatomic, strong)NSArray <Optional>*languages;
 @property (nonatomic, strong)NSString <Optional>*releaseDate;
@@ -145,6 +146,8 @@
 @property (nonatomic, strong)NSString <Optional>*coverImg;
 
 @property (nonatomic, strong)NSString <Optional>*openDate;
+
+@property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelImage>*gameImage;
 @end
 
 

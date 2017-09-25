@@ -10,7 +10,9 @@
 #import "CHFaceBoard.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 #import "JWStarView.h"
-@interface JKWorkCommentCreatController ()<UITextViewDelegate>
+@interface JKWorkCommentCreatController ()<UITextViewDelegate,UIGestureRecognizerDelegate>
+
+@property (nonatomic , strong) UIScrollView *mainScrollView;
 
 @property (nonatomic , strong) UILabel * pointLabel;
 
@@ -55,12 +57,27 @@
     }
     return self;
 }
-
+- (void)handleNavigationTransition:(UIPanGestureRecognizer *)pan{
+    
+    
+    
+}
 - (void)viewDidLoad{
     
     [super viewDidLoad];
     
     self.title = @"评论";
+    
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];  // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
+    
     
     self.navigationItem.rightBarButtonItem = [self customRightButton];
     
@@ -78,18 +95,23 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    self.mainScrollView = [[UIScrollView alloc]init];
+    self.mainScrollView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    [self.view addSubview:self.mainScrollView];
+    
+    
     self.pointLabel = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth - 50)/2, 25, 45, 45)];
     self.pointLabel.numberOfLines = 1;
     self.pointLabel.userInteractionEnabled = YES;
     self.pointLabel.textAlignment = NSTextAlignmentCenter;
     self.pointLabel.font = [JKStyleConfiguration MasterFont];
     self.pointLabel.text = @"0";
-    [self.view addSubview:self.pointLabel];
+    [self.mainScrollView addSubview:self.pointLabel];
  
     UILabel *fenLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.pointLabel.frame.origin.x + self.pointLabel.frame.size.width , 40, 50, 20)];
     fenLabel.font = [JKStyleConfiguration titleFont];
     fenLabel.text = @"分";
-    [self.view addSubview:fenLabel];
+    [self.mainScrollView addSubview:fenLabel];
     
     
     @weakify(self)
@@ -157,7 +179,7 @@
     self.pointWordLabel.text = @"这是一坨屎";
     self.pointWordLabel.textAlignment = NSTextAlignmentCenter;
     
-    [self.view addSubview:self.pointWordLabel];
+    [self.mainScrollView addSubview:self.pointWordLabel];
     
     self.titleTextView = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 70)];
     self.titleTextView.numberOfLines = 1;
@@ -169,12 +191,12 @@
     UIView *lineView = [[UIView alloc]init];
     lineView.backgroundColor = [JKStyleConfiguration lineColor];
     lineView.frame = CGRectMake(20, self.pointWordLabel.frame.origin.y + self.pointWordLabel.frame.size.height + 35, ScreenWidth - 40, 1);
-    [self.view addSubview:lineView];
+    [self.mainScrollView addSubview:lineView];
     
     self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20,  lineView.frame.size.height +  lineView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 )];
     self.contentView.userInteractionEnabled = YES;
     //    self.contentView.textVerticalAlignment = YYTextVerticalAlignmentTop;
-    [self.view addSubview:self.contentView];
+    [self.mainScrollView addSubview:self.contentView];
     //    self.contentView.font = [JKStyleConfiguration titleFont];
     self.contentView.allowsEditingTextAttributes = YES;
     self.contentView.contentInset = UIEdgeInsetsMake(4, 4, 4, -4);
@@ -251,6 +273,16 @@
     //    [self.view addSubview:self.faceView];
     
     [self binding];
+    
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    [self.navigationController.interactivePopGestureRecognizer addTarget:self action:@selector(handleGesture:)];
+}
+
+- (void)handleGesture:(UIGestureRecognizer *)gest{
+    
+    
+    
+    
 }
 - (void)binding{
     //    @weakify(self);
@@ -268,7 +300,24 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+   
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    
+    [super viewDidAppear:animated];
+    
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+//    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
 }
 
@@ -343,6 +392,7 @@
     }];
     
 }
+
 
 #pragma mark 键盘隐藏的监听方法
 -(void)keyboardWillHide:(NSNotification *) note
