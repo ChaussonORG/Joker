@@ -11,8 +11,15 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "CHBarItemViewModel.h"
 #import "CHTabBarViewModel.h"
+#import "JKUserManager.h"
+#import "CHLoginModalController.h"
 
 #define KIndexCount 10
+
+@interface CHCustomTabBar()<CHLoginModalControllerDelegate>
+
+@end
+
 @implementation CHCustomTabBar{
     CHTabBarViewModel *tabBarViewModel;
 }
@@ -87,12 +94,42 @@
 
 - (void)customButtonAction:(UIButton *)button
 {
+    
+    if (button.tag-KIndexCount == 2) {
+        if ([[JKUserManager sharedData] isUserEffective]) {
+            
+            
+        }
+        else{
+            
+            [self login];
+            
+            return;
+        }
+    }
+    
+    
     UIButton *btn = (UIButton *)[self viewWithTag:self -> tabBarViewModel.currentIndex+KIndexCount];
     btn.selected = NO;
     button.selected = YES;
     [self selectedItem:button.tag-KIndexCount];
     
 }
+
+- (void)login
+{
+    CHLoginModalController *vc = [[CHLoginModalController alloc] init];
+    vc.delegate = self;
+    [[ASNavigator shareModalCenter].fetchCurrentViewController presentViewController:vc animated:YES completion:nil];
+}
+- (void)ch_willCompletionWithSuccess:(NSDictionary *)info
+{
+    [[JKUserManager sharedData] saveUserWithInfo:info];
+    
+    
+}
+
+
 - (void)selectedItem:(NSInteger )index
 {
    [self -> tabBarViewModel selectItem:index];

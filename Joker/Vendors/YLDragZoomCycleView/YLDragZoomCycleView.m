@@ -11,8 +11,7 @@
 #import "UIView+YLView.h"
 #import "HWWeakTimer.h"
 @interface YLDragZoomCycleView ()<UICollectionViewDelegate, UICollectionViewDataSource>
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, strong) NSArray *dataSource;//数据源
+
 @property(nonatomic, strong) UICollectionViewFlowLayout *layout;//布局
 @property(nonatomic,   weak) NSTimer *timer;//定时器
 @property(nonatomic, assign) CGFloat initHeight;//初始高度

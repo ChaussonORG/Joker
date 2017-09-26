@@ -68,15 +68,8 @@
     
     self.title = @"评论";
     
-    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
-    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];  // 设置手势代理，拦截手势触发
-    pan.delegate = self;
-    // 给导航控制器的view添加全屏滑动手势
-    [self.view addGestureRecognizer:pan];
-    // 禁止使用系统自带的滑动手势
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     
+   
     
     
     self.navigationItem.rightBarButtonItem = [self customRightButton];
@@ -117,10 +110,12 @@
     @weakify(self)
     self.starView =[[JWStarView alloc]initWithFrame:CGRectMake(100 , self.pointLabel.frame.origin.y + self.pointLabel.frame.size.height + 5, ScreenWidth - 200, 30) numberOfStars:5 rateStyle:HalfStar finish:^(CGFloat currentScore) {
         @strongify(self)
-        self.pointLabel.text = [NSString stringWithFormat:@"%d",(int)(currentScore*2)];
         
+        if (self.viewModel.score) {
+            self.viewModel.score = [NSString stringWithFormat:@"%d",(int)(currentScore*2)];
+        }
         NSString *commentWord;
-        switch ((int)(currentScore*2)) {
+        switch ([self.viewModel.score integerValue]) {
             case 10:
                 commentWord = @"完美神作";
                 break;
@@ -166,20 +161,75 @@
             default:
                 break;
         }
-        
-        self.viewModel.score = [NSString stringWithFormat:@"%d",(int)(currentScore*2)];
         self.pointWordLabel.text = commentWord;
+        self.pointLabel.text = [NSString stringWithFormat:@"%ld",[self.viewModel.score integerValue]];
         NSLog(@"star2----%f",currentScore);
     }];
-     
+    
     [self.view addSubview:self.starView];
     
     self.pointWordLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.starView.frame.origin.y + self.starView.frame.size.height + 20 , ScreenWidth, 20)];
     self.pointWordLabel.font = [JKStyleConfiguration titleFont];
-    self.pointWordLabel.text = @"这是一坨屎";
+    //    self.pointWordLabel.text = @"这是一坨屎";
     self.pointWordLabel.textAlignment = NSTextAlignmentCenter;
     
     [self.mainScrollView addSubview:self.pointWordLabel];
+    
+    self.pointLabel.text = [NSString stringWithFormat:@"%ld",[self.viewModel.score integerValue]];
+    
+    self.starView.currentScore = [self.viewModel.score floatValue]/2;
+    
+    
+    NSString *commentWord;
+    switch ([self.viewModel.score integerValue]) {
+        case 10:
+            commentWord = @"完美神作";
+            break;
+            
+        case 9:
+            commentWord = @"佳作";
+            break;
+            
+        case 8:
+            commentWord = @"佳作";
+            break;
+            
+        case 7:
+            commentWord = @"还可以，值得推荐";
+            break;
+            
+        case 6:
+            commentWord = @"及格";
+            break;
+            
+        case 5:
+            commentWord = @"浪费时间";
+            break;
+            
+        case 4:
+            commentWord = @"浪费时间";
+            break;
+            
+        case 3:
+            commentWord = @"生理不适";
+            break;
+            
+        case 2:
+            commentWord = @"生理不适";
+            break;
+        case 1:
+            commentWord = @"生理不适";
+            break;
+            
+        case 0:
+            commentWord = @"这是一坨屎";
+            break;
+        default:
+            break;
+    }
+     self.pointWordLabel.text = commentWord;
+ 
+    
     
     self.titleTextView = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 70)];
     self.titleTextView.numberOfLines = 1;
@@ -301,6 +351,7 @@
     
     [super viewWillAppear:animated];
    
+    self.navigationController.navigationBarHidden = NO;
     
 }
 
@@ -418,6 +469,7 @@
     //    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
 }
+
 
 - (void)textViewDidChange:(UITextView *)textView
 {

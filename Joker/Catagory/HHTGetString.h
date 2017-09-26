@@ -12,6 +12,7 @@
 + (NSString *)getStringFormStringWihtFormate:(NSString *)formate units:(NSString *)units value:(NSString *)value;
 
 
++ (NSDate *)changeTimewithTimestamp:(NSString *)timestamp;
 
 + (NSString *)timeStrwithTimestamp:(NSString *)timestamp;
 

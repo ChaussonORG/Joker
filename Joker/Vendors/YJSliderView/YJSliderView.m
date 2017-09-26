@@ -233,6 +233,7 @@ typedef NS_ENUM(NSUInteger, CollectionViewType) {
     if (scrollView.tag == CONTENT) {
         NSInteger index = (NSInteger)(scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width);
         self.currentIndex = index;
+        [self.delegate scrollViewControllerWithIndex:index];
         [self.titleCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         [self manageButtonStatus:index];
         [self.titleCollectionView reloadData];

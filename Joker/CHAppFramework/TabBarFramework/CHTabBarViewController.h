@@ -10,7 +10,7 @@
 #import "CHTabBarViewModel.h"
 #import "CHCustomTabBar.h"
 
-@interface CHTabBarViewController : UITabBarController
+@interface CHTabBarViewController : UITabBarController<UITabBarControllerDelegate>
 @property (strong ,nonatomic ) CHTabBarViewModel *viewModel;
 @property (strong ,nonatomic ) CHCustomTabBar *customTabBar;
 

@@ -104,4 +104,5 @@ typedef NS_ENUM(NSInteger, JKGameDataFilter){
 
 - (void)commentWork;
 
+- (void)createTopic;
 @end

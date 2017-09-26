@@ -23,7 +23,6 @@ PODS:
   - CHWebView/Core (2.0.3):
     - CHWebView/Progress
   - CHWebView/Progress (2.0.3)
-  - FDFullscreenPopGesture (1.1)
   - HYBLoopScrollView (3.2.1)
   - IQKeyboardManager (4.0.7)
   - JSONModel (1.7.0)
@@ -55,7 +54,6 @@ DEPENDENCIES:
   - CHNetworking
   - CHProgressHUD
   - CHWebView
-  - FDFullscreenPopGesture (~> 1.1)
   - HYBLoopScrollView
   - IQKeyboardManager
   - JSONModel
@@ -79,7 +77,6 @@ SPEC CHECKSUMS:
   CHNetworking: 46357dbdab613d5b18298bfb85e638fc41e24113
   CHProgressHUD: 32780a715fd40989606f3a16b8a2f0ad633262cd
   CHWebView: 5dbdcb4baebbd4e6b05bd9a782e824ec228ae1d3
-  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   HYBLoopScrollView: 12ff9f5764cdd76f34171164c6517d5e01ee6766
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
@@ -98,6 +95,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: e4302f8c3988a447ae6e144656eac51f3f0f04c8
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b4dd2dfc8f9019fd77a5b2773582097417a708d2
+PODFILE CHECKSUM: 8f29471b14d40f5c49ac527fd2ebff271d041ee7
 
 COCOAPODS: 1.2.1

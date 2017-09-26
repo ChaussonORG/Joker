@@ -104,4 +104,5 @@ typedef NS_ENUM(NSInteger, JKAnimationDataFilter){
 
 - (void)commentWork;
 
+- (void)createTopic;
 @end

@@ -21,7 +21,20 @@
     }
     
 }
-
++ (NSDate *)changeTimewithTimestamp:(NSString *)timestamp{
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy年MM月dd日"];
+    
+    // 毫秒值转化为秒
+    NSDate* needFormatDate = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:needFormatDate];
+    
+    return needFormatDate;
+}
 
 + (NSString *)timeStrwithTimestamp:(NSString *)timestamp{
     

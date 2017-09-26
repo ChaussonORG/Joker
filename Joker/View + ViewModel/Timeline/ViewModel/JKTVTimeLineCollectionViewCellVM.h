@@ -38,6 +38,7 @@
 
 @property (nonatomic , strong) NSString *belongType;
 
+@property (nonatomic , assign) float belongTypeWidth;
 
 @property (nonatomic , strong) NSString *extId;
 

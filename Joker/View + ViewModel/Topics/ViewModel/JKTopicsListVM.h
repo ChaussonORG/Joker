@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, JKTopicFilter){
 
 @interface JKTopicsListVM : NSObject
 
-@property (nonatomic , strong , readonly) NSArray *imageArr;
+@property (nonatomic , strong , readonly) NSMutableArray *imageArr;
 
 @property (nonatomic , strong , readonly) NSArray *imageSelectedArr;
 

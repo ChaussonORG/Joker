@@ -11,6 +11,11 @@
 @implementation JKMyfavoriteWorksModelAnimation
 
 @end
+@implementation JKMyfavoriteWorksModelVariety
+
+@end
+
+
 @implementation JKMyfavoriteWorksModelGame
 
 @end

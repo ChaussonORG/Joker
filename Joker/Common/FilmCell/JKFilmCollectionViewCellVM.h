@@ -28,6 +28,9 @@
 
 @property (nonatomic , weak) id<chooseFilmDelegate>delegate;
 
+@property (nonatomic , assign) BOOL isON;
+
+@property (nonatomic , strong) NSString *favotiteCount;
 
 - (void)chosed;
 

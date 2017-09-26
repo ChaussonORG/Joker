@@ -9,6 +9,14 @@
 #import "JKWorkCommentCreatVM.h"
 #import "JKWorkCommentCreatApi.h"
 @implementation JKWorkCommentCreatVM
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.score = @"7";
+    }
+    return self;
+}
 
 
 - (void)creatCommentWithContent:(NSString *)str{

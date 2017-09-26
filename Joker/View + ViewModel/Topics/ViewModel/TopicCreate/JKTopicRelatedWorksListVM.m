@@ -8,6 +8,7 @@
 
 #import "JKTopicRelatedWorksListVM.h"
 #import "JKMyfavoriteWorksApi.h"
+#import "HHTGetString.h"
 
 @interface JKTopicRelatedWorksListVM()<chooseFilmDelegate>
 @property (nonatomic , strong) NSMutableArray <JKFilmCollectionViewCellVM*>*tempCellViewModels;
@@ -67,6 +68,14 @@
     NSString *name;
     NSString *score;
     NSString *projectId;
+    NSString *favotiteCount;
+    BOOL isOn =YES  ;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+     [formatter setDateFormat:@"yyyy年MM月dd日"];
+    NSDate *datenow = [NSDate date];
+    
+    NSString *currentTimeString = [formatter stringFromDate:datenow];
     
     if ([items.type isEqualToString:@"MOVIE"]) {
         
@@ -77,6 +86,21 @@
         projectId = items.film.id;
         
         score = items.film.joker_score;
+        
+        favotiteCount = items.film.favotiteCount;
+        
+        NSDate *str = [HHTGetString changeTimewithTimestamp:items.film.premiereDate];
+        
+        if ([self compareDate:datenow withDate:str] == 1) {
+            
+            isOn = NO;
+            
+        }
+        else{
+            
+            isOn = YES;
+        }
+        
         
     }
     else if ([items.type isEqualToString:@"TV"]) {
@@ -89,6 +113,21 @@
         
         score = items.tv.joker_score;
         
+        favotiteCount = items.tv.favotiteCount;
+        
+        NSDate *str = [HHTGetString changeTimewithTimestamp:items.tv.premiereDate];
+        
+        if ([self compareDate:datenow withDate:str] == 1) {
+            
+            isOn = NO;
+            
+        }
+        else{
+            
+            isOn = YES;
+        }
+        
+        
     }
     else if ([items.type isEqualToString:@"ANIMATION"]) {
         
@@ -100,6 +139,21 @@
         projectId = items.animation.id;
         
         score = items.animation.joker_score;
+        
+        favotiteCount = items.animation.favotiteCount;
+        
+        NSDate *str = [HHTGetString changeTimewithTimestamp:items.animation.premiereDate];
+        
+        if ([self compareDate:datenow withDate:str] == 1) {
+            
+            isOn = NO;
+            
+        }
+        else{
+            
+            isOn = YES;
+        }
+        
     }
     
     else if ([items.type isEqualToString:@"GAME"]) {
@@ -112,8 +166,43 @@
         
         score = items.game.joker_score;
         
+        favotiteCount = items.game.favotiteCount;
+        
+        NSDate *str = [HHTGetString changeTimewithTimestamp:items.game.premiereDate];
+        
+        if ([self compareDate:datenow withDate:str] == 1) {
+            
+            isOn = NO;
+            
+        }
+        else{
+            
+            isOn = YES;
+        }
+        
     }
-    else if ([items.type isEqualToString:@""]) {
+    else if ([items.type isEqualToString:@"VARIETY"]) {
+        name = items.variety.name;
+        
+        imageUrl = items.variety.coverImage;
+        
+        projectId = items.variety.id;
+        
+        score = items.variety.joker_score;
+        
+        favotiteCount = items.variety.favotiteCount;
+        
+        NSDate *str = [HHTGetString changeTimewithTimestamp:items.variety.premiereDate];
+        
+        if ([self compareDate:datenow withDate:str] == 1) {
+            
+            isOn = NO;
+            
+        }
+        else{
+            
+            isOn = YES;
+        }
         
         
         
@@ -126,9 +215,44 @@
     
     cellVM.joker_score = score;
     
+    cellVM.isON = isOn;
+    
+    cellVM.favotiteCount = favotiteCount;
+    
     return cellVM;
     
     
+}
+
+- (NSInteger)compareDate:(NSDate*)dta withDate:(NSDate*)dtb
+{
+    NSInteger aa;
+//    NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
+//    [dateformater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSDate *dta = [[NSDate alloc] init];
+//    NSDate *dtb = [[NSDate alloc] init];
+//
+//    dta = [dateformater dateFromString:aDate];
+//    dtb = [dateformater dateFromString:bDate];
+    NSComparisonResult result = [dta compare:dtb];
+    if (result==NSOrderedSame)
+    {
+        //        相等
+        aa=0;
+        
+        
+    }else if (result==NSOrderedAscending)
+    {
+        //bDate比aDate大
+        aa=1;
+    }else
+    {
+        //bDate比aDate小
+        aa=-1;
+        
+    }
+    
+    return aa;
 }
 - (void)fetchSearchKeywords:(NSString *)keywords{
      

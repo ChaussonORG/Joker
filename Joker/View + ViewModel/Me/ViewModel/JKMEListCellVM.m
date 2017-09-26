@@ -8,6 +8,7 @@
 
 #import "JKMEListCellVM.h"
 #import "JKLogOutApi.h"
+#import "CHTabBarViewController.h"
 @implementation JKMEListCellVM
 
 - (instancetype)init
@@ -50,13 +51,15 @@
     [api startWithSuccessBlock:^(__kindof JKLogOutApi *request) {
         if ([[request.response.responseJSONObject objectForKey:@"code"] isEqualToString:@"200"]) {
             [[JKUserManager sharedData] disableCurrentUser];
-            [self.delegate refreshUI];
+//            [self.delegate refreshUI];
             [[CHNetworkConfig sharedInstance] clearHeaderFiled];
+            
             [[ASNavigator shareModalCenter] popHomeViewControllerWithAnimation:YES completion:^{
-                //                if ([[[ASNavigator shareModalCenter] fetchCurrentViewController] isKindOfClass:[CHTabBarViewController class]]) {
-                //                    CHTabBarViewController *tab = (CHTabBarViewController *)[[ASNavigator shareModalCenter]fetchCurrentViewController];
-                //                    [tab.customTabBar setSelectIndex:0];
-                //                }
+                if ([[[ASNavigator shareModalCenter] fetchCurrentViewController] isKindOfClass:[CHTabBarViewController class]]) {
+                    CHTabBarViewController *tab = (CHTabBarViewController *)[[ASNavigator shareModalCenter]fetchCurrentViewController];
+                    [tab.customTabBar setSelectIndex:0];
+                    
+                }
             }];
         }
     } failureBlock:^(__kindof JKLogOutApi *request) {

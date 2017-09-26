@@ -11,7 +11,7 @@
 #import "CHTabBarViewController.h"
 
 #import "JKMEListCell.h"
-@interface JKMeViewController ()<UITableViewDelegate,UITableViewDataSource,MeControllerDelegate>
+@interface JKMeViewController ()<UITableViewDelegate,UITableViewDataSource,MeControllerDelegate,CHLoginModalControllerDelegate>
 
 
 @property (nonatomic , strong) UIView *headerView;
@@ -46,9 +46,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
     
     [self setupSubviews];
-    
+     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     [self binding];
     // Do any additional setup after loading the view.
 }
@@ -66,6 +67,10 @@
     [self.viewModel initData];
     
 }
+
+
+
+
 - (void)binding{
     
     @weakify(self);

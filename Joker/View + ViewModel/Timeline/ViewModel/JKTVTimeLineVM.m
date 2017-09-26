@@ -133,6 +133,9 @@
             
             cellVM.belongType = item.belongType;
             
+            CGSize belongTypeSize = CH_TRANSFORM_TEXTSIZE(item.belongType, [JKStyleConfiguration minContentFont], CGSizeMake(MAXFLOAT, 15 ));
+            cellVM.belongTypeWidth = belongTypeSize.width;
+            
             cellVM.jokerScore = item.jokerScore;
             
             cellVM.score1 = item.doubanScore;

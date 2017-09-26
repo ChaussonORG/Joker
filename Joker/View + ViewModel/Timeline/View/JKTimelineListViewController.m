@@ -60,6 +60,15 @@
 //    self.navigationController.navigationBarHidden = NO;
     
 }
+
+- (void)scrollViewControllerWithIndex:(NSInteger)index{
+    
+   id vc = self.viewModel.controllerArrays[index];
+    
+    [vc viewWillAppear:YES];
+    
+    
+}
 - (NSInteger)numberOfItemsInYJSliderView:(YJSliderView *)sliderView {
     return self.viewModel.titleArrays.count;
 }

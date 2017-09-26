@@ -104,4 +104,5 @@ typedef NS_ENUM(NSInteger, JKTVDataFilter){
 
 - (void)commentWork;
 
+- (void)createTopic;
 @end

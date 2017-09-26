@@ -14,6 +14,57 @@
 @property (copy ,nonatomic) NSString <Optional>*text;
 
 @end
+
+@interface JKMyfavoriteWorksModelVariety : JSONModel
+
+@property (copy ,nonatomic) NSString <Optional>*id;
+@property (copy ,nonatomic) NSString <Optional>*name;
+@property (copy ,nonatomic) NSString <Optional>*english_name;
+@property (copy ,nonatomic) NSString <Optional>*other_name;
+@property (copy ,nonatomic) NSString <Optional>*product_company;
+@property (copy ,nonatomic) NSString <Optional>*issuing_company;
+@property (copy ,nonatomic) NSString <Optional>*release_date_global;
+@property (copy ,nonatomic) NSString <Optional>*release_statuts;
+@property (copy ,nonatomic) NSString <Optional>*animation_counts;
+@property (copy ,nonatomic) NSString <Optional>*animation_now_nb;
+@property (copy ,nonatomic) NSString <Optional>*broadcast_time;
+@property (copy ,nonatomic) NSString <Optional>*broadcast_platform;
+@property (copy ,nonatomic) NSString <Optional>*douban_score;
+@property (copy ,nonatomic) NSString <Optional>*imdb_score;
+@property (copy ,nonatomic) NSString <Optional>*rotten_tomatoes_score;
+@property (copy ,nonatomic) NSString <Optional>*joker_score;
+@property (copy ,nonatomic) NSString <Optional>*whole_network_score;
+@property (copy ,nonatomic) NSString <Optional>*prevue_url;
+@property (copy ,nonatomic) JKMyfavoriteWorksModelStatus <Optional>*animationStatus;
+@property (copy ,nonatomic) NSString <Optional>*favotiteCount;
+@property (copy ,nonatomic) NSString <Optional>*languages;
+@property (copy ,nonatomic) NSString <Optional>*types;
+@property (copy ,nonatomic) NSString <Optional>*areas;
+@property (copy ,nonatomic) NSString <Optional>*staff;
+@property (copy ,nonatomic) NSString <Optional>*releaseDate;
+@property (copy ,nonatomic) NSString <Optional>*animationPrevue;
+@property (copy ,nonatomic) NSString <Optional>*coverImage;
+@property (copy ,nonatomic) NSString <Optional>*coverImageList;
+@property (copy ,nonatomic) NSString <Optional>*favorited;
+@property (copy ,nonatomic) NSString <Optional>*favoritedSize;
+@property (copy ,nonatomic) NSString <Optional>*doubanScore;
+@property (copy ,nonatomic) NSString <Optional>*imdbScore;
+@property (copy ,nonatomic) NSString <Optional>*tomatoeScore;
+@property (copy ,nonatomic) NSString <Optional>*jokerScore;
+@property (copy ,nonatomic) NSString <Optional>*totalScore;
+@property (copy ,nonatomic) NSString <Optional>*commentSize;
+@property (copy ,nonatomic) NSString <Optional>*animatiomName;
+@property (copy ,nonatomic) NSString <Optional>*animationEnglishname;
+@property (copy ,nonatomic) NSString <Optional>*areaName;
+@property (copy ,nonatomic) NSString <Optional>*personName;
+@property (copy ,nonatomic) NSString <Optional>*typeName;
+@property (copy ,nonatomic) NSString <Optional>*desc;
+@property (copy ,nonatomic) NSString <Optional>*premiereDate;
+
+
+@end
+
+
 @interface JKMyfavoriteWorksModelAnimation : JSONModel
 
 @property (copy ,nonatomic) NSString <Optional>*id;
@@ -58,6 +109,7 @@
 @property (copy ,nonatomic) NSString <Optional>*personName;
 @property (copy ,nonatomic) NSString <Optional>*typeName;
 @property (copy ,nonatomic) NSString <Optional>*desc;
+@property (copy ,nonatomic) NSString <Optional>*premiereDate;
 
 
 @end
@@ -103,6 +155,7 @@
 @property (copy ,nonatomic) NSString <Optional>*tvenglishName;
 @property (copy ,nonatomic) NSString <Optional>*desc;
 @property (copy ,nonatomic) NSString <Optional>*coverImage;
+@property (copy ,nonatomic) NSString <Optional>*premiereDate;
 
 @end
 
@@ -137,6 +190,7 @@
 @property (copy ,nonatomic) NSString <Optional>*gameLang;
 @property (copy ,nonatomic) NSString <Optional>*desc;
 @property (copy ,nonatomic) NSString <Optional>*coverImage;
+@property (copy ,nonatomic) NSString <Optional>*premiereDate;
 
 @end
 
@@ -181,6 +235,7 @@
 @property (copy ,nonatomic) NSString <Optional>*typeName;
 @property (copy ,nonatomic) NSString <Optional>*areaName;
 @property (copy ,nonatomic) NSString <Optional>*coverImage;
+@property (copy ,nonatomic) NSString <Optional>*premiereDate;
 @end
 
 
@@ -200,6 +255,7 @@
 @property (copy ,nonatomic) JKMyfavoriteWorksModelTV <Optional>*tv;
 @property (copy ,nonatomic) JKMyfavoriteWorksModelAnimation <Optional>*animation;
 @property (copy ,nonatomic) JKMyfavoriteWorksModelGame <Optional>*game;
+@property (copy ,nonatomic) JKMyfavoriteWorksModelVariety <Optional>*variety;
 
 @end
 

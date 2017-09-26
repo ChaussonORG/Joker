@@ -45,6 +45,7 @@
  */
 - (void)startScroll;
 
-
+@property(nonatomic, strong) UICollectionView *collectionView;
+@property(nonatomic, strong) NSArray *dataSource;//数据源
 
 @end

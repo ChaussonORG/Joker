@@ -104,4 +104,5 @@ typedef NS_ENUM(NSInteger, JKVarietyDataFilter){
 
 - (void)commentWork;
 
+- (void)createTopic;
 @end

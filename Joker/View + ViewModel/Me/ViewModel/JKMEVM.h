@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JKMEListCellVM.h"
-
+#import "CHLoginModalController.h"
 @interface JKMEVM : NSObject
 
 @property (nonatomic , strong) NSMutableArray <JKMEListCellVM *>*cellViewModels;

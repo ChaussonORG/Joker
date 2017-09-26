@@ -44,6 +44,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.delegate = self;
   
 }
 #pragma mark Layout
@@ -65,6 +67,12 @@
     UIButton *button = (UIButton *)[notification object];
     [self.viewModel selectItem:button.tag];
 
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    
+    return YES;
+    
 }
 #pragma mark Override
 

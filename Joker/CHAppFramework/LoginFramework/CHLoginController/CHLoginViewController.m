@@ -487,13 +487,15 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                                                 [self.passWordText rac_textSignal],
                                                 ]
                                 reduce:^(NSString *username, NSString *password){
-                                    return @(username.length >= 11 && password.length >= 6 );
+                                    return @(username.length >= 11 && password.length >= 8 );
                                 }];
         [validUser subscribeNext:^(NSNumber *value) {
             @strongify(self);
 //           self.loginBtn.backgroundColor = [value boolValue]?kUIColorFromRGB(0xFFDD56):kUIColorFromRGB(0xFFEB99);
-            self.loginBtn.titleLabel.textColor = [value boolValue]?kUIColorFromRGB(0x484848):kUIColorFromRGB(0x9C9C9C);
-            self.loginBtn.tintColor = [value boolValue]?kUIColorFromRGB(0x484848):kUIColorFromRGB(0x9C9C9C);
+            UIColor *color = [value boolValue]?[JKStyleConfiguration whiteColor]:kUIColorFromRGB(0x9C9C9C);
+//            self.loginBtn.tintColor = [value boolValue]?kUIColorFromRGB(0x484848):kUIColorFromRGB(0x9C9C9C);
+            
+            [self.loginBtn setTitleColor:color forState:UIControlStateNormal];
         }];
         self.loginBtn.rac_command = [[RACCommand alloc]initWithEnabled:validUser signalBlock:^RACSignal *(id input) {
             @strongify(self);

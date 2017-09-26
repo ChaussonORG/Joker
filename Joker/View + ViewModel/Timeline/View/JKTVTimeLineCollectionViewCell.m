@@ -105,6 +105,16 @@
     
     RAC(self,belongTypeLabel.text) = RACObserve(self, viewModel.belongType);
     
+    [RACObserve(self, viewModel.belongTypeWidth) subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        
+        if ([x floatValue]> 0) {
+            self.belongTypeLabel.frame = CGRectMake(self.TVImage.frame.size.width - [x floatValue] - 1, 0, [x floatValue] +1, 15);
+        }
+        
+        
+    }];
+    
     [RACObserve(self, viewModel.jokerScore) subscribeNext:^(NSString *x) {
         @strongify(self);
         

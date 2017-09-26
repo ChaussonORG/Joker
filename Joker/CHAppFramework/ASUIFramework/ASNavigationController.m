@@ -24,6 +24,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.interactivePopGestureRecognizer.enabled = YES;
+    
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.barTintColor = [JKStyleConfiguration whiteColor];
     self.navigationBar.translucent = NO;

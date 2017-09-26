@@ -13,11 +13,12 @@
 #import "CHCommonMacro.h"
 #import "JKTopicCreateController.h"
 #import "JKUserManager.h"
+#import "JKBannerApi.h"
 @interface JKTopicsListVM()
 
 @property (nonatomic , strong) NSArray *attentFilterTitles;
 
-@property (nonatomic , strong) NSArray *imageArr;
+@property (nonatomic , strong) NSMutableArray *imageArr;
 
 @property (nonatomic , strong) NSArray *imageSelectedArr;
 
@@ -43,11 +44,9 @@
 {
     self = [super init];
     if (self) {
+        self.imageArr = [NSMutableArray array];
         
-        self.imageArr = @[@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495880401999&di=ba4990f6e6d89d66dcea9832ea01c217&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fa1%2F78%2Fd%2F250.jpg",
-                          @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495880450952&di=e0386e70958b230adec0a063a871bb0d&imgtype=0&src=http%3A%2F%2Fwww.qihualu.net.cn%2FVimages%2Fbd1938384.jpg",
-                          @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495880489400&di=1805f04fa8b90a7145bee610af129fa1&imgtype=0&src=http%3A%2F%2Fwww.bz55.com%2Fuploads%2Fallimg%2F100722%2F0933553a9-2.jpg",
-                          @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495880548256&di=66722048d74180758bff742f9855caf4&imgtype=0&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2015%2F162%2F48%2F9TZ0JJK73519.jpg"];
+        [self.imageArr addObject: @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495880401999&di=ba4990f6e6d89d66dcea9832ea01c217&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fa1%2F78%2Fd%2F250.jpg"];
         
         self.titlesArray = @[@"最 新",@"关 注"];
         
@@ -81,6 +80,19 @@
  
 - (void)requestData{
     
+    JKBannerApi *api = [[JKBannerApi alloc]init];
+    [api startWithSuccessBlock:^(__kindof JKBannerApi *request) {
+        NSArray *arr = request.response.responseJSONObject[@"data"];
+        NSMutableArray *mutableArr = [NSMutableArray array];
+        [mutableArr addObject:arr[1]];
+        [mutableArr addObject:arr[3]];
+        
+        self.imageArr = [mutableArr copy];
+        
+    } failureBlock:^(__kindof JKBannerApi *request) {
+        
+        
+    }];
     
     if (!self.isLogined) {
         

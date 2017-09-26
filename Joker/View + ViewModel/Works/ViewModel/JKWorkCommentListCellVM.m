@@ -154,6 +154,8 @@
 //        
 //    }
     vc.viewModel.content = self.content;
+    vc.viewModel.score = self.score;
+    
     
     [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
@@ -200,14 +202,14 @@
 - (void)replyComment{
     
     
-//    JKCommentCreatController *vc = [[JKCommentCreatController alloc]init];
-//    
-//    vc.viewModel.titleStr = [NSString stringWithFormat:@"回复：%@楼'%@'",self.floorCount,self.content];
-//    
-//    vc.viewModel.topicId = self.topicId;
-//    
-//    vc.viewModel.parentId = self.extId;
-//    
-//    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    JKCommentCreatController *vc = [[JKCommentCreatController alloc]init];
+    
+    vc.viewModel.titleStr = [NSString stringWithFormat:@"回复：%@'%@'",self.name,self.content];
+    
+    vc.viewModel.topicId = self.topicId;
+    
+    vc.viewModel.parentId = self.extId;
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
 }
 @end

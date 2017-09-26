@@ -49,6 +49,8 @@
 
 @property (nonatomic , strong) UIButton *createTopicBtn;
 
+@property (nonatomic , strong) UIView *stateBgView;
+
 /**标题数组*/
 @property(nonatomic,strong)NSArray *titleArray;
 
@@ -83,6 +85,12 @@
     [self.viewModel requestData];
     
     [self setupSubview];
+    
+    self.stateBgView = [[UIView alloc]init];
+    self.stateBgView.backgroundColor = [UIColor whiteColor];
+    self.stateBgView.frame = CGRectMake(0, 0, ScreenWidth, 20);
+    [self.view addSubview:self.stateBgView];
+    self.stateBgView.hidden = YES;
 
     [self binding];
     // Do any additional setup after loading the view.
@@ -130,11 +138,10 @@
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.topicsListTableView.mj_footer = footer;
     
-    //创建轮播图
+    
     self.dragView = [[YLDragZoomCycleView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, kHeaderHeight) andDataSource:self.viewModel.imageArr autoScroll:YES scrollInterval:2];
     self.dragView.delegate = self;
     [self.view addSubview:self.dragView];
-    
     
     
     self.createTopicBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -173,6 +180,17 @@
         self.navigationBarVisibility = GKFadeNavigationControllerNavigationBarVisibilityVisible;
     } else {
         self.navigationBarVisibility = GKFadeNavigationControllerNavigationBarVisibilityHidden;
+    }
+    
+    if (scrollView.contentOffset.y > 0) {
+        self.stateBgView.hidden = NO;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        
+    }
+    else{
+        
+        self.stateBgView.hidden = YES;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
     //告诉dragView表格滑动了
     CGFloat offset = scrollView.contentOffset.y + kHeaderHeight;
@@ -254,6 +272,20 @@
          
     }];
     
+    
+    [RACObserve(self, viewModel.imageArr) subscribeNext:^(id x) {
+        @strongify(self);
+        //创建轮播图
+        
+        if (self.viewModel.imageArr.count > 0) {
+            
+            
+            self.dragView.dataSource = self.viewModel.imageArr;
+            
+            [self.dragView.collectionView reloadData];
+        }
+        
+    }];
     
     
     [[RACSignal combineLatest:@[RACObserve(self, viewModel.topicFilterType),

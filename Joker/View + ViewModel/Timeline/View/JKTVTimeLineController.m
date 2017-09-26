@@ -75,7 +75,11 @@
     
     [super viewWillAppear:animated];
     
+     [self.mainTableView setContentOffset:CGPointZero animated:YES];
+    
     [self.viewModel requestData];
+    
+   
 }
 - (void)requestHeaderData{
     

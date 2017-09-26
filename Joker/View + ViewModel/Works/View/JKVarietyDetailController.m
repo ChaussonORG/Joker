@@ -73,6 +73,8 @@
 
 @property (nonatomic , strong) UILabel *naviTitleLabel;
 
+@property (nonatomic , strong) UIButton *createTopicBtn;
+
 @end
 
 @implementation JKVarietyDetailController
@@ -149,8 +151,32 @@
     self.shareBtn.frame = CGRectMake(ScreenWidth - 15 - 25, 28, 25, 25);
     [self.view addSubview:self.shareBtn];
     
+    self.createTopicBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    self.createTopicBtn.frame = CGRectMake((self.view.frame.size.width - 100)/2, ScreenHeight - 104, 100, 40);
+    //    [self.createTopicBtn setImage:[[UIImage imageNamed:@"dipinglun"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:(UIControlStateNormal)];
+    
+    [self.createTopicBtn setImage:[UIImage imageNamed:@"xiehuati"] forState:UIControlStateNormal];
+    [self.createTopicBtn addTarget:self action:@selector(clickCreateTopicBtn) forControlEvents:(UIControlEventTouchUpInside)];
+    self.createTopicBtn.layer.masksToBounds = YES;
+    self.createTopicBtn.layer.cornerRadius = 20;
+    [self.view addSubview:self.createTopicBtn];
+    self.createTopicBtn.hidden = YES;
+    
     [self binding];
     // Do any additional setup after loading the view.
+}
+
+- (void)clickCreateTopicBtn{
+    
+    [self.viewModel checkLogin];
+    
+    if (self.viewModel.isLogined) {
+        [self.viewModel createTopic];
+    }
+    else{
+        [self login];
+    }
+    
 }
 - (void)clickShareBtn{
     
@@ -239,6 +265,7 @@
     self.mainTableView.mj_footer = footer;
     
     self.mainTableView.tableHeaderView = self.workDetailView;
+    self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
 }
 
 - (void)setupWorkDetailView{
@@ -929,17 +956,17 @@
     if (index == 0) {
         
         self.viewModel.filterType = JKVarietyDataInfo;
-        
+        self.createTopicBtn.hidden = YES;
     }
     else if (index == 1) {
         
         self.viewModel.filterType = JKVarietyDataComment;
-        
+        self.createTopicBtn.hidden = YES;
     }
     else{
         
         self.viewModel.filterType = JKVarietyDataTopic;
-        
+        self.createTopicBtn.hidden = NO;
         
     }
     [self.mainTableView reloadData];
@@ -1013,17 +1040,25 @@
         
         self.naviBgView.hidden = NO;
         
-        
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
         [self.backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
         
         [self.shareBtn setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
     }
     else{
+        
+        
         self.naviBgView.hidden = YES;
         
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         
         [self.shareBtn setImage:[UIImage imageNamed:@"sharewhite"] forState:UIControlStateNormal];
         [self.backBtn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
+        
+        if(self.mainTableView.contentOffset.y <  -20){
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            
+        }
     }
     
     

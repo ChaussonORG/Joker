@@ -23,6 +23,8 @@
 
 @property (nonatomic , strong) NSString *relateWorkName;
 
+@property (nonatomic , assign) BOOL isWithWork;
+
 - (void)createTopicWithTitle:(NSString *)title
                         data:(NSArray <JKTopicCreateModel *>*)data;
 

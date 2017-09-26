@@ -9,8 +9,14 @@
 #import "CHTabBarModel.h"
 #import "CHTabBarViewModel.h"
 #import <CHProgressHUD/CHProgressHUD.h>
-
+#import "CHLoginModalController.h"
+#import "JKUserManager.h"
 #define TABBAR_PLIST_FILENAME @"CHTabBar"
+
+@interface CHTabBarViewModel()<CHLoginModalControllerDelegate>
+
+@end
+
 @implementation CHTabBarViewModel
 - (instancetype)init{
     self = [super init ];
@@ -34,10 +40,16 @@
     return self;
 }
 - (void)selectItem:(NSUInteger)index{
+    
+    
+    
+    
     CHBarItemViewModel *itemViewModel = _barItemViewModels[index];
     self.currentIndex = index;
     self.title = itemViewModel.title;
+    
 }
+
 
 - (void)setTitle:(NSString *)title{
     _title = title;

@@ -39,6 +39,10 @@
  */
 - (NSInteger)yj_SliderView:(YJSliderView *)sliderView redDotNumForItemAtIndex:(NSInteger)index;
 
+
+
+- (void)scrollViewControllerWithIndex:(NSInteger)index;
+
 @end
 
 @interface YJSliderView : UIView

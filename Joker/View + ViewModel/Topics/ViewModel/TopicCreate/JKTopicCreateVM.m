@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         
-        
+        self.isWithWork = NO;
         self.relateWorkName = @"关联作品";
     }
     return self;

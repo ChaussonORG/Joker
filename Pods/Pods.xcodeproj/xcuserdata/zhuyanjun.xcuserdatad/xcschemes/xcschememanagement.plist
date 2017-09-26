@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FDFullscreenPopGesture.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>HYBLoopScrollView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -111,112 +106,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>061CDDC97F3097DC3292880A63C0C789</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2722392EECB35D4E3101B1D27A07AEAE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>34E94B1DDC092B78E025E6E2225F49D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>42385E1AB41C0CCD6C3059B06966F288</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>43E69E5457351BD93EB5F08A269EE028</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>55E3CFFEDC2629EE0C17B343EC00595B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8C8D89516E4F2E04D50AFBB932F514FC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9650B5ADCE86F1A055FAFC635284BDB5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>985BEF27AACF0AB7C6ADAF77E9E52F64</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9CA2793A0D8E3E014849F0B009AC9629</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A36DDF0538C9B86862EE33FB25040179</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A968308575993B0B940DEAEC9D04B431</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B4C8A72840BB130949D4A248B36CE6DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DABE90E0F0947167ABC83E27C73FF15C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE729DD7BC29A32B4A3E1E78FF9914D6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E85D64EC13647885C77D5873336CB53D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE366E1E6962F82E6AEC8AE66FA66CBF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

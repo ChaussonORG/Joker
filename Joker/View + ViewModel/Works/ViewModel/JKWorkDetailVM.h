@@ -103,4 +103,6 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 - (void)favoriteWork;
 
 - (void)commentWork;
+
+- (void)createTopic;
 @end

@@ -262,6 +262,19 @@
 
     }];
     
+    [RACObserve(self, viewModel.isWithWork) subscribeNext:^(NSNumber  *x) {
+          @strongify(self);
+        
+        if (self.viewModel.isWithWork) {
+           
+            self.aboutBtn.enabled = NO;
+        }
+        else{
+            
+            self.aboutBtn.enabled = YES ;
+        }
+    }];
+    
     
 }
 - (void)clickAboutBtn{
@@ -276,6 +289,7 @@
     
      [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
+    self.navigationController.navigationBarHidden = NO;
     
     self.navigationItem.rightBarButtonItem = [self customRightButton];
     

@@ -107,6 +107,7 @@
 		504253501F5B2441006DCB66 /* JKWorkCommentCreatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */; };
 		504253531F5B26C7006DCB66 /* JKWorkCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */; };
 		504253561F5B26D8006DCB66 /* JKWorkCommentCreatVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */; };
+		5044FCF51F7A1801000E618F /* JKBannerApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5044FCF41F7A1801000E618F /* JKBannerApi.m */; };
 		50451D041F586470004BCFC6 /* JKFilmDetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50451D031F586470004BCFC6 /* JKFilmDetailApi.m */; };
 		50451D071F58650A004BCFC6 /* JKFilmDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50451D061F58650A004BCFC6 /* JKFilmDetailModel.m */; };
 		504931271F52FFDB008FB164 /* JKFilmTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504931261F52FFDB008FB164 /* JKFilmTimelineCell.m */; };
@@ -532,6 +533,8 @@
 		504253521F5B26C7006DCB66 /* JKWorkCommentCreatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCreatController.m; sourceTree = "<group>"; };
 		504253541F5B26D8006DCB66 /* JKWorkCommentCreatVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkCommentCreatVM.h; sourceTree = "<group>"; };
 		504253551F5B26D8006DCB66 /* JKWorkCommentCreatVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkCommentCreatVM.m; sourceTree = "<group>"; };
+		5044FCF31F7A1801000E618F /* JKBannerApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKBannerApi.h; sourceTree = "<group>"; };
+		5044FCF41F7A1801000E618F /* JKBannerApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKBannerApi.m; sourceTree = "<group>"; };
 		50451D021F586470004BCFC6 /* JKFilmDetailApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFilmDetailApi.h; sourceTree = "<group>"; };
 		50451D031F586470004BCFC6 /* JKFilmDetailApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFilmDetailApi.m; sourceTree = "<group>"; };
 		50451D051F58650A004BCFC6 /* JKFilmDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFilmDetailModel.h; sourceTree = "<group>"; };
@@ -1059,6 +1062,8 @@
 				501E8A841F130EF800723C29 /* JKCommentListApi.m */,
 				501F57BE1F1F5E88001D2C8A /* JKMyfavoriteWorksApi.h */,
 				501F57BF1F1F5E88001D2C8A /* JKMyfavoriteWorksApi.m */,
+				5044FCF31F7A1801000E618F /* JKBannerApi.h */,
+				5044FCF41F7A1801000E618F /* JKBannerApi.m */,
 			);
 			path = TopicsApi;
 			sourceTree = "<group>";
@@ -2253,8 +2258,8 @@
 		D3973BD01EF2389F0076B246 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				5068B8BF1F72B7EB00677752 /* ViewModel */,
 				D3973BD11EF2389F0076B246 /* View */,
+				5068B8BF1F72B7EB00677752 /* ViewModel */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -2857,6 +2862,7 @@
 				5042531E1F5ACF23006DCB66 /* UIImage+Cut.m in Sources */,
 				D3973BA71EEEF0830076B246 /* BaseModel.m in Sources */,
 				50658B8D1F5D5E3500B966E2 /* JWStarView.m in Sources */,
+				5044FCF51F7A1801000E618F /* JKBannerApi.m in Sources */,
 				504BA95E1F4F2D6000E33F08 /* JKTimelineFilmModel.m in Sources */,
 				504253091F5ACF23006DCB66 /* PBPGView.m in Sources */,
 				5042530F1F5ACF23006DCB66 /* PhotoBroswerVC.m in Sources */,

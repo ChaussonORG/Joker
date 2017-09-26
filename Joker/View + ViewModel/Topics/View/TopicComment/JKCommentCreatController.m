@@ -182,6 +182,7 @@
     
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationBarHidden = NO;
     
 }
 

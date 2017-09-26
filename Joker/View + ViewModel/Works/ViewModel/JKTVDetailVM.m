@@ -17,7 +17,7 @@
 #import "JKUnfavoriteWorkApi.h"
 #import "JKWorkCommentCreatController.h"
 #import "CHLoginModalController.h"
-
+#import "JKTopicCreateController.h"
 @interface JKTVDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
@@ -660,6 +660,26 @@
     
     
     [self.delegate tableViewReload];
+}
+
+- (void)createTopic{
+    
+    if (self.isLogined) {
+        
+        JKTopicCreateController *vc = [[JKTopicCreateController alloc]init];
+        
+        vc.viewModel.relateWorkName = self.name;
+        
+        vc.viewModel.type = @"TV";
+        
+        vc.viewModel.projectId = self.workId;
+        
+        vc.viewModel.isWithWork = YES;
+        
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+    
+    
 }
 
 @end
