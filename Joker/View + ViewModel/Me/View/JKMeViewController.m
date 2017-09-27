@@ -7,18 +7,46 @@
 //
 
 #import "JKMeViewController.h"
-
+#import <SDWebImage/UIButton+WebCache.h>
 #import "CHTabBarViewController.h"
-
+#import "UIButton+SD.h"
 #import "JKMEListCell.h"
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+// 以iphone6s iphone7为基准 4.7寸屏 --
+#define BaseSCREEN_WIDTH               375.0f
+
+#define AUTOLAYOUT_WIDTH_SCALE         SCREEN_WIDTH / BaseSCREEN_WIDTH
+
+#define AUTOLAYOUT_LENGTH(x)           ((x) * AUTOLAYOUT_WIDTH_SCALE)
+
+// tableview分割线
+#define kCuttingLineColor [UIColor colorWithRed:238/ 255.0 green:238 / 255.0 blue:238 / 255.0 alpha:1]
+
+#define kInitHeaderViewHeight 186 + AUTOLAYOUT_LENGTH(74)  //tableheaderview高度
+#define kInitUserImageViewHeight AUTOLAYOUT_LENGTH(74)     //
+#define kInitHeaderViewOriginY 0
+
 @interface JKMeViewController ()<UITableViewDelegate,UITableViewDataSource,MeControllerDelegate,CHLoginModalControllerDelegate>
-
-
-@property (nonatomic , strong) UIView *headerView;
+{
+    
+    UIImageView* tableheadView;
+    
+    UIButton* userImageButton;
+    
+    CGFloat tableviewHerderOriginY;
+    
+    CGFloat tableviewHeaderHeight;
+    
+    CGFloat userImageViewHeight;
+    
+    NSArray* dataSource;
+}
+//@property (nonatomic , strong) UIView *headerView;
 
 @property (nonatomic , strong) UIView *blackView;
 
-@property (nonatomic , strong) UIImageView *iconView;
+//@property (nonatomic , strong) UIImageView *iconView;
 
 @property (nonatomic , strong) UILabel *nameLabel;
 
@@ -28,7 +56,7 @@
 
 @property (nonatomic , strong) UIButton *setBtn;
 
-@property (nonatomic , strong) UITableView *mainTableView;
+//@property (nonatomic , strong) UITableView *mainTableView;
 
 @end
 
@@ -47,9 +75,10 @@
     [super viewDidLoad];
     
    
+    self.automaticallyAdjustsScrollViewInsets =NO;
     
     [self setupSubviews];
-     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
+     self.tableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     [self binding];
     // Do any additional setup after loading the view.
 }
@@ -77,7 +106,7 @@
     [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
         @strongify(self);
         
-        [self.mainTableView reloadData];
+        [self.tableView reloadData];
         
         
     }];
@@ -85,7 +114,7 @@
     [RACObserve(self, viewModel.icon) subscribeNext:^(NSString *x) {
         @strongify(self);
         
-        [self.iconView sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@"touxiang"]];
+        [userImageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:x] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"touxiang"]];
         
     }];
 
@@ -119,62 +148,132 @@
 }
 - (void)setupSubviews{
     
-    self.headerView = [[UIView alloc]init];
-    self.headerView.backgroundColor = [JKStyleConfiguration whiteColor];
-    self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 260);
-   
+    tableheadView = [[UIImageView alloc]init];
+    tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
+//    self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 260);
+    tableheadView.backgroundColor = [UIColor redColor];
+     
+    tableheadView= [[UIImageView alloc ]init];
+    tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
+    
     self.blackView = [[UIView alloc]init];
     self.blackView.backgroundColor = [JKStyleConfiguration twotwoColor];
     self.blackView.frame = CGRectMake(0, 0, ScreenWidth, 130);
-    [self.headerView addSubview:self.blackView];
+    [tableheadView addSubview:self.blackView];
     
-    self.iconView = [[UIImageView alloc]init];
-    self.iconView.frame = CGRectMake((ScreenWidth - 74)/2, 93, 74, 74);
-    [self.headerView addSubview:self.iconView];
-    self.iconView.layer.cornerRadius = 74/2;
-    self.iconView.layer.masksToBounds = YES;
-    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
-    self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.iconView.layer.borderWidth = 1;
+    userImageButton = [[UIButton alloc]init];
+    userImageButton.layer.masksToBounds=YES;
+//    [userImageButton setBackgroundImage:[UIImage imageNamed:@"touxiang"] forState:UIControlStateNormal];
+    [tableheadView addSubview:userImageButton];
+    userImageButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    userImageButton.layer.borderWidth = 1;
     
+    
+    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kInitHeaderViewHeight)];
+    
+    tableviewHerderOriginY = kInitHeaderViewOriginY;
+    
+    tableviewHeaderHeight = kInitHeaderViewHeight;
+    
+    userImageViewHeight = kInitUserImageViewHeight;
+    
+    [self.tableView addSubview:tableheadView];
+    
+//    self.iconView = [[UIImageView alloc]init];
+//    self.iconView.frame = CGRectMake((ScreenWidth - 74)/2, 93, 74, 74);
+//    [tableheadView addSubview:self.iconView];
+//    self.iconView.layer.cornerRadius = 74/2;
+//    self.iconView.layer.masksToBounds = YES;
+//    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.iconView.layer.borderColor = [UIColor whiteColor].CGColor;
+//    self.iconView.layer.borderWidth = 1;
+
     self.nameLabel = [[UILabel alloc]init];
-    self.nameLabel.frame = CGRectMake(0, self.iconView.frame.size.height + self.iconView.frame.origin.y , ScreenWidth, 30);
+    self.nameLabel.frame = CGRectMake(0, userImageButton.frame.size.height + userImageButton.frame.origin.y , ScreenWidth, 30);
     self.nameLabel.font = [JKStyleConfiguration hugeFont];
     self.nameLabel.textColor = [JKStyleConfiguration blackColor];
-    [self.headerView addSubview:self.nameLabel];
+    [tableheadView addSubview:self.nameLabel];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
-    
+
     self.favorCountLabel = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.favorCountLabel setImage:[UIImage imageNamed:@"guanzhuan"] forState:UIControlStateNormal];
     self.favorCountLabel.titleLabel.font = [JKStyleConfiguration subcontentFont];
     [self.favorCountLabel setTitleColor:[JKStyleConfiguration drakGrayTextColor] forState:UIControlStateNormal];
-    [self.headerView addSubview:self.favorCountLabel];
+    [tableheadView addSubview:self.favorCountLabel];
     self.favorCountLabel.frame = CGRectMake(ScreenWidth/2 -100, self.nameLabel.frame.size.height + self.nameLabel.frame.origin.y + 5, 100, 25);
-    
-    
+
+
     self.lookCountLabel = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.lookCountLabel setImage:[UIImage imageNamed:@"dipinglun"] forState:UIControlStateNormal];
     self.lookCountLabel.titleLabel.font = [JKStyleConfiguration subcontentFont];
     [self.lookCountLabel setTitleColor:[JKStyleConfiguration drakGrayTextColor] forState:UIControlStateNormal];
-    [self.headerView addSubview:self.lookCountLabel];
+    [tableheadView addSubview:self.lookCountLabel];
     self.lookCountLabel.frame = CGRectMake(ScreenWidth/2, self.nameLabel.frame.size.height + self.nameLabel.frame.origin.y + 5, 100, 25);
-    
-    
+
+
     self.setBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.setBtn setImage:[UIImage imageNamed:@"baishezhi"] forState:UIControlStateNormal];
-    [self.headerView addSubview:self.setBtn];
+    [tableheadView addSubview:self.setBtn];
     self.setBtn.frame = CGRectMake(ScreenWidth - 25 - 15, 30, 25, 25);
 
     
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, - 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
-    self.mainTableView.backgroundColor = [UIColor whiteColor];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, - 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
-    self.mainTableView.delegate = self;
-    self.mainTableView.dataSource = self;
-    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:self.mainTableView];
-    self.mainTableView.tableHeaderView = self.headerView;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    [self.view addSubview:self.tableView];
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 120 + ((80) * ScreenWidth/375.0f))];
+    
+    
+//    self.mainTableView.tableHeaderView = self.headerView;
+    
+    [self.tableView addSubview:tableheadView];
+}
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    tableheadView.frame = CGRectMake(0, tableviewHerderOriginY, [UIScreen mainScreen].bounds.size.width, tableviewHeaderHeight);
+    
+    self.blackView.frame = CGRectMake(0, 0, ScreenWidth, tableheadView.frame.size.height/2);
+    
+    userImageButton.frame =CGRectMake(0, 0, userImageViewHeight, userImageViewHeight);
+    
+    userImageButton.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, (kInitHeaderViewHeight - kInitUserImageViewHeight) / 2 + userImageViewHeight / 2);
+    
+    
+    userImageButton.layer.cornerRadius = userImageViewHeight / 2;
+    
+    self.nameLabel.frame = CGRectMake(0, userImageButton.frame.size.height + userImageButton.frame.origin.y , ScreenWidth, 30);
+    
+    
+    self.favorCountLabel.frame = CGRectMake(ScreenWidth/2 -100, self.nameLabel.frame.size.height + self.nameLabel.frame.origin.y + 5, 100, 25);
+    
+    
+    self.lookCountLabel.frame = CGRectMake(ScreenWidth/2, self.nameLabel.frame.size.height + self.nameLabel.frame.origin.y + 5, 100, 25);
+    
+    
+    self.setBtn.frame = CGRectMake(ScreenWidth - 25 - 15, 30, 25, 25);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
+{
+    if(scrollView.contentOffset.y < 0) {
+        CGFloat offsetY = (scrollView.contentOffset.y + scrollView.contentInset.top) * -1;
+        tableviewHerderOriginY = kInitHeaderViewOriginY + -1 *offsetY;
+        tableviewHeaderHeight = kInitHeaderViewHeight + offsetY;
+        
+        userImageViewHeight = kInitUserImageViewHeight + offsetY;
+        
+    }
+    else {
+        
+        [scrollView setContentOffset: CGPointMake(0, 0)];
+        
+    }
 }
 
 #pragma mark UITableViewDelegate

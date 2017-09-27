@@ -154,6 +154,8 @@
             
             cellVM.language = item.language;
             
+            cellVM.isON = self.type == JKGameCurrent? YES:NO;
+            
             [cellVMs addObject:cellVM];
             
         }

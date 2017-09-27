@@ -26,6 +26,8 @@
 
 @property (nonatomic , strong) UILabel *unpointLabel;
 
+@property (nonatomic , strong) UILabel *favoriteCountLabel;
+
 @property (nonatomic , strong) JKGameTimeLineCollectionViewCellVM *viewModel;
 
 

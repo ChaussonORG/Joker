@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JKMEVM.h"
-@interface JKMeViewController : UIViewController
+@interface JKMeViewController : UITableViewController
 
 @property (nonatomic , strong) JKMEVM *viewModel;
 

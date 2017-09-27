@@ -33,13 +33,7 @@
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:view];
-
-    
-    
-    self.sliderView = [[YJSliderView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    self.sliderView.delegate = self;
-    
-    [self.view addSubview:self.sliderView];
+ 
     
        // Do any additional setup after loading the view.
 }
@@ -51,6 +45,11 @@
      [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     self.navigationController.navigationBarHidden = YES;
+    
+    self.sliderView = [[YJSliderView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.sliderView.delegate = self;
+    
+    [self.view addSubview:self.sliderView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

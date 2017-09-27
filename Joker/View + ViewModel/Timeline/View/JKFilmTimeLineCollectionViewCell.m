@@ -55,6 +55,12 @@
     self.unpointLabel.text = @"暂无评分";
     [self.contentView addSubview:self.unpointLabel];
     
+    self.favoriteCountLabel = [[UILabel alloc]init];
+    self.favoriteCountLabel.font = [JKStyleConfiguration contentFont];
+    self.favoriteCountLabel.textColor = [JKStyleConfiguration lightGrayTextColor];
+    self.favoriteCountLabel.text = @"XXX人关注";
+    [self.contentView addSubview:self.favoriteCountLabel];
+    
     [self.contentView addSubview:self.filmImage];
     
     [self.contentView addSubview:self.filmName];
@@ -69,6 +75,9 @@
     self.starView.frame = CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,65, 20);
     self.unpointLabel.frame = CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,65, 20);
     self.unpointLabel.hidden = YES;
+    
+    self.favoriteCountLabel.frame = CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,65, 20);
+    self.favoriteCountLabel.hidden = YES;
     
     self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
 }
@@ -97,31 +106,61 @@
     
     RAC(self,filmName.text) = RACObserve(self, viewModel.name);
     
-    [RACObserve(self, viewModel.jokerScore) subscribeNext:^(NSString *x) {
+    [[RACSignal combineLatest:@[RACObserve(self, viewModel.jokerScore),
+                                RACObserve(self, viewModel.isON)]] subscribeNext:^(id x) {
         @strongify(self);
         
-        self.pointLabel.text = x;
-        
-        CGFloat selectedCount = [self fetchSelectedCountWithScore:[x floatValue]];
-        
-        [self.starView refreshFrame:CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,60, 20) SelectedCount:selectedCount commentable:NO starMargin:1 starWidth:10];
-        
-        self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
-        
-        if (selectedCount == 0) {
-            self.unpointLabel.hidden = NO;
+        if (self.viewModel.isON) {
+            self.pointLabel.text = self.viewModel.jokerScore;
             
-            self.pointLabel.hidden = YES;
-            self.starView.hidden = YES;
+            CGFloat selectedCount = [self fetchSelectedCountWithScore:[self.viewModel.jokerScore floatValue]];
+            
+            [self.starView refreshFrame:CGRectMake(self.filmImage.frame.origin.x, self.filmName.frame.origin.y + self.filmName.frame.size.height,60, 20) SelectedCount:selectedCount commentable:NO starMargin:1 starWidth:10];
+            
+            self.pointLabel.frame = CGRectMake(self.starView.frame.origin.x + self.starView.frame.size.width , self.starView.frame.origin.y, 25, 20);
+            
+            if (selectedCount == 0) {
+                self.unpointLabel.hidden = NO;
+                
+                self.pointLabel.hidden = YES;
+                self.starView.hidden = YES;
+                
+                
+                self.favoriteCountLabel.hidden = YES ;
+            }
+            else{
+                
+                self.unpointLabel.hidden = YES;
+                self.pointLabel.hidden = NO;
+                self.starView.hidden = NO;
+                
+                self.favoriteCountLabel.hidden = YES ;
+            }
         }
         else{
             
             self.unpointLabel.hidden = YES;
-            self.pointLabel.hidden = NO;
-            self.starView.hidden = NO;
+            self.pointLabel.hidden = YES;
+            self.starView.hidden = YES;
+            
+            self.favoriteCountLabel.hidden = NO ;
+            
         }
+        
     }];
     
+    [RACObserve(self, viewModel.favoriteCount) subscribeNext:^(NSString *x) {
+        @strongify(self)
+        
+        NSString *str = [NSString stringWithFormat:@"%@人关注",x];
+        NSMutableAttributedString *Astr1 = [[NSMutableAttributedString alloc]initWithString:str];
+        
+        [Astr1 addAttribute:NSForegroundColorAttributeName value:[JKStyleConfiguration aaaaaaColor] range:NSMakeRange(0, str.length)];
+        [Astr1 addAttribute:NSForegroundColorAttributeName value:[JKStyleConfiguration redColor] range:NSMakeRange(0, x.length)];
+        self.favoriteCountLabel.attributedText = Astr1;
+        
+        
+    }];
     
     
 }

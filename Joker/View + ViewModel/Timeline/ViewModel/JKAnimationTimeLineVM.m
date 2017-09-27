@@ -143,6 +143,8 @@
             
             cellVM.isRecommand = [item.recommend boolValue];
             
+            cellVM.isON = self.type == JKAnimationCurrent? YES:NO;
+            
             for (JKTimelineFilmModelDirector  *director in item.supervision) {
                 
                 if (cellVM.directors.length > 0) {

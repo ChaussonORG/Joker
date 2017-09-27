@@ -38,8 +38,9 @@
 
 @property (nonatomic , strong) NSString *belongType;
 
-
 @property (nonatomic , strong) NSString *extId;
+
+@property (nonatomic , assign) BOOL isON;
 
 - (void)gotoDetail;
 @end

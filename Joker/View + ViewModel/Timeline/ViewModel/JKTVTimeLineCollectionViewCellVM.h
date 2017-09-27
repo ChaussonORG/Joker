@@ -41,6 +41,8 @@
 @property (nonatomic , assign) float belongTypeWidth;
 
 @property (nonatomic , strong) NSString *extId;
+ 
+@property (nonatomic , assign) BOOL isON;
 
 - (void)gotoDetail;
 @end

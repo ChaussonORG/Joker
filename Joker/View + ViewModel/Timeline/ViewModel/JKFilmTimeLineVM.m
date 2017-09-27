@@ -99,8 +99,6 @@
                 
                 if (![tempDate isEqualToString:item.openDate]) {
                     
-                    
-                    
                     if (cellViewModels.count == 0) {
                         [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
                         
@@ -144,6 +142,8 @@
             cellVM.isfavorite = [item.favotite boolValue];
             
             cellVM.isRecommand = [item.recommend boolValue];
+            
+            cellVM.isON = self.type == JKFilmCurrent? YES:NO;
             
             for (JKTimelineFilmModelDirector  *director in item.director) {
                 
@@ -236,6 +236,8 @@
         cellVM.isRecommend = YES;
         for (int i = 0; i < cellVMs.count; i ++) {
             JKFilmTimeLineCollectionViewCellVM *cellViewModel = cellVMs[i];
+            
+            
             
             if (cellViewModel.isRecommand) {
                 

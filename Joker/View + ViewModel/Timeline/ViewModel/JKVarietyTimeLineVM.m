@@ -143,6 +143,8 @@
             
             cellVM.isRecommand = [item.recommend boolValue];
             
+            cellVM.isON = self.type == JKVarietyCurrent? YES:NO;
+            
             for (JKTimelineFilmModelDirector  *director in item.hostList) {
                 
                 if (cellVM.directors.length > 0) {

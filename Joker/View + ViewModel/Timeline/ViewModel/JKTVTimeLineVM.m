@@ -149,6 +149,8 @@
             cellVM.isfavorite = [item.favotite boolValue];
             
             cellVM.isRecommand = [item.recommend boolValue];
+          
+            cellVM.isON = self.type == JKTVCurrent? YES:NO;
             
             for (JKTimelineFilmModelDirector  *director in item.director) {
                 

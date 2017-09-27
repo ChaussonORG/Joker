@@ -20,8 +20,10 @@
 
 @property (nonatomic , strong) UILabel *pointLabel;
 
-
 @property (nonatomic , strong) UILabel *unpointLabel;
+
+@property (nonatomic , strong) UILabel *favoriteCountLabel;
+
 @property (nonatomic , strong) JKTVTimeLineCollectionViewCellVM *viewModel;
 
 
