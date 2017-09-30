@@ -165,13 +165,21 @@
         
         self.descCellHeight = descLabelSize.height + 36 + 40;
         
+   
         if (self.imageArrs.count%4 == 0) {
-            self.imagesCellHeight =(self.imageArrs.count/4 )*((ScreenWidth - 35)/4) +36;
+            self.imagesCellHeight =(self.imageArrs.count/4 )*((ScreenWidth - 35)/4 + 10) +36;
         }
         else{
-            self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10) + 36;
+            
+            if (self.imageArrs.count%4 < 4) {
+                self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10)+36;
+            }
+            else{
+                
+                self.imagesCellHeight =(self.imageArrs.count/4)*((ScreenWidth - 35)/4 + 10)+36;
+            }
+            
         }
-        
         
         
     } failureBlock:^(__kindof JKTVDetailApi *request) {

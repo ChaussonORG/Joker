@@ -152,7 +152,7 @@
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
 //    self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 260);
     tableheadView.backgroundColor = [UIColor redColor];
-     
+    
     tableheadView= [[UIImageView alloc ]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
     
