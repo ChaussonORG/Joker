@@ -10,14 +10,14 @@
 #import "JKStyleConfiguration.h"
 #import "JKCommentOpenCell.h"
 #import "JKSubcommentListCell.h"
-#import "JKCommentBottomView.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface JKWorkCommentListCell()<CommentListOpenDelegate,CommentStatusDelegate>
 
 @property (nonatomic , strong) UIView *lineView;
 
-@property (nonatomic , strong) JKCommentBottomView *bottomView;
+
 
 @end
 

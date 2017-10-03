@@ -199,7 +199,7 @@
     [RACObserve(self, webHeight) subscribeNext:^(id x) {
         @strongify(self);
         
-        self.webView.frame = CGRectMake(0, 0, ScreenWidth, self.webHeight);
+        self.webView.frame = CGRectMake(0, 0, ScreenWidth, self.webHeight + 20);
         
         self.tableView.tableHeaderView = self.webView;
         

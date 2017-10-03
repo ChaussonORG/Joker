@@ -156,6 +156,7 @@
 		5068B8C51F72B7EB00677752 /* JKMEVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068B8C31F72B7EB00677752 /* JKMEVM.m */; };
 		506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */; };
 		506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */; };
+		50736C7A1F83BC6900E1BB45 /* TOYDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50736C791F83BC6900E1BB45 /* TOYDatePickerView.m */; };
 		507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */; };
 		507A67521F3A0D9500377C5E /* JKCommentCreatVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67511F3A0D9500377C5E /* JKCommentCreatVM.m */; };
 		507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A67551F3AA00900377C5E /* JKCommentCreatApi.m */; };
@@ -631,6 +632,8 @@
 		506C126A1EF6E82700DF705F /* JKTopicsFilteredListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListController.m; sourceTree = "<group>"; };
 		506C126C1EF6E83600DF705F /* JKTopicsFilteredListVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicsFilteredListVM.h; sourceTree = "<group>"; };
 		506C126D1EF6E83600DF705F /* JKTopicsFilteredListVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicsFilteredListVM.m; sourceTree = "<group>"; };
+		50736C781F83BC6900E1BB45 /* TOYDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOYDatePickerView.h; sourceTree = "<group>"; };
+		50736C791F83BC6900E1BB45 /* TOYDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOYDatePickerView.m; sourceTree = "<group>"; };
 		507A674D1F3A0D7A00377C5E /* JKCommentCreatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatController.h; sourceTree = "<group>"; };
 		507A674E1F3A0D7A00377C5E /* JKCommentCreatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommentCreatController.m; sourceTree = "<group>"; };
 		507A67501F3A0D9500377C5E /* JKCommentCreatVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentCreatVM.h; sourceTree = "<group>"; };
@@ -1530,6 +1533,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		50736C771F83BC6900E1BB45 /* TOYDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				50736C781F83BC6900E1BB45 /* TOYDatePickerView.h */,
+				50736C791F83BC6900E1BB45 /* TOYDatePickerView.m */,
+			);
+			path = TOYDatePicker;
+			sourceTree = "<group>";
+		};
 		507A67531F3A9F9500377C5E /* Comment */ = {
 			isa = PBXGroup;
 			children = (
@@ -2031,6 +2043,7 @@
 		D3973B1D1EEEEC200076B246 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				50736C771F83BC6900E1BB45 /* TOYDatePicker */,
 				504CAE7A1F70E8A400D27FFE /* perfectUserInfo */,
 				501F57C71F2099D2001D2C8A /* StarView */,
 				501F57AE1F1E729A001D2C8A /* FilmCell */,
@@ -2512,8 +2525,8 @@
 				TargetAttributes = {
 					D343386A1EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 4539V58G9H;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = XZ39NEQQXX;
+						ProvisioningStyle = Automatic;
 					};
 					D34338831EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
@@ -2710,6 +2723,7 @@
 				505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */,
 				501E8A851F130EF800723C29 /* JKCommentListApi.m in Sources */,
 				D3973B741EEEEC200076B246 /* YJLabel.m in Sources */,
+				50736C7A1F83BC6900E1BB45 /* TOYDatePickerView.m in Sources */,
 				50521A2E1F67068100AE8B00 /* JKAnimationDetailVM.m in Sources */,
 				50376CF91F629928009511FF /* JKWorkDirectorListCell.m in Sources */,
 				5042530D1F5ACF23006DCB66 /* PhotoItemView.m in Sources */,
@@ -3068,8 +3082,9 @@
 			baseConfigurationReference = 8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 4539V58G9H;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XZ39NEQQXX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3082,10 +3097,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
+				PRODUCT_BUNDLE_IDENTIFIER = daxiong.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "007c57d3-954e-4817-ba05-854eca90977c";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: KuaiCTO.chausson.com";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3094,8 +3109,9 @@
 			baseConfigurationReference = E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 4539V58G9H;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XZ39NEQQXX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3108,10 +3124,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
+				PRODUCT_BUNDLE_IDENTIFIER = daxiong.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "007c57d3-954e-4817-ba05-854eca90977c";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: KuaiCTO.chausson.com";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

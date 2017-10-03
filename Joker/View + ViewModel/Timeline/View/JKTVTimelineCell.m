@@ -187,6 +187,8 @@
                     
                 }
                 
+                remanndationView.belongTypeLabel.hidden = YES;
+                
                 if (cellVM.isfavorite) {
                     
                     remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhu"];

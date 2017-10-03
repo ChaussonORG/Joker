@@ -41,7 +41,7 @@
     self.belongTypeLabel.textColor = [JKStyleConfiguration whiteColor];
     self.belongTypeLabel.backgroundColor = [JKStyleConfiguration blackColor];
     self.belongTypeLabel.textAlignment = NSTextAlignmentCenter;
-    
+    self.belongTypeLabel.hidden = YES;
     
     self.AnimationName = [[UILabel alloc]init];
     self.AnimationName.font = [JKStyleConfiguration subcontentFont];

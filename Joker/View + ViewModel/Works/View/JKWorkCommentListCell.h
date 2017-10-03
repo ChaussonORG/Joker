@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JKWorkCommentListCellVM.h"
 #import "CTOCommentStarView.h"
+#import "JKCommentBottomView.h"
 @interface JKWorkCommentListCell : UITableViewCell
 @property (nonatomic , strong) UIImageView *headerView;
 
@@ -33,6 +34,8 @@
 @property (nonatomic , strong) CTOCommentStarView *starView;
 
 @property (nonatomic , strong) UILabel *pointLabel;
+
+@property (nonatomic , strong) JKCommentBottomView *bottomView;
 
 @property (nonatomic,strong) JKWorkCommentListCellVM *viewModel;
 

@@ -708,6 +708,11 @@
             
             
             [cell loadDataWithVM: self.viewModel.myCellVMs[indexPath.row]];
+            cell.bottomView.commentBtn.hidden = YES;
+            
+            cell.bottomView.turnBtn.frame = cell.bottomView.deleteBtn.frame;
+            
+            cell.bottomView.deleteBtn.frame = cell.bottomView.commentBtn.frame;
             return cell;
         }
         else  if (indexPath.section == 1) {
@@ -716,6 +721,12 @@
             
             
             [cell loadDataWithVM: self.viewModel.topCellVMs[indexPath.row]];
+            
+            cell.bottomView.commentBtn.hidden = YES;
+            
+            cell.bottomView.turnBtn.frame = cell.bottomView.deleteBtn.frame;
+            
+            cell.bottomView.deleteBtn.frame = cell.bottomView.commentBtn.frame;
             return cell;
         }
         else if (indexPath.section == 2) {
@@ -723,6 +734,12 @@
             JKWorkCommentListCell *cell =  [[JKWorkCommentListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             
             [cell loadDataWithVM: self.viewModel.bottemCellVMs[indexPath.row]];
+           
+            cell.bottomView.commentBtn.hidden = YES;
+            
+            cell.bottomView.turnBtn.frame = cell.bottomView.deleteBtn.frame;
+            
+            cell.bottomView.deleteBtn.frame = cell.bottomView.commentBtn.frame;
             return cell;
         }
         else{
@@ -732,6 +749,11 @@
                 
                 //            cellVM.delegate = self;
                 [cell loadDataWithVM:self.viewModel.commentCellVMs[indexPath.row]];
+                cell.bottomView.commentBtn.hidden = YES;
+                
+                cell.bottomView.turnBtn.frame = cell.bottomView.deleteBtn.frame;
+                
+                cell.bottomView.deleteBtn.frame = cell.bottomView.commentBtn.frame;
                 return cell;
             }
             else{

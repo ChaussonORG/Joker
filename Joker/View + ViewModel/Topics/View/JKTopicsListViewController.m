@@ -91,6 +91,11 @@
     self.stateBgView.frame = CGRectMake(0, 0, ScreenWidth, 20);
     [self.view addSubview:self.stateBgView];
     self.stateBgView.hidden = YES;
+    
+    UIView *mengban = [[UIView alloc]init];
+    mengban.frame = CGRectMake(0, 0, ScreenWidth, 40);
+    mengban.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [self.view addSubview:mengban];
 
     [self binding];
     // Do any additional setup after loading the view.

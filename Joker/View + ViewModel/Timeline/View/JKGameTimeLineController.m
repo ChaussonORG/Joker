@@ -29,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.viewModel requestData];
+    
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.headerView = [[JKTopicListHeaderView alloc]initWithFilterTitles:self.viewModel.titlesArray selectedColor:[JKStyleConfiguration redColor] isLine:YES];
@@ -75,7 +78,7 @@
     
     [super viewWillAppear:animated];
     [self.mainTableView setContentOffset:CGPointZero animated:YES];
-    [self.viewModel requestData];
+//    [self.viewModel requestData];
     
     
 }

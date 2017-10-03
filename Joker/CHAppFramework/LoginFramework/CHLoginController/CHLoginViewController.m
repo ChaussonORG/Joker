@@ -25,6 +25,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CHLoginViewController ()
 
+@property (nonatomic , strong) UIButton *changePassBtn;
+
+@property (nonatomic , strong) UIButton *changeregistPassBtn;
+
 @end
 
 @implementation CHLoginViewController{
@@ -54,7 +58,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.logoView.frame = CGRectMake((ScreenWidth - 60)/2, 125, 70, 70);
     [self.view addSubview:self.logoView];
     self.logoView.image = [UIImage imageNamed:@"jokericon"];
-    self.logoView.contentMode = UIViewContentModeScaleAspectFit;
+    self.logoView.contentMode = UIViewContentModeScaleAspectFill;
     self.logoView.layer.cornerRadius = 35;
     self.logoView.layer.masksToBounds = YES;
     
@@ -123,6 +127,17 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.registerPassWordText.frame = CGRectMake( 30,codeline.frame.size.height + codeline.frame.origin.y + 20 , 200 , 20);
     [self.registerbgView addSubview:self.registerPassWordText];
     self.registerPassWordText.placeholder = @"密码(8个字符以上)";
+    self.registerPassWordText.secureTextEntry = YES;
+    
+    self.changeregistPassBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.changeregistPassBtn.frame = CGRectMake(self.registerbgView.frame.size.width - 20 - 40, self.registerPassWordText.frame.origin.y, 40, 20);
+    [self.changeregistPassBtn setTitle:@"显示" forState:UIControlStateNormal];
+    [self.changeregistPassBtn setTitle:@"隐藏" forState:UIControlStateSelected];
+    [self.changeregistPassBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.changeregistPassBtn.titleLabel.font = [JKStyleConfiguration overstrikingFont];
+    [self.registerbgView addSubview:self.changeregistPassBtn];
+    [self.changeregistPassBtn addTarget:self action:@selector(clickChangeRegisterPassBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIView *passwordline = [[UIView alloc]init];
     passwordline.frame = CGRectMake(self.registerPassWordText.frame.origin.x, self.registerPassWordText.frame.size.height + self.registerPassWordText.frame.origin.y + 10, self.loginbgView.frame.size.width - 2 * self.registerPassWordText.frame.origin.x, 1);
@@ -151,6 +166,43 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     [self.haveAccountBtn addTarget:self action:@selector(clickHaveAccountBtn) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
+}
+
+- (void)clickChangePassBtn:(UIButton *)sender{
+    
+    self.changePassBtn.selected  =  !self.changePassBtn.selected;
+    
+    
+    if (self.changePassBtn.selected) {
+        
+        self.passWordText.secureTextEntry = NO;
+    }
+    else{
+        
+        self.passWordText.secureTextEntry = YES;
+        
+    }
+    
+    
+}
+
+
+- (void)clickChangeRegisterPassBtn:(UIButton *)sender{
+    
+    self.changeregistPassBtn.selected  =  !self.changeregistPassBtn.selected;
+    
+    
+    if (self.changeregistPassBtn.selected) {
+        
+        self.registerPassWordText.secureTextEntry = NO;
+    }
+    else{
+        
+        self.registerPassWordText.secureTextEntry = YES;
+        
+    }
     
     
 }
@@ -334,17 +386,22 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [self.loginbgView addSubview:photoLabel];
     photoLabel.frame = CGRectMake(30, titleLabel.frame.size.height + titleLabel.frame.origin.y + 25, 50 , 20);
     
+    photoLabel.frame = CGRectMake(30, titleLabel.frame.size.height + titleLabel.frame.origin.y + 25, 0 , 20);
+    photoLabel.hidden = YES;
     
     self.username = [[UITextField alloc]init];
     self.username.font = [JKStyleConfiguration overstrikingFont];;
     self.username.frame = CGRectMake(photoLabel.frame.origin.x + photoLabel.frame.size.width + 30, photoLabel.frame.origin.y , 200 , 20);
     [self.loginbgView addSubview:self.username];
     self.username.keyboardType = UIKeyboardTypeNumberPad;
+    self.username.placeholder  =@"手机号";
+    self.username.frame = CGRectMake(30,titleLabel.frame.size.height + titleLabel.frame.origin.y + 25 , 200 , 20);
     
     UIView *usernameline = [[UIView alloc]init];
     usernameline.frame = CGRectMake(photoLabel.frame.origin.x, photoLabel.frame.size.height + photoLabel.frame.origin.y + 10, self.loginbgView.frame.size.width - 2 * photoLabel.frame.origin.x, 1);
     [self.loginbgView addSubview:usernameline];
     usernameline.backgroundColor = [JKStyleConfiguration lineColor];
+    usernameline.frame = CGRectMake(photoLabel.frame.origin.x, photoLabel.frame.size.height + photoLabel.frame.origin.y + 10, self.loginbgView.frame.size.width - 2 * photoLabel.frame.origin.x, 1);
     
     
     UILabel *passwordLabel = [[UILabel alloc]init];
@@ -354,13 +411,25 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     passwordLabel.textAlignment = NSTextAlignmentCenter;
     [self.loginbgView addSubview:passwordLabel];
     passwordLabel.frame = CGRectMake(30, usernameline.frame.size.height + usernameline.frame.origin.y + 20, 50 , 20);
-    
+    passwordLabel.hidden= YES;
     
     self.passWordText = [[UITextField alloc]init];
     self.passWordText.font = [JKStyleConfiguration overstrikingFont];;
     self.passWordText.frame = CGRectMake(passwordLabel.frame.origin.x + passwordLabel.frame.size.width + 30, passwordLabel.frame.origin.y , 200 , 20);
     [self.loginbgView addSubview:self.passWordText];
-
+    self.passWordText.placeholder  =@"密码";
+    self.passWordText.frame = CGRectMake( 30,usernameline.frame.size.height + usernameline.frame.origin.y + 20 , 200 , 20);
+    self.passWordText.secureTextEntry = YES;
+    
+    self.changePassBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.changePassBtn.frame = CGRectMake(self.loginbgView.frame.size.width - 20 - 40, self.passWordText.frame.origin.y, 40, 20);
+    [self.changePassBtn setTitle:@"显示" forState:UIControlStateNormal];
+    [self.changePassBtn setTitle:@"隐藏" forState:UIControlStateSelected];
+    [self.changePassBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.changePassBtn.titleLabel.font = [JKStyleConfiguration overstrikingFont];
+    [self.loginbgView addSubview:self.changePassBtn];
+    [self.changePassBtn addTarget:self action:@selector(clickChangePassBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIView *passwordline = [[UIView alloc]init];
     passwordline.frame = CGRectMake(passwordLabel.frame.origin.x, passwordLabel.frame.size.height + passwordLabel.frame.origin.y + 10, self.loginbgView.frame.size.width - 2 * photoLabel.frame.origin.x, 1);

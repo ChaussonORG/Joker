@@ -138,13 +138,13 @@
             
             cellVM.jokerScore = item.jokerScore;
             
-            cellVM.score1 = item.doubanScore;
+            cellVM.score1 = [self reviseString:item.doubanScore];
             
-            cellVM.score2 = item.imdbScore;
+            cellVM.score2 = [self reviseString:item.imdbScore];
             
             cellVM.score3 = item.tomatoeScore;
             
-            cellVM.score4 = item.mcScore;
+            cellVM.score4 = [self reviseString:item.mcScore];
             
             cellVM.isfavorite = [item.favotite boolValue];
             
@@ -206,6 +206,16 @@
     }];
     
     
+}
+
+- (NSString *)reviseString:(NSString *)string{
+    
+    double conversionValue = (double)[string doubleValue];
+    NSString *doubleString = [NSString stringWithFormat:@"%lf",conversionValue];
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    
+    
+    return [decNumber stringValue];
 }
 
 - (JKTVTimelineCellVM *)assembleViewModelWithOpenDate:(NSString *)date andCellVMs:(NSMutableArray <JKTVTimeLineCollectionViewCellVM *>*)cellVMs isFirstDay:(BOOL)isfirstDay{

@@ -69,9 +69,6 @@
     self.title = @"评论";
     
     
-   
-    
-    
     self.navigationItem.rightBarButtonItem = [self customRightButton];
     
     self.restCharacter = 150;
@@ -268,7 +265,7 @@
     else{
         self.contentPlaceholder.hidden = NO;
     }
-    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0) {
+    if (self.contentView.text.length > 0 ) {
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
         self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
@@ -277,6 +274,7 @@
     else{
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+
         
         self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
         self.nextBtn.enabled = NO;
@@ -326,6 +324,20 @@
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [self.navigationController.interactivePopGestureRecognizer addTarget:self action:@selector(handleGesture:)];
+    
+    if (self.contentView.text.length > 0 ) {
+        [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+        self.nextBtn.enabled = YES;
+        
+
+    }
+    else{
+        [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+        
+        self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+        self.nextBtn.enabled = NO;
+    }
 }
 
 - (void)handleGesture:(UIGestureRecognizer *)gest{
@@ -481,7 +493,7 @@
         
     }
     
-    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0) {
+    if (self.contentView.text.length > 0 ) {
         
         [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
         self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;

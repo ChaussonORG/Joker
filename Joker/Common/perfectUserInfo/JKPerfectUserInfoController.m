@@ -12,6 +12,7 @@
 #import "HHTUserEditModel.h"
 #import "JKPerfectInfoApi.h"
 #import "JKUserManager.h"
+#import "TOYDatePickerView.h"
 
 
 
@@ -30,7 +31,7 @@
 
 @property (nonatomic , assign) BOOL isMan;
 
-@property (nonatomic , strong) UITextField *brithDay;
+@property (nonatomic , strong) UILabel *brithDay;
 
 
 @property (nonatomic , strong) UIButton *finishBtn;
@@ -66,6 +67,7 @@
     self.iconBtn.frame = CGRectMake((ScreenWidth - 74)/2, 118, 75, 75);
     self.iconBtn.layer.cornerRadius = 75/2;
     self.iconBtn.layer.masksToBounds = YES;
+    self.iconBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     
     self.iconLabel = [[UILabel alloc]init];
@@ -106,10 +108,14 @@
      [self.nvBtn addTarget:self action:@selector(clickNvBtn) forControlEvents:UIControlEventTouchUpInside];
     
     
-    self.brithDay = [[UITextField alloc]init];
+    self.brithDay = [[UILabel alloc]init];
     self.brithDay.frame = CGRectMake(50, self.nvBtn.frame.size.height + self.nvBtn.frame.origin.y + 15, ScreenWidth - 100, 20);
     [self.view addSubview:self.brithDay];
-    self.brithDay.placeholder = @"生日(2017-01-01格式)";
+    self.brithDay.text = @"请选择生日";
+    self.brithDay.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickBrithDay)];
+    
+    [self.brithDay addGestureRecognizer:tap];
     self.brithDay.font = [JKStyleConfiguration titleFont];
     
     
@@ -124,8 +130,46 @@
     [self.view addSubview:self.finishBtn];
     [self.finishBtn addTarget:self action:@selector(clickFinishBtn) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    self.stepBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.stepBtn setTitle:@"跳过此步 >" forState:UIControlStateNormal];
+    self.stepBtn.frame = CGRectMake(70, self.finishBtn.frame.origin.y + self.finishBtn.frame.size.height + 10, self.view.frame.size.width - 140, 40);
+    [self.stepBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
+    self.stepBtn.backgroundColor = [JKStyleConfiguration whiteColor];
+    self.stepBtn.titleLabel.font = [JKStyleConfiguration subcontentFont];
+    self.stepBtn.layer.cornerRadius = 20;
+    self.stepBtn.layer.masksToBounds = YES;
+    [self.view addSubview:self.stepBtn];
+    [self.stepBtn addTarget:self action:@selector(clickStepBtn) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)clickStepBtn{
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+        
+        
+    }];
+    
 }
 
+- (void)transferSelectedDate:(NSString *)date{
+    
+    //!!!date
+    self.brithDay.text = date;
+//    self.ageLabel.text = [self intervalSinceNow:date];
+    
+    
+}
+
+- (void)clickBrithDay{
+    
+    
+    TOYDatePickerView *pickView = [[TOYDatePickerView alloc]initWithDateStyle:TOYBabyAge tempDate:nil];
+    
+    pickView.delegete = self;
+    [pickView show];
+    
+}
 - (void)clickFinishBtn{
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -248,8 +292,11 @@
 }
 - (void)clickIconBtn{
     
+    
+    
     @weakify(self)
     [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
+        [CHProgressHUD show:YES];
         [HHTUserEditModel updateIcon:image success:^(SDBaseResponse *userInfo) {
             @strongify(self);
             
@@ -258,8 +305,9 @@
             NSDictionary *data = [array objectAtIndex:0];
             
             self.photo = [data objectForKey:@"url"];
-            [self.iconBtn setImage:image forState:UIControlStateNormal];
             
+            [self.iconBtn setImage:image forState:UIControlStateNormal];
+            [CHProgressHUD hide:YES];
         } failed:^{
             
         }];

@@ -102,7 +102,15 @@
                 actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
                 
                 if (cellVM.actName.length > 0) {
-                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                    
+                    if ([cellVM.actName containsString:@"监督"] ||[cellVM.actName containsString:@"声优"] ) {
+                        actLabel.text = cellVM.actName;
+                    }
+                    else{
+                        
+                        actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                    }
+                    
                 }
                 else{
                     actLabel.text = cellVM.degree;
@@ -200,7 +208,15 @@
             actLabel.font = [JKStyleConfiguration minContentFont];
             actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
             if (cellVM.actName.length > 0) {
-                actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                
+                if ([cellVM.actName containsString:@"监督"] ||[cellVM.actName containsString:@"声优"] ) {
+                    actLabel.text = cellVM.actName;
+                }
+                else{
+                    
+                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                }
+                
             }
             else{
                 actLabel.text = cellVM.degree;
@@ -244,7 +260,15 @@
             actLabel.font = [JKStyleConfiguration minContentFont];
             actLabel.textColor = [JKStyleConfiguration aaaaaaColor];
             if (cellVM.actName.length > 0) {
-                actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                
+                if ([cellVM.actName containsString:@"监督"] ||[cellVM.actName containsString:@"声优"] ) {
+                    actLabel.text = cellVM.actName;
+                }
+                else{
+                    
+                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                }
+                
             }
             else{
                 actLabel.text = cellVM.degree;

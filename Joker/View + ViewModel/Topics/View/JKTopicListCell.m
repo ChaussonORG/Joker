@@ -62,7 +62,7 @@
     self.headerView = [[UIImageView alloc]init];
     self.headerView.layer.cornerRadius = 35/2;
     self.headerView.layer.masksToBounds = YES;
-    self.headerView.contentMode = UIViewContentModeScaleAspectFit;
+    self.headerView.contentMode = UIViewContentModeScaleAspectFill;
     
     
     self.nameLabel = [[UILabel alloc]init];

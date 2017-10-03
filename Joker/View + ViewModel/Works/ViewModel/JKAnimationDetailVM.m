@@ -134,7 +134,7 @@
         
         if (!request.model.data.desc) {
             
-            self.desc = request.response.responseJSONObject[@"data"][@"desc"];
+            self.desc = [JKStyleConfiguration convertNull:request.response.responseJSONObject[@"data"][@"desc"]];
         }
         else{
             self.desc = request.model.data.desc;

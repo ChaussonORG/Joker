@@ -175,7 +175,7 @@
     lineView.frame = CGRectMake(20, self.titleTextView.frame.origin.y + self.titleTextView.frame.size.height, ScreenWidth - 40, 1);
     [self.view addSubview:lineView];
     
-    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 )];
+    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 - 50 )];
     self.contentView.userInteractionEnabled = YES;
 //    self.contentView.textVerticalAlignment = YYTextVerticalAlignmentTop;
     [self.view addSubview:self.contentView];
@@ -317,11 +317,17 @@
 
 - (void)clickNextBtn{
     
+    self.nextBtn.enabled = NO;
     self.uploadImageIndex = 0;
     [self uploadImageWithIndex: self.uploadImageIndex];
     
+    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:5.0f];
+  
+}
+- (void)delayMethod{
     
     
+    self.nextBtn.enabled = YES ;
     
 }
 

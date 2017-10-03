@@ -130,7 +130,7 @@
     
     self.score1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score1 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x-5, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10 , 50, 20);
+    self.score1.frame = CGRectMake(self.contentLabelTwo.frame.origin.x-5, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10 , 55, 20);
     [self addSubview:self.score1];
     self.score1.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score1 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -138,7 +138,7 @@
     
     self.score2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score2 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width , self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y+ 10 , 50, 20);
+    self.score2.frame = CGRectMake(self.score1.frame.origin.x + self.score1.frame.size.width , self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y+ 10 , 55, 20);
     [self addSubview:self.score2];
     self.score2.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score2 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];
@@ -154,7 +154,7 @@
     
     self.score4 = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.score4 setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 50, 20);
+    self.score4.frame = CGRectMake(self.score3.frame.origin.x + self.score3.frame.size.width, self.contentLabelTwo.frame.size.height + self.contentLabelTwo.frame.origin.y + 10, 55, 20);
     [self addSubview:self.score4];
     self.score4.titleLabel.font = [JKStyleConfiguration contentFont];
     [self.score4 setTitleColor:[JKStyleConfiguration sixsixColor] forState:UIControlStateNormal];

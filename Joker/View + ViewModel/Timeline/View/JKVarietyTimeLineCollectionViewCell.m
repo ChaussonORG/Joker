@@ -77,6 +77,8 @@
     
     self.belongTypeLabel.frame = CGRectMake(self.VarietyImage.frame.size.width - 22, 0, 22, 15);
     
+    self.belongTypeLabel.hidden = YES;
+    
     self.VarietyName.frame = CGRectMake(self.VarietyImage.frame.origin.x, self.VarietyImage.frame.origin.y + self.VarietyImage.frame.size.height + 5 , 100, 20);
     
     

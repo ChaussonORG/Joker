@@ -201,7 +201,9 @@
                     
                     remanndationView.favoriteView.image = [UIImage imageNamed:@"guanzhuan"];
                 }
+                remanndationView.laugageLabel.hidden =YES;
                 
+                remanndationView.versionLabel.hidden =YES;
                 [self.contentView addSubview:remanndationView];
                 
             }
