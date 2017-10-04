@@ -451,7 +451,10 @@
     
     
 }
-
+- (void)clear{
+    _topicId =  nil;
+    _detailHtmlStr = nil;
+}
 
 
 @end

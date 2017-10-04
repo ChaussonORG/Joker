@@ -80,6 +80,7 @@ typedef NS_ENUM(NSInteger, JKTVDataFilter){
 
 @property (nonatomic , assign) BOOL isfavorited;
 
+@property (nonatomic , readonly, getter = isClear ) BOOL clear;
 
 @property (nonatomic , assign) float directorsCellHeight;
 
@@ -105,4 +106,7 @@ typedef NS_ENUM(NSInteger, JKTVDataFilter){
 - (void)commentWork;
 
 - (void)createTopic;
+
+- (void)clear;
+
 @end

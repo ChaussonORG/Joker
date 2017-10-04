@@ -83,6 +83,7 @@
     self.navigationController.navigationBarHidden = NO;
     
     [self.viewModel requestData];
+    
 }
 - (void)setupWebView{
     

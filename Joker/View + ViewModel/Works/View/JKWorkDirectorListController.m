@@ -45,6 +45,16 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
+    });
+
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+
 }
 #pragma mark UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

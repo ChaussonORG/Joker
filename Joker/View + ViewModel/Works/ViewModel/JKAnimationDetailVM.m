@@ -686,4 +686,11 @@
     
     
 }
+- (BOOL)isClear{
+    return !_workId;
+}
+- (void)clear{
+    _workId = nil;
+}
+
 @end

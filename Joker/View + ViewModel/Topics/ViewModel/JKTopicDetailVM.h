@@ -40,4 +40,6 @@
 - (void)requestData;
 
 - (void)requestMoreData;
+
+- (void)clear;
 @end

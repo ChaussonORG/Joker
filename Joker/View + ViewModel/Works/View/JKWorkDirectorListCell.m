@@ -84,7 +84,7 @@
         if (self.viewModel.actName.length > 0) {
             
             
-            self.actLabel.text = [NSString stringWithFormat:@"饰 %@",self.viewModel.actName];
+            self.actLabel.text = [NSString stringWithFormat:@" %@",self.viewModel.actName];
         }
         else{
             
