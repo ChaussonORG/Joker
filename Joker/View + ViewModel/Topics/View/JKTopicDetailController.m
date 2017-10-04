@@ -38,7 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.title = @"话题详情";
     
     self.view.backgroundColor = [JKStyleConfiguration screenSpareColor];
@@ -56,9 +55,6 @@
     }];
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.tableView.mj_footer = footer;
-    
-    
-    
     
     self.bottomView = [[JKTopicDetailBottomView alloc]init];
     self.bottomView.frame = CGRectMake(0, self.tableView.frame.origin.y + self.tableView.frame.size.height, ScreenWidth, 45);
@@ -138,29 +134,28 @@
 }
 - (void)binding{
     
-    
     @weakify(self)
     [RACObserve(self, viewModel.cellVMs) subscribeNext:^(id x) {
         @strongify(self);
         
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
-        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:2];
+//        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
 
+        [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
         
          [self.tableView.mj_footer endRefreshing];
 
         
-        
     }];
     
     [RACObserve(self, viewModel.topCellVMs) subscribeNext:^(id x) {
         @strongify(self);
         
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
-        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-        
+//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+//        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         
         [self.tableView.mj_footer endRefreshing];
@@ -171,8 +166,10 @@
     [RACObserve(self, viewModel.bottemCellVMs) subscribeNext:^(id x) {
         @strongify(self);
         
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
-        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:1];
+//        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+        
+        [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
         

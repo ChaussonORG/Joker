@@ -155,7 +155,7 @@
 //    }
     vc.viewModel.content = self.content;
     vc.viewModel.score = self.score;
-    
+    vc.viewModel.extId = self.extId;
     
     [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     

@@ -80,6 +80,7 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 
 @property (nonatomic , assign) BOOL isfavorited;
 
+@property (nonatomic , assign) BOOL iscommented;
 
 @property (nonatomic , assign) float directorsCellHeight;
 

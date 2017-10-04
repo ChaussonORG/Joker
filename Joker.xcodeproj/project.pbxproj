@@ -52,6 +52,7 @@
 		50376CF91F629928009511FF /* JKWorkDirectorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 50376CF81F629928009511FF /* JKWorkDirectorListCell.m */; };
 		50376CFC1F629CB6009511FF /* JKWorkDirectorListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50376CFB1F629CB6009511FF /* JKWorkDirectorListVM.m */; };
 		50376CFF1F629CD6009511FF /* JKWorkDirectorListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50376CFE1F629CD6009511FF /* JKWorkDirectorListCellVM.m */; };
+		50401D0B1F85331100CA8BFE /* JKChangeWorkCommentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50401D0A1F85331100CA8BFE /* JKChangeWorkCommentApi.m */; };
 		50417CA91F43F16B00A2E12B /* JKCommetDeleteApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */; };
 		50417CAC1F43F17800A2E12B /* JKCommentTurnApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 50417CAB1F43F17800A2E12B /* JKCommentTurnApi.m */; };
 		504252611F5A5D37006DCB66 /* JKFilmStaffCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252601F5A5D37006DCB66 /* JKFilmStaffCellVM.m */; };
@@ -427,6 +428,8 @@
 		50376CFB1F629CB6009511FF /* JKWorkDirectorListVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDirectorListVM.m; sourceTree = "<group>"; };
 		50376CFD1F629CD6009511FF /* JKWorkDirectorListCellVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKWorkDirectorListCellVM.h; sourceTree = "<group>"; };
 		50376CFE1F629CD6009511FF /* JKWorkDirectorListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKWorkDirectorListCellVM.m; sourceTree = "<group>"; };
+		50401D091F85331100CA8BFE /* JKChangeWorkCommentApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKChangeWorkCommentApi.h; sourceTree = "<group>"; };
+		50401D0A1F85331100CA8BFE /* JKChangeWorkCommentApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKChangeWorkCommentApi.m; sourceTree = "<group>"; };
 		50417CA71F43F16B00A2E12B /* JKCommetDeleteApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommetDeleteApi.h; sourceTree = "<group>"; };
 		50417CA81F43F16B00A2E12B /* JKCommetDeleteApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCommetDeleteApi.m; sourceTree = "<group>"; };
 		50417CAA1F43F17800A2E12B /* JKCommentTurnApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCommentTurnApi.h; sourceTree = "<group>"; };
@@ -1469,6 +1472,8 @@
 				5042534C1F5B2019006DCB66 /* JKUnfavoriteWorkApi.m */,
 				5042534E1F5B2441006DCB66 /* JKWorkCommentCreatApi.h */,
 				5042534F1F5B2441006DCB66 /* JKWorkCommentCreatApi.m */,
+				50401D091F85331100CA8BFE /* JKChangeWorkCommentApi.h */,
+				50401D0A1F85331100CA8BFE /* JKChangeWorkCommentApi.m */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -2764,6 +2769,7 @@
 				5042533A1F5ACF23006DCB66 /* CoreSVP.m in Sources */,
 				50AC9D331F0DDBC100AA7AEC /* JKTopicCreateApi.m in Sources */,
 				50AC9D3F1F0DE45300AA7AEC /* JKTopicDetailVM.m in Sources */,
+				50401D0B1F85331100CA8BFE /* JKChangeWorkCommentApi.m in Sources */,
 				508DB6DF1F2598AA002ABF97 /* CHLoginButton.m in Sources */,
 				D3973B591EEEEC200076B246 /* ASNavigationController.m in Sources */,
 				506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */,

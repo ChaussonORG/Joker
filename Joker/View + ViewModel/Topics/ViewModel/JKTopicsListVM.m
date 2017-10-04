@@ -296,7 +296,7 @@
     
     cellVM.projectId = items.projectId;
     
-    JKTopicListModelTopicContentBeans *bean = items.topicContentBeans[0];
+//    JKTopicListModelTopicContentBeans *bean = items.topicContentBeans[0];
     
 //    cellVM.content = bean.content;
     

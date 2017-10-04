@@ -449,7 +449,6 @@
 {
     [[JKUserManager sharedData] saveUserWithInfo:info];
     
-    
 }
 
 

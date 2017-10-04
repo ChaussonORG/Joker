@@ -596,6 +596,15 @@
     
     [RACObserve(self, viewModel.myCellVMs) subscribeNext:^(id x) {
         
+        if (self.viewModel.myCellVMs.count > 0) {
+            
+            [self.commentBtn setImage:[UIImage imageNamed:@"dipinglunhong"] forState:UIControlStateNormal];
+        }
+        else{
+            
+            [self.commentBtn setImage:[UIImage imageNamed:@"dipinglun"] forState:UIControlStateNormal];
+        }
+        
         [self.mainTableView reloadData];
         
         [self.mainTableView.mj_footer endRefreshing];

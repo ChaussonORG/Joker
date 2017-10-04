@@ -26,6 +26,7 @@
 
 @property  (nonatomic , assign) NSInteger commentCount;
 
+@property  (nonatomic , strong) NSString *commentId;
 
 @end
 @implementation JKAnimationDetailVM
@@ -119,6 +120,8 @@
             self.strThree = [NSString stringWithFormat:@"%@首播",request.model.data.release_date_global];
         }
         
+        
+        self.commentId = request.model.data.id;
         
         self.score1 = [self reviseString:request.model.data.doubanScore];
         
@@ -227,7 +230,7 @@
     
     JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
     
-    api.commentType = @"Animation";
+    api.commentType = @"ANIMATION";
     
     api.requestModel.limit = RequestLimit;
     
@@ -571,8 +574,6 @@
 
 - (void)favoriteWork{
     
-    
-    
     if ([[JKUserManager sharedData] isUserEffective]) {
         
         if (self.isfavorited) {
@@ -635,7 +636,7 @@
         
         JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
         vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
-        vc.viewModel.extId = self.workId;
+        vc.viewModel.extId = self.commentId;
         
         vc.viewModel.commentType = @"ANIMATION";
         

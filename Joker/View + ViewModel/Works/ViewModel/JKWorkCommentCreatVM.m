@@ -8,6 +8,7 @@
 
 #import "JKWorkCommentCreatVM.h"
 #import "JKWorkCommentCreatApi.h"
+#import "JKChangeWorkCommentApi.h"
 @implementation JKWorkCommentCreatVM
 - (instancetype)init
 {
@@ -22,29 +23,33 @@
 - (void)creatCommentWithContent:(NSString *)str{
     
     if (self.content.length > 0) {
-//        JKCommentTurnModel *model = [[JKCommentTurnModel alloc]init];
-//        model.content = str;
-//        model.topicReplayId = self.topicId;
-//        
-//        JKCommentTurnApi *api = [[JKCommentTurnApi alloc]initWithCommentTurnModel:model];
-//        
-//        [api startWithSuccessBlock:^(__kindof JKCommentTurnApi *request) {
-//            
-//            if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
-//                
-//                [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
-//                
-//            }
-//            else{
-//                
-//                [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
-//            }
-//        } failureBlock:^(__kindof JKCommentTurnApi *request) {
-//            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
-//            
-//        }];
+        
+        JKChangeWorkCommentApi *api = [[JKChangeWorkCommentApi alloc]initWithWorkId:self.extId];
+        api.content = str;
+        api.commentType = self.commentType;
+        api.score = self.score;
+        
+        [api startWithSuccessBlock:^(__kindof JKChangeWorkCommentApi *request) {
+            
+            if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+                
+                [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+                
+            }
+            else{
+                
+                [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            }
+            
+        } failureBlock:^(__kindof JKChangeWorkCommentApi *request) {
+            
+            [CHProgressHUD showPlainText:request.response.responseJSONObject[@"message"]];
+            
+        }];
+        
         
     }
+    
     else{
         _content = str;
         
