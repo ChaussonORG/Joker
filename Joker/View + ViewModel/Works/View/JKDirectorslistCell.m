@@ -108,7 +108,7 @@
                     }
                     else{
                         
-                        actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                        actLabel.text = [NSString stringWithFormat:@" %@",cellVM.actName];
                     }
                     
                 }
@@ -214,7 +214,7 @@
                 }
                 else{
                     
-                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                    actLabel.text = [NSString stringWithFormat:@" %@",cellVM.actName];
                 }
                 
             }
@@ -266,7 +266,7 @@
                 }
                 else{
                     
-                    actLabel.text = [NSString stringWithFormat:@"饰 %@",cellVM.actName];
+                    actLabel.text = [NSString stringWithFormat:@" %@",cellVM.actName];
                 }
                 
             }

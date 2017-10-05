@@ -2530,8 +2530,8 @@
 				TargetAttributes = {
 					D343386A1EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = XZ39NEQQXX;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 4539V58G9H;
+						ProvisioningStyle = Manual;
 					};
 					D34338831EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
@@ -3088,9 +3088,9 @@
 			baseConfigurationReference = 8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				DEVELOPMENT_TEAM = 4539V58G9H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3103,10 +3103,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = daxiong.com;
+				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e5c219d5-7cef-48bc-8579-c33cfcdd67ae";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: KuaiCTO.chausson.com";
 			};
 			name = Debug;
 		};
@@ -3115,9 +3115,9 @@
 			baseConfigurationReference = E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				DEVELOPMENT_TEAM = 4539V58G9H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3130,10 +3130,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = daxiong.com;
+				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e5c219d5-7cef-48bc-8579-c33cfcdd67ae";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: KuaiCTO.chausson.com";
 			};
 			name = Release;
 		};

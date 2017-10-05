@@ -195,7 +195,7 @@
     else{
         
         self.stateBgView.hidden = YES;
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
     //告诉dragView表格滑动了
     CGFloat offset = scrollView.contentOffset.y + kHeaderHeight;

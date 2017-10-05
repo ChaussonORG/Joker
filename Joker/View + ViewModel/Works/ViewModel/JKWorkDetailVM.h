@@ -80,7 +80,12 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 
 @property (nonatomic , assign) BOOL isfavorited;
 
+
 @property (nonatomic , assign) BOOL iscommented;
+
+@property (nonatomic , readonly, getter = isClear ) BOOL clear;
+
+
 
 @property (nonatomic , assign) float directorsCellHeight;
 
@@ -106,4 +111,7 @@ typedef NS_ENUM(NSInteger, JKFilmDataFilter){
 - (void)commentWork;
 
 - (void)createTopic;
+
+- (void)clear;
+
 @end

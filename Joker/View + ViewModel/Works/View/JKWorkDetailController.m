@@ -243,6 +243,7 @@
 
 -(void)popself
 {
+    [self.viewModel clear];
     [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
     
 }
@@ -575,13 +576,15 @@
     
     
     [RACObserve(self, viewModel.topicCellVMs) subscribeNext:^(id x) {
-        
+        @strongify(self)
+
         [self.mainTableView reloadData];
         [self.mainTableView.mj_footer endRefreshing];
     }];
     
     [RACObserve(self, viewModel.commentCellVMs) subscribeNext:^(id x) {
-        
+        @strongify(self)
+
         [self.mainTableView reloadData];
         
         [self.mainTableView.mj_footer endRefreshing];
@@ -589,6 +592,7 @@
     
     
     [RACObserve(self, viewModel.myCellVMs) subscribeNext:^(id x) {
+        @strongify(self)
         
         if (self.viewModel.myCellVMs.count > 0) {
             
@@ -1076,9 +1080,11 @@
     else{
         
         
-          self.naviBgView.hidden = YES;
-        
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        self.naviBgView.hidden = YES;
+        if (!self.viewModel.isClear) {
+                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        }
+    
         
         [self.shareBtn setImage:[UIImage imageNamed:@"sharewhite"] forState:UIControlStateNormal];
         [self.backBtn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
@@ -1092,7 +1098,9 @@
   
     
 }
-
+- (void)dealloc{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

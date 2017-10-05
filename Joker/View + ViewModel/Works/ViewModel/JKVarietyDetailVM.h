@@ -79,6 +79,7 @@ typedef NS_ENUM(NSInteger, JKVarietyDataFilter){
 @property (nonatomic , strong) NSString *commentSize;
 
 @property (nonatomic , assign) BOOL isfavorited;
+@property (nonatomic , readonly, getter = isClear ) BOOL clear;
 
 
 @property (nonatomic , assign) float directorsCellHeight;
@@ -103,6 +104,8 @@ typedef NS_ENUM(NSInteger, JKVarietyDataFilter){
 - (void)favoriteWork;
 
 - (void)commentWork;
+
+- (void)clear;
 
 - (void)createTopic;
 @end

@@ -244,6 +244,8 @@
 
 -(void)popself
 {
+    [self.viewModel clear];
+
     [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
     
 }
@@ -1066,7 +1068,9 @@
         
         self.naviBgView.hidden = YES;
         
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        if (!self.viewModel.isClear) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        }
         
         [self.shareBtn setImage:[UIImage imageNamed:@"sharewhite"] forState:UIControlStateNormal];
         [self.backBtn setImage:[UIImage imageNamed:@"backbai"] forState:UIControlStateNormal];
