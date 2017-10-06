@@ -84,8 +84,12 @@
     [api startWithSuccessBlock:^(__kindof JKBannerApi *request) {
         NSArray *arr = request.response.responseJSONObject[@"data"];
         NSMutableArray *mutableArr = [NSMutableArray array];
-        [mutableArr addObject:arr[1]];
-        [mutableArr addObject:arr[3]];
+        
+        for (int i = 0 ; i <arr.count; i ++) {
+            [mutableArr addObject:arr[i]];
+        }
+        
+        
         
         self.imageArr = [mutableArr copy];
         
