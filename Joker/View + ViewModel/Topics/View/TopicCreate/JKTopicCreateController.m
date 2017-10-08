@@ -175,7 +175,8 @@
     lineView.frame = CGRectMake(20, self.titleTextView.frame.origin.y + self.titleTextView.frame.size.height, ScreenWidth - 40, 1);
     [self.view addSubview:lineView];
     
-    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 280 - 50 )];
+    self.contentView = [[UITextView alloc]initWithFrame:CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64)];
+    
     self.contentView.userInteractionEnabled = YES;
 //    self.contentView.textVerticalAlignment = YYTextVerticalAlignmentTop;
     [self.view addSubview:self.contentView];
@@ -185,6 +186,8 @@
     self.contentView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.contentView.delegate = self;
     self.contentView.font = [JKStyleConfiguration titleFont];
+//    self.contentView.backgroundColor = [UIColor redColor];
+    
     
     self.contentPlaceholder = [[UILabel alloc] init];
     self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
@@ -197,7 +200,7 @@
     
     
     self.bottomView = [[UIView alloc]init];
-    self.bottomView.frame = CGRectMake(0, ScreenHeight - 50 - 64 , ScreenWidth, 50);
+    self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
     self.bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.bottomView];
     
@@ -680,13 +683,20 @@
     }
     [UIView animateWithDuration:0.3f animations:^{
         
-        // 更改输入框的位置
-        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(50));
-            make.left.right.offset(0);
-            make.bottom.equalTo(self.view.mas_bottom).offset(-(keyboardBounds.size.height));
-        }];
+        CGRect bottomView = self.bottomView.frame;
+
+        bottomView.origin.y = ScreenHeight  - keyboardBounds.size.height;
+        self.bottomView.frame = bottomView;
+
+//        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
         
+//        // 更改输入框的位置
+//        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.height.equalTo(@(50));
+//            make.left.right.offset(0);
+//            make.bottom.equalTo(self.view.mas_bottom).offset(-());
+//        }];
+//
         
 //        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.equalTo(self.bottomView.mas_top);

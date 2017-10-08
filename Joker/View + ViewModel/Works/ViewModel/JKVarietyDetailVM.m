@@ -229,7 +229,7 @@
     
     JKWorkCommentApi *api = [[JKWorkCommentApi alloc]initWithWorkId:self.workId];
     
-    api.commentType = @"Variety";
+    api.commentType = @"VARIETY";
     
     api.requestModel.limit = RequestLimit;
     
