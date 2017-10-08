@@ -74,11 +74,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     self.automaticallyAdjustsScrollViewInsets =NO;
     
     [self setupSubviews];
-     self.tableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
+     self.tableView.backgroundColor = [JKStyleConfiguration whiteColor];
     [self binding];
     // Do any additional setup after loading the view.
 }
@@ -178,7 +178,7 @@
     userImageViewHeight = kInitUserImageViewHeight;
     
     [self.tableView addSubview:tableheadView];
-    
+    self.tableView.backgroundColor = [JKStyleConfiguration whiteColor];
 //    self.iconView = [[UIImageView alloc]init];
 //    self.iconView.frame = CGRectMake((ScreenWidth - 74)/2, 93, 74, 74);
 //    [tableheadView addSubview:self.iconView];

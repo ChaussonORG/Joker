@@ -159,9 +159,11 @@
 }
 //下一页
 - (void)nextPage {
-    NSUInteger page = self.collectionView.contentOffset.x / self.width + 1;
-    NSIndexPath *path = [NSIndexPath indexPathForItem:page inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:0 animated:YES];
+    if (self.dataSource.count > 1) {
+        NSUInteger page = self.collectionView.contentOffset.x / self.width + 1;
+        NSIndexPath *path = [NSIndexPath indexPathForItem:page inSection:0];
+        [self.collectionView scrollToItemAtIndexPath:path atScrollPosition:0 animated:YES];
+    } 
 }
 
 - (void)dealloc {

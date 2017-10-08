@@ -31,7 +31,7 @@
     self.icon = [JKUserManager sharedData].currentUser.photo;
     
     NSMutableArray <JKMEListCellVM *>*cellViewModels = [NSMutableArray array];
-    for (int i = 0 ; i < 6 ; i ++ ) {
+    for (int i = 0 ; i < 5 ; i ++ ) {
         
         JKMEListCellVM   *cellVM = [[JKMEListCellVM alloc]init];
         
