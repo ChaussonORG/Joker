@@ -92,11 +92,46 @@
     [self.view addSubview:self.stateBgView];
     self.stateBgView.hidden = YES;
     
+   
+    
     UIView *mengban = [[UIView alloc]init];
     mengban.frame = CGRectMake(0, 0, ScreenWidth, 40);
-    mengban.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//    mengban.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.view addSubview:mengban];
-
+    UIColor *color1 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)   alpha:0.4];
+//    UIColor *color2 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)  alpha:0.4];
+//    UIColor *color3 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)  alpha:0.2];
+//    NSArray *colors = [NSArray arrayWithObjects:(id)color1.CGColor, color2.CGColor,color3.CGColor,nil];
+//    NSArray *locations = [NSArray arrayWithObjects:@(0.0), @(0.7),@(1.0), nil, nil];
+//    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//    gradientLayer.colors = colors;
+//    gradientLayer.locations = locations;
+//    gradientLayer.frame = mengban.bounds;
+//    gradientLayer.startPoint = CGPointMake(0, 0);
+//    gradientLayer.endPoint   = CGPointMake(0, 1.0);
+//    mengban.layer.mask = gradientLayer;
+    
+    
+    //初始化
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = mengban.bounds;
+    
+    //边宽
+//    gradientLayer.borderWidth = 1.f;
+    [mengban.layer addSublayer: gradientLayer];
+    
+    //设置颜色
+    gradientLayer.colors = @[(__bridge id)color1.CGColor,
+                                  (__bridge id)[UIColor clearColor].CGColor];
+    
+    //设置颜色渐变方向 (0,0)->(1,1)则45度方向 (0,0)->(1,0)上->下
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(0, 1);
+    
+    //设置颜色分割点
+    gradientLayer.locations = @[@(0.25),@(1)];
+    
+    
     [self binding];
     // Do any additional setup after loading the view.
 }
@@ -195,7 +230,7 @@
     else{
         
         self.stateBgView.hidden = YES;
-//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
     //告诉dragView表格滑动了
     CGFloat offset = scrollView.contentOffset.y + kHeaderHeight;

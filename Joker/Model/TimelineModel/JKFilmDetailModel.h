@@ -148,6 +148,11 @@
 @property (nonatomic, strong)NSString <Optional>*openDate;
 
 @property (nonatomic, strong)NSArray <Optional, JKVarietyDetailModelImage>*gameImage;
+
+@property (nonatomic, strong)NSString <Optional>*ign_score;
+@property (nonatomic, strong)NSString <Optional>*gs_score;
+@property (nonatomic, strong)NSString <Optional>*fami_score;
+@property (nonatomic, strong)NSString <Optional>*mc_score;
 @end
 
 

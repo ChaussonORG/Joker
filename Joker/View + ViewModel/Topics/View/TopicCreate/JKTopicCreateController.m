@@ -200,7 +200,7 @@
     
     
     self.bottomView = [[UIView alloc]init];
-    self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
+    self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height, ScreenWidth, 50);
     self.bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.bottomView];
     
@@ -673,6 +673,8 @@
 #pragma mark 键盘显示的监听方法
 -(void)keyboardWillShow:(NSNotification *)notif
 {
+    self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
+    
     
     // 获取键盘的位置和大小
     CGRect keyboardBounds;
@@ -683,12 +685,12 @@
     }
     [UIView animateWithDuration:0.3f animations:^{
         
-        CGRect bottomView = self.bottomView.frame;
+//        CGRect bottomView = self.bottomView.frame;
+//
+//        bottomView.origin.y = ScreenHeight - 0 - keyboardBounds.size.height;
+//        self.bottomView.frame = bottomView;
 
-        bottomView.origin.y = ScreenHeight  - keyboardBounds.size.height;
-        self.bottomView.frame = bottomView;
-
-//        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
+        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
         
 //        // 更改输入框的位置
 //        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -712,16 +714,18 @@
 #pragma mark 键盘隐藏的监听方法
 -(void)keyboardWillHide:(NSNotification *) note
 {
-    
+    self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64);
     
     [UIView animateWithDuration:0.3f animations:^{
         
-        // 更改输入框的位置
-        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(50));
-            make.left.right.offset(0);
-            make.bottom.offset(0);
-        }];
+        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
+        
+//        // 更改输入框的位置
+//        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.height.equalTo(@(50));
+//            make.left.right.offset(0);
+//            make.bottom.offset(0);
+//        }];
 //        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.equalTo(self.bottomView.mas_top);
 //            make.right.equalTo(@(-20));

@@ -71,8 +71,8 @@
         self.commentSize = request.model.data.commentSize;
         
         self.isfavorited = [request.model.data.favorited boolValue];
-        
-        self.workImage = request.model.data.coverImage;
+        JKVarietyDetailModelImage *coverImage = request.model.data.gameImage[0];
+        self.workImage = coverImage.url;
         
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
@@ -117,13 +117,13 @@
         }
         
         
-        self.score1 = [self reviseString:request.model.data.doubanScore];
+        self.score1 = [self reviseString:request.model.data.ign_score];
         
-        self.score2 = [self reviseString:request.model.data.imdbScore];
+        self.score2 = [self reviseString:request.model.data.gs_score];
         
-        self.score3 = [self reviseString:request.model.data.tomatoeScore];
+        self.score3 = [self reviseString:request.model.data.fami_score];
         
-        self.score4 = [self reviseString:request.model.data.mcScore];
+        self.score4 = [self reviseString:request.model.data.mc_score];
         
         self.jokerScore = request.model.data.jokerScore;
         
@@ -132,7 +132,7 @@
             [self.imageArrs addObject:image.url];
             
         }
-        
+        [self.imageArrs removeObjectAtIndex:0];
         if (!request.model.data.desc) {
             
             self.desc = [JKStyleConfiguration convertNull:request.response.responseJSONObject[@"data"][@"desc"]];

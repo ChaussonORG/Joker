@@ -520,7 +520,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:TRUE];
-
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
  
 }
 - (void)viewWillDisappear:(BOOL)animated{

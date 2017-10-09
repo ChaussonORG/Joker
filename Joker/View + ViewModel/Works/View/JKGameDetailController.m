@@ -512,13 +512,13 @@
         if ([x integerValue] > 0) {
             
             [self.score1 setTitle:x forState:UIControlStateNormal];
-            [self.score1 setImage:[UIImage imageNamed:@"douban"] forState:UIControlStateNormal];
+            [self.score1 setImage:[UIImage imageNamed:@"Bitmap"] forState:UIControlStateNormal];
             
         }
         else{
             
             [self.score1 setTitle:@"暂无" forState:UIControlStateNormal];
-            [self.score1 setImage:[UIImage imageNamed:@"douban1"] forState:UIControlStateNormal];
+            [self.score1 setImage:[UIImage imageNamed:@"Bitmap1"] forState:UIControlStateNormal];
         }
         
         [self.score1 setTitleEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 0)];
@@ -530,11 +530,11 @@
         
         if ([x integerValue] > 0) {
             [self.score2 setTitle:x forState:UIControlStateNormal];
-            [self.score2 setImage:[UIImage imageNamed:@"imdb"] forState:UIControlStateNormal];
+            [self.score2 setImage:[UIImage imageNamed:@"g"] forState:UIControlStateNormal];
         }
         else{
             [self.score2 setTitle:@"暂无" forState:UIControlStateNormal];
-            [self.score2 setImage:[UIImage imageNamed:@"imdb1"] forState:UIControlStateNormal];
+            [self.score2 setImage:[UIImage imageNamed:@"g1"] forState:UIControlStateNormal];
             
         }
         
@@ -545,12 +545,12 @@
     [RACObserve(self, viewModel.score3) subscribeNext:^(NSString *x) {
         @strongify(self)
         if ([x integerValue] > 0) {
-            [self.score3 setTitle:[NSString stringWithFormat:@"%.f%%",[x floatValue]*10] forState:UIControlStateNormal];
-            [self.score3 setImage:[UIImage imageNamed:@"fanqie"] forState:UIControlStateNormal];
+            [self.score3 setTitle:x forState:UIControlStateNormal];
+            [self.score3 setImage:[UIImage imageNamed:@"tong"] forState:UIControlStateNormal];
         }
         else{
             [self.score3 setTitle:@"暂无" forState:UIControlStateNormal];
-            [self.score3 setImage:[UIImage imageNamed:@"fanqie1"] forState:UIControlStateNormal];
+            [self.score3 setImage:[UIImage imageNamed:@"tong1"] forState:UIControlStateNormal];
         }
         
         

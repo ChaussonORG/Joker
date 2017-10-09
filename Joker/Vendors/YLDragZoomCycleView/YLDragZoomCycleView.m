@@ -60,7 +60,16 @@
         [_collectionView registerClass:[YLZoomCycleViewCell class] forCellWithReuseIdentifier:kCellID];
         NSIndexPath *path = [NSIndexPath indexPathForItem:self.dataSource.count * 500 inSection:0];
         [_collectionView scrollToItemAtIndexPath:path atScrollPosition:0 animated:NO];
-        [self startScroll];
+        
+        if (self.dataSource.count > 1) {
+            _collectionView.scrollEnabled = YES;
+             [self startScroll];
+        }
+        else{
+            _collectionView.scrollEnabled = NO;
+        }
+        
+        
 
     }
     return _collectionView;
@@ -76,6 +85,14 @@
         _pageControl.numberOfPages = self.dataSource.count;
         [_pageControl setValue:[UIImage imageNamed:@"pageCurrent"] forKey:@"_currentPageImage"];
         [_pageControl setValue:[UIImage imageNamed:@"pageOther"] forKey:@"_pageImage"];
+        
+        if (self.dataSource.count < 2) {
+            
+            _pageControl.hidden = YES;
+        }
+        else{
+            _pageControl.hidden = NO;
+        }
     }
     return _pageControl;
 }

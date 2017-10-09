@@ -78,7 +78,7 @@
     self.automaticallyAdjustsScrollViewInsets =NO;
     
     [self setupSubviews];
-     self.tableView.backgroundColor = [JKStyleConfiguration whiteColor];
+     self.tableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     [self binding];
     // Do any additional setup after loading the view.
 }

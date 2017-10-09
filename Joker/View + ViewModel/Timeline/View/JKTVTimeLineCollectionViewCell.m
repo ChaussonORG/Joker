@@ -123,7 +123,7 @@
         @strongify(self);
         
         if ([x floatValue]> 0) {
-            self.belongTypeLabel.frame = CGRectMake(self.TVImage.frame.size.width - [x floatValue] - 1, 0, [x floatValue] +1, 15);
+            self.belongTypeLabel.frame = CGRectMake(self.TVImage.frame.size.width - [x floatValue] - 5, 0, [x floatValue] +5, 15);
         }
         
         

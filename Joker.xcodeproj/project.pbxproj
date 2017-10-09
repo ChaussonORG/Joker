@@ -2530,8 +2530,7 @@
 				TargetAttributes = {
 					D343386A1EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 4539V58G9H;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					D34338831EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
@@ -3009,6 +3008,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -3060,6 +3060,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3088,9 +3089,10 @@
 			baseConfigurationReference = 8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4539V58G9H;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3103,10 +3105,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.emec.HuiJin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5c219d5-7cef-48bc-8579-c33cfcdd67ae";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: KuaiCTO.chausson.com";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3115,9 +3117,10 @@
 			baseConfigurationReference = E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4539V58G9H;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3130,10 +3133,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KuaiCTO.chausson.com;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.emec.HuiJin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5c219d5-7cef-48bc-8579-c33cfcdd67ae";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: KuaiCTO.chausson.com";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
