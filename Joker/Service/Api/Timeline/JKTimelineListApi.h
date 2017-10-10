@@ -23,6 +23,8 @@
 
 @property (nonatomic , strong) NSString *queryType;
 
+@property (nonatomic , assign) NSInteger queryPage;
+
 
 - (instancetype)initTimelineFilm;
 

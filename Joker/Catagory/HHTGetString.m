@@ -117,7 +117,7 @@
     // 创建 格式 对象
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // 设置 日期 格式 可以根据自己的需求 随时调整， 否则计算的结果可能为 nil
-    formatter.dateFormat = @"YYYY-MM-dd";
+    formatter.dateFormat = @"yyyy-MM-dd";
     // 将字符串日期 转换为 NSDate 类型
     NSDate *endDate = [formatter dateFromString:passDate];
      NSDate *date = [NSDate date];

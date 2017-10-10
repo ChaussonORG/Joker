@@ -46,16 +46,24 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
-    
+    if (@available(iOS 11.0, *)) {
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.mainTableView.estimatedRowHeight = 0;
+        self.mainTableView.estimatedSectionFooterHeight = 0;
+        self.mainTableView.estimatedSectionHeaderHeight = 0;
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
-    //    @weakify(self)
-    //    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-    //        @strongify(self)
-    ////        [self.viewModel requestMoreData];
-    //    }];
-    //    footer.stateLabel.font = [UIFont systemFontOfSize:12];
-    //    self.mainTableView.mj_footer = footer;
-    
+    @weakify(self)
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        [self.viewModel requestMoreData];
+    }];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.mainTableView.mj_footer = footer;
+
     [self binding];
     
 }
@@ -63,12 +71,21 @@
     
     
     @weakify(self);
-    [[RACSignal combineLatest:@[RACObserve(self, viewModel.type),
-                                RACObserve(self, viewModel.cellViewModels)]] subscribeNext:^(id x) {
+    [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
+        
         @strongify(self);
         [self.mainTableView reloadData];
         
+        if (self.viewModel.queryPage == 1) {
+            [self.mainTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+        }
         [self.mainTableView.mj_header endRefreshing];
+        
+        if (self.viewModel.isFinishRequestMoreData) {
+            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [self.mainTableView.mj_footer endRefreshing];
+        }
     }];
     
     
@@ -136,12 +153,22 @@
 - (void)chooseTopicWithIndex:(NSInteger)index{
     
     if (index == 0) {
-        
-        self.viewModel.type = JKGameCurrent;
+        if (self.viewModel.type ==JKGameFuture) {
+            self.viewModel.type = JKGameCurrent;
+        }
+        else{
+            
+            return;
+        } 
     }
     else{
-        
-        self.viewModel.type = JKGameFuture;
+        if (self.viewModel.type ==JKGameCurrent) {
+            self.viewModel.type = JKGameFuture;
+        }
+        else{
+            
+            return;
+        }
     }
     
     [self.viewModel requestData];

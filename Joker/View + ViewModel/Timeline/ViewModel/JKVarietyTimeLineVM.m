@@ -29,13 +29,15 @@
         self.type = JKVarietyCurrent;
         
         self.cellViewModels = [NSMutableArray array];
+        
+        self.queryPage = 1;
     }
     return self;
 }
 
 
 - (void)requestData{
-    
+    self.isFinishRequestMoreData = NO;
     JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineVariety];
     
     if (self.type  == JKVarietyCurrent) {
@@ -76,8 +78,13 @@
     }
     api.requestModel.limit = 1000;
     
+    self.queryPage = 1;
+    
+    api.queryPage = self.queryPage;
+    
+    [CHProgressHUD show:YES];
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
-        
+        [CHProgressHUD hide:YES];
         NSMutableArray <JKVarietyTimelineCellVM *>*cellViewModels = [NSMutableArray array];
         
         NSMutableArray <JKVarietyTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
@@ -192,7 +199,7 @@
         
         self.cellViewModels = [cellViewModels copy];
     } failureBlock:^(__kindof JKTimelineListApi *request) {
-        
+        [CHProgressHUD hide:YES];
         
         
     }];
@@ -270,5 +277,173 @@
     return cellVM;
     
 }
-
+- (void)requestMoreData{
+    
+    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineVariety];
+    
+    if (self.type  == JKVarietyCurrent) {
+        
+        
+        api.queryType = @"reying";
+        
+    }
+    else{
+        
+       
+        api.queryType = @"jijiang";
+    }
+    api.requestModel.limit = 1000;
+    
+    self.queryPage += 1;
+    
+    api.queryPage = self.queryPage;
+    
+    
+    [CHProgressHUD show:YES];
+    [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
+        [CHProgressHUD hide:YES];
+        NSMutableArray <JKVarietyTimelineCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.cellViewModels];
+        
+        NSMutableArray <JKVarietyTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
+        
+        NSString *tempDate;
+        
+        for (int i = 0 ; i < request.model.data.items.count ; i++) {
+            
+            JKTimelineFilmModelItems *item = request.model.data.items[i];
+            
+            if (tempDate == nil) {
+                
+                JKTimelineFilmModelItems *item0 = request.model.data.items[0];
+                tempDate = item0.openDate;
+            }
+            else{
+                
+                if (![tempDate isEqualToString:item.openDate]) {
+                    
+                    if (cellViewModels.count == 0) {
+                        [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+                        
+                        cellVMs  = [NSMutableArray array];
+                        
+                    }
+                    else{
+                        
+                        
+                        [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:NO]];
+                        
+                        cellVMs  = [NSMutableArray array];
+                    }
+                    
+                    tempDate = item.openDate;
+                    
+                }
+                
+            }
+            
+            JKVarietyTimeLineCollectionViewCellVM *cellVM = [[JKVarietyTimeLineCollectionViewCellVM alloc]init];
+            
+            cellVM.imageUrl = item.coverImgUrl;
+            
+            cellVM.name = item.name;
+            
+            cellVM.extId = item.extId;
+            
+            cellVM.favoriteCount = item.collectQuantity;
+            
+            cellVM.belongType = item.belongType;
+            
+            cellVM.jokerScore = item.jokerScore;
+            
+            cellVM.score1 = item.doubanScore;
+            
+            cellVM.score2 = item.imdbScore;
+            
+            cellVM.score3 = item.tomatoeScore;
+            
+            cellVM.score4 = item.mcScore;
+            
+            cellVM.isfavorite = [item.favotite boolValue];
+            
+            cellVM.isRecommand = [item.recommend boolValue];
+            
+            cellVM.isON = self.type == JKVarietyCurrent? YES:NO;
+            
+            for (JKTimelineFilmModelDirector  *director in item.hostList) {
+                
+                if (cellVM.directors.length > 0) {
+                    cellVM.directors = [NSString stringWithFormat:@"%@/%@",cellVM.directors,director.name];
+                }
+                else{
+                    
+                    cellVM.directors = [NSString stringWithFormat:@"主持人：%@",director.name];
+                    
+                }
+            }
+            if (cellVM.directors.length == 0) {
+                cellVM.directors = @"主持人：";
+            }
+            for (JKTimelineFilmModelMainActor  *mainActor in item.guestList) {
+                
+                if (cellVM.mainActors.length > 0) {
+                    cellVM.mainActors = [NSString stringWithFormat:@"%@/%@",cellVM.mainActors,mainActor.name];
+                }
+                else{
+                    
+                    cellVM.mainActors = [NSString stringWithFormat:@"嘉宾：%@",mainActor.name];
+                    
+                }
+            }
+            
+            if (cellVM.mainActors.length == 0) {
+                cellVM.mainActors = @"嘉宾：";
+            }
+            [cellVMs addObject:cellVM];
+            
+        }
+        
+        if (cellViewModels.count == 0) {
+            if (cellVMs.count>0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            }
+            
+        }
+        else{
+            
+            if (tempDate.length > 0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:NO]];
+            }
+            
+            
+        }
+        if (self.type == JKVarietyCurrent) {
+            if (self.queryPage > 5) {
+                
+                self.isFinishRequestMoreData = YES;
+            }
+            else{
+                self.isFinishRequestMoreData = NO;
+                
+            }
+        }
+        else{
+            
+            if (self.queryPage > 2) {
+                
+                self.isFinishRequestMoreData = YES;
+            }
+            else{
+                self.isFinishRequestMoreData = NO;
+                
+            }
+        }
+        self.cellViewModels = [cellViewModels copy];
+    } failureBlock:^(__kindof JKTimelineListApi *request) {
+        [CHProgressHUD hide:YES];
+        
+        
+    }];
+    
+    
+}
 @end

@@ -82,10 +82,16 @@
         if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
             [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:NO];
         }
-        
+        else{
+            
+            
+            [CHProgressHUD showPlainText:@"发送失败"];
+        }
         
         
     } failureBlock:^(__kindof JKTopicCreateApi *request) {
+        
+        [CHProgressHUD showPlainText:@"发送失败"];
         
     }];
     

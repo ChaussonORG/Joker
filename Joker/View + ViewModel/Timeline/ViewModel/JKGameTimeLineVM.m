@@ -35,7 +35,7 @@
 
 
 - (void)requestData{
-    
+    self.isFinishRequestMoreData = NO;
     JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineGame];
     
     if (self.type  == JKGameCurrent) {
@@ -75,9 +75,9 @@
         api.queryType = @"jijiang";
     }
     api.requestModel.limit = 1000;
-    
+    [CHProgressHUD show:YES];
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
-        
+         [CHProgressHUD hide:YES];
         NSMutableArray <JKGameTimelineCellVM *>*cellViewModels = [NSMutableArray array];
         
         NSMutableArray <JKGameTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
@@ -174,7 +174,7 @@
         self.cellViewModels = [cellViewModels copy];
     } failureBlock:^(__kindof JKTimelineListApi *request) {
         
-        
+         [CHProgressHUD hide:YES];
         
     }];
     
@@ -254,5 +254,151 @@
     return cellVM;
     
 }
-
+- (void)requestMoreData{
+    
+    JKTimelineListApi *api = [[JKTimelineListApi alloc]initTimelineGame];
+    
+    if (self.type  == JKGameCurrent) {
+        
+        
+        api.queryType = @"reying";
+    }
+    else{
+        
+         
+        api.queryType = @"jijiang";
+    }
+    api.requestModel.limit = 1000;
+    
+    self.queryPage += 1;
+    
+    api.queryPage = self.queryPage;
+    
+    [CHProgressHUD show:YES];
+    [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
+        [CHProgressHUD hide:YES];
+        NSMutableArray <JKGameTimelineCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.cellViewModels];
+        
+        NSMutableArray <JKGameTimeLineCollectionViewCellVM *>*cellVMs = [NSMutableArray array];
+        
+        NSString *tempDate;
+        
+        for (int i = 0 ; i < request.model.data.items.count ; i++) {
+            
+            JKTimelineFilmModelItems *item = request.model.data.items[i];
+            
+            if (tempDate == nil) {
+                
+                JKTimelineFilmModelItems *item0 = request.model.data.items[0];
+                tempDate = item0.openDate;
+            }
+            else{
+                
+                if (![tempDate isEqualToString:item.openDate]) {
+                    
+                    if (cellViewModels.count == 0) {
+                        [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+                        
+                        cellVMs  = [NSMutableArray array];
+                        
+                    }
+                    else{
+                        
+                        
+                        [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:NO]];
+                        
+                        cellVMs  = [NSMutableArray array];
+                    }
+                    
+                    tempDate = item.openDate;
+                    
+                }
+                
+            }
+            
+            JKGameTimeLineCollectionViewCellVM *cellVM = [[JKGameTimeLineCollectionViewCellVM alloc]init];
+            
+            cellVM.imageUrl = item.coverImgUrl;
+            
+            cellVM.name = item.name;
+            
+            cellVM.extId = item.extId;
+            
+            cellVM.favoriteCount = item.collectQuantity;
+            
+            cellVM.belongType = item.belongType;
+            
+            cellVM.language = item.language;
+            
+            cellVM.version = item.version;
+            
+            
+            cellVM.jokerScore = item.joker_score;
+            
+            cellVM.score1 = item.ign_score;
+            
+            cellVM.score2 = item.gs_score;
+            
+            cellVM.score3 = item.fami_score;
+            
+            cellVM.score4 = item.mc_score;
+            
+            cellVM.isfavorite = [item.favotite boolValue];
+            
+            cellVM.isRecommand = [item.recommend boolValue];
+            
+            cellVM.platform = item.platform;
+            
+            cellVM.version = item.version;
+            
+            cellVM.language = item.language;
+            
+            cellVM.isON = self.type == JKGameCurrent? YES:NO;
+            
+            [cellVMs addObject:cellVM];
+            
+        }
+        
+        if (cellViewModels.count == 0) {
+            if (cellVMs.count>0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:YES]];
+            }
+        }
+        else{
+            
+            if (tempDate.length > 0) {
+                [cellViewModels addObject:[self assembleViewModelWithOpenDate:tempDate andCellVMs:cellVMs isFirstDay:NO]];
+            }
+        }
+        if (self.type == JKGameCurrent) {
+            if (self.queryPage > 5) {
+                
+                self.isFinishRequestMoreData = YES;
+            }
+            else{
+                self.isFinishRequestMoreData = NO;
+                
+            }
+        }
+        else{
+            
+            if (self.queryPage > 2) {
+                
+                self.isFinishRequestMoreData = YES;
+            }
+            else{
+                self.isFinishRequestMoreData = NO;
+                
+            }
+        }
+        
+        self.cellViewModels = [cellViewModels copy];
+    } failureBlock:^(__kindof JKTimelineListApi *request) {
+        
+        [CHProgressHUD hide:YES];
+        
+    }];
+    
+    
+}
 @end

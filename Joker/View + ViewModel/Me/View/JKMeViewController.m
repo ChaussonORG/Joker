@@ -74,6 +74,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
+    
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     self.automaticallyAdjustsScrollViewInsets =NO;
     
@@ -90,8 +92,21 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        
+        CGRect rect = self.tableView.frame;
+        
+        rect.origin.y = rect.origin.y - 20;
+        
+        self.tableView.frame = rect;
+    }
+    //
     self.navigationController.navigationBarHidden = YES;
+    
+//    self.navigationController.navigationBar.translucent = YES;
     
     [self.viewModel initData];
     
@@ -147,6 +162,11 @@
     [self.viewModel initData];
 }
 - (void)setupSubviews{
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     tableheadView = [[UIImageView alloc]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];

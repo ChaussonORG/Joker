@@ -20,7 +20,11 @@ typedef NS_ENUM(NSInteger, JKTVTimeLineFilter){
 @property (nonatomic , assign) JKTVTimeLineFilter type;
 
 @property (nonatomic , strong , readonly) NSMutableArray <JKTVTimelineCellVM *>*cellViewModels;
+@property (nonatomic , assign) BOOL isFinishRequestMoreData;
 
+@property (nonatomic , assign) NSInteger queryPage;
 
 - (void)requestData;
+
+- (void)requestMoreData;
 @end

@@ -71,9 +71,11 @@
         self.commentSize = request.model.data.commentSize;
         
         self.isfavorited = [request.model.data.favorited boolValue];
-        JKVarietyDetailModelImage *coverImage = request.model.data.gameImage[0];
-        self.workImage = coverImage.url;
         
+        if (request.model.data.gameImage.count > 0) {
+            JKVarietyDetailModelImage *coverImage = request.model.data.gameImage[0];
+            self.workImage = coverImage.url;
+        }
         self.workBgImage = self.workImage;//[NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_fixed,h_300,w_500",self.workImage];
         
         self.name = request.model.data.name;
@@ -132,7 +134,11 @@
             [self.imageArrs addObject:image.url];
             
         }
-        [self.imageArrs removeObjectAtIndex:0];
+        
+        if (self.imageArrs.count > 0) {
+            [self.imageArrs removeObjectAtIndex:0];
+        }
+        
         if (!request.model.data.desc) {
             
             self.desc = [JKStyleConfiguration convertNull:request.response.responseJSONObject[@"data"][@"desc"]];

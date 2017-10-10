@@ -21,6 +21,9 @@ typedef NS_ENUM(NSInteger, JKAnimationTimeLineFilter){
 
 @property (nonatomic , strong , readonly) NSMutableArray <JKAnimationTimelineCellVM *>*cellViewModels;
 
+@property (nonatomic , assign) BOOL isFinishRequestMoreData;
 
+@property (nonatomic , assign) NSInteger queryPage;
 - (void)requestData;
+- (void)requestMoreData;
 @end

@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+    
+ 
+    
     [self.viewModel requestData];
     
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
@@ -45,31 +49,65 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
-  
+    if (@available(iOS 11.0, *)) {
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.mainTableView.estimatedRowHeight = 0;
+        self.mainTableView.estimatedSectionFooterHeight = 0;
+        self.mainTableView.estimatedSectionHeaderHeight = 0;
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+//
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
 //    @weakify(self)
-//    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+//    MJRefreshFooter *footer = [MJRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestFooterData)];
+    
+//    [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
 //        @strongify(self)
-////        [self.viewModel requestMoreData];
+//
+//         [self.viewModel requestMoreData];
 //    }];
-//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
-//    self.mainTableView.mj_footer = footer;
+  //  footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    
+    @weakify(self)
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        [self.viewModel requestMoreData];
+    }];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.mainTableView.mj_footer = footer;
     
     [self binding];
+    
+    
+}
+- (void)requestFooterData{
+    
+    [self.viewModel requestMoreData];
+
     
 }
 - (void)binding{
     
     
     @weakify(self);
-    [[RACSignal combineLatest:@[RACObserve(self, viewModel.type),
-                                RACObserve(self, viewModel.cellViewModels)]] subscribeNext:^(id x) {
+    [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
+        
         @strongify(self);
         [self.mainTableView reloadData];
         
+        if (self.viewModel.queryPage == 1) {
+            [self.mainTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+        }
         [self.mainTableView.mj_header endRefreshing];
+  
+        if (self.viewModel.isFinishRequestMoreData) {
+            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [self.mainTableView.mj_footer endRefreshing];
+        }
     }];
-    
     
 }
 
@@ -107,10 +145,10 @@
     
     static NSString *cellId = @"cellId";
      
-    JKFilmTimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil) {
-        cell = [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    }
+    JKFilmTimelineCell *cell =  [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+//    if (cell == nil) {
+//        cell = [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+//    }
     
     
     [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
@@ -137,15 +175,29 @@
 - (void)chooseTopicWithIndex:(NSInteger)index{
     
     if (index == 0) {
+        if (self.viewModel.type ==JKFilmFuture) {
+            self.viewModel.type = JKFilmCurrent;
+        }
+        else{
+            
+            return;
+        }
         
-        self.viewModel.type = JKFilmCurrent;
     }
     else{
-        
-        self.viewModel.type = JKFilmFuture;
+        if (self.viewModel.type ==JKFilmCurrent) {
+            self.viewModel.type = JKFilmFuture;
+        }
+        else{
+            
+            return;
+        }
     }
     
     [self.viewModel requestData];
+    
+    
+//     [self.mainTableView setContentOffset:CGPointZero animated:YES];
 }
 
 

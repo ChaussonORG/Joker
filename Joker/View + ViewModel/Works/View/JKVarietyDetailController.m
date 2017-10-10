@@ -1069,7 +1069,16 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
+    if (self.mainTableView.contentOffset.y <= 0) {
+        self.mainTableView.bounces = NO;
+        
+        NSLog(@"禁止下拉");
+    }
+    else{
+        self.mainTableView.bounces = YES;
+        NSLog(@"允许上拉");
+        
+    }
     
     if (self.mainTableView.contentOffset.y > 161 ) {
         
