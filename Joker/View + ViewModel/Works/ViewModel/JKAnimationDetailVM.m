@@ -77,17 +77,25 @@
         
         self.name = request.model.data.name;
         self.strOne =@"";
-        for (NSString *str1 in request.model.data.types) {
+        for (int i = 0 ; i <request.model.data.types.count ;i ++) {
+            NSString *str1 = request.model.data.types[i];
             
-            if (self.strOne.length > 0) {
-                self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
-            }
-            else{
-                self.strOne = str1;
+            if (i < 2) {
+                if (self.strOne.length > 0) {
+                    self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
+                }
+                else{
+                    self.strOne = str1;
+                    
+                }
                 
             }
-            
+            else{
+                self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
+                
+            }
         }
+        
         
 //        for (int i = 0 ; i <request.model.data.areas.count; i ++) {
 //            

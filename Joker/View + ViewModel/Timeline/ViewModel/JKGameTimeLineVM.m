@@ -75,6 +75,12 @@
         api.queryType = @"jijiang";
     }
     api.requestModel.limit = 1000;
+    
+    self.queryPage = 1;
+    
+    api.queryPage = self.queryPage;
+    
+    
     [CHProgressHUD show:YES];
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
          [CHProgressHUD hide:YES];

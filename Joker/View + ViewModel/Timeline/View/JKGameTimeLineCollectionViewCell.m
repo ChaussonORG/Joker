@@ -135,7 +135,19 @@
     
     RAC(self,versionLabel.text) = RACObserve(self, viewModel.version);
     
-    RAC(self,laugageLabel.text) = RACObserve(self, viewModel.language);
+    [RACObserve(self, viewModel.language) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        if (![self.viewModel.language isEqualToString:@" "]) {
+            self.laugageLabel.text = self.viewModel.language;
+            self.laugageLabel.hidden = NO;
+        }
+        else{
+            
+            self.laugageLabel.hidden = YES;
+        }
+        
+    }];;
     
     
     [[RACSignal combineLatest:@[RACObserve(self, viewModel.jokerScore),

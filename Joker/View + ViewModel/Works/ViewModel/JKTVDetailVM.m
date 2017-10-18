@@ -76,21 +76,28 @@
         
         self.name = request.model.data.name;
         self.strOne = @"";
-        for (NSString *str1 in request.model.data.leixing) {
+        for (int i = 0 ; i <request.model.data.leixing.count ;i ++) {
+            NSString *str1 = request.model.data.leixing[i];
             
-            if (self.strOne.length > 0) {
-                self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
-            }
-            else{
-                self.strOne = str1;
+            if (i < 2) {
+                if (self.strOne.length > 0) {
+                    self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
+                }
+                else{
+                    self.strOne = str1;
+                    
+                }
                 
             }
-            
+            else{
+                self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
+                
+            } 
         }
         self.strTwo = @"";
         for (int i = 0 ; i <request.model.data.types.count; i ++) {
             
-            NSString *str2 = request.model.data.types[i];
+            NSString *str2 = [NSString stringWithFormat:@"%@剧", request.model.data.types[i]];
             
             if (i < 2) {
                 if (self.strTwo.length > 0) {

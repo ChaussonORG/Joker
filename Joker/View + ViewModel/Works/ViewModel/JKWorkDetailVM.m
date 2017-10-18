@@ -77,17 +77,26 @@
         
         self.name = request.model.data.name;
         self.strOne = @"";
-        for (NSString *str1 in request.model.data.types) {
+        for (int i = 0 ; i <request.model.data.types.count ;i ++) {
+            NSString *str1 = request.model.data.types[i];
             
-            if (self.strOne.length > 0) {
-                 self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
-            }
-            else{
-                self.strOne = str1;
+            if (i < 2) {
+                if (self.strOne.length > 0) {
+                    self.strOne = [NSString stringWithFormat:@"%@ %@",self.strOne,str1];
+                }
+                else{
+                    self.strOne = str1;
+                    
+                }
                 
             }
-           
+            else{
+                self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
+                
+            }
         }
+        
+        
         self.strTwo = @"";
         for (int i = 0 ; i <request.model.data.areas.count; i ++) {
             
@@ -637,13 +646,30 @@
     
     if ([[JKUserManager sharedData] isUserEffective]) {
         
-        JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
-        vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
-        vc.viewModel.extId = self.workId;
+        if (self.myCellVMs.count > 0) {
+            
+            JKWorkCommentListCellVM *cellVM = self.myCellVMs[0];
+            JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
+            
+            vc.viewModel.content = cellVM.content;
+            vc.viewModel.score = cellVM.score;
+            vc.viewModel.extId = cellVM.extId;
+            
+            [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+            
+        }
+        else{
+            
+            JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
+            vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
+            vc.viewModel.extId = self.workId;
+            
+            vc.viewModel.commentType = @"MOVIE";
+            
+            [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+            
+        }
         
-        vc.viewModel.commentType = @"MOVIE";
-        
-        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     else{
         

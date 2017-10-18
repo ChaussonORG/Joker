@@ -67,7 +67,7 @@
     [api startWithSuccessBlock:^(__kindof JKGameDetailApi *request) {
         
         self.favoritedSize = request.model.data.favotiteCount;
-        
+ 
         self.commentSize = request.model.data.commentSize;
         
         self.isfavorited = [request.model.data.favorited boolValue];
@@ -114,8 +114,8 @@
         }
         
         
-        if (request.model.data.release_date_global) {
-            self.strThree = [NSString stringWithFormat:@"%@上市", [HHTGetString timeStrwithTimestamp:request.model.data.release_date_global]];
+        if (request.model.data.saleDate) {
+            self.strThree = [NSString stringWithFormat:@"%@上市", [HHTGetString timeStrwithTimestamp:request.model.data.saleDate]];
         }
         
         
@@ -199,6 +199,7 @@
     [self requestTopicData];
     
     [self requestCommentData];
+    
 }
 
 - (void)requestTopicData{

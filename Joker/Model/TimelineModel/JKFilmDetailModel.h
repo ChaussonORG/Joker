@@ -153,6 +153,7 @@
 @property (nonatomic, strong)NSString <Optional>*gs_score;
 @property (nonatomic, strong)NSString <Optional>*fami_score;
 @property (nonatomic, strong)NSString <Optional>*mc_score;
+@property (nonatomic, strong)NSString <Optional>*saleDate;
 @end
 
 

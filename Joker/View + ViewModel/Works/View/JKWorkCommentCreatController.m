@@ -365,6 +365,8 @@
    
     self.navigationController.navigationBarHidden = NO;
     
+     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{

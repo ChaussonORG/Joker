@@ -258,6 +258,7 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.mainTableView];
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
         @strongify(self)
@@ -581,12 +582,13 @@
         
         [self.mainTableView reloadData];
         [self.mainTableView.mj_footer endRefreshing];
+        [self.mainTableView.mj_header endRefreshing];
     }];
     
     [RACObserve(self, viewModel.commentCellVMs) subscribeNext:^(id x) {
         
         [self.mainTableView reloadData];
-        
+        [self.mainTableView.mj_header endRefreshing];
         [self.mainTableView.mj_footer endRefreshing];
     }];
     
@@ -603,7 +605,7 @@
         }
         
         [self.mainTableView reloadData];
-        
+        [self.mainTableView.mj_header endRefreshing];
         [self.mainTableView.mj_footer endRefreshing];
     }];
     
@@ -613,7 +615,7 @@
                                 RACObserve(self, viewModel.directorsCellHeight)]] subscribeNext:^(id x) {
         @strongify(self);
         [self.mainTableView reloadData];
-        
+        [self.mainTableView.mj_header endRefreshing];
         [self.mainTableView.mj_footer endRefreshing];
     }];
     
@@ -1060,19 +1062,22 @@
         return modelsM;
     }];
 }
-
+- (void)requestHeaderData{
+    
+    [self.viewModel requestData];
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    if (self.mainTableView.contentOffset.y <= 0) {
-        self.mainTableView.bounces = NO;
-        
-        NSLog(@"禁止下拉");
-    }
-    else{
-        self.mainTableView.bounces = YES;
-        NSLog(@"允许上拉");
-        
-    }
+//    if (self.mainTableView.contentOffset.y <= 0) {
+//        self.mainTableView.bounces = NO;
+//
+//        NSLog(@"禁止下拉");
+//    }
+//    else{
+//        self.mainTableView.bounces = YES;
+//        NSLog(@"允许上拉");
+//
+//    }
     if (self.mainTableView.contentOffset.y > 161 ) {
         
         self.naviBgView.hidden = NO;
