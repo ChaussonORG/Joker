@@ -92,6 +92,8 @@
             else{
                 self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
                 
+                break;
+                
             } 
         }
         self.strTwo = @"";
@@ -111,7 +113,7 @@
             }
             else{
                 self.strTwo = [NSString stringWithFormat:@"%@...",self.strTwo];
-                
+                break;
             }
             
             

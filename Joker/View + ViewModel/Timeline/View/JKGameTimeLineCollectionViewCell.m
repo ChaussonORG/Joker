@@ -83,7 +83,7 @@
     self.versionLabel.textAlignment = NSTextAlignmentCenter;
 //    self.versionLabel.hidden = YES;
     [self.GameImage addSubview:self.versionLabel];
-    self.versionLabel.frame = CGRectMake(self.GameImage.frame.size.width - 22, 0, 22, 15);
+    self.versionLabel.frame = CGRectMake(self.GameImage.frame.size.width - 12, 0, 12, 15);
     
     
     self.laugageLabel = [[UILabel alloc]init];

@@ -270,6 +270,15 @@
     self.mainTableView.tableHeaderView = self.workDetailView;
     
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
+    
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, -480, ScreenWidth, 480)];
+    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth - 35)/2.0,380, 35, 35)];
+    //    iconImage.image = [UIImage imageNamed:@"touxiang"];
+    topView.backgroundColor = [JKStyleConfiguration grayTextColor];
+    iconImage.contentMode = UIViewContentModeCenter;
+    [topView addSubview:iconImage];
+    //    topView.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
+    [self.mainTableView addSubview:topView];
 }
 
 - (void)setupWorkDetailView{
@@ -407,9 +416,9 @@
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated{
     
-    [super viewWillDisappear:animated];
+    [super viewDidDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     
