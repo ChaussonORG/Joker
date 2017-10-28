@@ -9,8 +9,7 @@
 #import "CHLoginViewController.h"
 #import "CHLoginModalController.h"
 #import "SDLoginAPI.h"
-#import "CHSocialServiceCenter.h"
-#import "SDAuthorLoginAPI.h"
+//#import "SDAuthorLoginAPI.h"
 #import "JKUserManager.h"
 #import <CHProgressHUD/CHProgressHUD.h>
 #import <Masonry/Masonry.h>
@@ -626,123 +625,123 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 - (void)qqLogin:(UIButton *)button
 {
-    [[CHSocialServiceCenter shareInstance]loginInAppliactionType:CHSocialQQ controller:self completion:^(CHSocialResponseData *response) {
-        if (response.openId && response.accessToken) {
-            SDAuthorLoginAPI *api = [[SDAuthorLoginAPI alloc] initWithOpenID:response.openId accessToken:response.accessToken type:SDAuthorQQ];
-            [api startWithSuccessBlock:^(__kindof SDAuthorLoginAPI *request) {
-                if (request.baseResponse.code == 200 ) {
-                    [CHProgressHUD hide:YES];
-                    NSString *cellphone = [self convertNull: request.response.responseJSONObject[@"data"][@"profile"][@"cellphone"]];
-                    if ([cellphone isEqualToString:@" "] || [cellphone isEqualToString:@"无"]) {
-                        
-                        
-//                        TOYBindPhoneController *vc = [[TOYBindPhoneController alloc]init];
+//    [[CHSocialServiceCenter shareInstance]loginInAppliactionType:CHSocialQQ controller:self completion:^(CHSocialResponseData *response) {
+//        if (response.openId && response.accessToken) {
+//            SDAuthorLoginAPI *api = [[SDAuthorLoginAPI alloc] initWithOpenID:response.openId accessToken:response.accessToken type:SDAuthorQQ];
+//            [api startWithSuccessBlock:^(__kindof SDAuthorLoginAPI *request) {
+//                if (request.baseResponse.code == 200 ) {
+//                    [CHProgressHUD hide:YES];
+//                    NSString *cellphone = [self convertNull: request.response.responseJSONObject[@"data"][@"profile"][@"cellphone"]];
+//                    if ([cellphone isEqualToString:@" "] || [cellphone isEqualToString:@"无"]) {
 //                        
-//                        [vc.viewModel fetchToken:response.accessToken];
 //                        
-//                        [vc.viewModel fetchLoginType:TOYQQLogin];
-//                        
-//                        [vc.viewModel fetchUserId:request.response.responseJSONObject[@"data"][@"profile"][@"userId"]];
-//                        
-//                        [self.navigationController pushViewController:vc animated:YES];
-                        [CHProgressHUD showPlainText:@"暂无绑定"];
-                    }
-                    else{
-                        if (self.loginModalViewController) {
-                            if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_willCompletionWithSuccess:)]) {
-                                [self.loginModalViewController.delegate ch_willCompletionWithSuccess:request.baseResponse.data];
-                            }
-                            [self.loginModalViewController dismissViewControllerAnimated:YES completion:^{
-                                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithSuccessful:)]) {
-                                    [self.loginModalViewController.delegate ch_completionLoginWithSuccessful:request.baseResponse.data];
-                                }
-                            }];
-                        }
-                    }
-                    
-                }
-                else{
-                    NSString *message = request.baseResponse.message;
-                    
-                    [CHProgressHUD hideWithText:message animated:YES];
-                    CHLLog(@"Login Message = %@",message);
-                    NSError *failureError = [[NSError alloc]initWithDomain:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] code:request.baseResponse.code userInfo:@{@"message":message}];
-                    if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
-                        [self.loginModalViewController.delegate ch_completionLoginWithFailur:failureError];
-                    }
-                    
-                }
-                
-
-            } failureBlock:^(__kindof CHBaseRequest *request) {
-                [CHProgressHUD hideWithText:@"网络连接失败,请重新尝试" animated:YES];
-                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
-                    [self.loginModalViewController.delegate ch_completionLoginWithFailur:request.response.error];
-                }
-            }];
-        }
-        
-    }];
+////                        TOYBindPhoneController *vc = [[TOYBindPhoneController alloc]init];
+////                        
+////                        [vc.viewModel fetchToken:response.accessToken];
+////                        
+////                        [vc.viewModel fetchLoginType:TOYQQLogin];
+////                        
+////                        [vc.viewModel fetchUserId:request.response.responseJSONObject[@"data"][@"profile"][@"userId"]];
+////                        
+////                        [self.navigationController pushViewController:vc animated:YES];
+//                        [CHProgressHUD showPlainText:@"暂无绑定"];
+//                    }
+//                    else{
+//                        if (self.loginModalViewController) {
+//                            if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_willCompletionWithSuccess:)]) {
+//                                [self.loginModalViewController.delegate ch_willCompletionWithSuccess:request.baseResponse.data];
+//                            }
+//                            [self.loginModalViewController dismissViewControllerAnimated:YES completion:^{
+//                                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithSuccessful:)]) {
+//                                    [self.loginModalViewController.delegate ch_completionLoginWithSuccessful:request.baseResponse.data];
+//                                }
+//                            }];
+//                        }
+//                    }
+//                    
+//                }
+//                else{
+//                    NSString *message = request.baseResponse.message;
+//                    
+//                    [CHProgressHUD hideWithText:message animated:YES];
+//                    CHLLog(@"Login Message = %@",message);
+//                    NSError *failureError = [[NSError alloc]initWithDomain:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] code:request.baseResponse.code userInfo:@{@"message":message}];
+//                    if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
+//                        [self.loginModalViewController.delegate ch_completionLoginWithFailur:failureError];
+//                    }
+//                    
+//                }
+//                
+//
+//            } failureBlock:^(__kindof CHBaseRequest *request) {
+//                [CHProgressHUD hideWithText:@"网络连接失败,请重新尝试" animated:YES];
+//                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
+//                    [self.loginModalViewController.delegate ch_completionLoginWithFailur:request.response.error];
+//                }
+//            }];
+//        }
+//        
+//    }];
 }
 - (void)weChatLogin:(UIButton *)button
 {
-    [[CHSocialServiceCenter shareInstance]loginInAppliactionType:CHSocialWeChat controller:self completion:^(CHSocialResponseData *response) {
-        if (response.openId && response.accessToken) {
-            SDAuthorLoginAPI *api = [[SDAuthorLoginAPI alloc] initWithOpenID:response.openId accessToken:response.accessToken type:SDAuthorWeChat];
-            [api startWithSuccessBlock:^(__kindof SDAuthorLoginAPI *request) {
-                if (request.baseResponse.code == 200 ) {
-                    [CHProgressHUD hide:YES];
-                    
-                    NSString *cellphone = [self convertNull: request.response.responseJSONObject[@"data"][@"profile"][@"cellphone"]];
-                    if ([cellphone isEqualToString:@" "] || [cellphone isEqualToString:@"无"]) {
-//                    
-//                        TOYBindPhoneController *vc = [[TOYBindPhoneController alloc]init];
-//                        
-//                        [vc.viewModel fetchToken:response.accessToken];
-//                        
-//                        [vc.viewModel fetchLoginType:TOYWechatLogin];
-//                        
-//                        [vc.viewModel fetchUserId:request.response.responseJSONObject[@"data"][@"profile"][@"userId"]];
-//                        
-//                        [self.navigationController pushViewController:vc animated:YES];
-                          [CHProgressHUD showPlainText:@"暂无绑定"];
-                    }
-                    else{
-                        if (self.loginModalViewController) {
-                            if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_willCompletionWithSuccess:)]) {
-                                [self.loginModalViewController.delegate ch_willCompletionWithSuccess:request.baseResponse.data];
-                            }
-                            [self.loginModalViewController dismissViewControllerAnimated:YES completion:^{
-                                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithSuccessful:)]) {
-                                    [self.loginModalViewController.delegate ch_completionLoginWithSuccessful:request.baseResponse.data];
-                                }
-                            }];
-                        }
-                    }
-                    
-                }  
-                else{
-                    NSString *message = request.baseResponse.message;
-                    
-                    [CHProgressHUD hideWithText:message animated:YES];
-                    CHLLog(@"Login Message = %@",message);
-                    NSError *failureError = [[NSError alloc]initWithDomain:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] code:request.baseResponse.code userInfo:@{@"message":message}];
-                    if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
-                        [self.loginModalViewController.delegate ch_completionLoginWithFailur:failureError];
-                    }
-                    
-                }
-                
-                
-            } failureBlock:^(__kindof CHBaseRequest *request) {
-                [CHProgressHUD hideWithText:@"网络链接失败,请重新尝试" animated:YES];
-                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
-                    [self.loginModalViewController.delegate ch_completionLoginWithFailur:request.response.error];
-                }
-            }];
-        }
-        
-    }];
+//    [[CHSocialServiceCenter shareInstance]loginInAppliactionType:CHSocialWeChat controller:self completion:^(CHSocialResponseData *response) {
+//        if (response.openId && response.accessToken) {
+//            SDAuthorLoginAPI *api = [[SDAuthorLoginAPI alloc] initWithOpenID:response.openId accessToken:response.accessToken type:SDAuthorWeChat];
+//            [api startWithSuccessBlock:^(__kindof SDAuthorLoginAPI *request) {
+//                if (request.baseResponse.code == 200 ) {
+//                    [CHProgressHUD hide:YES];
+//
+//                    NSString *cellphone = [self convertNull: request.response.responseJSONObject[@"data"][@"profile"][@"cellphone"]];
+//                    if ([cellphone isEqualToString:@" "] || [cellphone isEqualToString:@"无"]) {
+////
+////                        TOYBindPhoneController *vc = [[TOYBindPhoneController alloc]init];
+////
+////                        [vc.viewModel fetchToken:response.accessToken];
+////
+////                        [vc.viewModel fetchLoginType:TOYWechatLogin];
+////
+////                        [vc.viewModel fetchUserId:request.response.responseJSONObject[@"data"][@"profile"][@"userId"]];
+////
+////                        [self.navigationController pushViewController:vc animated:YES];
+//                          [CHProgressHUD showPlainText:@"暂无绑定"];
+//                    }
+//                    else{
+//                        if (self.loginModalViewController) {
+//                            if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_willCompletionWithSuccess:)]) {
+//                                [self.loginModalViewController.delegate ch_willCompletionWithSuccess:request.baseResponse.data];
+//                            }
+//                            [self.loginModalViewController dismissViewControllerAnimated:YES completion:^{
+//                                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithSuccessful:)]) {
+//                                    [self.loginModalViewController.delegate ch_completionLoginWithSuccessful:request.baseResponse.data];
+//                                }
+//                            }];
+//                        }
+//                    }
+//
+//                }
+//                else{
+//                    NSString *message = request.baseResponse.message;
+//
+//                    [CHProgressHUD hideWithText:message animated:YES];
+//                    CHLLog(@"Login Message = %@",message);
+//                    NSError *failureError = [[NSError alloc]initWithDomain:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] code:request.baseResponse.code userInfo:@{@"message":message}];
+//                    if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
+//                        [self.loginModalViewController.delegate ch_completionLoginWithFailur:failureError];
+//                    }
+//
+//                }
+//
+//
+//            } failureBlock:^(__kindof CHBaseRequest *request) {
+//                [CHProgressHUD hideWithText:@"网络链接失败,请重新尝试" animated:YES];
+//                if ([self.loginModalViewController.delegate respondsToSelector:@selector(ch_completionLoginWithFailur:)]) {
+//                    [self.loginModalViewController.delegate ch_completionLoginWithFailur:request.response.error];
+//                }
+//            }];
+//        }
+//
+//    }];
 }
 
 
