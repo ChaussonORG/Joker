@@ -94,7 +94,7 @@
             }
             else{
                 self.strOne = [NSString stringWithFormat:@"%@...",self.strOne];
-                
+                break;
             }
 
         }

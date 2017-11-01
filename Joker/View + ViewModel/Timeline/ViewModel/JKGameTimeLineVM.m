@@ -156,7 +156,7 @@
             
             cellVM.platform = item.platform;
             
-            cellVM.version = item.version;
+            cellVM.version = [item.version substringToIndex:1];
             
             cellVM.language = item.language;
             
@@ -336,7 +336,7 @@
             
             cellVM.language = item.language;
             
-            cellVM.version = item.version;
+            cellVM.version = [item.version substringToIndex:1];
             
             
             cellVM.jokerScore = item.joker_score;
@@ -355,7 +355,7 @@
             
             cellVM.platform = item.platform;
             
-            cellVM.version = item.version;
+//            cellVM.version = item.version;
             
             cellVM.language = item.language;
             
