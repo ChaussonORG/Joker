@@ -74,7 +74,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
     
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     self.automaticallyAdjustsScrollViewInsets =NO;
@@ -171,7 +170,7 @@
     tableheadView = [[UIImageView alloc]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
 //    self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 260);
-    tableheadView.backgroundColor = [UIColor redColor];
+   
     
     tableheadView= [[UIImageView alloc ]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
@@ -189,7 +188,7 @@
     userImageButton.layer.borderWidth = 1;
     
     
-    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kInitHeaderViewHeight)];
+//    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kInitHeaderViewHeight)];
     
     tableviewHerderOriginY = kInitHeaderViewOriginY;
     
@@ -246,10 +245,12 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    [self.view addSubview:self.tableView];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 120 + ((80) * ScreenWidth/375.0f))];
+    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 160 + ((80) * ScreenWidth/375.0f))];
     
     
 //    self.mainTableView.tableHeaderView = self.headerView;
+    
+  
     
     [self.tableView addSubview:tableheadView];
 }

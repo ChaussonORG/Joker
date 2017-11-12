@@ -50,7 +50,7 @@
         }
         else if (i ==  3 ) {
             
-            cellVM.title = @"账号管理";
+            cellVM.title = @"修改密码";
         }
 //        else if (i ==  4 ) {
 //

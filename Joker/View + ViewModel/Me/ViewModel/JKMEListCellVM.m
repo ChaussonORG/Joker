@@ -9,6 +9,8 @@
 #import "JKMEListCellVM.h"
 #import "JKLogOutApi.h"
 #import "CHTabBarViewController.h"
+#import "JKMyLookPlayController.h"
+#import "JKMyTopicController.h"
 @implementation JKMEListCellVM
 
 - (instancetype)init
@@ -28,6 +30,17 @@
         UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"你确定要退出吗" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
         alerv.alertViewStyle=UIAlertViewStyleDefault;
         [alerv show];
+    }
+    
+    
+    if ([self.title isEqualToString:@"我的看玩"]) {
+        JKMyLookPlayController *vc = [[JKMyLookPlayController alloc]init];
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+    
+    if ([self.title isEqualToString:@"我的话题"]) {
+        JKMyTopicController *vc = [[JKMyTopicController alloc]init];
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     
     
