@@ -108,6 +108,8 @@
     
     [super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem =[self customLeftBackButton];
+    
     self.title = @"创建话题";
     
     self.dataSource = [NSMutableArray array];
@@ -317,7 +319,52 @@
     
     
 }
+-(UIBarButtonItem*)customLeftBackButton{
+    
+    ;
+    
+    UIButton *btn= [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    btn.frame=CGRectMake(0, 15, 80,50);
+    [btn setTitle:@" 返回" forState:UIControlStateNormal];
+    btn.titleLabel.font = [JKStyleConfiguration titleFont];
+    [btn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [btn setAdjustsImageWhenHighlighted:NO];
+    [btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [btn addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    return backItem;
+} // 自定义导航栏按钮
 
+-(void)popself
+{
+    
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+        alerv.alertViewStyle=UIAlertViewStyleDefault;
+        [alerv show];
+    }
+    else{
+         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+        
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 0) {
+        
+        [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+        
+    }
+    else{
+        
+    }
+        
+}
 - (void)clickNextBtn{
     
     self.nextBtn.enabled = NO;

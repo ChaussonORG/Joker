@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JKTopicListCellVM.h"
 typedef NS_ENUM(NSInteger, JKMyTopicType){
     JKMyTopicCreated,
     JKMyTopicCommented,
@@ -19,4 +20,14 @@ typedef NS_ENUM(NSInteger, JKMyTopicType){
 @property (nonatomic , assign) JKMyTopicType type;
 
 @property (nonatomic , strong) NSArray *titlesArray;
+
+@property (nonatomic , strong , readonly) NSMutableArray <JKTopicListCellVM *>*cellViewModels;
+
+@property (nonatomic , assign ,readonly) BOOL isFinishRequestMoreData;
+
+
+
+- (void)requestData;
+
+- (void)requestMoreData;
 @end

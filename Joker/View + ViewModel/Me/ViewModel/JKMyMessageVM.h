@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "JKMyMessageCellVM.h"
 @interface JKMyMessageVM : NSObject
 
+@property (nonatomic , strong) NSMutableArray <JKMyMessageCellVM *>*cellViewModels;
+
+@property (nonatomic , assign ,readonly) BOOL isFinishRequestMoreData;
+
+
+
+- (void)requestData;
 @end

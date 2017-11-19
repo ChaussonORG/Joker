@@ -11,6 +11,8 @@
 #import "CHTabBarViewController.h"
 #import "JKMyLookPlayController.h"
 #import "JKMyTopicController.h"
+#import "JKMyMessageController.h"
+#import "JKChangePasswordController.h"
 @implementation JKMEListCellVM
 
 - (instancetype)init
@@ -43,6 +45,15 @@
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     
+    if ([self.title isEqualToString:@"我的消息"]) {
+        JKMyMessageController *vc = [[JKMyMessageController alloc]init];
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+   
+    if ([self.title isEqualToString:@"修改密码"]) {
+        JKChangePasswordController *vc = [[JKChangePasswordController alloc]init];
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
     
     
 }

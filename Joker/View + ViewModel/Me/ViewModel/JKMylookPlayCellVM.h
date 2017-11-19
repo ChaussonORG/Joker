@@ -27,4 +27,6 @@
 @property (nonatomic , assign) float cellHeight;
 
 
+- (void)gotoDetail;
+
 @end

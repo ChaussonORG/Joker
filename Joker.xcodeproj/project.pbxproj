@@ -341,6 +341,16 @@
 		D3973BEC1EF28A7A0076B246 /* JKTopicsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BEB1EF28A7A0076B246 /* JKTopicsListVM.m */; };
 		D3973BEF1EF290190076B246 /* JKTopicListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BEE1EF290190076B246 /* JKTopicListCellVM.m */; };
 		D3973BF21EF290280076B246 /* JKTopicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BF11EF290280076B246 /* JKTopicListCell.m */; };
+		D3ED982C1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED982B1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m */; };
+		D3ED982F1FBCC1910034F1C9 /* JKMyTopicMineApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED982E1FBCC1910034F1C9 /* JKMyTopicMineApi.m */; };
+		D3ED98321FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98311FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m */; };
+		D3ED98351FBCC1DE0034F1C9 /* JKMyTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98341FBCC1DE0034F1C9 /* JKMyTopicModel.m */; };
+		D3ED98381FBD41DF0034F1C9 /* JKMyMessageListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98371FBD41DF0034F1C9 /* JKMyMessageListApi.m */; };
+		D3ED983B1FBD41F40034F1C9 /* JKMyMessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED983A1FBD41F40034F1C9 /* JKMyMessageListModel.m */; };
+		D3ED983E1FBD4C980034F1C9 /* JKMyMessageCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED983D1FBD4C980034F1C9 /* JKMyMessageCellVM.m */; };
+		D3ED98411FBD4DA60034F1C9 /* JKMyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98401FBD4DA60034F1C9 /* JKMyMessageCell.m */; };
+		D3ED98441FC199AB0034F1C9 /* JKMyMessageReadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */; };
+		D3ED98471FC1B8260034F1C9 /* JKMychangePasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -957,6 +967,26 @@
 		D3973BEE1EF290190076B246 /* JKTopicListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListCellVM.m; sourceTree = "<group>"; };
 		D3973BF01EF290280076B246 /* JKTopicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicListCell.h; sourceTree = "<group>"; };
 		D3973BF11EF290280076B246 /* JKTopicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListCell.m; sourceTree = "<group>"; };
+		D3ED982A1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyLookPlayCommentedApi.h; sourceTree = "<group>"; };
+		D3ED982B1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyLookPlayCommentedApi.m; sourceTree = "<group>"; };
+		D3ED982D1FBCC1910034F1C9 /* JKMyTopicMineApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyTopicMineApi.h; sourceTree = "<group>"; };
+		D3ED982E1FBCC1910034F1C9 /* JKMyTopicMineApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyTopicMineApi.m; sourceTree = "<group>"; };
+		D3ED98301FBCC1A80034F1C9 /* JKMyTopicReplyedApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyTopicReplyedApi.h; sourceTree = "<group>"; };
+		D3ED98311FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyTopicReplyedApi.m; sourceTree = "<group>"; };
+		D3ED98331FBCC1DE0034F1C9 /* JKMyTopicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyTopicModel.h; sourceTree = "<group>"; };
+		D3ED98341FBCC1DE0034F1C9 /* JKMyTopicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyTopicModel.m; sourceTree = "<group>"; };
+		D3ED98361FBD41DF0034F1C9 /* JKMyMessageListApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageListApi.h; sourceTree = "<group>"; };
+		D3ED98371FBD41DF0034F1C9 /* JKMyMessageListApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageListApi.m; sourceTree = "<group>"; };
+		D3ED98391FBD41F40034F1C9 /* JKMyMessageListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageListModel.h; sourceTree = "<group>"; };
+		D3ED983A1FBD41F40034F1C9 /* JKMyMessageListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageListModel.m; sourceTree = "<group>"; };
+		D3ED983C1FBD4C980034F1C9 /* JKMyMessageCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageCellVM.h; sourceTree = "<group>"; };
+		D3ED983D1FBD4C980034F1C9 /* JKMyMessageCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageCellVM.m; sourceTree = "<group>"; };
+		D3ED983F1FBD4DA60034F1C9 /* JKMyMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageCell.h; sourceTree = "<group>"; };
+		D3ED98401FBD4DA60034F1C9 /* JKMyMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageCell.m; sourceTree = "<group>"; };
+		D3ED98421FC199AB0034F1C9 /* JKMyMessageReadApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageReadApi.h; sourceTree = "<group>"; };
+		D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageReadApi.m; sourceTree = "<group>"; };
+		D3ED98451FC1B8260034F1C9 /* JKMychangePasswordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMychangePasswordApi.h; sourceTree = "<group>"; };
+		D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMychangePasswordApi.m; sourceTree = "<group>"; };
 		E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Joker/Pods-Joker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1530,6 +1560,10 @@
 			children = (
 				50543DEE1FB69B6100DC3347 /* JKMyLookPlayModel.h */,
 				50543DEF1FB69B6100DC3347 /* JKMyLookPlayModel.m */,
+				D3ED98331FBCC1DE0034F1C9 /* JKMyTopicModel.h */,
+				D3ED98341FBCC1DE0034F1C9 /* JKMyTopicModel.m */,
+				D3ED98391FBD41F40034F1C9 /* JKMyMessageListModel.h */,
+				D3ED983A1FBD41F40034F1C9 /* JKMyMessageListModel.m */,
 			);
 			path = MeModel;
 			sourceTree = "<group>";
@@ -1566,6 +1600,8 @@
 				5068B8C11F72B7EB00677752 /* JKMEListCellVM.m */,
 				50C403E01FA8248B007468D0 /* JKMyMessageVM.h */,
 				50C403E11FA8248B007468D0 /* JKMyMessageVM.m */,
+				D3ED983C1FBD4C980034F1C9 /* JKMyMessageCellVM.h */,
+				D3ED983D1FBD4C980034F1C9 /* JKMyMessageCellVM.m */,
 				50C403E31FA824C8007468D0 /* JKMyLookPlayVM.h */,
 				50C403E41FA824C8007468D0 /* JKMyLookPlayVM.m */,
 				50271ECE1FAAD91E004709DD /* JKMylookPlayCellVM.h */,
@@ -1804,6 +1840,18 @@
 				504CAE741F7020D600D27FFE /* JKFavoriteCountApi.m */,
 				50543DF11FB69CE100DC3347 /* JKMyLookPlayFavouriteApi.h */,
 				50543DF21FB69CE100DC3347 /* JKMyLookPlayFavouriteApi.m */,
+				D3ED982A1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.h */,
+				D3ED982B1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m */,
+				D3ED982D1FBCC1910034F1C9 /* JKMyTopicMineApi.h */,
+				D3ED982E1FBCC1910034F1C9 /* JKMyTopicMineApi.m */,
+				D3ED98301FBCC1A80034F1C9 /* JKMyTopicReplyedApi.h */,
+				D3ED98311FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m */,
+				D3ED98361FBD41DF0034F1C9 /* JKMyMessageListApi.h */,
+				D3ED98371FBD41DF0034F1C9 /* JKMyMessageListApi.m */,
+				D3ED98421FC199AB0034F1C9 /* JKMyMessageReadApi.h */,
+				D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */,
+				D3ED98451FC1B8260034F1C9 /* JKMychangePasswordApi.h */,
+				D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -2327,6 +2375,8 @@
 				50C403DE1FA81AEB007468D0 /* JKChangePasswordController.m */,
 				50A28AF41F6D2336001E881F /* JKMEListCell.h */,
 				50A28AF51F6D2336001E881F /* JKMEListCell.m */,
+				D3ED983F1FBD4DA60034F1C9 /* JKMyMessageCell.h */,
+				D3ED98401FBD4DA60034F1C9 /* JKMyMessageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2762,6 +2812,7 @@
 				508C55161F26EB09001F1A15 /* JKTimelineListVM.m in Sources */,
 				504253131F5ACF23006DCB66 /* CALayer+Anim.m in Sources */,
 				504253031F5ACF23006DCB66 /* UIView+PBExtend.m in Sources */,
+				D3ED98471FC1B8260034F1C9 /* JKMychangePasswordApi.m in Sources */,
 				D3973B551EEEEC200076B246 /* HHTGetString.m in Sources */,
 				505D869F1F3768B5005B6A6C /* CHDownSheetCell.m in Sources */,
 				501E8A851F130EF800723C29 /* JKCommentListApi.m in Sources */,
@@ -2789,6 +2840,7 @@
 				50C403E81FA824EA007468D0 /* JKMyTopicVM.m in Sources */,
 				502347551F18975500E82B8E /* GKFadeNavigationController.m in Sources */,
 				504C77191F55C1650004AE70 /* JKGameTimelineCell.m in Sources */,
+				D3ED983B1FBD41F40034F1C9 /* JKMyMessageListModel.m in Sources */,
 				501F57C61F1F5EBB001D2C8A /* JKMyfavoriteWorksModel.m in Sources */,
 				504253441F5B065D006DCB66 /* JKWorkCommentApi.m in Sources */,
 				504253501F5B2441006DCB66 /* JKWorkCommentCreatApi.m in Sources */,
@@ -2813,6 +2865,7 @@
 				508DB6DF1F2598AA002ABF97 /* CHLoginButton.m in Sources */,
 				D3973B591EEEEC200076B246 /* ASNavigationController.m in Sources */,
 				506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */,
+				D3ED98411FBD4DA60034F1C9 /* JKMyMessageCell.m in Sources */,
 				50AC9D361F0DDC4A00AA7AEC /* JKTopicDetailApi.m in Sources */,
 				507A674F1F3A0D7A00377C5E /* JKCommentCreatController.m in Sources */,
 				50521A311F67077700AE8B00 /* JKAnimationDetailApi.m in Sources */,
@@ -2830,6 +2883,7 @@
 				50DA8B651F1B73FA00530F49 /* JKTopicDetailCommentListModel.m in Sources */,
 				50AC9D391F0DDCD600AA7AEC /* JKTopicDetailModel.m in Sources */,
 				504253371F5ACF23006DCB66 /* UIButton+SD.m in Sources */,
+				D3ED98381FBD41DF0034F1C9 /* JKMyMessageListApi.m in Sources */,
 				D3973BDE1EF239B10076B246 /* JKNewsListViewController.m in Sources */,
 				501F57BA1F1F5057001D2C8A /* JKTopicRelatedWorksListVM.m in Sources */,
 				50DA8B5C1F18B78700530F49 /* UIView+Kylin.m in Sources */,
@@ -2840,6 +2894,7 @@
 				507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */,
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
+				D3ED982F1FBCC1910034F1C9 /* JKMyTopicMineApi.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
 				504253231F5ACF23006DCB66 /* UIView+Extend.m in Sources */,
 				50658B3F1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m in Sources */,
@@ -2861,6 +2916,7 @@
 				5042530A1F5ACF23006DCB66 /* PBSaveBtn.m in Sources */,
 				50AC9D961F0EA7C900AA7AEC /* JKCommentListCellVM.m in Sources */,
 				504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */,
+				D3ED98321FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m in Sources */,
 				50E0C2D21F698789004A5969 /* JKVarietyDetailVM.m in Sources */,
 				504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */,
 				504C77011F55B9A10004AE70 /* JKTimelineTVModel.m in Sources */,
@@ -2883,11 +2939,13 @@
 				50AC9D8D1F0EA7C100AA7AEC /* JKCommentOpenCell.m in Sources */,
 				504C77161F55C13D0004AE70 /* JKGameTimeLineCollectionViewCellVM.m in Sources */,
 				D3973B761EEEEC200076B246 /* DetailModel.m in Sources */,
+				D3ED98441FC199AB0034F1C9 /* JKMyMessageReadApi.m in Sources */,
 				504253121F5ACF23006DCB66 /* CoreArchive.m in Sources */,
 				D3973B681EEEEC200076B246 /* CHBarItemViewModel.m in Sources */,
 				50F520B61F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m in Sources */,
 				508DB6F81F259C85002ABF97 /* JKUser.m in Sources */,
 				504CAE861F71209800D27FFE /* JKPerfectInfoApi.m in Sources */,
+				D3ED98351FBCC1DE0034F1C9 /* JKMyTopicModel.m in Sources */,
 				501E8A881F130FD800723C29 /* JKCommentListModel.m in Sources */,
 				501F57CD1F20BFC7001D2C8A /* HHTUploadImageApi.m in Sources */,
 				D3973B791EEEEC200076B246 /* JKFilmModel.m in Sources */,
@@ -2956,6 +3014,7 @@
 				5023475B1F18975500E82B8E /* YLZoomCycleViewCell.m in Sources */,
 				504253041F5ACF23006DCB66 /* PBConst.m in Sources */,
 				508C551C1F26F193001F1A15 /* JKTVTimeLineController.m in Sources */,
+				D3ED982C1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m in Sources */,
 				50376CFF1F629CD6009511FF /* JKWorkDirectorListCellVM.m in Sources */,
 				D3973B691EEEEC200076B246 /* CHCustomTabBar.m in Sources */,
 				D3973B7F1EEEEC200076B246 /* HHTUserEditModel.m in Sources */,
@@ -2984,6 +3043,7 @@
 				504253381F5ACF23006DCB66 /* UIImageView+SD.m in Sources */,
 				50521A3A1F683F2100AE8B00 /* JKGameDetailVM.m in Sources */,
 				504253111F5ACF23006DCB66 /* NSString+File.m in Sources */,
+				D3ED983E1FBD4C980034F1C9 /* JKMyMessageCellVM.m in Sources */,
 				5042526A1F5AB4A4006DCB66 /* JKWorkImageListCell.m in Sources */,
 				504252641F5AB125006DCB66 /* JKDirectorslistCell.m in Sources */,
 				50521A1F1F65097C00AE8B00 /* JKTVDetailController.m in Sources */,

@@ -11,5 +11,6 @@
 @interface JKMyMessageController : UIViewController
 
 
+@property (nonatomic , strong) JKMyMessageVM *viewModel;
 
 @end

@@ -71,7 +71,7 @@
         btn.titleLabel.font = [JKStyleConfiguration subcontentFont];
     }
     
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.sliderView.frame.origin.y + self.sliderView.frame.size.height, ScreenWidth, ScreenHeight - (self.sliderView.frame.origin.y + self.sliderView.frame.size.height)) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.sliderView.frame.origin.y + self.sliderView.frame.size.height, ScreenWidth, ScreenHeight - (self.sliderView.frame.origin.y + self.sliderView.frame.size.height) - 64) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
@@ -191,31 +191,18 @@
 - (void)chooseTopicWithIndex:(NSInteger)index{
     
     if (index == 0) {
-//        if (self.viewModel.type ==JKFilmFuture) {
-//            self.viewModel.type = JKFilmCurrent;
-//        }
-//        else{
-//
-//            return;
-//        }
         self.viewModel.type = JKMyLookPlayFavorited;
     }
     else{
         
          self.viewModel.type = JKMyLookPlayCommented;
-//        if (self.viewModel.type ==JKFilmCurrent) {
-//            self.viewModel.type = JKFilmFuture;
-//        }
-//        else{
-//
-//            return;
-//        }
+
     }
     
-//    [self.viewModel requestData];
+    [self.viewModel requestData];
     
     
-    //     [self.mainTableView setContentOffset:CGPointZero animated:YES];
+    
 }
 
 

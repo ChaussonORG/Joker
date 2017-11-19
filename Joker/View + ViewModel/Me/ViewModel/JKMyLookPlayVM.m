@@ -9,11 +9,16 @@
 #import "JKMyLookPlayVM.h"
 #import "JKMylookPlayCellVM.h"
 #import "JKMyLookPlayFavouriteApi.h"
+#import "JKMyLookPlayCommentedApi.h"
+
 @interface JKMyLookPlayVM()
 
 @property (nonatomic , strong) NSArray *titleArrays;
 
 @property (nonatomic , strong) NSMutableArray <JKMylookPlayCellVM *>*cellViewModels;
+
+@property (nonatomic , assign) BOOL isFinishRequestMoreData;
+
 @end
 @implementation JKMyLookPlayVM
 - (instancetype)init
@@ -167,7 +172,131 @@
         
     }
     else{
-        self.type = JKMyLookPlayCommented;
+        if (self.workType == JKMyLookPlayFilm) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = 2000;
+            api.type = @"MOVIE";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                
+                self.cellViewModels = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayTV) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = 2000;
+            api.type = @"TV";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                
+                self.cellViewModels = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayAnimation) {
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = 2000;
+            api.type = @"ANIMATION";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                
+                self.cellViewModels = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+            
+        }
+        else if (self.workType == JKMyLookPlayGame) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = 2000;
+            api.type = @"GAME";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                
+                self.cellViewModels = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayVariety) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = 2000;
+            api.type = @"VARIETY";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                
+                self.cellViewModels = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
         
     }
     
@@ -184,6 +313,8 @@
     cellVM.name = items.name;
     
     cellVM.type = items.commentType;
+    
+    cellVM.projectId = items.id;
 
     cellVM.cellHeight = 130;
     

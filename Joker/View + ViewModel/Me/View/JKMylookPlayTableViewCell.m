@@ -190,7 +190,9 @@
     [RACObserve(self, viewModel.img) subscribeNext:^(NSString *x) {
         @strongify(self);
         
-        [self.iconView sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@""]];
+        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_200,w_280",x];
+        NSURL * imageURL = [NSURL URLWithString:image];
+        [self.iconView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"Launch"]];
         
     }];
 }
@@ -261,8 +263,7 @@
 
 - (void)clickCell{
     
-    
-    
+    [self.viewModel gotoDetail];
     
 }
 - (void)awakeFromNib {

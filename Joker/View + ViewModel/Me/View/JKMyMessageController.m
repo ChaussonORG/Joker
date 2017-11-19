@@ -7,16 +7,108 @@
 //
 
 #import "JKMyMessageController.h"
+#import "JKMyMessageCell.h"
+@interface JKMyMessageController ()<UITableViewDelegate,UITableViewDataSource>
 
-@interface JKMyMessageController ()
+
+@property (nonatomic , strong) UITableView *mainTableView;
+
 
 @end
 
 @implementation JKMyMessageController
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.viewModel = [[JKMyMessageVM alloc]init];
+        
+    }
+    return self;
+}
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    [self.viewModel requestData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [JKStyleConfiguration whiteColor];
+    
+    self.title = @"我的消息";
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight ) style:UITableViewStylePlain];
+    self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
+    self.mainTableView.delegate = self;
+    self.mainTableView.dataSource = self;
+    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if (@available(iOS 11.0, *)) {
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.mainTableView.estimatedRowHeight = 0;
+        self.mainTableView.estimatedSectionFooterHeight = 0;
+        self.mainTableView.estimatedSectionHeaderHeight = 0;
+        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    [self.view addSubview:self.mainTableView];
+    
+    
+    [self binding];
     // Do any additional setup after loading the view.
+}
+
+- (void)binding{
+    @weakify(self);
+    [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
+        @strongify(self);
+        
+        [self.mainTableView reloadData];
+        
+        [self.mainTableView.mj_header endRefreshing];
+        
+        //        if (self.viewModel.isFinishRequestMoreData) {
+        //            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
+        //        }else{
+        //            [self.mainTableView.mj_footer endRefreshing];
+        //        }
+        
+        
+    }];
+    
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.viewModel.cellViewModels.count;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellId = @"cellId";
+    
+    JKMyMessageCell *cell =  [[JKMyMessageCell  alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    //    if (cell == nil) {
+    //        cell = [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    //    }
+    
+    
+    [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
+    
+    return cell;
+    
+}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return self.viewModel.cellViewModels[indexPath.row].cellHeight;
+    
 }
 
 - (void)didReceiveMemoryWarning {

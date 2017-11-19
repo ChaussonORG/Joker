@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, JKMyLookPlayWorkType){
 
 @property (nonatomic , strong ,readonly) NSMutableArray <JKMylookPlayCellVM *>*cellViewModels;
 
+@property (nonatomic , assign ,readonly) BOOL isFinishRequestMoreData;
+
 
 @property (nonatomic , assign) JKMyLookPlayType type;
 

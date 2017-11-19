@@ -174,7 +174,7 @@
     [RACObserve(self, viewModel.headerUrl) subscribeNext:^(NSString *x) {
         @strongify(self);
         
-        [self.headerView sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@""]];
+        [self.headerView sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@"touxiang"]];
         
     }];
 }
