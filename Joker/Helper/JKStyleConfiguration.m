@@ -408,6 +408,11 @@
     
 }
 
++ (UIColor *)ninenineColor{
+    
+     return [UIColor colorWithHexString:[JKStyleConfiguration ninenineColorHex]];
+}
+
 + (NSString *)sixsixColorHex{
     return @"#666666";
 }
@@ -509,6 +514,12 @@
     
     return @"#222222";
     
+}
+
+
++ (NSString *)ninenineColorHex{
+    
+    return @"#999999";
 }
 
 +(NSString*)convertNull:(id)object{

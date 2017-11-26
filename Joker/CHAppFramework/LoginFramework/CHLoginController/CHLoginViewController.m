@@ -9,6 +9,7 @@
 #import "CHLoginViewController.h"
 #import "CHLoginModalController.h"
 #import "SDLoginAPI.h"
+#import "JKFogetPasswordController.h"
 //#import "SDAuthorLoginAPI.h"
 #import "JKUserManager.h"
 #import <CHProgressHUD/CHProgressHUD.h>
@@ -60,6 +61,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.logoView.contentMode = UIViewContentModeScaleAspectFill;
     self.logoView.layer.cornerRadius = 35;
     self.logoView.layer.masksToBounds = YES;
+    
+    
+    self.weiboLoginBtn.hidden = YES;
+    
+    self.wechatLoginBtn.hidden = YES;
+    
+    self.disanfangline.hidden = YES;
     
     
     [CHProgressHUD setTextDuration:0.8];
@@ -342,11 +350,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     self.loginbgView.hidden = NO;
     
-    self.weiboLoginBtn.hidden = NO;
-    
-    self.wechatLoginBtn.hidden = NO;
-    
-    self.disanfangline.hidden = NO;
+//    self.weiboLoginBtn.hidden = NO;
+//    
+//    self.wechatLoginBtn.hidden = NO;
+//    
+//    self.disanfangline.hidden = NO;
 }
 
 - (void)clickRegisterBtn{
@@ -778,7 +786,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [self performSegueWithIdentifier:@"register" sender:self];
 }
 - (void)resetPassword:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"reset" sender:self];
+
+    JKFogetPasswordController *vc = [[JKFogetPasswordController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   

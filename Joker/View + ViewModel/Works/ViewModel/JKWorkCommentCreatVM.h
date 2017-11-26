@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol WorkCommentedDelegate <NSObject>
+
+- (void)refreshCommentCount;
+
+@end
+
+
 @interface JKWorkCommentCreatVM : NSObject
+
+@property (nonatomic , weak) id<WorkCommentedDelegate>delegate;
 
 @property (nonatomic , strong) NSString *commentType;
 

@@ -117,5 +117,104 @@
     
     [self.delegate refreshSendBtn];
 }
+- (void)draftTopicWithTitle:(NSString *)title
+                       data:(NSArray <JKTopicCreateModel *>*)data content:(NSAttributedString *)content{
+    
+    if (self.projectId.length == 0) {
+        
+        [CHProgressHUD showPlainText:@"请选择关联作品"];
+        return;
+    }
+    
+    JKTopicCreateApi *api = [[JKTopicCreateApi alloc]init];
+    api.projectId = self.projectId;
+    api.projectType = self.type;
+    api.title = title;
+    api.topicContent = [NSMutableArray array];
+    for (int i = 0; i < data.count; i++) {
+        JKTopicCreateModel *model = data[i];
+        if (model.dataType == JKTopicDataCharacter) {
+            
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            
+            [dic setObject:model.content forKey:@"content"];
+            
+            [dic setObject:@"TEXT" forKey:@"contentType"];
+            
+            [dic setObject:@(i + 1) forKey:@"displayOrder"];
+            
+            [api.topicContent addObject:dic];
+        }
+        else if (model.dataType == JKTopicDataImage) {
+            
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            
+            [dic setObject:model.image forKey:@"content"];
+            
+            [dic setObject:@"IMAGE" forKey:@"contentType"];
+            
+            [dic setObject:@(i + 1) forKey:@"displayOrder"];
+            
+            [api.topicContent addObject:dic];
+            
+        }
+        
+    }
+    
+    
+    //寻找TopicDraft.plist
+    
+    if ([self isFileExist:@"topicDraft.plist"]) {
+        
+        NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *path1 = [pathArray objectAtIndex:0];
+        NSString *myPath = [path1 stringByAppendingPathComponent:@"topicDraft.plist"];
+ 
+        NSMutableDictionary *data2 = [[NSMutableDictionary alloc] initWithContentsOfFile:myPath];
+       
+        NSMutableDictionary *data = [NSMutableDictionary dictionary];
+        [data setObject:content forKey:@"content"];
+        [data setObject:api.projectId forKey:@"projectId"];
+        [data setObject:api.projectType forKey:@"projectType"];
+        [data setObject:api.title forKey:@"title"];
+        [data setObject:self.relateWorkName forKey:@"relateWorkName"];
+        
+        NSString *key = [NSString stringWithFormat:@"%ld",data2.count + 1];
+        [data2 setObject:data forKey:key];
+        [data2 writeToFile:myPath atomically:YES];
+    }
+    else{
+        
+        NSArray *paths=NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *path=[paths objectAtIndex:0];
+        NSLog(@"path = %@",path);
+        NSString *filename=[path stringByAppendingPathComponent:@"topicDraft.plist"];
+        NSFileManager* fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filename contents:nil attributes:nil];
+        
+        NSMutableDictionary *data = [NSMutableDictionary dictionary];
+        [data setObject:[content string] forKey:@"content"];
+        [data setObject:api.projectId forKey:@"projectId"];
+        [data setObject:api.projectType forKey:@"projectType"];
+        [data setObject:api.title forKey:@"title"];
+        [data setObject:self.relateWorkName forKey:@"relateWorkName"];
+        
+        NSMutableDictionary *data2 = [NSMutableDictionary dictionary];
+        [data2 setObject:data forKey:@"1"];
+        [data2 writeToFile:filename atomically:YES];
+        
+    }
+}
 
+
+-(BOOL)isFileExist:(NSString *)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *filePath = [path stringByAppendingPathComponent:fileName];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL result = [fileManager fileExistsAtPath:filePath];
+    NSLog(@"这个文件已经存在：%@",result?@"是的":@"不存在");
+    return result;
+}
 @end

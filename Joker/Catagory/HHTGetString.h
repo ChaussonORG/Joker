@@ -16,6 +16,8 @@
 
 + (NSString *)timeStrwithTimestamp:(NSString *)timestamp;
 
++ (NSString *)timelineStrwithTimestamp:(NSString *)timestamp;//yyyy-MM-dd
+
 + (NSString *)passWeekdayWithDate:(NSString *)passDate;
 
 + (NSString *)featureWeekdayWithDate:(NSString *)featureDate;

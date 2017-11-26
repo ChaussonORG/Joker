@@ -10,6 +10,8 @@
 #import "JKMEVM.h"
 #import "JKFavoriteCountApi.h"
 #import "JKCommentCountApi.h"
+#import "JKMyMessageCountApi.h"
+#import "JKMySettingController.h"
 @implementation JKMEVM
 - (instancetype)init
 {
@@ -90,6 +92,36 @@
         
         
     }];
+    JKMyMessageCountApi *myMessageApi = [[JKMyMessageCountApi alloc]init];
+    [myMessageApi startWithSuccessBlock:^(__kindof JKMyMessageCountApi *request) {
+        
+        self.myMessageCount = (NSString *)request.response.responseJSONObject[@"data"];
+        
+        
+        
+        
+    } failureBlock:^(__kindof JKMyMessageCountApi *request) {
+        
+        
+    }];
+    
+}
+
+- (void)gotoSetting{
+    
+    
+    JKMySettingController *vc = [[JKMySettingController alloc]init];
+    
+    [[ASNavigator  shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+}
+
+- (void)requestMyMessage{
+    
+    
+    
+    
+    
     
 }
 

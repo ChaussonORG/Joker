@@ -29,7 +29,7 @@
     
     self.iconView = [[UIImageView alloc]init];
     self.iconView.frame = CGRectMake(15, 15, 100, 140);
-//    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:self.iconView];
     
     

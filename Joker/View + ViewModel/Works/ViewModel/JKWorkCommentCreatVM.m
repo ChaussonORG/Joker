@@ -33,6 +33,7 @@
             
             if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
                 
+//                [self.delegate refreshCommentCount];
                 [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
                 
             }
@@ -61,6 +62,10 @@
         [api startWithSuccessBlock:^(__kindof JKWorkCommentCreatApi *request) {
             
             if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+                
+                if (self.delegate) {
+                    [self.delegate refreshCommentCount];
+                }
                 
                 [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
                 

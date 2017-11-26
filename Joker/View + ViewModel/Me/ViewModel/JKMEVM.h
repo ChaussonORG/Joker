@@ -20,7 +20,13 @@
 
 @property (nonatomic ,strong) NSString *lookCount;
 
+@property (nonatomic ,strong) NSString *myMessageCount;
+
 
 
 - (void)initData;
+
+- (void)gotoSetting;
+
+- (void)requestMyMessage;
 @end

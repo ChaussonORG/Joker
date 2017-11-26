@@ -33,6 +33,7 @@
 - (void)prepareForLayout{
     
     self.GameImage = [[UIImageView alloc]init];
+    self.GameImage.contentMode = UIViewContentModeScaleAspectFit;
     //    self.GameImage.layer.cornerRadius = 12;
     //    self.GameImage.layer.masksToBounds = YES;
     

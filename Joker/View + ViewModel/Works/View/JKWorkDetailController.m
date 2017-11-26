@@ -147,6 +147,7 @@
     [self.shareBtn addTarget:self action:@selector(clickShareBtn) forControlEvents:UIControlEventTouchUpInside];
     self.shareBtn.frame = CGRectMake(ScreenWidth - 15 - 25, 28, 25, 25);
     [self.view addSubview:self.shareBtn];
+    self.shareBtn.hidden = YES;
     
     
     self.createTopicBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -159,7 +160,7 @@
     self.createTopicBtn.layer.cornerRadius = 20;
     [self.view addSubview:self.createTopicBtn];
     self.createTopicBtn.hidden = YES;
-    
+    [self.viewModel requestData];
     [self binding];
     // Do any additional setup after loading the view.
 }
@@ -417,7 +418,7 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    [self.viewModel requestData];
+   
     
 }
 
@@ -467,7 +468,7 @@
     [RACObserve(self, viewModel.workImage) subscribeNext:^(NSString *x) {
         @strongify(self)
         
-        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_100,w_140",x];
+        NSString *image = [NSString stringWithFormat:@"%@?x-oss-process=image/resize,m_mfit,h_200,w_280",x];
         
         [self.workImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:[UIImage imageNamed:@"Launch"]];
         

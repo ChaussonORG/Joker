@@ -18,7 +18,7 @@
 #import "JKWorkCommentCreatController.h"
 #import "CHLoginModalController.h"
 #import "JKTopicCreateController.h"
-@interface JKGameDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKGameDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate,WorkCommentedDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
@@ -115,7 +115,7 @@
         
         
         if (request.model.data.saleDate) {
-            self.strThree = [NSString stringWithFormat:@"%@上市", [HHTGetString timeStrwithTimestamp:request.model.data.saleDate]];
+            self.strThree = [NSString stringWithFormat:@"%@上市", [HHTGetString timelineStrwithTimestamp:request.model.data.saleDate]];
         }
         
         
@@ -593,8 +593,9 @@
             [api startWithSuccessBlock:^(__kindof JKUnfavoriteWorkApi *request) {
                 
                 if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
-                    
-                    [self requestData];
+                    self.favoritedSize = [NSString stringWithFormat:@"%ld",[self.favoritedSize integerValue] - 1];
+                    self.isfavorited = NO;
+//                    [self requestData];
                 }
                 else{
                     
@@ -617,8 +618,9 @@
             [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
                 
                 if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
-                    
-                    [self requestData];
+                    self.favoritedSize = [NSString stringWithFormat:@"%ld",[self.favoritedSize integerValue] + 1];
+                    self.isfavorited = YES;
+//                    [self requestData];
                 }
                 else{
                     
@@ -643,13 +645,32 @@
     
     if ([[JKUserManager sharedData] isUserEffective]) {
         
-        JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
-        vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
-        vc.viewModel.extId = self.workId;
+        if (self.myCellVMs.count > 0) {
+            
+            JKWorkCommentListCellVM *cellVM = self.myCellVMs[0];
+            JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
+            
+            vc.viewModel.content = cellVM.content;
+            vc.viewModel.score = cellVM.score;
+            vc.viewModel.extId = cellVM.extId;
+            
+            [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+            
+        }
+        else{
+            
+            JKWorkCommentCreatController *vc = [[JKWorkCommentCreatController alloc]init];
+            vc.viewModel.titleStr = [NSString stringWithFormat:@"评论：%@",self.name];
+            vc.viewModel.extId = self.workId;
+            
+            vc.viewModel.commentType = @"GAME";
+            vc.viewModel.delegate =self;
+            [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+            
+        }
         
-        vc.viewModel.commentType = @"GAME";
         
-        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+        
     }
     else{
         
@@ -657,7 +678,10 @@
     }
     
 }
-
+- (void)refreshCommentCount{
+    
+    [self requestData];
+}
 - (void)login
 {
     CHLoginModalController *vc = [[CHLoginModalController alloc] init];

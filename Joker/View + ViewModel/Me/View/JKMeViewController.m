@@ -56,6 +56,7 @@
 
 @property (nonatomic , strong) UIButton *setBtn;
 
+
 //@property (nonatomic , strong) UITableView *mainTableView;
 
 @end
@@ -109,6 +110,10 @@
     
     [self.viewModel initData];
     
+    [self.viewModel requestMyMessage];
+    
+    self.setBtn.hidden = YES;
+    
 }
 
 
@@ -155,6 +160,17 @@
         
         
     }];
+    
+    [RACObserve(self, viewModel.myMessageCount) subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        
+        if ([x integerValue] > 0) {
+            self.viewModel.cellViewModels[0].isRed = YES;
+            [self.tableView reloadData];
+        }
+     
+        
+    }];
 }
 - (void)refreshUI{
     
@@ -174,6 +190,7 @@
     
     tableheadView= [[UIImageView alloc ]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
+    tableheadView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.blackView = [[UIView alloc]init];
     self.blackView.backgroundColor = [JKStyleConfiguration twotwoColor];
@@ -234,7 +251,7 @@
     [self.setBtn setImage:[UIImage imageNamed:@"baishezhi"] forState:UIControlStateNormal];
     [tableheadView addSubview:self.setBtn];
     self.setBtn.frame = CGRectMake(ScreenWidth - 25 - 15, 30, 25, 25);
-
+    [self.setBtn addTarget:self action:@selector(clickSetBtn) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, - 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height + 20 ) style:UITableViewStylePlain];
@@ -248,11 +265,17 @@
     self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 160 + ((80) * ScreenWidth/375.0f))];
     
     
+    
 //    self.mainTableView.tableHeaderView = self.headerView;
     
   
     
     [self.tableView addSubview:tableheadView];
+}
+
+- (void)clickSetBtn{
+    
+    [self.viewModel gotoSetting];
 }
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];

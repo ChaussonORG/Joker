@@ -112,6 +112,7 @@
 + (UIColor *)sixsixColor;
 
 + (UIColor *)twotwoColor;
++ (UIColor *)ninenineColor;
 /*
  *转换空字符串
  */

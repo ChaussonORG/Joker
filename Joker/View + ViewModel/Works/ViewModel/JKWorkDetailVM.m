@@ -19,7 +19,7 @@
 #import "CHLoginModalController.h"
 #import "JKTopicCreateController.h"
 
-@interface JKWorkDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate>
+@interface JKWorkDetailVM()<WorkrefreshSuperTableViewDelegate,CHLoginModalControllerDelegate,WorkCommentedDelegate>
 
 @property (nonatomic , strong) NSArray *titlesArray;
 
@@ -597,7 +597,10 @@
                 
                 if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
                     
-                    [self requestData];
+                    
+                    self.favoritedSize = [NSString stringWithFormat:@"%ld",[self.favoritedSize integerValue] - 1];
+                    self.isfavorited = NO;
+//                    [self requestData];
                 }
                 else{
                     
@@ -620,8 +623,9 @@
             [api startWithSuccessBlock:^(__kindof JKFavoriteWorkApi *request) {
                 
                 if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
-                    
-                    [self requestData];
+                    self.favoritedSize = [NSString stringWithFormat:@"%ld",[self.favoritedSize integerValue] + 1];
+                    self.isfavorited = YES;
+//                    [self requestData];
                 }
                 else{
                     
@@ -665,7 +669,7 @@
             vc.viewModel.extId = self.workId;
             
             vc.viewModel.commentType = @"MOVIE";
-            
+            vc.viewModel.delegate =self;
             [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
             
         }
@@ -676,6 +680,10 @@
         [self login];
     }
  
+}
+- (void)refreshCommentCount{
+    
+    [self requestData];
 }
 
 - (void)login

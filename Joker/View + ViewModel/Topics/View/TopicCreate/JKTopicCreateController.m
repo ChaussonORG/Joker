@@ -136,7 +136,7 @@
     self.titlePlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.titlePlaceholder.text = @"请输入话题标题";
     self.titlePlaceholder.font = [JKStyleConfiguration hugeFont];
-    self.titlePlaceholder.frame = CGRectMake(10, 30, 150, 20);
+    self.titlePlaceholder.frame = CGRectMake(10, 10, 150, 20);
     [self.titleTextView addSubview:self.titlePlaceholder];
     
     
@@ -195,7 +195,7 @@
     self.contentPlaceholder.textColor = [JKStyleConfiguration ccccccColor];
     self.contentPlaceholder.text = @"请输入内容...";
     self.contentPlaceholder.font = [JKStyleConfiguration titleFont];
-    self.contentPlaceholder.frame = CGRectMake(10, 30, 100, 20);
+    self.contentPlaceholder.frame = CGRectMake(10, 10, 100, 20);
     [self.contentView addSubview:self.contentPlaceholder];
     
     
@@ -258,6 +258,25 @@
     
     [self binding];
 }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    if (textView == self.contentView) {
+    
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
+        
+        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
+//
+    }
+    else{
+        
+        
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64);
+        
+        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
+    }
+    
+}
 - (void)binding{
     @weakify(self);
     [RACObserve(self, viewModel.relateWorkName) subscribeNext:^(NSString *x) {
@@ -279,6 +298,7 @@
             self.aboutBtn.enabled = YES ;
         }
     }];
+    
     
     
 }
@@ -340,16 +360,17 @@
 
 -(void)popself
 {
-    
-    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
-        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
-        alerv.alertViewStyle=UIAlertViewStyleDefault;
-        [alerv show];
-    }
-    else{
-         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
-        
-    }
+    [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+
+//    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+//        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+//        alerv.alertViewStyle=UIAlertViewStyleDefault;
+//        [alerv show];
+//    }
+//    else{
+//         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+//
+//    }
     
 }
 
@@ -361,7 +382,11 @@
         
     }
     else{
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+        self.uploadImageIndex = 0;
+        [self draftImageWithIndex: self.uploadImageIndex];
         
+        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:5.0f];
     }
         
 }
@@ -376,11 +401,42 @@
 }
 - (void)delayMethod{
     
-    
+    self.navigationItem.leftBarButtonItem.enabled = YES;
     self.nextBtn.enabled = YES ;
     
 }
-
+- (void)draftImageWithIndex:(NSInteger)index{
+    
+    if (index == self.photos.count) {
+        [self postTodraft];
+    }
+    else{
+        
+        UIImage *image = self.photos[index];
+        
+        @weakify(self)
+        [HHTUserEditModel updateAvatarBuy:image success:^(SDBaseResponse *userInfo) {
+            @strongify(self);
+            
+            NSArray *array = (NSArray *)userInfo.data;
+            
+            NSDictionary *data = [array objectAtIndex:0];
+            
+            NSString *imageUrl = [data objectForKey:@"url"];
+            
+            [self.photoUrls addObject:imageUrl];
+            
+            self.uploadImageIndex++;
+            [self draftImageWithIndex:self.uploadImageIndex];
+            
+        } failed:^{
+            
+        }];
+        
+    }
+    
+    
+}
 - (void)uploadImageWithIndex:(NSInteger)index{
     
     if (index == self.photos.count) {
@@ -459,13 +515,10 @@
 
     [CHImagePicker show:YES picker:self completion:^(UIImage *image) {
         
-        
         [self setAttributeStringWithImage:(UIImage *)image];
         
         [self.contentView becomeFirstResponder];
-        
-        
-        
+         
     }];
     
     
@@ -523,7 +576,58 @@
     
     [self.viewModel createTopicWithTitle:self.titleTextView.text data:self.dataSource];
 }
-
+- (void)postTodraft{
+    NSLog(@"\n\n------------------");
+    // 1. 发送带有图片标志的纯文本到服务器
+    NSString *textString = [self textStringWithSymbol:@"[图片]" attributeString:self.contentView.attributedText];
+    NSLog(@"发送带有图片标志的纯文本到服务器, 纯文本内容为:%@", textString);
+    
+    
+    NSArray *arr = [textString componentsSeparatedByString:@"[图片]"];
+    
+    self.dataSource = [NSMutableArray array];
+    for (int i = 0; i< arr.count ;i++ ) {
+        
+        NSString *str = arr[i];
+        
+        JKTopicCreateModel *model = [[JKTopicCreateModel alloc]init];
+        
+        model.dataType = JKTopicDataCharacter;
+        
+        model.content = str;
+        
+        [self.dataSource addObject:model];
+        
+        if (_photos.count  >= (i + 1)) {
+            JKTopicCreateModel *modelImage = [[JKTopicCreateModel alloc]init];
+            
+            modelImage.dataType = JKTopicDataImage;
+            
+            modelImage.image = _photoUrls[i];
+            
+            [self.dataSource addObject:modelImage];
+        }
+        
+    }
+    // 2. 发送图片数据到服务器
+    NSLog(@"发送图片到图片服务器....");
+    
+    if (self.titleTextView.text.length == 0) {
+        
+        [CHProgressHUD showPlainText:@"请输入话题标题"];
+        
+        return;
+    }
+    
+    if (self.contentView.text.length == 0) {
+        
+        [CHProgressHUD showPlainText:@"请输入话题内容"];
+        
+        return;
+    }
+    
+    [self.viewModel draftTopicWithTitle:self.titleTextView.text data:self.dataSource content:self.contentView.attributedText];
+}
 /**
  * 将纯文本中带有图片标志的文本替换为富文本
  * symbol: 图片标志
@@ -720,41 +824,22 @@
 #pragma mark 键盘显示的监听方法
 -(void)keyboardWillShow:(NSNotification *)notif
 {
-    self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
-    
-    
-    // 获取键盘的位置和大小
-    CGRect keyboardBounds;
-    [[notif.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
-    
-    if (keyboardBounds.size.height == 0) {
-        return;
-    }
-    [UIView animateWithDuration:0.3f animations:^{
-        
-//        CGRect bottomView = self.bottomView.frame;
+//    self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
 //
-//        bottomView.origin.y = ScreenHeight - 0 - keyboardBounds.size.height;
-//        self.bottomView.frame = bottomView;
-
-        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
-        
-//        // 更改输入框的位置
-//        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.height.equalTo(@(50));
-//            make.left.right.offset(0);
-//            make.bottom.equalTo(self.view.mas_bottom).offset(-());
-//        }];
 //
-        
-//        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(self.bottomView.mas_top);
-//            make.right.equalTo(@(-20));
-//            make.left.equalTo(@(20));
-//            make.top.equalTo(self.titleTextView.mas_bottom).offset(1);
-//            
-//        }];
-    }];
+//    // 获取键盘的位置和大小
+//    CGRect keyboardBounds;
+//    [[notif.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
+//
+//    if (keyboardBounds.size.height == 0) {
+//        return;
+//    }
+//    [UIView animateWithDuration:0.3f animations:^{
+//
+////        self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
+//
+//
+//    }];
     
 }
 
@@ -762,24 +847,12 @@
 -(void)keyboardWillHide:(NSNotification *) note
 {
     self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64);
-    
+
     [UIView animateWithDuration:0.3f animations:^{
-        
+
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
-        
-//        // 更改输入框的位置
-//        [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.height.equalTo(@(50));
-//            make.left.right.offset(0);
-//            make.bottom.offset(0);
-//        }];
-//        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(self.bottomView.mas_top);
-//            make.right.equalTo(@(-20));
-//            make.left.equalTo(@(20));
-//            make.top.equalTo(self.titleTextView.mas_bottom).offset(1);
-//            
-//        }];
+
+
     }];
     
 }

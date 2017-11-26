@@ -29,4 +29,8 @@
                         data:(NSArray <JKTopicCreateModel *>*)data;
 
 - (void)goToRelate;
+
+
+- (void)draftTopicWithTitle:(NSString *)title
+                       data:(NSArray <JKTopicCreateModel *>*)data content:(NSAttributedString *)content;
 @end
