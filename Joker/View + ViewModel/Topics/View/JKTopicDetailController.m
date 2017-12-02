@@ -49,11 +49,11 @@
     [self.view addSubview:self.tableView];
 //    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
     @weakify(self)
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+    MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
         @strongify(self)
         [self.viewModel requestMoreData];
     }];
-    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.tableView.mj_footer = footer;
     
     self.bottomView = [[JKTopicDetailBottomView alloc]init];

@@ -52,12 +52,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "533391379.079904"
+                  timestampString = "533914094.53326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
                   endingLineNumber = "79"
-                  offsetFromSymbolStart = "1583">
+                  offsetFromSymbolStart = "1588">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "533391379.083978"
+                  timestampString = "533914094.535552"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
                   endingLineNumber = "82"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -139,6 +139,54 @@
             endingLineNumber = "184"
             landmarkName = "-draftTopicWithTitle:data:content:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
+            timestampString = "533889669.123435"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-favouriteComment"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JKCommentListCellVM favouriteComment]"
+                  moduleName = "Joker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
+                  timestampString = "533914094.557542"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__39-[JKCommentListCellVM favouriteComment]_block_invoke"
+                  moduleName = "Joker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
+                  timestampString = "533914094.559406"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
