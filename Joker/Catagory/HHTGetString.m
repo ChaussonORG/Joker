@@ -392,4 +392,13 @@
     NSString *pinYin = [str capitalizedString];
     return [pinYin substringToIndex:1];
 }
+
+
++ (NSString * )floatTypeWithStr:(NSString *)str{
+     
+    double conversionValue = (double)[str doubleValue];
+    NSString *doubleString = [NSString stringWithFormat:@"%lf",conversionValue];
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    return [decNumber stringValue];
+}
 @end

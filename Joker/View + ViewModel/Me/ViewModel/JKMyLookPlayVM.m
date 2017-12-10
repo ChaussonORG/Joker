@@ -318,6 +318,8 @@
 
     cellVM.cellHeight = 130;
     
+    cellVM.score = items.jokerScore;
+    
     if ([items.commentType isEqualToString:@"MOVIE"]) {
 
         cellVM.directors = @"导演：";

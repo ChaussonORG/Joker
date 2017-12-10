@@ -149,7 +149,7 @@
             
             cellVM.score2 = [self reviseString:item.imdbScore];
             
-            cellVM.score3 = item.tomatoeScore;
+            cellVM.score3 = [HHTGetString floatTypeWithStr:item.tomatoeScore];
             
             cellVM.score4 = [self reviseString:item.mcScore];
             

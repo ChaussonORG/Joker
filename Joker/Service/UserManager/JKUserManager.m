@@ -104,12 +104,14 @@
         NSString *nickname = [NSString stringWithFormat:@"%@", [[info objectForKey:@"profile"] objectForKey:@"nickname"]];
         NSString *photo = [NSString stringWithFormat:@"%@", [[info objectForKey:@"profile"] objectForKey:@"photo"]];
         NSString *username = [NSString stringWithFormat:@"%@", [[info objectForKey:@"profile"] objectForKey:@"username"]];
+        NSString *birthday = [NSString stringWithFormat:@"%@", [[info objectForKey:@"profile"] objectForKey:@"birthday"]];
         [dic setObject:token forKey:@"token"];
         self.currentUser.token = token;
         self.currentUser.userId = userId;
         self.currentUser.nickname = nickname;
         self.currentUser.photo = photo;
         self.currentUser.username = username;
+        self.currentUser.birthday = birthday;
         [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
         NSLog(@"%@", error);
         [self saveUser];

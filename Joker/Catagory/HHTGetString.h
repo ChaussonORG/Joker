@@ -24,4 +24,7 @@
 
 
 + (NSString *)assembleMonthDayStrWithDate:(NSString *)date;
+
++ (NSString * )floatTypeWithStr:(NSString *)str;
+
 @end

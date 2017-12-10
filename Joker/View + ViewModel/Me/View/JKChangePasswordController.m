@@ -70,7 +70,9 @@
     self.oldPassword.leftViewMode = UITextFieldViewModeAlways ;
     self.oldPassword.leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 0)];
     [self.passView addSubview:self.oldPassword];
-    self.oldPassword.placeholder = [JKUserManager sharedData].currentUser.username;
+    NSMutableString *password  = [[NSMutableString alloc]initWithString:[JKUserManager sharedData].currentUser.username];
+    [password replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    self.oldPassword.placeholder = password;
     self.oldPassword.secureTextEntry = YES;
     self.oldPassword.userInteractionEnabled = NO;
     

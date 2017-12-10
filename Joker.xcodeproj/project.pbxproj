@@ -302,6 +302,9 @@
 		D32B03A81FCAE43D00518AB7 /* JKForgetPasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D32B03A71FCAE43D00518AB7 /* JKForgetPasswordApi.m */; };
 		D34338891EEECDA900F45C7E /* JokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34338881EEECDA900F45C7E /* JokerTests.m */; };
 		D34338941EEECDA900F45C7E /* JokerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34338931EEECDA900F45C7E /* JokerUITests.m */; };
+		D37684F91FDAFCE7008D03D8 /* JKPersonInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37684F81FDAFCE7008D03D8 /* JKPersonInfoController.m */; };
+		D37684FC1FDBC6A7008D03D8 /* JKPersonInfoVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D37684FB1FDBC6A7008D03D8 /* JKPersonInfoVM.m */; };
+		D37684FF1FDBEEA8008D03D8 /* JKPersonInfoCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D37684FE1FDBEEA8008D03D8 /* JKPersonInfoCellVM.m */; };
 		D3973B521EEEEC200076B246 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973ADC1EEEEC200076B246 /* AppDelegate.m */; };
 		D3973B531EEEEC200076B246 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3973ADD1EEEEC200076B246 /* LaunchScreen.storyboard */; };
 		D3973B551EEEEC200076B246 /* HHTGetString.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973AE11EEEEC200076B246 /* HHTGetString.m */; };
@@ -355,6 +358,7 @@
 		D3ED98411FBD4DA60034F1C9 /* JKMyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98401FBD4DA60034F1C9 /* JKMyMessageCell.m */; };
 		D3ED98441FC199AB0034F1C9 /* JKMyMessageReadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */; };
 		D3ED98471FC1B8260034F1C9 /* JKMychangePasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */; };
+		D3F7587E1FDD3432007F00F0 /* JKPersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -893,6 +897,12 @@
 		D343388F1EEECDA900F45C7E /* JokerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34338931EEECDA900F45C7E /* JokerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JokerUITests.m; sourceTree = "<group>"; };
 		D34338951EEECDA900F45C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D37684F71FDAFCE7008D03D8 /* JKPersonInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoController.h; sourceTree = "<group>"; };
+		D37684F81FDAFCE7008D03D8 /* JKPersonInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoController.m; sourceTree = "<group>"; };
+		D37684FA1FDBC6A7008D03D8 /* JKPersonInfoVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoVM.h; sourceTree = "<group>"; };
+		D37684FB1FDBC6A7008D03D8 /* JKPersonInfoVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoVM.m; sourceTree = "<group>"; };
+		D37684FD1FDBEEA8008D03D8 /* JKPersonInfoCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoCellVM.h; sourceTree = "<group>"; };
+		D37684FE1FDBEEA8008D03D8 /* JKPersonInfoCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoCellVM.m; sourceTree = "<group>"; };
 		D3973ADB1EEEEC200076B246 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3973ADC1EEEEC200076B246 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D3973ADD1EEEEC200076B246 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -999,6 +1009,8 @@
 		D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageReadApi.m; sourceTree = "<group>"; };
 		D3ED98451FC1B8260034F1C9 /* JKMychangePasswordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMychangePasswordApi.h; sourceTree = "<group>"; };
 		D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMychangePasswordApi.m; sourceTree = "<group>"; };
+		D3F7587C1FDD3432007F00F0 /* JKPersonInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoCell.h; sourceTree = "<group>"; };
+		D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoCell.m; sourceTree = "<group>"; };
 		E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Joker/Pods-Joker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1612,6 +1624,10 @@
 			children = (
 				5068B8C01F72B7EB00677752 /* JKMEListCellVM.h */,
 				5068B8C11F72B7EB00677752 /* JKMEListCellVM.m */,
+				D37684FA1FDBC6A7008D03D8 /* JKPersonInfoVM.h */,
+				D37684FB1FDBC6A7008D03D8 /* JKPersonInfoVM.m */,
+				D37684FD1FDBEEA8008D03D8 /* JKPersonInfoCellVM.h */,
+				D37684FE1FDBEEA8008D03D8 /* JKPersonInfoCellVM.m */,
 				50C403E01FA8248B007468D0 /* JKMyMessageVM.h */,
 				50C403E11FA8248B007468D0 /* JKMyMessageVM.m */,
 				D3ED983C1FBD4C980034F1C9 /* JKMyMessageCellVM.h */,
@@ -2381,6 +2397,10 @@
 			children = (
 				D3973BE51EF23A160076B246 /* JKMeViewController.h */,
 				D3973BE61EF23A160076B246 /* JKMeViewController.m */,
+				D37684F71FDAFCE7008D03D8 /* JKPersonInfoController.h */,
+				D37684F81FDAFCE7008D03D8 /* JKPersonInfoController.m */,
+				D3F7587C1FDD3432007F00F0 /* JKPersonInfoCell.h */,
+				D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */,
 				50C403D41FA81A8F007468D0 /* JKMyMessageController.h */,
 				50C403D51FA81A8F007468D0 /* JKMyMessageController.m */,
 				50C403D71FA81AAC007468D0 /* JKMyLookPlayController.h */,
@@ -2869,14 +2889,17 @@
 				50521A221F6509DF00AE8B00 /* JKTVDetailVM.m in Sources */,
 				506C126B1EF6E82700DF705F /* JKTopicsFilteredListController.m in Sources */,
 				D3973BE11EF239D70076B246 /* JKTimelineListViewController.m in Sources */,
+				D37684FF1FDBEEA8008D03D8 /* JKPersonInfoCellVM.m in Sources */,
 				50AC9D8C1F0EA7C100AA7AEC /* JKCommentListCell.m in Sources */,
 				D3973B7D1EEEEC200076B246 /* UserInfoModel.m in Sources */,
 				507A67561F3AA00900377C5E /* JKCommentCreatApi.m in Sources */,
 				D3973BA81EEEF0830076B246 /* JKNewsModel.m in Sources */,
 				5042534A1F5B2005006DCB66 /* JKFavoriteWorkApi.m in Sources */,
+				D37684F91FDAFCE7008D03D8 /* JKPersonInfoController.m in Sources */,
 				D3973B801EEEEC200076B246 /* UDIDTools.m in Sources */,
 				502C6CD21F5EF543009B93E4 /* JKAnimationTimeLineVM.m in Sources */,
 				504253471F5B0AA2006DCB66 /* JKWorkCommentModel.m in Sources */,
+				D3F7587E1FDD3432007F00F0 /* JKPersonInfoCell.m in Sources */,
 				504253171F5ACF23006DCB66 /* NSObject+Extend.m in Sources */,
 				5042533A1F5ACF23006DCB66 /* CoreSVP.m in Sources */,
 				50AC9D331F0DDBC100AA7AEC /* JKTopicCreateApi.m in Sources */,
@@ -2982,6 +3005,7 @@
 				501E8AB11F1528E300723C29 /* JKTopicCreateModel.m in Sources */,
 				504253151F5ACF23006DCB66 /* NSArray+Extend.m in Sources */,
 				508C552E1F28310F001F1A15 /* JKRemanndationView.m in Sources */,
+				D37684FC1FDBC6A7008D03D8 /* JKPersonInfoVM.m in Sources */,
 				504C770D1F55BBC80004AE70 /* JKTVTimelineCell.m in Sources */,
 				504C77071F55BA8B0004AE70 /* JKTVTimeLineCollectionViewCell.m in Sources */,
 				504253201F5ACF23006DCB66 /* UIImage+FixOrientation.m in Sources */,
@@ -3220,6 +3244,7 @@
 			baseConfigurationReference = 8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -3248,6 +3273,7 @@
 			baseConfigurationReference = E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

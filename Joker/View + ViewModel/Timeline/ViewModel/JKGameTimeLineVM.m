@@ -142,13 +142,13 @@
             
             cellVM.jokerScore = item.joker_score;
             
-            cellVM.score1 = item.ign_score;
+            cellVM.score1 = [HHTGetString floatTypeWithStr:item.ign_score];
             
-            cellVM.score2 = item.gs_score;
+            cellVM.score2 = [HHTGetString floatTypeWithStr:item.gs_score];
             
-            cellVM.score3 = item.fami_score;
+            cellVM.score3 = [HHTGetString floatTypeWithStr:item.fami_score];
             
-            cellVM.score4 = item.mc_score;
+            cellVM.score4 = [HHTGetString floatTypeWithStr:item.mc_score];
             
             cellVM.isfavorite = [item.favotite boolValue];
             

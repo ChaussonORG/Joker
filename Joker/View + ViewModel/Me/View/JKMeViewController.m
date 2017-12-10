@@ -11,7 +11,7 @@
 #import "CHTabBarViewController.h"
 #import "UIButton+SD.h"
 #import "JKMEListCell.h"
-
+#import "JKPersonInfoController.h"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 // 以iphone6s iphone7为基准 4.7寸屏 --
 #define BaseSCREEN_WIDTH               375.0f
@@ -32,7 +32,7 @@
     
     UIImageView* tableheadView;
     
-    UIButton* userImageButton;
+    UIImageView* userImageButton;
     
     CGFloat tableviewHerderOriginY;
     
@@ -74,7 +74,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     self.automaticallyAdjustsScrollViewInsets =NO;
@@ -133,7 +132,7 @@
     [RACObserve(self, viewModel.icon) subscribeNext:^(NSString *x) {
         @strongify(self);
         
-        [userImageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:x] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"touxiang"]];
+        [userImageButton sd_setImageWithURL:[NSURL URLWithString:x] placeholderImage:[UIImage imageNamed:@"touxiang"]];
         
     }];
 
@@ -187,7 +186,7 @@
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
 //    self.headerView.frame = CGRectMake(0, 0, ScreenWidth, 260);
    
-    
+    tableheadView.userInteractionEnabled = YES;
     tableheadView= [[UIImageView alloc ]init];
     tableheadView.backgroundColor = [JKStyleConfiguration whiteColor];
     tableheadView.contentMode = UIViewContentModeScaleAspectFit;
@@ -197,13 +196,16 @@
     self.blackView.frame = CGRectMake(0, 0, ScreenWidth, 130);
     [tableheadView addSubview:self.blackView];
     
-    userImageButton = [[UIButton alloc]init];
+    userImageButton = [[UIImageView alloc]init];
     userImageButton.layer.masksToBounds=YES;
 //    [userImageButton setBackgroundImage:[UIImage imageNamed:@"touxiang"] forState:UIControlStateNormal];
     [tableheadView addSubview:userImageButton];
     userImageButton.layer.borderColor = [UIColor whiteColor].CGColor;
     userImageButton.layer.borderWidth = 1;
-    
+    tableheadView.userInteractionEnabled = YES;
+    userImageButton.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickUserImageButton)];
+    [userImageButton addGestureRecognizer:tap];
     
 //    self.tableView.tableHeaderView   =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kInitHeaderViewHeight)];
     
@@ -212,7 +214,7 @@
     tableviewHeaderHeight = kInitHeaderViewHeight;
     
     userImageViewHeight = kInitUserImageViewHeight;
-    
+    self.tableView.userInteractionEnabled = YES;
     [self.tableView addSubview:tableheadView];
     self.tableView.backgroundColor = [JKStyleConfiguration whiteColor];
 //    self.iconView = [[UIImageView alloc]init];
@@ -272,7 +274,14 @@
     
     [self.tableView addSubview:tableheadView];
 }
-
+- (void)clickUserImageButton{
+    JKPersonInfoController *vc = [[JKPersonInfoController alloc]init];
+    
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    
+    
+    
+}
 - (void)clickSetBtn{
     
     [self.viewModel gotoSetting];

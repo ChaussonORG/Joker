@@ -21,7 +21,7 @@
 @property (nonatomic, strong)NSArray <Optional>*actors1;
 @property (nonatomic, strong)NSArray <Optional>*actors2;
 @property (nonatomic, strong)NSArray <Optional>*actors3;
-
+@property (nonatomic, strong)NSString <Optional>*jokerScore;
 @end
 
 
