@@ -2658,8 +2658,8 @@
 				TargetAttributes = {
 					D343386A1EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = XZ39NEQQXX;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = MXEEZVMHLZ;
+						ProvisioningStyle = Manual;
 					};
 					D34338831EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
@@ -3246,9 +3246,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = MXEEZVMHLZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3261,10 +3261,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daxiong123;
+				PRODUCT_BUNDLE_IDENTIFIER = Folite.chausson.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d91175c0-8bef-4235-90a7-01e58bac0f10";
+				PROVISIONING_PROFILE_SPECIFIER = Folite;
 			};
 			name = Debug;
 		};
@@ -3275,9 +3275,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = MXEEZVMHLZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3290,10 +3290,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daxiong123;
+				PRODUCT_BUNDLE_IDENTIFIER = Folite.chausson.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d91175c0-8bef-4235-90a7-01e58bac0f10";
+				PROVISIONING_PROFILE_SPECIFIER = Folite;
 			};
 			name = Release;
 		};
