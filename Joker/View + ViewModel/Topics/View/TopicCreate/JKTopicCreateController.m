@@ -36,6 +36,8 @@
 
 @property (nonatomic , strong) UIButton *nextBtn;
 
+@property (nonatomic , assign) float keyboradHeight;
+
 
 @property (nonatomic, strong) NSMutableArray  *photos;
 
@@ -188,7 +190,6 @@
     self.contentView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.contentView.delegate = self;
     self.contentView.font = [JKStyleConfiguration titleFont];
-    self.contentView.backgroundColor = [UIColor redColor];
     
     
     self.contentPlaceholder = [[UILabel alloc] init];
@@ -261,9 +262,11 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
+  
+ 
     if (textView == self.contentView) {
     
-        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250 - 30);
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - self.keyboradHeight);
         
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
 //
@@ -826,6 +829,12 @@
 #pragma mark 键盘显示的监听方法
 -(void)keyboardWillShow:(NSNotification *)notif
 {
+    
+         NSDictionary *userInfo = [notif userInfo];
+        NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+        CGRect keyboardRect = [aValue CGRectValue];
+        self.keyboradHeight = keyboardRect.size.height;
+    
 //    self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
 //
 //
