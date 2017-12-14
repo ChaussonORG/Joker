@@ -84,7 +84,7 @@
     
     api.queryPage = self.queryPage;
     
-    [CHProgressHUD show:YES];
+//    [CHProgressHUD show:YES];
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
         [CHProgressHUD hide:YES];
         NSMutableArray <JKTVTimelineCellVM *>*cellViewModels = [NSMutableArray array];
@@ -314,7 +314,7 @@
     
     api.queryPage = self.queryPage;
     api.requestModel.limit = 1000;
-    [CHProgressHUD show:YES];
+//    [CHProgressHUD show:YES];
     [api startWithSuccessBlock:^(__kindof JKTimelineListApi *request) {
         [CHProgressHUD hide:YES];
         NSMutableArray <JKTVTimelineCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.cellViewModels];

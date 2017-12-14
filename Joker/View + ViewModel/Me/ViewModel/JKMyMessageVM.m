@@ -30,7 +30,7 @@
  
     JKMyMessageListApi *api = [[JKMyMessageListApi alloc]init];
     
-    api.requestModel.limit = 20000;
+    api.requestModel.limit = 0;
     
     [api startWithSuccessBlock:^(__kindof JKMyMessageListApi *request) {
         
@@ -53,7 +53,38 @@
         
     }];
 }
-
+- (void)requestMoreData{
+    
+    
+    JKMyMessageListApi *api = [[JKMyMessageListApi alloc]init];
+ 
+    api.requestModel.offset = self.cellViewModels.count;
+    
+    api.requestModel.limit = RequestLimit;
+    
+    [api startWithSuccessBlock:^(__kindof JKMyMessageListApi *request) {
+        
+        NSMutableArray <JKMyMessageCellVM *>*cellViewModel = [NSMutableArray arrayWithArray:self.cellViewModels];
+        for (JKMyMessageListModelItems *items in request.model.data.items) {
+            
+            [cellViewModel addObject:[self assembleviewModelWithItem:items]];
+            
+        }
+        
+        if (cellViewModel.count == self.cellViewModels.count) {
+            self.isFinishRequestMoreData = YES;
+        }
+        
+        self.cellViewModels = [cellViewModel copy];
+        
+        
+    } failureBlock:^(__kindof JKMyMessageListApi *request) {
+        
+        
+    }];
+    
+    
+}
 - (JKMyMessageCellVM *)assembleviewModelWithItem:(JKMyMessageListModelItems *)items{
     
     JKMyMessageCellVM *cellVM = [[JKMyMessageCellVM alloc]init];

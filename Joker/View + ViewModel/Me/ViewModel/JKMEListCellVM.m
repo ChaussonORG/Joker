@@ -13,6 +13,7 @@
 #import "JKMyTopicController.h"
 #import "JKMyMessageController.h"
 #import "JKChangePasswordController.h"
+#import "JKPersonInfoController.h"
 @implementation JKMEListCellVM
 
 - (instancetype)init
@@ -52,6 +53,12 @@
    
     if ([self.title isEqualToString:@"修改密码"]) {
         JKChangePasswordController *vc = [[JKChangePasswordController alloc]init];
+        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
+    }
+    
+    
+    if ([self.title isEqualToString:@"账号管理"]) {
+        JKPersonInfoController *vc = [[JKPersonInfoController alloc]init];
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     

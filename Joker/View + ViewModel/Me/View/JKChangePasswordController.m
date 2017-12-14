@@ -85,7 +85,7 @@
     UILabel *passwordTitleLabel = [[UILabel alloc]init];
     passwordTitleLabel.frame = CGRectMake(25, line1.frame.origin.y + 1 + 15, 80, 20);
     [self.passView addSubview:passwordTitleLabel];
-    passwordTitleLabel.text = @"新密码";
+    passwordTitleLabel.text = @"新密码(8个字符)";
     passwordTitleLabel.font = [JKStyleConfiguration overstrikingFont];
     passwordTitleLabel.textColor = [JKStyleConfiguration ninenineColor];
     
@@ -154,6 +154,18 @@
 }
 
 - (void)clickNextBtn{
+    
+    if (self.password1.text.length < 8) {
+        
+        [CHProgressHUD showPlainText:@"请输入8位密码"];
+        return;
+    }
+    
+    if (self.password2.text.length < 8) {
+        
+        [CHProgressHUD showPlainText:@"请输入8位密码"];
+        return;
+    }
     
     if ( [self.password1.text isEqualToString:self.password2.text] && self.password1.text.length > 0 && self.password2.text.length > 0) {
         

@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.696714"
+            timestampString = "534769425.916073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.698083"
+            timestampString = "534769425.91706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -52,7 +52,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "534596868.849594"
+                  timestampString = "534936802.779001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
@@ -67,7 +67,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "534596868.853274"
+                  timestampString = "534936802.784837"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -84,59 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.698419"
+            timestampString = "534769425.91752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-draftTopicWithTitle:data:content:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.698681"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-draftTopicWithTitle:data:content:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.698904"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-draftTopicWithTitle:data:content:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-            timestampString = "532902142.699156"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-draftTopicWithTitle:data:content:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,7 +116,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "534596868.891234"
+                  timestampString = "534936802.821248"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -179,7 +131,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "534596868.89523"
+                  timestampString = "534936802.837728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -187,6 +139,22 @@
                   offsetFromSymbolStart = "47">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
+            timestampString = "534769543.429862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "-draftTopicWithTitle:data:content:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

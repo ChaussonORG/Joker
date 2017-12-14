@@ -35,7 +35,7 @@
     self.GameImage = [[UIImageView alloc]init];
     self.GameImage.contentMode = UIViewContentModeScaleAspectFit;
         self.GameImage.layer.borderColor = [JKStyleConfiguration screenBackgroundColor].CGColor;
-        self.GameImage.layer.borderWidth = 2;
+        self.GameImage.layer.borderWidth = 1;
     
     self.belongTypeLabel = [[UILabel alloc]init];
     self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];

@@ -16,8 +16,8 @@ NSString *const MJRefreshKeyPathPanState = @"state";
 NSString *const MJRefreshHeaderLastUpdatedTimeKey = @"MJRefreshHeaderLastUpdatedTimeKey";
 
 NSString *const MJRefreshHeaderIdleText = @"MJRefreshHeaderIdleText";
-NSString *const MJRefreshHeaderPullingText = @"MJRefreshHeaderPullingText";
-NSString *const MJRefreshHeaderRefreshingText = @"MJRefreshHeaderRefreshingText";
+NSString *const MJRefreshHeaderPullingText = @"下拉加载数据";
+NSString *const MJRefreshHeaderRefreshingText = @"数据载入中";
 
 NSString *const MJRefreshAutoFooterIdleText = @" ";
 NSString *const MJRefreshAutoFooterRefreshingText = @" ";

@@ -173,7 +173,9 @@
         NSMutableDictionary *data2 = [[NSMutableDictionary alloc] initWithContentsOfFile:myPath];
        
         NSMutableDictionary *data = [NSMutableDictionary dictionary];
-        [data setObject:content forKey:@"content"];
+        
+        NSData *contentData  = [content dataFromRange:NSMakeRange(0, content.length) documentAttributes:@{NSDocumentTypeDocumentAttribute:NSRTFDTextDocumentType} error:nil];   //将 NSAttributedString 转为NSData
+        [data setObject:contentData forKey:@"content"];
         [data setObject:api.projectId forKey:@"projectId"];
         [data setObject:api.projectType forKey:@"projectType"];
         [data setObject:api.title forKey:@"title"];
@@ -193,7 +195,8 @@
         [fm createFileAtPath:filename contents:nil attributes:nil];
         
         NSMutableDictionary *data = [NSMutableDictionary dictionary];
-        [data setObject:[content string] forKey:@"content"];
+        NSData *contentData  = [content dataFromRange:NSMakeRange(0, content.length) documentAttributes:@{NSDocumentTypeDocumentAttribute:NSRTFDTextDocumentType} error:nil];   //将 NSAttributedString 转为NSData
+        [data setObject:contentData forKey:@"content"];
         [data setObject:api.projectId forKey:@"projectId"];
         [data setObject:api.projectType forKey:@"projectType"];
         [data setObject:api.title forKey:@"title"];

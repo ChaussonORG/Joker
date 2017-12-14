@@ -11,7 +11,7 @@
 #import "CHTabBarViewController.h"
 #import "UIButton+SD.h"
 #import "JKMEListCell.h"
-#import "JKPersonInfoController.h"
+
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 // 以iphone6s iphone7为基准 4.7寸屏 --
 #define BaseSCREEN_WIDTH               375.0f
@@ -198,6 +198,7 @@
     
     userImageButton = [[UIImageView alloc]init];
     userImageButton.layer.masksToBounds=YES;
+    userImageButton.contentMode = UIViewContentModeScaleAspectFit;
 //    [userImageButton setBackgroundImage:[UIImage imageNamed:@"touxiang"] forState:UIControlStateNormal];
     [tableheadView addSubview:userImageButton];
     userImageButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -275,9 +276,6 @@
     [self.tableView addSubview:tableheadView];
 }
 - (void)clickUserImageButton{
-    JKPersonInfoController *vc = [[JKPersonInfoController alloc]init];
-    
-    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
     
     

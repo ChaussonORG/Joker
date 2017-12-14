@@ -188,7 +188,7 @@
     self.contentView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.contentView.delegate = self;
     self.contentView.font = [JKStyleConfiguration titleFont];
-//    self.contentView.backgroundColor = [UIColor redColor];
+    self.contentView.backgroundColor = [UIColor redColor];
     
     
     self.contentPlaceholder = [[UILabel alloc] init];
@@ -263,7 +263,7 @@
     
     if (textView == self.contentView) {
     
-        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250);
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - 250 - 30);
         
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
 //
@@ -360,17 +360,17 @@
 
 -(void)popself
 {
-    [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+//    [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
 
-//    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
-//        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
-//        alerv.alertViewStyle=UIAlertViewStyleDefault;
-//        [alerv show];
-//    }
-//    else{
-//         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
-//
-//    }
+    if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+        alerv.alertViewStyle=UIAlertViewStyleDefault;
+        [alerv show];
+    }
+    else{
+         [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
+
+    }
     
 }
 
@@ -384,7 +384,9 @@
     else{
         self.navigationItem.leftBarButtonItem.enabled = NO;
         self.uploadImageIndex = 0;
-        [self draftImageWithIndex: self.uploadImageIndex];
+//        [self draftImageWithIndex: self.uploadImageIndex];
+        
+         [self postTodraft];
         
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:5.0f];
     }

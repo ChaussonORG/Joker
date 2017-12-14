@@ -33,7 +33,7 @@
     self.icon = [JKUserManager sharedData].currentUser.photo;
     
     NSMutableArray <JKMEListCellVM *>*cellViewModels = [NSMutableArray array];
-    for (int i = 0 ; i < 5 ; i ++ ) {
+    for (int i = 0 ; i < 6 ; i ++ ) {
         
         JKMEListCellVM   *cellVM = [[JKMEListCellVM alloc]init];
         
@@ -54,11 +54,11 @@
             
             cellVM.title = @"修改密码";
         }
-//        else if (i ==  4 ) {
-//
-//            cellVM.title = @"喜好设置";
-//        }
         else if (i ==  4 ) {
+
+            cellVM.title = @"账号管理";
+        }
+        else if (i ==  5 ) {
             cellVM.title = @"退出登录";
             
         }

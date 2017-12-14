@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIView *sliderView;
 
 @property (nonatomic , strong) UITableView *mainTableView;
+
 @end
 
 @implementation JKMyLookPlayController
@@ -87,7 +88,8 @@
     }
     [self.view addSubview:self.mainTableView];
     
-    [self.viewModel requestData];
+    [self.viewModel loadData];
+    
     [self binding];
     
     // Do any additional setup after loading the view.
@@ -95,24 +97,30 @@
 
 - (void)binding{
     @weakify(self);
-    [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
+    [[RACSignal combineLatest:@[RACObserve(self, viewModel.favouritedFilmCellVMs),
+                                RACObserve(self, viewModel.favouritedTVCellVMs),
+                                RACObserve(self, viewModel.favouritedAnimationCellVMs),
+                                RACObserve(self, viewModel.favouritedGameCellVMs),
+                                RACObserve(self, viewModel.favouritedVarietyCellVMs),
+                                RACObserve(self, viewModel.lookedFilmCellVMs),
+                                RACObserve(self, viewModel.lookedTVCellVMs),
+                                RACObserve(self, viewModel.lookedAnimationCellVMs),
+                                RACObserve(self, viewModel.lookedGameCellVMs),
+                                RACObserve(self, viewModel.lookedVarietyCellVMs)]] subscribeNext:^(id x) {
         @strongify(self);
-        
         [self.mainTableView reloadData];
-        
         [self.mainTableView.mj_header endRefreshing];
         
-//        if (self.viewModel.isFinishRequestMoreData) {
-//            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
-//        }else{
-//            [self.mainTableView.mj_footer endRefreshing];
-//        }
-        
-        
+        if (self.viewModel.isFinishRequestMoreData) {
+            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [self.mainTableView.mj_footer endRefreshing];
+        }
     }];
     
 }
 - (void)clickTypeBtn:(UIButton*)sender{
+    
     
     for (UIButton *view in self.sliderView.subviews) {
         
@@ -148,14 +156,73 @@
         
     }
     
-     [self.viewModel requestData];
+    [self.mainTableView reloadData];
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.viewModel.cellViewModels.count;
-    
+    if(self.viewModel.type == JKMyLookPlayFavorited){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+            
+            return self.viewModel.favouritedFilmCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+            
+            return self.viewModel.favouritedTVCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            return self.viewModel.favouritedAnimationCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+            
+            return self.viewModel.favouritedGameCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+            return self.viewModel.favouritedVarietyCellVMs.count;
+        }
+        else{
+            
+            return 0;
+        }
+        
+    }
+    else if(self.viewModel.type == JKMyLookPlayCommented){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+            
+            return self.viewModel.lookedFilmCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+            
+            return self.viewModel.lookedTVCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            return self.viewModel.lookedAnimationCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+            
+            return self.viewModel.lookedGameCellVMs.count;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+            return self.viewModel.lookedVarietyCellVMs.count;
+        }
+        else{
+            
+            return 0;
+        }
+        
+    }
+    else{
+        
+        return 0;
+    }
+   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -167,10 +234,91 @@
     //        cell = [[JKFilmTimelineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     //    }
     
+    if(self.viewModel.type == JKMyLookPlayFavorited){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+            
+      
+            [cell loadDataWithVM:self.viewModel.favouritedFilmCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+           
+            [cell loadDataWithVM:self.viewModel.favouritedTVCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            [cell loadDataWithVM:self.viewModel.favouritedAnimationCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+            
+            [cell loadDataWithVM:self.viewModel.favouritedGameCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+           
+            [cell loadDataWithVM:self.viewModel.favouritedVarietyCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else{
+            
+            return nil;
+        }
+        
+    }
+    else if(self.viewModel.type == JKMyLookPlayCommented){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+          
+            
+            [cell loadDataWithVM:self.viewModel.lookedFilmCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+            
+            [cell loadDataWithVM:self.viewModel.lookedTVCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            [cell loadDataWithVM:self.viewModel.lookedAnimationCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+       
+            [cell loadDataWithVM:self.viewModel.lookedGameCellVMs[indexPath.row]];
+            
+            return cell;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+            [cell loadDataWithVM:self.viewModel.lookedVarietyCellVMs[indexPath.row]];
+            
+            return cell;
+            
+        }
+        else{
+            
+            return nil;
+        }
+        
+    }
+    else{
+        
+        return 0;
+    }
     
-    [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
-    
-    return cell;
     
 }
 
@@ -178,7 +326,68 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return self.viewModel.cellViewModels[indexPath.row].cellHeight;
+    
+    if(self.viewModel.type == JKMyLookPlayFavorited){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+            
+            return self.viewModel.favouritedFilmCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+            
+            return self.viewModel.favouritedTVCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            return self.viewModel.favouritedAnimationCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+            
+            return self.viewModel.favouritedGameCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+            return self.viewModel.favouritedVarietyCellVMs[indexPath.row].cellHeight;
+        }
+        else{
+            
+            return 0;
+        }
+        
+    }
+    else if(self.viewModel.type == JKMyLookPlayCommented){
+        
+        if(self.viewModel.workType == JKMyLookPlayFilm){
+            
+            return self.viewModel.lookedFilmCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayTV){
+            
+            return self.viewModel.lookedTVCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayAnimation){
+            
+            return self.viewModel.lookedAnimationCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayGame){
+            
+            return self.viewModel.lookedGameCellVMs[indexPath.row].cellHeight;
+        }
+        else if(self.viewModel.workType == JKMyLookPlayVariety){
+            
+            return self.viewModel.lookedVarietyCellVMs[indexPath.row].cellHeight;
+        }
+        else{
+            
+            return 0;
+        }
+        
+    }
+    else{
+        
+        return 0;
+    }
+    
     
 }
 
@@ -199,10 +408,8 @@
 
     }
     
-    [self.viewModel requestData];
-    
-    
-    
+   [self.mainTableView reloadData];
+     
 }
 
 

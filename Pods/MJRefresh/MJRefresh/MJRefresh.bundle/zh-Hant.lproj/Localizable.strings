@@ -1,6 +1,6 @@
 "MJRefreshHeaderIdleText" = " ";
-"MJRefreshHeaderPullingText" = " ";
-"MJRefreshHeaderRefreshingText" = " ";
+"MJRefreshHeaderPullingText" = "下拉加载数据";
+"MJRefreshHeaderRefreshingText" = "数据载入中";
 
 "MJRefreshAutoFooterIdleText" = " ";
 "MJRefreshAutoFooterRefreshingText" = " ";
