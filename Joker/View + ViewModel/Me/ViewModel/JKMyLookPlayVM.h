@@ -58,4 +58,6 @@ typedef NS_ENUM(NSInteger, JKMyLookPlayWorkType){
 
 - (void)loadData;
 
+- (void)requestMoreData;
+
 @end

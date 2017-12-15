@@ -331,7 +331,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.favouritedFilmCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
@@ -356,7 +358,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.favouritedTVCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
@@ -380,7 +384,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.favouritedAnimationCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
@@ -406,7 +412,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.favouritedGameCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
@@ -431,7 +439,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.favouritedVarietyCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
@@ -459,7 +469,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.lookedFilmCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
@@ -484,7 +496,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.lookedTVCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
@@ -508,7 +522,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.lookedAnimationCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
@@ -534,7 +550,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.lookedGameCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
@@ -559,7 +577,9 @@
                     [cellViewModels addObject:[self assembleViewModelWithItems:items]];
                     
                 }
-                
+                if (cellViewModels.count < RequestLimit) {
+                    self.isFinishRequestMoreData = YES;
+                }
                 self.lookedVarietyCellVMs = [cellViewModels copy];
                 
             } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
@@ -681,5 +701,295 @@
     return cellVM;
 }
 
+
+- (void)requestMoreData{
+    
+    if (self.type == JKMyLookPlayFavorited) {
+        
+        if (self.workType == JKMyLookPlayFilm) {
+            
+            JKMyLookPlayFavouriteApi *api = [[JKMyLookPlayFavouriteApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.requestModel.offset = self.favouritedFilmCellVMs.count;
+            api.type = @"MOVIE";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray arrayWithArray:self.favouritedFilmCellVMs];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.favouritedFilmCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                
+                self.favouritedFilmCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayTV) {
+            
+            JKMyLookPlayFavouriteApi *api = [[JKMyLookPlayFavouriteApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"TV";
+            api.requestModel.offset = self.favouritedTVCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray arrayWithArray:self.favouritedTVCellVMs];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.favouritedTVCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                
+                self.favouritedTVCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayAnimation) {
+            JKMyLookPlayFavouriteApi *api = [[JKMyLookPlayFavouriteApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.requestModel.offset = self.favouritedAnimationCellVMs.count;
+            api.type = @"ANIMATION";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.favouritedAnimationCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.favouritedAnimationCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                
+                
+                
+            }];
+            
+            
+        }
+        else if (self.workType == JKMyLookPlayGame) {
+            
+            JKMyLookPlayFavouriteApi *api = [[JKMyLookPlayFavouriteApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"GAME";
+            api.requestModel.offset = self.favouritedGameCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.favouritedAnimationCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.favouritedGameCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayVariety) {
+            
+            JKMyLookPlayFavouriteApi *api = [[JKMyLookPlayFavouriteApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.requestModel.offset = self.favouritedVarietyCellVMs.count;
+            api.type = @"VARIETY";
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.favouritedVarietyCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.favouritedVarietyCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayFavouriteApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        
+    }
+    else{
+        if (self.workType == JKMyLookPlayFilm) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"MOVIE";
+            api.requestModel.offset = self.lookedFilmCellVMs.count;
+            
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.lookedFilmCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.lookedFilmCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayTV) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"TV";
+            api.requestModel.offset = self.lookedTVCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.lookedTVCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.lookedTVCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayAnimation) {
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"ANIMATION";
+            api.requestModel.offset = self.lookedAnimationCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.lookedAnimationCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.lookedAnimationCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+            
+        }
+        else if (self.workType == JKMyLookPlayGame) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"GAME";
+            api.requestModel.offset = self.lookedGameCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.lookedGameCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.lookedGameCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        else if (self.workType == JKMyLookPlayVariety) {
+            
+            JKMyLookPlayCommentedApi *api = [[JKMyLookPlayCommentedApi alloc]init];
+            api.requestModel.limit = RequestLimit;
+            api.type = @"VARIETY";
+            api.requestModel.offset = self.lookedVarietyCellVMs.count;
+            [api startWithSuccessBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                NSMutableArray <JKMylookPlayCellVM*>*cellViewModels = [NSMutableArray array];
+                for (JKMyLookPlayModelItems *items in request.model.data.items) {
+                    
+                    [cellViewModels addObject:[self assembleViewModelWithItems:items]];
+                    
+                }
+                if (cellViewModels.count == self.lookedVarietyCellVMs.count) {
+                    self.isFinishRequestMoreData = YES;
+                }
+                self.lookedVarietyCellVMs = [cellViewModels copy];
+                
+            } failureBlock:^(__kindof JKMyLookPlayCommentedApi *request) {
+                
+                
+                
+                
+            }];
+            
+        }
+        
+    }
+    
+    
+    
+}
 @end
 

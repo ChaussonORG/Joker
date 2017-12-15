@@ -52,12 +52,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "534940372.247013"
+                  timestampString = "535022722.325602"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
                   endingLineNumber = "79"
-                  offsetFromSymbolStart = "1588">
+                  offsetFromSymbolStart = "1583">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
-                  timestampString = "534940372.24956"
+                  timestampString = "535022722.329614"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
                   endingLineNumber = "82"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -116,12 +116,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "534940372.261654"
+                  timestampString = "535022722.342817"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
                   endingLineNumber = "87"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "149">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -131,12 +131,12 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "534940372.264505"
+                  timestampString = "535022722.345923"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
                   endingLineNumber = "88"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "47">
                </Location>
             </Locations>
          </BreakpointContent>

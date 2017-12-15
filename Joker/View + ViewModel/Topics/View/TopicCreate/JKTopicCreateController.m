@@ -11,7 +11,7 @@
 #import "SDBaseResponse.h"
 #import "CHFaceBoard.h"
 #import <CHProgressHUD/CHProgressHUD.h>
-
+#import "CHCommonMacro.h"
 #import "CHImagePicker.h"
 #define MARGIN 20.0
 @interface JKTopicCreateController ()<UITextViewDelegate,CHFaceBoardDelegate,RefreshSendBtnStatusDelegate>
@@ -262,11 +262,18 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
-  
- 
+    BOOL isIPhoneX = kDevice_Is_iPhoneX;
+    
+    float NaviHeight = 0;
+    if (isIPhoneX) {
+        NaviHeight = 88;
+    }
+    else{
+        NaviHeight = 64;
+    }
     if (textView == self.contentView) {
     
-        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64 - self.keyboradHeight);
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - NaviHeight - self.keyboradHeight);
         
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height - 5 , ScreenWidth, 50);
 //
@@ -274,7 +281,7 @@
     else{
         
         
-        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - 64);
+        self.contentView.frame = CGRectMake(20, self.titleTextView.frame.size.height + self.titleTextView.frame.origin.y + 1, self.view.frame.size.width - 40, ScreenHeight - self.titleTextView.frame.size.height - self.titleTextView.frame.origin.y - 50 - NaviHeight  );
         
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
     }

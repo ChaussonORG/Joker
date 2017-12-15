@@ -9,6 +9,7 @@
 #ifndef CHCommonMacro_h
 #define CHCommonMacro_h
 
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define CH_TRANSFORM_TEXTSIZE(text, font, maxSize) [text length] > 0 ? [text \
 boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \

@@ -77,6 +77,16 @@
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+    @weakify(self)
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        [self.viewModel requestMoreData];
+    }];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.mainTableView.mj_footer = footer;
+    
     if (@available(iOS 11.0, *)) {
         self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.mainTableView.estimatedRowHeight = 0;
@@ -94,7 +104,10 @@
     
     // Do any additional setup after loading the view.
 }
+- (void)requestHeaderData{
 
+    [self.viewModel requestData];
+}
 - (void)binding{
     @weakify(self);
     [[RACSignal combineLatest:@[RACObserve(self, viewModel.favouritedFilmCellVMs),
