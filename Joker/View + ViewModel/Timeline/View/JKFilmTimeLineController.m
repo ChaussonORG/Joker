@@ -58,24 +58,18 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-//
-    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
-//    @weakify(self)
-//    MJRefreshFooter *footer = [MJRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestFooterData)];
-    
-//    [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-//        @strongify(self)
-//
-//         [self.viewModel requestMoreData];
-//    }];
-  //  footer.stateLabel.font = [UIFont systemFontOfSize:12];
-    
+    self.mainTableView.pagingEnabled = false;
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self requestHeaderData];
+    }];//:self refreshingAction:@selector(requestHeaderData)];
+    [self.mainTableView.mj_header beginRefreshing];
     @weakify(self)
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+    MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
         @strongify(self)
         [self.viewModel requestMoreData];
     }];
-    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.mainTableView.mj_footer = footer;
     
     [self binding];
@@ -101,12 +95,17 @@
             [self.mainTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         }
         [self.mainTableView.mj_header endRefreshing];
-  
+        
+        if (self.mainTableView.contentOffset.y <= 0) {
+             [self.mainTableView setContentOffset:CGPointZero animated:YES];
+        }
+       
         if (self.viewModel.isFinishRequestMoreData) {
             [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.mainTableView.mj_footer endRefreshing];
         }
+        
     }];
     
 }
@@ -116,6 +115,8 @@
     [super viewWillAppear:animated];
     
     [self.mainTableView setContentOffset:CGPointZero animated:YES];
+    
+    
     
 //    [self.viewModel requestData];
     

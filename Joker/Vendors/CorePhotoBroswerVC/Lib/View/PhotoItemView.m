@@ -112,6 +112,7 @@
         
         if(image == nil) return;
         
+
         [self.photoImageView imageWithUrlStr:_photoModel.image_HD_U phImage:image progressBlock:^(NSInteger receivedSize, NSInteger expectedSize) {
             
             _progressView.hidden = NO;

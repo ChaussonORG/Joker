@@ -152,6 +152,24 @@
 - (void)goForward{
     [self invokeName:@"goForward"];
 }
+- (BOOL)canGoBack{
+    if ([_webView isKindOfClass:[WKWebView class]]) {
+        WKWebView *wk = (WKWebView *)_webView;
+        return wk.canGoBack;
+    }else{
+        UIWebView *wk = (UIWebView *)_webView;
+        return wk.canGoBack;
+    }
+}
+- (BOOL)canGoForward{
+    if ([_webView isKindOfClass:[WKWebView class]]) {
+        WKWebView *wk = (WKWebView *)_webView;
+        return wk.canGoForward;
+    }else{
+        UIWebView *wk = (UIWebView *)_webView;
+        return wk.canGoForward;
+    }
+}
 - (void)invokeName:(NSString *)name{
     SEL selector = NSSelectorFromString(name);
     if ([_webView respondsToSelector:selector]) {
@@ -171,7 +189,9 @@
     if (vc) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            completionHandler();
+            if (completionHandler) {
+                completionHandler();
+            }
         }]];
         [vc presentViewController:alert animated:YES completion:NULL];
     }
@@ -328,29 +348,29 @@
     [self addConstraints:array];
 }
 - (UIViewController *)fetchVC{
-    UIViewController *result = nil;
+    UIViewController *result = [UIApplication sharedApplication].keyWindow.rootViewController;
     
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
-                window = tmpWin;
-                break;
-            }
-        }
-    }
-    
-    UIView *frontView = [[window subviews] objectAtIndex:0];
-    id nextResponder = [frontView nextResponder];
-    
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-        result = nextResponder;
-    else
-        result = window.rootViewController;
+//    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+//    if (window.windowLevel != UIWindowLevelNormal)
+//    {
+//        NSArray *windows = [[UIApplication sharedApplication] windows];
+//        for(UIWindow * tmpWin in windows)
+//        {
+//            if (tmpWin.windowLevel == UIWindowLevelNormal)
+//            {
+//                window = tmpWin;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    UIView *frontView = [[window subviews] objectAtIndex:0];
+//    id nextResponder = [frontView nextResponder];
+//    
+//    if ([nextResponder isKindOfClass:[UIViewController class]])
+//        result = nextResponder;
+//    else
+//        result = window.rootViewController;
     
     return result;
 }

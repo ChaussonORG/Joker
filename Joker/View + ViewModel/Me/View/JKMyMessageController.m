@@ -41,7 +41,7 @@
     self.view.backgroundColor = [JKStyleConfiguration whiteColor];
     
     self.title = @"我的消息";
-    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight ) style:UITableViewStylePlain];
+    self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;

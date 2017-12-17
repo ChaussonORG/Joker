@@ -260,7 +260,7 @@
     [self binding];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView{
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     
     BOOL isIPhoneX = kDevice_Is_iPhoneX;
     
@@ -285,6 +285,8 @@
         
         self.bottomView.frame = CGRectMake(0, self.contentView.frame.origin.y + self.contentView.frame.size.height , ScreenWidth, 50);
     }
+    
+    return YES;
     
 }
 - (void)binding{

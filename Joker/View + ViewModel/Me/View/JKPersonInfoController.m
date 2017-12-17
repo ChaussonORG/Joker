@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人资料";
-      self.view.backgroundColor = [JKStyleConfiguration whiteColor];
+    self.view.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
 
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
     self.mainTableView.backgroundColor = [UIColor whiteColor];

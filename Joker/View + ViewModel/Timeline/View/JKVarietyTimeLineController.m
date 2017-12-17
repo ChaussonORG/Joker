@@ -55,6 +55,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+     [self.mainTableView.mj_header beginRefreshing];
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
         @strongify(self)
@@ -85,6 +86,10 @@
         }else{
             [self.mainTableView.mj_footer endRefreshing];
         }
+        if (self.mainTableView.contentOffset.y <= 0) {
+            [self.mainTableView setContentOffset:CGPointZero animated:YES];
+        }
+        
     }];
     
 }

@@ -1,4 +1,4 @@
-       //
+//
 //  CHNetworkAgent.m
 //  CHNetworkingDemo
 //
@@ -14,8 +14,7 @@
 #import "CHNetworkPrivate.h"
 @implementation CHNetworkAgent{
     CHNetworkConfig *_config;
-     NSMutableDictionary *_requestsRecord;
-    
+    NSMutableDictionary *_requestsRecord;
 }
 + (CHNetworkAgent *)sharedInstance{
     static CHNetworkAgent  *agent = nil;
@@ -123,7 +122,10 @@
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSString *paramStr = [CHNetworkPrivate dictionaryToJSONString:parameter];
     NSString *method ;
-    [req setHTTPMethod:@"DELETE"];
+    if (![request specificDownloadPath]) {
+        [req setHTTPMethod:@"DELETE"];
+
+    }
     switch (request.requestMethod) {
         case CHRequestMethodGet:
             method = @"GET";
@@ -172,8 +174,8 @@
         
     }
     NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
-
     [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+
     return req;
 }
 - (void)addRequest:(CHBaseRequest *)request{
@@ -193,11 +195,13 @@
     if ([request specificDownloadPath]) {
         
         NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        AFURLSessionManager *manger = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
+        
+        AFHTTPSessionManager *manger = [self createManagerWithRequeset:request];
 
         request.session = [manger downloadTaskWithRequest:res progress:^(NSProgress * _Nonnull downloadProgress) {
-            request.downloadProgress = downloadProgress ;
+            if (request.progressBlock) {
+                request.progressBlock(downloadProgress);
+            }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
             return [request specificDownloadPath];
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
@@ -228,7 +232,9 @@
         
     } else if (request.requestMethod == CHRequestMethodGet) {
        request.session = [manager GET:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
-           
+           if (request.progressBlock) {
+               request.progressBlock(downloadProgress);
+           }
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
             [self handleRequestResult:task];
@@ -238,7 +244,9 @@
         }];
     } else if (request.requestMethod == CHRequestMethodPost) {
         request.session = [manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
-           
+            if (request.progressBlock) {
+                request.progressBlock(downloadProgress);
+            }
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
             [self handleRequestResult:task];
@@ -285,7 +293,9 @@
             request.session = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                 [formData appendPartWithFileData:data name:name fileName:filename mimeType:mimeType];
             } progress:^(NSProgress * _Nonnull uploadProgress) {
-                
+                if (request.progressBlock) {
+                    request.progressBlock(uploadProgress);
+                }
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
                 [self handleRequestResult:task];
@@ -304,6 +314,11 @@
 
     }
     [self addOperation:request];
+    
+    if ([CHNetworkConfig sharedInstance].allowPrintLog) {
+        CHLog(@"Headers =%@ \n", manager.requestSerializer.HTTPRequestHeaders);
+    }
+    
     
 }
 - (void)cancelRequest:(CHBaseRequest *)request{
@@ -363,7 +378,7 @@
     [request clearCompletionBlock];
  
     if ([CHNetworkConfig sharedInstance].allowPrintLog) {
-        CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@ Parameters= %@ response=%@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description],[request requestParameter],request.response.responseJSONObject);
+        CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@ Parameters= %@ response=%@\n@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description],[request requestParameter],request.response.responseJSONObject);
     }
 
 }

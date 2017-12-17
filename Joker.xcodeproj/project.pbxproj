@@ -95,10 +95,6 @@
 		504253221F5ACF23006DCB66 /* UITableViewCell+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252BF1F5ACF23006DCB66 /* UITableViewCell+Extend.m */; };
 		504253231F5ACF23006DCB66 /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252C21F5ACF23006DCB66 /* UIView+Extend.m */; };
 		504253241F5ACF23006DCB66 /* UIWindow+Launch.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252C51F5ACF23006DCB66 /* UIWindow+Launch.m */; };
-		504253251F5ACF23006DCB66 /* UIImage+ReMake.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252CC1F5ACF23006DCB66 /* UIImage+ReMake.m */; };
-		504253261F5ACF23006DCB66 /* CoreSDWebImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 504252CE1F5ACF23006DCB66 /* CoreSDWebImage.bundle */; };
-		504253371F5ACF23006DCB66 /* UIButton+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252F21F5ACF23006DCB66 /* UIButton+SD.m */; };
-		504253381F5ACF23006DCB66 /* UIImageView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252F41F5ACF23006DCB66 /* UIImageView+SD.m */; };
 		504253391F5ACF23006DCB66 /* CoreSVP.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 504252F61F5ACF23006DCB66 /* CoreSVP.bundle */; };
 		5042533A1F5ACF23006DCB66 /* CoreSVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 504252F81F5ACF23006DCB66 /* CoreSVP.m */; };
 		5042533E1F5ACF23006DCB66 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 504253021F5ACF23006DCB66 /* LFRoundProgressView.m */; };
@@ -300,6 +296,11 @@
 		D32953471EF3DD29002A9DE8 /* JKTopicFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D32953461EF3DD29002A9DE8 /* JKTopicFilterView.m */; };
 		D32B03A51FCACFFD00518AB7 /* JKFogetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32B03A41FCACFFD00518AB7 /* JKFogetPasswordController.m */; };
 		D32B03A81FCAE43D00518AB7 /* JKForgetPasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D32B03A71FCAE43D00518AB7 /* JKForgetPasswordApi.m */; };
+		D340DF071FE6378100996FA1 /* RefreshingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D340DF061FE6378100996FA1 /* RefreshingView.m */; };
+		D340DF131FE650A000996FA1 /* UIImageView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = D340DF0A1FE6509F00996FA1 /* UIImageView+SD.m */; };
+		D340DF141FE650A000996FA1 /* CoreSDWebImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D340DF0C1FE6509F00996FA1 /* CoreSDWebImage.bundle */; };
+		D340DF151FE650A000996FA1 /* UIButton+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = D340DF0F1FE6509F00996FA1 /* UIButton+SD.m */; };
+		D340DF161FE650A000996FA1 /* UIImage+ReMake.m in Sources */ = {isa = PBXBuildFile; fileRef = D340DF111FE6509F00996FA1 /* UIImage+ReMake.m */; };
 		D34338891EEECDA900F45C7E /* JokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34338881EEECDA900F45C7E /* JokerTests.m */; };
 		D34338941EEECDA900F45C7E /* JokerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D34338931EEECDA900F45C7E /* JokerUITests.m */; };
 		D37684F91FDAFCE7008D03D8 /* JKPersonInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37684F81FDAFCE7008D03D8 /* JKPersonInfoController.m */; };
@@ -539,13 +540,6 @@
 		504252C41F5ACF23006DCB66 /* UIWindow+Launch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Launch.h"; sourceTree = "<group>"; };
 		504252C51F5ACF23006DCB66 /* UIWindow+Launch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Launch.m"; sourceTree = "<group>"; };
 		504252C71F5ACF23006DCB66 /* CoreConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreConst.h; sourceTree = "<group>"; };
-		504252CB1F5ACF23006DCB66 /* UIImage+ReMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReMake.h"; sourceTree = "<group>"; };
-		504252CC1F5ACF23006DCB66 /* UIImage+ReMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReMake.m"; sourceTree = "<group>"; };
-		504252CE1F5ACF23006DCB66 /* CoreSDWebImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreSDWebImage.bundle; sourceTree = "<group>"; };
-		504252F11F5ACF23006DCB66 /* UIButton+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SD.h"; sourceTree = "<group>"; };
-		504252F21F5ACF23006DCB66 /* UIButton+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SD.m"; sourceTree = "<group>"; };
-		504252F31F5ACF23006DCB66 /* UIImageView+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SD.h"; sourceTree = "<group>"; };
-		504252F41F5ACF23006DCB66 /* UIImageView+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SD.m"; sourceTree = "<group>"; };
 		504252F61F5ACF23006DCB66 /* CoreSVP.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreSVP.bundle; sourceTree = "<group>"; };
 		504252F71F5ACF23006DCB66 /* CoreSVP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSVP.h; sourceTree = "<group>"; };
 		504252F81F5ACF23006DCB66 /* CoreSVP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreSVP.m; sourceTree = "<group>"; };
@@ -889,6 +883,15 @@
 		D32B03A41FCACFFD00518AB7 /* JKFogetPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKFogetPasswordController.m; sourceTree = "<group>"; };
 		D32B03A61FCAE43D00518AB7 /* JKForgetPasswordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKForgetPasswordApi.h; sourceTree = "<group>"; };
 		D32B03A71FCAE43D00518AB7 /* JKForgetPasswordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKForgetPasswordApi.m; sourceTree = "<group>"; };
+		D340DF051FE6378100996FA1 /* RefreshingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshingView.h; sourceTree = "<group>"; };
+		D340DF061FE6378100996FA1 /* RefreshingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshingView.m; sourceTree = "<group>"; };
+		D340DF091FE6509F00996FA1 /* UIButton+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SD.h"; sourceTree = "<group>"; };
+		D340DF0A1FE6509F00996FA1 /* UIImageView+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SD.m"; sourceTree = "<group>"; };
+		D340DF0B1FE6509F00996FA1 /* UIImage+ReMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReMake.h"; sourceTree = "<group>"; };
+		D340DF0C1FE6509F00996FA1 /* CoreSDWebImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreSDWebImage.bundle; sourceTree = "<group>"; };
+		D340DF0F1FE6509F00996FA1 /* UIButton+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SD.m"; sourceTree = "<group>"; };
+		D340DF111FE6509F00996FA1 /* UIImage+ReMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReMake.m"; sourceTree = "<group>"; };
+		D340DF121FE6509F00996FA1 /* UIImageView+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SD.h"; sourceTree = "<group>"; };
 		D343386B1EEECDA900F45C7E /* Joker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D343387F1EEECDA900F45C7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34338841EEECDA900F45C7E /* JokerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1278,10 +1281,10 @@
 		5042528E1F5ACF23006DCB66 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				D340DF081FE6509F00996FA1 /* CoreSDWebImage */,
 				5042528F1F5ACF23006DCB66 /* CoreArchive */,
 				504252951F5ACF23006DCB66 /* CoreCategory */,
 				504252C61F5ACF23006DCB66 /* CoreExtend */,
-				504252C81F5ACF23006DCB66 /* CoreSDWebImage */,
 				504252F51F5ACF23006DCB66 /* CoreSVP */,
 				504253001F5ACF23006DCB66 /* LFRoundProgressView */,
 			);
@@ -1452,44 +1455,6 @@
 				504252C71F5ACF23006DCB66 /* CoreConst.h */,
 			);
 			path = CoreExtend;
-			sourceTree = "<group>";
-		};
-		504252C81F5ACF23006DCB66 /* CoreSDWebImage */ = {
-			isa = PBXGroup;
-			children = (
-				504252C91F5ACF23006DCB66 /* Lib */,
-				504252F11F5ACF23006DCB66 /* UIButton+SD.h */,
-				504252F21F5ACF23006DCB66 /* UIButton+SD.m */,
-				504252F31F5ACF23006DCB66 /* UIImageView+SD.h */,
-				504252F41F5ACF23006DCB66 /* UIImageView+SD.m */,
-			);
-			path = CoreSDWebImage;
-			sourceTree = "<group>";
-		};
-		504252C91F5ACF23006DCB66 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				504252CA1F5ACF23006DCB66 /* Category */,
-				504252CD1F5ACF23006DCB66 /* Resource */,
-			);
-			path = Lib;
-			sourceTree = "<group>";
-		};
-		504252CA1F5ACF23006DCB66 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				504252CB1F5ACF23006DCB66 /* UIImage+ReMake.h */,
-				504252CC1F5ACF23006DCB66 /* UIImage+ReMake.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		504252CD1F5ACF23006DCB66 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				504252CE1F5ACF23006DCB66 /* CoreSDWebImage.bundle */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		504252F51F5ACF23006DCB66 /* CoreSVP */ = {
@@ -2020,6 +1985,53 @@
 			path = ZWTopSelectVcView;
 			sourceTree = "<group>";
 		};
+		D340DF041FE6370F00996FA1 /* RefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				D340DF051FE6378100996FA1 /* RefreshingView.h */,
+				D340DF061FE6378100996FA1 /* RefreshingView.m */,
+			);
+			path = RefreshView;
+			sourceTree = "<group>";
+		};
+		D340DF081FE6509F00996FA1 /* CoreSDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				D340DF091FE6509F00996FA1 /* UIButton+SD.h */,
+				D340DF0A1FE6509F00996FA1 /* UIImageView+SD.m */,
+				D340DF0B1FE6509F00996FA1 /* UIImage+ReMake.h */,
+				D340DF0C1FE6509F00996FA1 /* CoreSDWebImage.bundle */,
+				D340DF0D1FE6509F00996FA1 /* Lib */,
+				D340DF0F1FE6509F00996FA1 /* UIButton+SD.m */,
+				D340DF101FE6509F00996FA1 /* Resource */,
+				D340DF111FE6509F00996FA1 /* UIImage+ReMake.m */,
+				D340DF121FE6509F00996FA1 /* UIImageView+SD.h */,
+			);
+			path = CoreSDWebImage;
+			sourceTree = "<group>";
+		};
+		D340DF0D1FE6509F00996FA1 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				D340DF0E1FE6509F00996FA1 /* Category */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		D340DF0E1FE6509F00996FA1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D340DF101FE6509F00996FA1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		D34338621EEECDA900F45C7E = {
 			isa = PBXGroup;
 			children = (
@@ -2158,6 +2170,7 @@
 		D3973B1D1EEEEC200076B246 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D340DF041FE6370F00996FA1 /* RefreshView */,
 				50736C771F83BC6900E1BB45 /* TOYDatePicker */,
 				504CAE7A1F70E8A400D27FFE /* perfectUserInfo */,
 				501F57C71F2099D2001D2C8A /* StarView */,
@@ -2704,7 +2717,6 @@
 				508C55971F284467001F1A15 /* emo_039@2x.png in Resources */,
 				508C55881F284467001F1A15 /* emo_024@2x.png in Resources */,
 				508C556E1F284467001F1A15 /* CHChatFaceboard.bundle in Resources */,
-				504253261F5ACF23006DCB66 /* CoreSDWebImage.bundle in Resources */,
 				508C55A71F284467001F1A15 /* emo_055@2x.png in Resources */,
 				508C55711F284467001F1A15 /* emo_001@2x.png in Resources */,
 				508C55751F284467001F1A15 /* emo_005@2x.png in Resources */,
@@ -2730,6 +2742,7 @@
 				502347571F18975500E82B8E /* pageCurrent@2x.png in Resources */,
 				508C55911F284467001F1A15 /* emo_033@2x.png in Resources */,
 				508C559D1F284467001F1A15 /* emo_045@2x.png in Resources */,
+				D340DF141FE650A000996FA1 /* CoreSDWebImage.bundle in Resources */,
 				508C55931F284467001F1A15 /* emo_035@2x.png in Resources */,
 				508C55791F284467001F1A15 /* emo_009@2x.png in Resources */,
 				508C55801F284467001F1A15 /* emo_016@2x.png in Resources */,
@@ -2793,13 +2806,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Joker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D413BA26C17EB53763A43F5C /* [CP] Copy Pods Resources */ = {
@@ -2808,9 +2824,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Joker/Pods-Joker-resources.sh",
+				"${PODS_ROOT}/CHWebView/CHWebView/Resource/CHWebView.bundle",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
@@ -2842,7 +2864,6 @@
 				D3973B581EEEEC200076B246 /* UIImage+Scale.m in Sources */,
 				504C770A1F55BB3D0004AE70 /* JKTVTimelineCellVM.m in Sources */,
 				505D869E1F3768B5005B6A6C /* CHDownSheet.m in Sources */,
-				504253251F5ACF23006DCB66 /* UIImage+ReMake.m in Sources */,
 				508C55AB1F2844A3001F1A15 /* UIImage+CHImage.m in Sources */,
 				50F520B31F613310004B59BF /* JKVarietyTimelineCellVM.m in Sources */,
 				508C551F1F26F1A7001F1A15 /* JKAnimationTimeLineController.m in Sources */,
@@ -2906,6 +2927,7 @@
 				50AC9D3F1F0DE45300AA7AEC /* JKTopicDetailVM.m in Sources */,
 				50401D0B1F85331100CA8BFE /* JKChangeWorkCommentApi.m in Sources */,
 				D32B03A51FCACFFD00518AB7 /* JKFogetPasswordController.m in Sources */,
+				D340DF071FE6378100996FA1 /* RefreshingView.m in Sources */,
 				508DB6DF1F2598AA002ABF97 /* CHLoginButton.m in Sources */,
 				D3973B591EEEEC200076B246 /* ASNavigationController.m in Sources */,
 				506C126E1EF6E83600DF705F /* JKTopicsFilteredListVM.m in Sources */,
@@ -2927,7 +2949,6 @@
 				508C552B1F27A469001F1A15 /* JKTVTimeLineVM.m in Sources */,
 				50DA8B651F1B73FA00530F49 /* JKTopicDetailCommentListModel.m in Sources */,
 				50AC9D391F0DDCD600AA7AEC /* JKTopicDetailModel.m in Sources */,
-				504253371F5ACF23006DCB66 /* UIButton+SD.m in Sources */,
 				D3ED98381FBD41DF0034F1C9 /* JKMyMessageListApi.m in Sources */,
 				D3973BDE1EF239B10076B246 /* JKNewsListViewController.m in Sources */,
 				501F57BA1F1F5057001D2C8A /* JKTopicRelatedWorksListVM.m in Sources */,
@@ -2940,6 +2961,7 @@
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
 				D3ED982F1FBCC1910034F1C9 /* JKMyTopicMineApi.m in Sources */,
+				D340DF151FE650A000996FA1 /* UIButton+SD.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,
 				504253231F5ACF23006DCB66 /* UIView+Extend.m in Sources */,
 				50658B3F1F5BDDDF00B966E2 /* JKWorkCommentCaiApi.m in Sources */,
@@ -2963,6 +2985,7 @@
 				504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */,
 				D3ED98321FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m in Sources */,
 				50E0C2D21F698789004A5969 /* JKVarietyDetailVM.m in Sources */,
+				D340DF161FE650A000996FA1 /* UIImage+ReMake.m in Sources */,
 				504C771C1F55C19C0004AE70 /* JKGameTimeLineCollectionViewCell.m in Sources */,
 				504C77011F55B9A10004AE70 /* JKTimelineTVModel.m in Sources */,
 				50376CF61F629905009511FF /* JKWorkDirectorListController.m in Sources */,
@@ -3087,7 +3110,6 @@
 				50451D071F58650A004BCFC6 /* JKFilmDetailModel.m in Sources */,
 				50C403E21FA8248B007468D0 /* JKMyMessageVM.m in Sources */,
 				504253181F5ACF23006DCB66 /* NSString+Extend.m in Sources */,
-				504253381F5ACF23006DCB66 /* UIImageView+SD.m in Sources */,
 				50521A3A1F683F2100AE8B00 /* JKGameDetailVM.m in Sources */,
 				504253111F5ACF23006DCB66 /* NSString+File.m in Sources */,
 				D3ED983E1FBD4C980034F1C9 /* JKMyMessageCellVM.m in Sources */,
@@ -3098,6 +3120,7 @@
 				D3973BE41EF23A040076B246 /* JKTopicsListViewController.m in Sources */,
 				50C403E51FA824C8007468D0 /* JKMyLookPlayVM.m in Sources */,
 				50376CFC1F629CB6009511FF /* JKWorkDirectorListVM.m in Sources */,
+				D340DF131FE650A000996FA1 /* UIImageView+SD.m in Sources */,
 				501F57B11F1E72CF001D2C8A /* JKFilmCollectionViewCell.m in Sources */,
 				502C6CC61F5EF029009B93E4 /* JKAnimationTimelineCell.m in Sources */,
 				50C403D91FA81AAC007468D0 /* JKMyLookPlayController.m in Sources */,

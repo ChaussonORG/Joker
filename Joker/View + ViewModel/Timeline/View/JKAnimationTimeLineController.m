@@ -55,6 +55,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+    [self.mainTableView.mj_header beginRefreshing];
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
         @strongify(self)
@@ -73,6 +74,8 @@
     [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
         
         @strongify(self);
+        
+        
         [self.mainTableView reloadData];
         
         if (self.viewModel.queryPage == 1) {
@@ -85,6 +88,10 @@
         }else{
             [self.mainTableView.mj_footer endRefreshing];
         }
+        if (self.mainTableView.contentOffset.y <= 0) {
+            [self.mainTableView setContentOffset:CGPointZero animated:YES];
+        }
+        
     }];
     
 }
@@ -92,7 +99,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-     [self.mainTableView setContentOffset:CGPointZero animated:YES];
+    
 //    [self.viewModel requestData];
     
    
