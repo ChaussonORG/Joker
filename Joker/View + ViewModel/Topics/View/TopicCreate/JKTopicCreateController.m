@@ -61,7 +61,7 @@
     self = [super init];
     if (self) {
         
-        
+        self.type = JKTopicCreateNormal;
         self.viewModel = [[JKTopicCreateVM alloc]init];
         self.viewModel.delegate = self;
         
@@ -128,6 +128,8 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+
+    
     self.titleTextView = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 70)];
     self.titleTextView.userInteractionEnabled = YES;
     self.titleTextView.delegate = self;
@@ -142,36 +144,7 @@
     [self.titleTextView addSubview:self.titlePlaceholder];
     
     
-    @weakify(self);
-    [self.titleTextView.rac_textSignal subscribeNext:^(NSString *content){
-        @strongify(self);
-        self.titlePlaceholder.hidden = (content && content.length > 0);
-        
-        CGRect textViewFrame = self.titleTextView.frame;
-        CGSize textSize = [self.titleTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 100.0f)];
-        if (textSize.height > 70) {//3行了  两行52 三行70
-            while (textSize.height > 70) {
-                self.titleTextView.text = [self.titleTextView.text substringToIndex:[self.titleTextView.text length]-1];
-                textSize = [self.titleTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 100.0f)];
-            }
-            
-        }
-        
-        if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
-            
-            [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
-            self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
-            
-        }
-        else{
-            
-            [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
-            
-            self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
-            
-        }
-
-    }];
+   
     
     
     UIView *lineView = [[UIView alloc]init];
@@ -257,8 +230,110 @@
     self.faceView.sendBtn.hidden = YES;
 //    [self.view addSubview:self.faceView];
     
+    if (self.type == JKTopicCreateDraft) {
+        
+        [self.titleTextView becomeFirstResponder];
+        
+        self.titleTextView.text = self.viewModel.title;
+  
+        NSArray *contentArr = [self.viewModel.content componentsSeparatedByString:@"[图片"];
+        
+        NSMutableAttributedString *contentStr = [[NSMutableAttributedString alloc] init];;
+        for (int i = 0; i < contentArr.count; i ++) {
+            NSString *str = contentArr[i];
+            
+            if (i == 0) {
+                if ([self.viewModel.content hasPrefix:@"[图片"]) {
+                    
+                    NSArray *arr = [contentArr[0] componentsSeparatedByString:@"]"];
+                    
+                    NSString *imageName = arr[0];
+                    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+                    NSString *path1 = [pathArray objectAtIndex:0];
+                    NSString *myPath = [path1 stringByAppendingPathComponent:imageName];
+                    
+                    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:myPath];
+                    
+                    if (imgFromUrl3) {
+                        [self setAttributeStringWithImage:imgFromUrl3];
+                    }
+                     
+                    contentStr = [[NSMutableAttributedString alloc]initWithAttributedString:self.contentView.attributedText];
+                    NSAttributedString *string6 = [[NSAttributedString alloc] initWithString:arr[1] attributes:@{NSFontAttributeName :  [JKStyleConfiguration titleFont],NSForegroundColorAttributeName : self.contentView.textColor}];
+                    [contentStr appendAttributedString:string6];
+                    self.contentView.attributedText = contentStr;
+                    
+                }
+                else{
+                    
+                    self.contentView.text = contentArr[0];
+                }
+            }
+            else{
+                
+                NSArray *arr = [contentArr[i] componentsSeparatedByString:@"]"];
+                
+                NSString *imageName = arr[0];
+                NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+                NSString *path1 = [pathArray objectAtIndex:0];
+                NSString *myPath = [path1 stringByAppendingPathComponent:imageName];
+                
+                UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:myPath];
+                
+                if (imgFromUrl3) {
+                    [self setAttributeStringWithImage:imgFromUrl3];
+                }
+                
+                contentStr = [[NSMutableAttributedString alloc]initWithAttributedString:self.contentView.attributedText];
+                NSAttributedString *string6 = [[NSAttributedString alloc] initWithString:arr[1] attributes:@{NSFontAttributeName :  [JKStyleConfiguration titleFont]}];
+                [contentStr appendAttributedString:string6];
+                self.contentView.attributedText = contentStr;
+                
+            }
+           
+        }
+    }
+    @weakify(self);
+    [self.titleTextView.rac_textSignal subscribeNext:^(NSString *content){
+        @strongify(self);
+        self.titlePlaceholder.hidden = (content && content.length > 0);
+        
+        CGRect textViewFrame = self.titleTextView.frame;
+        CGSize textSize = [self.titleTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 100.0f)];
+        if (textSize.height > 70) {//3行了  两行52 三行70
+            while (textSize.height > 70) {
+                self.titleTextView.text = [self.titleTextView.text substringToIndex:[self.titleTextView.text length]-1];
+                textSize = [self.titleTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), 100.0f)];
+            }
+            
+        }
+        
+        if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
+            
+            [self.nextBtn setTitleColor:[JKStyleConfiguration blackColor] forState:UIControlStateNormal];
+            self.nextBtn.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
+            
+        }
+        else{
+            
+            [self.nextBtn setTitleColor:[JKStyleConfiguration ccccccColor] forState:UIControlStateNormal];
+            
+            self.nextBtn.layer.borderColor = [JKStyleConfiguration ccccccColor].CGColor;
+            
+        }
+        
+    }];
+    
+    if (self.contentView.text.length > 0) {
+        self.contentPlaceholder.hidden = YES;
+    }
+    else{
+     self.contentPlaceholder.hidden = NO;
+    }
     [self binding];
 }
+
+
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     
@@ -375,7 +450,7 @@
 //    [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
 
     if (self.contentView.text.length > 0 && self.titleTextView.text.length > 0 && ![self.viewModel.relateWorkName isEqualToString:@"关联作品"]) {
-        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+        UIAlertView *alerv=[[UIAlertView alloc]initWithTitle:@"是否保存至草稿箱?" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alerv.alertViewStyle=UIAlertViewStyleDefault;
         [alerv show];
     }
@@ -617,7 +692,7 @@
             
             modelImage.dataType = JKTopicDataImage;
             
-            modelImage.image = _photoUrls[i];
+            modelImage.image = _photos[i];
             
             [self.dataSource addObject:modelImage];
         }

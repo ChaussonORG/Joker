@@ -33,6 +33,13 @@
     }
     return self;
 }
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

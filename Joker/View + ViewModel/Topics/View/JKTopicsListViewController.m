@@ -170,6 +170,7 @@
     [self.view addSubview:self.topicsListTableView];
     self.topicsListTableView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
     self.topicsListTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+     [self.topicsListTableView.mj_header beginRefreshing];
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
         @strongify(self)

@@ -28,7 +28,7 @@
     
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-//    2@"portal.playplus1.com"
+//    @"portal.playplus1.com"
     NSString *url = @"joker.dtxzw.com/platform";
     [[CHNetworkConfig sharedInstance]   setBaseUrl:url];
     [[CHNetworkConfig sharedInstance]   setAllowPrintLog:YES];

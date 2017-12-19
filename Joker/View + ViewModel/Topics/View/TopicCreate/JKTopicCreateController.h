@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "JKTopicCreateVM.h"
+
+typedef NS_ENUM(NSInteger, JKTopicCreateType){
+    JKTopicCreateNormal,
+    JKTopicCreateDraft,
+};
+
 @interface JKTopicCreateController : UIViewController
 
 @property (nonatomic ,strong) JKTopicCreateVM *viewModel;
 
+
+@property (nonatomic , assign) JKTopicCreateType type;
 
 @end

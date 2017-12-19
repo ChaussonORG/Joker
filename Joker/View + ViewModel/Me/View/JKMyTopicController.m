@@ -31,8 +31,10 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-    
+    [self.viewModel requestData];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
 }
 - (void)viewDidLoad {
@@ -62,7 +64,7 @@
     }];
     footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.topicsListTableView.mj_footer = footer;
-     [self.viewModel requestData];
+    
     [self binding];
     // Do any additional setup after loading the view.
 }

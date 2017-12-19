@@ -347,6 +347,10 @@
 		D3973BEC1EF28A7A0076B246 /* JKTopicsListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BEB1EF28A7A0076B246 /* JKTopicsListVM.m */; };
 		D3973BEF1EF290190076B246 /* JKTopicListCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BEE1EF290190076B246 /* JKTopicListCellVM.m */; };
 		D3973BF21EF290280076B246 /* JKTopicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3973BF11EF290280076B246 /* JKTopicListCell.m */; };
+		D397755F1FE8F9A900047BE3 /* JKPersonInfoHeaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = D397755E1FE8F9A900047BE3 /* JKPersonInfoHeaderController.m */; };
+		D39775621FE8FA2800047BE3 /* JKPersonInfoNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775611FE8FA2800047BE3 /* JKPersonInfoNameController.m */; };
+		D39775651FE8FA4C00047BE3 /* JKPersonInfoGenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775641FE8FA4C00047BE3 /* JKPersonInfoGenderController.m */; };
+		D39775681FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775671FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m */; };
 		D3D3B9561FC6EBD800C4876B /* JKMySettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3B9551FC6EBD800C4876B /* JKMySettingController.m */; };
 		D3D3B9591FCA703A00C4876B /* JKMyMessageCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3B9581FCA703A00C4876B /* JKMyMessageCountApi.m */; };
 		D3ED982C1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED982B1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m */; };
@@ -988,6 +992,14 @@
 		D3973BEE1EF290190076B246 /* JKTopicListCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListCellVM.m; sourceTree = "<group>"; };
 		D3973BF01EF290280076B246 /* JKTopicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicListCell.h; sourceTree = "<group>"; };
 		D3973BF11EF290280076B246 /* JKTopicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicListCell.m; sourceTree = "<group>"; };
+		D397755D1FE8F9A900047BE3 /* JKPersonInfoHeaderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoHeaderController.h; sourceTree = "<group>"; };
+		D397755E1FE8F9A900047BE3 /* JKPersonInfoHeaderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoHeaderController.m; sourceTree = "<group>"; };
+		D39775601FE8FA2800047BE3 /* JKPersonInfoNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoNameController.h; sourceTree = "<group>"; };
+		D39775611FE8FA2800047BE3 /* JKPersonInfoNameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoNameController.m; sourceTree = "<group>"; };
+		D39775631FE8FA4C00047BE3 /* JKPersonInfoGenderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoGenderController.h; sourceTree = "<group>"; };
+		D39775641FE8FA4C00047BE3 /* JKPersonInfoGenderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoGenderController.m; sourceTree = "<group>"; };
+		D39775661FE8FA6100047BE3 /* JKPersonInfoBirthdayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoBirthdayController.h; sourceTree = "<group>"; };
+		D39775671FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoBirthdayController.m; sourceTree = "<group>"; };
 		D3D3B9541FC6EBD800C4876B /* JKMySettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMySettingController.h; sourceTree = "<group>"; };
 		D3D3B9551FC6EBD800C4876B /* JKMySettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMySettingController.m; sourceTree = "<group>"; };
 		D3D3B9571FCA703A00C4876B /* JKMyMessageCountApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageCountApi.h; sourceTree = "<group>"; };
@@ -2408,6 +2420,7 @@
 		D3973BD11EF2389F0076B246 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D397755C1FE8F94900047BE3 /* PersonInfoVC */,
 				D3973BE51EF23A160076B246 /* JKMeViewController.h */,
 				D3973BE61EF23A160076B246 /* JKMeViewController.m */,
 				D37684F71FDAFCE7008D03D8 /* JKPersonInfoController.h */,
@@ -2599,6 +2612,21 @@
 				50DA8B6A1F1B95DB00530F49 /* JKTopicDetailBottomVM.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D397755C1FE8F94900047BE3 /* PersonInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				D397755D1FE8F9A900047BE3 /* JKPersonInfoHeaderController.h */,
+				D397755E1FE8F9A900047BE3 /* JKPersonInfoHeaderController.m */,
+				D39775601FE8FA2800047BE3 /* JKPersonInfoNameController.h */,
+				D39775611FE8FA2800047BE3 /* JKPersonInfoNameController.m */,
+				D39775631FE8FA4C00047BE3 /* JKPersonInfoGenderController.h */,
+				D39775641FE8FA4C00047BE3 /* JKPersonInfoGenderController.m */,
+				D39775661FE8FA6100047BE3 /* JKPersonInfoBirthdayController.h */,
+				D39775671FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m */,
+			);
+			path = PersonInfoVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2905,6 +2933,7 @@
 				501F57C61F1F5EBB001D2C8A /* JKMyfavoriteWorksModel.m in Sources */,
 				504253441F5B065D006DCB66 /* JKWorkCommentApi.m in Sources */,
 				504253501F5B2441006DCB66 /* JKWorkCommentCreatApi.m in Sources */,
+				D39775621FE8FA2800047BE3 /* JKPersonInfoNameController.m in Sources */,
 				D3973B781EEEEC200076B246 /* JKGameDetailModel.m in Sources */,
 				50451D041F586470004BCFC6 /* JKFilmDetailApi.m in Sources */,
 				50521A221F6509DF00AE8B00 /* JKTVDetailVM.m in Sources */,
@@ -2972,6 +3001,7 @@
 				50AC9D981F0EA7C900AA7AEC /* JKSubcommentListCellVM.m in Sources */,
 				501F57C01F1F5E88001D2C8A /* JKMyfavoriteWorksApi.m in Sources */,
 				D3973BE71EF23A160076B246 /* JKMeViewController.m in Sources */,
+				D397755F1FE8F9A900047BE3 /* JKPersonInfoHeaderController.m in Sources */,
 				507A67631F3AF71E00377C5E /* JKCommentCaiApi.m in Sources */,
 				508DB6E01F2598AA002ABF97 /* CHLoginTextField.m in Sources */,
 				501F7E351EFAB1E100FE1E35 /* JKTopicListModel.m in Sources */,
@@ -2981,6 +3011,7 @@
 				50DA8B6B1F1B95DB00530F49 /* JKTopicDetailBottomVM.m in Sources */,
 				5042531C1F5ACF23006DCB66 /* UIFont+Extend.m in Sources */,
 				5042530A1F5ACF23006DCB66 /* PBSaveBtn.m in Sources */,
+				D39775651FE8FA4C00047BE3 /* JKPersonInfoGenderController.m in Sources */,
 				50AC9D961F0EA7C900AA7AEC /* JKCommentListCellVM.m in Sources */,
 				504CAE751F7020D600D27FFE /* JKFavoriteCountApi.m in Sources */,
 				D3ED98321FBCC1A80034F1C9 /* JKMyTopicReplyedApi.m in Sources */,
@@ -3078,6 +3109,7 @@
 				501F57B71F1EFCD6001D2C8A /* JKTopicDetailTopcomentModel.m in Sources */,
 				504252671F5AB14E006DCB66 /* JKWorkDesCell.m in Sources */,
 				5023475A1F18975500E82B8E /* YLDragZoomCycleView.m in Sources */,
+				D39775681FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m in Sources */,
 				5042531D1F5ACF23006DCB66 /* UIImage+Color.m in Sources */,
 				50521A371F683EFA00AE8B00 /* JKGameDetailController.m in Sources */,
 				504253411F5ADE35006DCB66 /* PhotoCotentView.m in Sources */,

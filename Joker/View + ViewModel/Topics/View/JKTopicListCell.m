@@ -161,6 +161,15 @@
         
         self.commentCountBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 50 - 15, self.contentLabel.frame.origin.y + self.contentLabel.frame.size.height + 5, 50, 30);
         
+        
+        if (self.viewModel.style == TopicCommentDraft) {
+            
+            self.commentCountBtn.hidden = YES;
+        }
+        else{
+            self.commentCountBtn.hidden = NO;
+            
+        }
     }];
     
     
@@ -192,8 +201,16 @@
 
 - (void)clickTopicListCell{
     
+    if (self.viewModel.style == TopicCommentNormal) {
+        
+        [self.viewModel openTopicDetail];
+        
+    }
+    else{
+        
+        [self.viewModel editDraft];
+    }
     
-    [self.viewModel openTopicDetail];
     
     
 }

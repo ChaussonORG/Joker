@@ -43,7 +43,7 @@
     self.view.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
 
     self.mainTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
-    self.mainTableView.backgroundColor = [UIColor whiteColor];
+    self.mainTableView.backgroundColor = [JKStyleConfiguration screenBackgroundColor];
     
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;

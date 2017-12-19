@@ -14,6 +14,7 @@
 #import "JKAnimationDetailController.h"
 #import "JKGameDetailController.h"
 #import "JKVarietyDetailController.h"
+#import "JKTopicCreateController.h"
 @implementation JKTopicListCellVM
 
 - (instancetype)init
@@ -21,7 +22,7 @@
     self = [super init];
     if (self) {
         
-        
+        self.style = TopicCommentNormal;
         
         
     }
@@ -75,7 +76,20 @@
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES ];
     }
     
+}
+
+- (void)editDraft{
     
+    JKTopicCreateController *vc = [[JKTopicCreateController alloc]init];
+    
+    vc.type = JKTopicCreateDraft;
+    vc.viewModel.relateWorkName = self.related;
+    vc.viewModel.projectId = self.projectId;
+    vc.viewModel.type = self.projectType;
+    vc.viewModel.title = self.content;
+    vc.viewModel.content = self.topicContent;
+    vc.viewModel.draftNum = self.draftNum;
+    [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     
     
 }

@@ -20,4 +20,7 @@ typedef NS_ENUM(NSInteger, JKPersonInfoType){
 @property (nonatomic , strong) NSString *content;
 
 @property (nonatomic , assign) JKPersonInfoType type;
+
+
+- (void)gotoEditInfo;
 @end

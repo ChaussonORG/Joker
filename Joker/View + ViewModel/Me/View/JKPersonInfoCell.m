@@ -16,7 +16,13 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        
+        self.backgroundColor = [JKStyleConfiguration whiteColor];
         [self setupSubviews];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickCell)];
+        
+        [self addGestureRecognizer:tap];
         
         [self binding];
         
@@ -96,6 +102,11 @@
 - (void)setViewModel:(JKPersonInfoCellVM *)viewModel{
     _viewModel = viewModel;
     
+}
+
+- (void)clickCell{
+    
+    [self.viewModel  gotoEditInfo];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

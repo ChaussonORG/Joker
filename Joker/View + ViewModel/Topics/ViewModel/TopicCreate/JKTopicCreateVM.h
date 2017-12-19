@@ -23,6 +23,12 @@
 
 @property (nonatomic , strong) NSString *relateWorkName;
 
+@property (nonatomic , strong) NSString *title;
+
+@property (nonatomic , strong) NSString *content;
+
+@property (nonatomic , strong) NSString *draftNum;
+
 @property (nonatomic , assign) BOOL isWithWork;
 
 - (void)createTopicWithTitle:(NSString *)title

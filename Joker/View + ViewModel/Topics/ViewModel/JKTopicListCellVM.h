@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger, JKTopicCommentStyle){
+    TopicCommentNormal,
+    TopicCommentDraft,
+};
 
 @protocol TopicCommentDelegate <NSObject>
 
@@ -16,6 +20,8 @@
 
 
 @interface JKTopicListCellVM : NSObject
+
+@property (nonatomic , assign) JKTopicCommentStyle style;
 
 @property (nonatomic ,weak) id<TopicCommentDelegate>delegate;
 
@@ -43,10 +49,15 @@
 
 @property (nonatomic , strong) NSString *projectType;
 
+@property (nonatomic , strong) NSString *topicContent;
+
+@property (nonatomic , strong) NSString *draftNum;
+
 - (void)openTopicDetail;
 
 - (void)openTopicComment;
 
 - (void)openWorkDetail;
 
+- (void)editDraft;
 @end
