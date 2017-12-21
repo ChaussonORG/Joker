@@ -23,5 +23,5 @@
 
 - (void)saveUser;
 - (void)saveUserWithInfo:(NSDictionary *)info;
-//- (void)saveUserWithSTUser:(JKUser *)user;
+- (void)saveUserWithJKUser:(JKUser *)user;
 @end

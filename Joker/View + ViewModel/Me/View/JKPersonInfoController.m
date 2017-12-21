@@ -24,8 +24,8 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
-    
-    
+     [self.viewModel requestData];
+    [self.mainTableView reloadData];
 }
 
 - (instancetype)init
@@ -51,7 +51,7 @@
     [self.view addSubview:self.mainTableView];
     
     
-    [self.viewModel requestData];
+   
     
     [self binding];
 }
@@ -60,6 +60,13 @@
     @weakify(self)
     [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
       @strongify(self)
+        
+        [self.mainTableView reloadData];
+        
+    }];
+    
+    [RACObserve(self, viewModel.contentArr) subscribeNext:^(id x) {
+        @strongify(self)
         
         [self.mainTableView reloadData];
         

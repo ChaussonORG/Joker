@@ -11,6 +11,8 @@
 @interface JKPersonInfoVM : NSObject
 
 @property (nonatomic , strong) NSMutableArray <JKPersonInfoCellVM *>*cellViewModels;
+@property (nonatomic ,strong) NSArray *titleArray;
 
+@property (nonatomic ,strong) NSMutableArray *contentArr;
 - (void)requestData;
 @end

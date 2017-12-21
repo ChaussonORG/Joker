@@ -8,6 +8,7 @@
 
 #import "JKPersonInfoNameController.h"
 #import "JKProfileApi.h"
+#import "JKUserManager.h"
 @interface JKPersonInfoNameController ()
 @property (nonatomic , strong) UIButton *nextBtn;
 
@@ -59,8 +60,12 @@
             
             if ([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
                 
+                [JKUserManager sharedData].currentUser.nickname = api.nickname;
                 
-                
+                JKUser *user= [JKUserManager sharedData].currentUser;
+                user.nickname = api.nickname;
+                [[JKUserManager sharedData] saveUserWithJKUser:user];
+                [[ASNavigator shareModalCenter] popFormerlyViewControllerWithAnimation:YES];
             }
             
             

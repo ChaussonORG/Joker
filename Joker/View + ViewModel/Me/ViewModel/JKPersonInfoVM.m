@@ -12,9 +12,7 @@
 
 @interface  JKPersonInfoVM ()
 
-@property (nonatomic ,strong) NSArray *titleArray;
 
-@property (nonatomic ,strong) NSMutableArray *contentArr;
 
 @end
 
@@ -29,30 +27,45 @@
         
         self.titleArray = @[@"头像",@"昵称",@"性别",@"生日"];
         
-        self.contentArr = [NSMutableArray array];
         
-        [self.contentArr addObject:[JKUserManager sharedData].currentUser.photo];
-        
-        [self.contentArr addObject:[JKUserManager sharedData].currentUser.nickname];
-        
-        
-        if ([JKUserManager sharedData].currentUser.gender == 0) {
-            
-            [self.contentArr addObject:@"男"];
-            
-            
-        }
-        else{
-            
-            [self.contentArr addObject:@"女"];
-        }
-        [self.contentArr addObject: [HHTGetString timeStrwithTimestamp:[JKUserManager sharedData].currentUser.birthday]];
     }
     return self;
 }
 - (void)requestData{
     
     
+    if (self.contentArr.count> 0) {
+        [self.contentArr removeAllObjects];
+    }
+    else{
+        
+        self.contentArr = [NSMutableArray array];
+    }
+    
+    
+    [self.contentArr addObject:[JKUserManager sharedData].currentUser.photo];
+    
+    [self.contentArr addObject:[JKUserManager sharedData].currentUser.nickname];
+    
+    
+    if ([JKUserManager sharedData].currentUser.gender == 0) {
+        
+        [self.contentArr addObject:@"男"];
+        
+        
+    }
+    else{
+        
+        [self.contentArr addObject:@"女"];
+    }
+    
+    
+    [self.contentArr addObject: [HHTGetString timeStrwithTimestamp:[JKUserManager sharedData].currentUser.birthday]];
+    
+    if (self.cellViewModels.count > 0) {
+        
+        [self.cellViewModels removeAllObjects];
+    }
     for (int i = 0; i < 4 ; i ++) {
         
         JKPersonInfoCellVM   *cellVM = [[JKPersonInfoCellVM  alloc]init];
