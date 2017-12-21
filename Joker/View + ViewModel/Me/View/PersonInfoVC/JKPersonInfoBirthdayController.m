@@ -7,7 +7,7 @@
 //
 
 #import "JKPersonInfoBirthdayController.h"
-
+#import "JKProfileApi.h"
 @interface JKPersonInfoBirthdayController ()
 @property (nonatomic , strong) UIButton *nextBtn;
 @end

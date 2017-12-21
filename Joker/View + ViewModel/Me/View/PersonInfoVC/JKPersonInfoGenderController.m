@@ -7,7 +7,7 @@
 //
 
 #import "JKPersonInfoGenderController.h"
-
+#import "JKProfileApi.h"
 @interface JKPersonInfoGenderController ()
 @property (nonatomic , strong) UIButton *nextBtn;
 @end

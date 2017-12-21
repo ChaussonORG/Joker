@@ -7,7 +7,10 @@
 //
 
 #import "JKPersonInfoCellVM.h"
-
+#import "JKPersonInfoHeaderController.h"
+#import "JKPersonInfoNameController.h"
+#import "JKPersonInfoGenderController.h"
+#import "JKPersonInfoBirthdayController.h"
 @implementation JKPersonInfoCellVM
 
 - (instancetype)init
@@ -25,31 +28,27 @@
     
     
     if ([self.mainTitle isEqualToString:@"头像"]) {
-        JKMyLookPlayController *vc = [[JKMyLookPlayController alloc]init];
+        JKPersonInfoHeaderController *vc = [[JKPersonInfoHeaderController alloc]init];
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     
-    if ([self.title isEqualToString:@"我的话题"]) {
-        JKMyTopicController *vc = [[JKMyTopicController alloc]init];
+    if ([self.mainTitle isEqualToString:@"昵称"]) {
+        JKPersonInfoNameController *vc = [[JKPersonInfoNameController alloc]init];
+        
+        vc.name = self.content;
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     
-    if ([self.title isEqualToString:@"我的消息"]) {
-        JKMyMessageController *vc = [[JKMyMessageController alloc]init];
-        [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
-    }
-    
-    if ([self.title isEqualToString:@"修改密码"]) {
-        JKChangePasswordController *vc = [[JKChangePasswordController alloc]init];
+    if ([self.mainTitle isEqualToString:@"性别"]) {
+        JKPersonInfoGenderController *vc = [[JKPersonInfoGenderController alloc]init];
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
     
     
-    if ([self.title isEqualToString:@"账号管理"]) {
-        JKPersonInfoController *vc = [[JKPersonInfoController alloc]init];
+    if ([self.mainTitle isEqualToString:@"生日"]) {
+        JKPersonInfoBirthdayController *vc = [[JKPersonInfoBirthdayController alloc]init];
         [[ASNavigator shareModalCenter] pushViewController:vc parameters:nil isAnimation:YES];
     }
-    
     
     
 }

@@ -10,4 +10,6 @@
 
 @interface JKPersonInfoNameController : UIViewController
 
+
+@property (nonatomic , strong) NSString *name;
 @end

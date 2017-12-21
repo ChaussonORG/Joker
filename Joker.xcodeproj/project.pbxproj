@@ -351,6 +351,7 @@
 		D39775621FE8FA2800047BE3 /* JKPersonInfoNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775611FE8FA2800047BE3 /* JKPersonInfoNameController.m */; };
 		D39775651FE8FA4C00047BE3 /* JKPersonInfoGenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775641FE8FA4C00047BE3 /* JKPersonInfoGenderController.m */; };
 		D39775681FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39775671FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m */; };
+		D3C4BB371FE94FF8001C8D10 /* JKProfileApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C4BB361FE94FF8001C8D10 /* JKProfileApi.m */; };
 		D3D3B9561FC6EBD800C4876B /* JKMySettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3B9551FC6EBD800C4876B /* JKMySettingController.m */; };
 		D3D3B9591FCA703A00C4876B /* JKMyMessageCountApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3B9581FCA703A00C4876B /* JKMyMessageCountApi.m */; };
 		D3ED982C1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED982B1FBCB9C50034F1C9 /* JKMyLookPlayCommentedApi.m */; };
@@ -1000,6 +1001,8 @@
 		D39775641FE8FA4C00047BE3 /* JKPersonInfoGenderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoGenderController.m; sourceTree = "<group>"; };
 		D39775661FE8FA6100047BE3 /* JKPersonInfoBirthdayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoBirthdayController.h; sourceTree = "<group>"; };
 		D39775671FE8FA6100047BE3 /* JKPersonInfoBirthdayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoBirthdayController.m; sourceTree = "<group>"; };
+		D3C4BB351FE94FF8001C8D10 /* JKProfileApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKProfileApi.h; sourceTree = "<group>"; };
+		D3C4BB361FE94FF8001C8D10 /* JKProfileApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKProfileApi.m; sourceTree = "<group>"; };
 		D3D3B9541FC6EBD800C4876B /* JKMySettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMySettingController.h; sourceTree = "<group>"; };
 		D3D3B9551FC6EBD800C4876B /* JKMySettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMySettingController.m; sourceTree = "<group>"; };
 		D3D3B9571FCA703A00C4876B /* JKMyMessageCountApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMyMessageCountApi.h; sourceTree = "<group>"; };
@@ -1863,6 +1866,8 @@
 				D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */,
 				D3D3B9571FCA703A00C4876B /* JKMyMessageCountApi.h */,
 				D3D3B9581FCA703A00C4876B /* JKMyMessageCountApi.m */,
+				D3C4BB351FE94FF8001C8D10 /* JKProfileApi.h */,
+				D3C4BB361FE94FF8001C8D10 /* JKProfileApi.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -3157,6 +3162,7 @@
 				502C6CC61F5EF029009B93E4 /* JKAnimationTimelineCell.m in Sources */,
 				50C403D91FA81AAC007468D0 /* JKMyLookPlayController.m in Sources */,
 				508C55191F26F17A001F1A15 /* JKFilmTimeLineController.m in Sources */,
+				D3C4BB371FE94FF8001C8D10 /* JKProfileApi.m in Sources */,
 				50E0C2CC1F698715004A5969 /* JKVarietyDetailApi.m in Sources */,
 				508DB6E61F2598AA002ABF97 /* CHLoginModalController.m in Sources */,
 				50543DF31FB69CE200DC3347 /* JKMyLookPlayFavouriteApi.m in Sources */,
