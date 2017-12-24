@@ -36,7 +36,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "535547126.636366"
+                  timestampString = "535820346.932855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -51,7 +51,7 @@
                   moduleName = "Joker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "535547126.644264"
+                  timestampString = "535820346.942114"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -74,6 +74,22 @@
             startingLineNumber = "272"
             endingLineNumber = "272"
             landmarkName = "-draftTopicWithTitle:data:content:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Works/ViewModel/JKGameDetailVM.m"
+            timestampString = "535799958.701474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "-assembleTopicViewModelWithItem:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

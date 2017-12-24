@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface JKMylookPlayCellVM : NSObject
+
+
 
 @property (nonatomic , strong) NSString *img;
 

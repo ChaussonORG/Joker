@@ -8,7 +8,11 @@
 
 #import "JKPersonInfoController.h"
 #import "JKPersonInfoCell.h"
-@interface JKPersonInfoController ()<UITableViewDelegate,UITableViewDataSource>
+#import "TOYDatePickerView.h"
+#import "JKProfileApi.h"
+#import "JKUserManager.h"
+#import "JKPersonPickGenderView.h"
+@interface JKPersonInfoController ()<UITableViewDelegate,UITableViewDataSource,JKPersonInfoCellVMDelegate,datePickerDelegete,genderPickerDelegete>
 
 @property (nonatomic , strong) UITableView *mainTableView;
 
@@ -90,7 +94,10 @@
     if (cell == nil) {
         cell = [[JKPersonInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    [cell loadDataWithVM:self.viewModel.cellViewModels[indexPath.row]];
+    
+    JKPersonInfoCellVM *cellVM =self.viewModel.cellViewModels[indexPath.row];
+    cellVM.delegate = self;
+    [cell loadDataWithVM:cellVM];
     
     return cell;
     
@@ -103,6 +110,152 @@
     
     return 50;
     
+}
+-(void)changeGender{
+    
+    JKPersonPickGenderView *pickView = [[JKPersonPickGenderView alloc]init];
+    
+    pickView.delegete = self;
+    
+    [pickView show];
+    
+}
+-(void)changeBrithDay{
+    
+    
+    TOYDatePickerView *pickView = [[TOYDatePickerView alloc]initWithDateStyle:TOYBabyAge tempDate:nil];
+    
+    pickView.delegete = self;
+    [pickView show];
+    
+}
+- (void)transferSelectedGender:(NSString*)gender{
+    
+    JKProfileApi *api = [[JKProfileApi alloc]init];
+    
+    if ([gender isEqualToString:@"男"]) {
+        
+        api.gender = @"0";
+    }
+    else if ([gender isEqualToString:@"女"]) {
+        
+        api.gender = @"1";
+    }
+        
+    
+    [api startWithSuccessBlock:^(__kindof JKProfileApi *request) {
+        
+        if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            JKUser *user= [[JKUserManager sharedData].currentUser copy];
+            user.gender = [api.gender integerValue];
+            [[JKUserManager sharedData] saveUserWithJKUser:user];
+            
+            [self.viewModel requestData];
+            
+            [self.mainTableView reloadData];
+        }
+        
+    } failureBlock:^(__kindof JKProfileApi *request) {
+        
+        
+    }];
+    
+}
+- (void)transferSelectedDate:(NSString*)date{
+    
+    JKProfileApi *api = [[JKProfileApi alloc]init];
+    api.birthday = [NSString stringWithFormat:@"%@", [self timeSwitchTimestamp:date]];
+    
+    [api startWithSuccessBlock:^(__kindof JKProfileApi *request) {
+        
+        if([request.response.responseJSONObject[@"code"] isEqualToString:@"200"]) {
+            
+            JKUser *user= [[JKUserManager sharedData].currentUser copy];
+            user.birthday = api.birthday;
+            [[JKUserManager sharedData] saveUserWithJKUser:user];
+            
+            [self.viewModel requestData];
+            
+            [self.mainTableView reloadData];
+        }
+        
+    } failureBlock:^(__kindof JKProfileApi *request) {
+        
+        
+    }];
+    
+}
+
+
+- (NSString *)timeSwitchTimestamp:(NSString *)formatTime{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"]; //(@" hh:mm:ss") ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    
+    [formatter setTimeZone:timeZone];
+    
+    
+    
+    NSDate* date = [formatter dateFromString:formatTime]; //------------将字符串按formatter转成nsdate
+    
+    //时间转时间戳的方法:
+    
+    //    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    
+    
+    NSTimeInterval a=[date timeIntervalSince1970]*1000; // *1000 是精确到毫秒，不乘就是精确到秒
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", a];
+    //    NSLog(@"将某个时间转化成 时间戳&&&&&&&timeSp:%ld",(long)timeSp); //时间戳的值
+    
+    
+    
+    return timeString;
+    
+}
+
+- (NSString *)timeStrwithTimestamp:(NSString *)timestamp{
+    
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
+    
+    // 毫秒值转化为秒
+    NSDate* needFormatDate = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:needFormatDate];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];//这里的格式必须和DateString格式一致
+    
+    NSDate * nowDate = [NSDate date];
+    
+    
+    // ------取当前时间和转换时间两个日期对象的时间间隔
+    NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];
+    
+    NSLog(@"time----%f",time);
+    // ------再然后，把间隔的秒数折算成天数和小时数：
+    
+    NSString *dateStr = [[NSString alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString * yearStr = [dateFormatter stringFromDate:needFormatDate];
+    NSString *nowYear = [dateFormatter stringFromDate:nowDate];
+    
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+    dateStr = [dateFormatter stringFromDate:needFormatDate];
+    
+    return dateStr;
 }
 /*
 #pragma mark - Navigation

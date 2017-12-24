@@ -99,19 +99,7 @@
 //    mengban.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.view addSubview:mengban];
     UIColor *color1 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)   alpha:0.4];
-//    UIColor *color2 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)  alpha:0.4];
-//    UIColor *color3 = [UIColor colorWithRed:(0)  green:(0)  blue:(0)  alpha:0.2];
-//    NSArray *colors = [NSArray arrayWithObjects:(id)color1.CGColor, color2.CGColor,color3.CGColor,nil];
-//    NSArray *locations = [NSArray arrayWithObjects:@(0.0), @(0.7),@(1.0), nil, nil];
-//    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-//    gradientLayer.colors = colors;
-//    gradientLayer.locations = locations;
-//    gradientLayer.frame = mengban.bounds;
-//    gradientLayer.startPoint = CGPointMake(0, 0);
-//    gradientLayer.endPoint   = CGPointMake(0, 1.0);
-//    mengban.layer.mask = gradientLayer;
-    
-    
+  
     //初始化
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = mengban.bounds;

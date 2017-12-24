@@ -10,4 +10,6 @@
 
 @interface JKPersonInfoHeaderController : UIViewController
 
+@property (nonatomic , strong) NSString *imageUrl;
+
 @end

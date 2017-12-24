@@ -10,7 +10,8 @@
 #import "JKUserManager.h"
 #import "HHTGetString.h"
 
-@interface  JKPersonInfoVM ()
+
+@interface  JKPersonInfoVM ()<JKPersonInfoCellVMDelegate>
 
 
 
@@ -45,7 +46,14 @@
     
     [self.contentArr addObject:[JKUserManager sharedData].currentUser.photo];
     
-    [self.contentArr addObject:[JKUserManager sharedData].currentUser.nickname];
+    
+    if ([JKUserManager sharedData].currentUser.nickname) {
+         [self.contentArr addObject:[JKUserManager sharedData].currentUser.nickname];
+    }
+    else{
+        
+         [self.contentArr addObject:@" "];
+    }
     
     
     if ([JKUserManager sharedData].currentUser.gender == 0) {
@@ -60,7 +68,7 @@
     }
     
     
-    [self.contentArr addObject: [HHTGetString timeStrwithTimestamp:[JKUserManager sharedData].currentUser.birthday]];
+    [self.contentArr addObject: [self timeStrwithTimestamp:[JKUserManager sharedData].currentUser.birthday]];
     
     if (self.cellViewModels.count > 0) {
         
@@ -69,6 +77,8 @@
     for (int i = 0; i < 4 ; i ++) {
         
         JKPersonInfoCellVM   *cellVM = [[JKPersonInfoCellVM  alloc]init];
+        
+        cellVM.delegate = self;
         
         cellVM.mainTitle = self.titleArray[i];
         
@@ -89,4 +99,44 @@
     
     
 }
+
+
+
+- (NSString *)timeStrwithTimestamp:(NSString *)timestamp{
+    
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
+    
+    // 毫秒值转化为秒
+    NSDate* needFormatDate = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:needFormatDate];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];//这里的格式必须和DateString格式一致
+    
+    NSDate * nowDate = [NSDate date];
+    
+    
+    // ------取当前时间和转换时间两个日期对象的时间间隔
+    NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];
+    
+    NSLog(@"time----%f",time);
+    // ------再然后，把间隔的秒数折算成天数和小时数：
+    
+    NSString *dateStr = [[NSString alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString * yearStr = [dateFormatter stringFromDate:needFormatDate];
+    NSString *nowYear = [dateFormatter stringFromDate:nowDate];
+    
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+    dateStr = [dateFormatter stringFromDate:needFormatDate];
+    
+    return dateStr;
+}
+
 @end

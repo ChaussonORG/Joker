@@ -364,6 +364,7 @@
 		D3ED98411FBD4DA60034F1C9 /* JKMyMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98401FBD4DA60034F1C9 /* JKMyMessageCell.m */; };
 		D3ED98441FC199AB0034F1C9 /* JKMyMessageReadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */; };
 		D3ED98471FC1B8260034F1C9 /* JKMychangePasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */; };
+		D3EFD49F1FEFDE36005F7E22 /* JKPersonPickGenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EFD49E1FEFDE36005F7E22 /* JKPersonPickGenderView.m */; };
 		D3F7587E1FDD3432007F00F0 /* JKPersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */; };
 /* End PBXBuildFile section */
 
@@ -1027,6 +1028,8 @@
 		D3ED98431FC199AB0034F1C9 /* JKMyMessageReadApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMyMessageReadApi.m; sourceTree = "<group>"; };
 		D3ED98451FC1B8260034F1C9 /* JKMychangePasswordApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKMychangePasswordApi.h; sourceTree = "<group>"; };
 		D3ED98461FC1B8260034F1C9 /* JKMychangePasswordApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKMychangePasswordApi.m; sourceTree = "<group>"; };
+		D3EFD49D1FEFDE36005F7E22 /* JKPersonPickGenderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonPickGenderView.h; sourceTree = "<group>"; };
+		D3EFD49E1FEFDE36005F7E22 /* JKPersonPickGenderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonPickGenderView.m; sourceTree = "<group>"; };
 		D3F7587C1FDD3432007F00F0 /* JKPersonInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPersonInfoCell.h; sourceTree = "<group>"; };
 		D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPersonInfoCell.m; sourceTree = "<group>"; };
 		E429C491FA604E6913C9CE7A /* Pods-Joker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Joker/Pods-Joker.release.xcconfig"; sourceTree = "<group>"; };
@@ -2430,6 +2433,8 @@
 				D3973BE61EF23A160076B246 /* JKMeViewController.m */,
 				D37684F71FDAFCE7008D03D8 /* JKPersonInfoController.h */,
 				D37684F81FDAFCE7008D03D8 /* JKPersonInfoController.m */,
+				D3EFD49D1FEFDE36005F7E22 /* JKPersonPickGenderView.h */,
+				D3EFD49E1FEFDE36005F7E22 /* JKPersonPickGenderView.m */,
 				D3F7587C1FDD3432007F00F0 /* JKPersonInfoCell.h */,
 				D3F7587D1FDD3432007F00F0 /* JKPersonInfoCell.m */,
 				50C403D41FA81A8F007468D0 /* JKMyMessageController.h */,
@@ -2994,6 +2999,7 @@
 				507A675D1F3AD24100377C5E /* JKTopicSpareCommentCell.m in Sources */,
 				D3973B731EEEEC200076B246 /* JKStyleConfiguration.m in Sources */,
 				D3973B6C1EEEEC200076B246 /* CHTabBarViewController.m in Sources */,
+				D3EFD49F1FEFDE36005F7E22 /* JKPersonPickGenderView.m in Sources */,
 				D3ED982F1FBCC1910034F1C9 /* JKMyTopicMineApi.m in Sources */,
 				D340DF151FE650A000996FA1 /* UIButton+SD.m in Sources */,
 				508DB6E11F2598AA002ABF97 /* CHLoginViewController.m in Sources */,

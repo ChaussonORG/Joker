@@ -16,7 +16,7 @@
 
 
 
-@interface JKPerfectUserInfoController ()
+@interface JKPerfectUserInfoController ()<datePickerDelegete>
 
 @property (nonatomic , strong) UIButton *iconBtn;
 
@@ -179,7 +179,7 @@
         [[CHNetworkConfig sharedInstance] addheaderFieldParameter:dic];
     }
     
-    self.brithDayStr = [NSString stringWithFormat:@"%ld", [self timeSwitchTimestamp:self.brithDay.text]];
+    self.brithDayStr =  [self timeSwitchTimestamp:self.brithDay.text];
     
     JKPerfectInfoApi *api = [[JKPerfectInfoApi alloc]initWithPhoto:self.photo];
     api.photo = self.photo;
@@ -229,7 +229,7 @@
     
 }
 
-- (NSInteger)timeSwitchTimestamp:(NSString *)formatTime{
+- (NSString *)timeSwitchTimestamp:(NSString *)formatTime{
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
@@ -249,16 +249,18 @@
     
     //时间转时间戳的方法:
     
-    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
-    
-    NSLog(@"将某个时间转化成 时间戳&&&&&&&timeSp:%ld",(long)timeSp); //时间戳的值
+    //    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
     
     
+    NSTimeInterval a=[date timeIntervalSince1970]*1000; // *1000 是精确到毫秒，不乘就是精确到秒
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", a];
+    //    NSLog(@"将某个时间转化成 时间戳&&&&&&&timeSp:%ld",(long)timeSp); //时间戳的值
     
-    return timeSp;
+    
+    
+    return timeString;
     
 }
-
 
 - (void)clickNanBtn{
     

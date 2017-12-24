@@ -11,7 +11,19 @@ typedef NS_ENUM(NSInteger, JKPersonInfoType){
     JKPersonInfoImage,
     JKPersonInfoWord,
 };
+
+@protocol JKPersonInfoCellVMDelegate <NSObject>
+
+- (void)changeBrithDay;
+
+- (void)changeGender;
+
+@end
+
+
 @interface JKPersonInfoCellVM : NSObject
+
+@property (nonatomic , weak) id<JKPersonInfoCellVMDelegate>delegate;
 
 @property (nonatomic , strong) NSString *mainTitle;
 
