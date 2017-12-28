@@ -29,7 +29,7 @@
     
     self.iconView = [[UIImageView alloc]init];
     self.iconView.frame = CGRectMake(15, 15, 100, 140);
-    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+    self.iconView.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:self.iconView];
     
     
@@ -92,6 +92,8 @@
     self.lookPlayView.frame = CGRectMake(ScreenWidth - 15 - 44, self.lineView.frame.origin.y + self.lineView.frame.size.height + 12, 44, 54);
     self.lookPlayView.layer.borderColor = [JKStyleConfiguration blackColor].CGColor;
     self.lookPlayView.layer.borderWidth = 1;
+    self.lookPlayView.layer.masksToBounds = YES;
+    self.lookPlayView.layer.cornerRadius = 2;
     [self addSubview:self.lookPlayView];
     
     

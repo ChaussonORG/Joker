@@ -33,7 +33,7 @@
 - (void)prepareForLayout{
     
     self.TVImage = [[UIImageView alloc]init];
-    self.TVImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.TVImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.TVImage.layer.cornerRadius = 12;
     //    self.TVImage.layer.masksToBounds = YES;
     

@@ -47,11 +47,11 @@
     
     self.nameLabel = [[UILabel alloc]init];
     self.nameLabel.font = [JKStyleConfiguration overstrikingFont];
-    self.nameLabel.textColor = [JKStyleConfiguration twotwoColor];
+    self.nameLabel.textColor = [JKStyleConfiguration sixsixColor];
     
     self.actLabel = [[UILabel alloc]init];
     self.actLabel.font = [JKStyleConfiguration titleFont];
-    self.actLabel.textColor = [JKStyleConfiguration drakGrayTextColor];
+    self.actLabel.textColor = [JKStyleConfiguration bbbbbbColor];
     
     
     [self.contentView addSubview:self.nameLabel];

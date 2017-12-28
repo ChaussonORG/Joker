@@ -176,16 +176,16 @@
         
    
         if (self.imageArrs.count%4 == 0) {
-            self.imagesCellHeight =(self.imageArrs.count/4 )*((ScreenWidth - 35)/4 + 10) +36;
+            self.imagesCellHeight =(self.imageArrs.count/4 )*((ScreenWidth - 35)/4 + 10) +50;
         }
         else{
             
             if (self.imageArrs.count%4 < 4) {
-                self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10)+36;
+                self.imagesCellHeight =(self.imageArrs.count/4 + 1)*((ScreenWidth - 35)/4 + 10)+50;
             }
             else{
                 
-                self.imagesCellHeight =(self.imageArrs.count/4)*((ScreenWidth - 35)/4 + 10)+36;
+                self.imagesCellHeight =(self.imageArrs.count/4)*((ScreenWidth - 35)/4 + 10)+50;
             }
             
         }

@@ -188,30 +188,36 @@
 - (void)setupBottomView{
     
     self.bottomView = [[UIView alloc]init];
-    self.bottomView.frame = CGRectMake(0, self.mainTableView.frame.size.height + self.mainTableView.frame.origin.y - 45 , ScreenWidth, 50) ;
+    self.bottomView.frame = CGRectMake(0, ScreenHeight - 50 , ScreenWidth, 50) ;
     [self.view addSubview:self.bottomView];
     self.bottomView.backgroundColor = [UIColor whiteColor];
     
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = [JKStyleConfiguration ddddddColor];
+    lineView.frame = CGRectMake(0, 0, ScreenWidth , 0.5);
+    [self.bottomView addSubview:lineView];
+    
     self.favoriteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.favoriteBtn.frame = CGRectMake(0, 0, ScreenWidth/2- 0.5, 50);
+    self.favoriteBtn.frame = CGRectMake(0, 0.5, ScreenWidth/2- 0.5, 49.5);
     [self.favoriteBtn addTarget:self action:@selector(clickFavoriteBtn) forControlEvents:UIControlEventTouchUpInside];
     self.favoriteBtn.titleLabel.font = [JKStyleConfiguration titleFont];
     [self.favoriteBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
     [self.bottomView addSubview:self.favoriteBtn];
     
-    UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = [JKStyleConfiguration lineColor];
-    lineView.frame = CGRectMake(self.favoriteBtn.frame.origin.x + self.favoriteBtn.frame.size.width , 14, 1, 20 );
-    [self.bottomView addSubview:lineView];
+    UIView *lineView2 = [[UIView alloc]init];
+    lineView2.backgroundColor = [JKStyleConfiguration lineColor];
+    lineView2.frame = CGRectMake(self.favoriteBtn.frame.origin.x + self.favoriteBtn.frame.size.width , 14, 1, 20 );
+    [self.bottomView addSubview:lineView2];
     
     self.commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.commentBtn.frame = CGRectMake(lineView.frame.origin.x + lineView.frame.size.width, 0, ScreenWidth/2- 0.5, 50);
+    self.commentBtn.frame = CGRectMake(lineView2.frame.origin.x + lineView2.frame.size.width, 0, ScreenWidth/2- 0.5, 49.5);
     [self.commentBtn addTarget:self action:@selector(clickCommentBtn) forControlEvents:UIControlEventTouchUpInside];
     self.commentBtn.titleLabel.font = [JKStyleConfiguration titleFont];
     [self.commentBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
     [self.bottomView addSubview:self.commentBtn];
     [self.commentBtn setImage:[UIImage imageNamed:@"dipinglun"] forState:UIControlStateNormal];
 }
+
 
 - (void)clickFavoriteBtn{
     
@@ -314,8 +320,8 @@
     
     
     UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = [JKStyleConfiguration lineColor];
-    lineView.frame = CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y + self.nameLabel.frame.size.height + 10, ScreenWidth -  self.nameLabel.frame.origin.x, 1);
+    lineView.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.4];
+    lineView.frame = CGRectMake(self.nameLabel.frame.origin.x, self.nameLabel.frame.origin.y + self.nameLabel.frame.size.height + 10, ScreenWidth -  self.nameLabel.frame.origin.x, 0.5);
     [self.workDetailView addSubview:lineView];
     
     

@@ -33,7 +33,7 @@
 - (void)prepareForLayout{
     
     self.VarietyImage = [[UIImageView alloc]init];
-    self.VarietyImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.VarietyImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.VarietyImage.layer.cornerRadius = 12;
     //    self.VarietyImage.layer.masksToBounds = YES;
     

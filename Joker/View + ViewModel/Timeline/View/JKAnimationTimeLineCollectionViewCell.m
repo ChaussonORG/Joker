@@ -33,7 +33,7 @@
 - (void)prepareForLayout{
     
     self.AnimationImage = [[UIImageView alloc]init];
-    self.AnimationImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.AnimationImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.AnimationImage.layer.cornerRadius = 12;
     //    self.AnimationImage.layer.masksToBounds = YES;
     

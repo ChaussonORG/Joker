@@ -248,10 +248,10 @@
     
     
     if (cellVM.cellViewModels.count%3 == 0) {
-        cellVM.collectionViewHeight =(cellVM.cellViewModels.count/3 )*205;
+        cellVM.collectionViewHeight =(cellVM.cellViewModels.count/3 )*220;
     }
     else{
-        cellVM.collectionViewHeight =(cellVM.cellViewModels.count/3 + 1)*205;
+        cellVM.collectionViewHeight =(cellVM.cellViewModels.count/3 + 1)*220;
     }
     
     cellVM.cellHeight = 36 + cellVM.recommendViewHeight + cellVM.collectionViewHeight;

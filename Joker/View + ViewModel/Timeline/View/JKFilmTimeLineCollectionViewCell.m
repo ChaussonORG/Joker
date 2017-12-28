@@ -33,7 +33,7 @@
 - (void)prepareForLayout{
     
     self.filmImage = [[UIImageView alloc]init];
-    self.filmImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.filmImage.contentMode = UIViewContentModeScaleAspectFill;
 //    self.filmImage.layer.cornerRadius = 12;
 //    self.filmImage.layer.masksToBounds = YES;
     

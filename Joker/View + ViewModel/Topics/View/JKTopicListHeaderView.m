@@ -14,7 +14,7 @@
  
 @property (nonatomic , strong) UIColor *selectedColor;
 
-
+@property (nonatomic , strong) UIView *speratorBottomLine;
 @end
 @implementation JKTopicListHeaderView
 - (instancetype)initWithFilterTitles:(NSArray *)filterTitleArr selectedColor:(UIColor *)color isLine:(BOOL)isLine
@@ -50,7 +50,7 @@
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:_filterTilteArr[i] forState:UIControlStateNormal];
-        btn.titleLabel.font = [JKStyleConfiguration titleFont];
+        btn.titleLabel.font = [JKStyleConfiguration subcontentFont];
         [btn setTitleColor:[JKStyleConfiguration bbbbbbColor] forState:UIControlStateNormal];
         
         [btn setTitleColor:_selectedColor forState:UIControlStateSelected];
@@ -82,7 +82,10 @@
     }
     
     
-    
+    self.speratorBottomLine = [[UIView alloc]init];
+    self.speratorBottomLine.backgroundColor = [JKStyleConfiguration ddddddColor];
+    self.speratorBottomLine.frame = CGRectMake(0, 40, ScreenWidth, 0.5);
+    [self addSubview:self.speratorBottomLine];
 }
 
 

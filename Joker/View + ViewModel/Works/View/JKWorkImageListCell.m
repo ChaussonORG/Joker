@@ -58,7 +58,7 @@
     
     self.mainTitleLabel.text = title;
     
-    self.contentImageView.frame = CGRectMake(0, 36, ScreenWidth, imagesCollectionViewHeight);
+    self.contentImageView.frame = CGRectMake(0, 50, ScreenWidth, imagesCollectionViewHeight);
     
     self.contentImageView.images = images;
     

@@ -379,6 +379,12 @@
     
 }
 
++ (UIColor *)ddddddColor{
+    
+    return [UIColor colorWithHexString:[JKStyleConfiguration ddddddColorHex]];
+    
+}
+
 + (NSString *)eeeeeeColorHex{
     return @"#eeeeee";
 }
@@ -394,6 +400,11 @@
 + (NSString *)ccccccColorHex{
     return @"#cccccc";
 }
+
++ (NSString *)ddddddColorHex{
+    return @"#dddddd";
+}
+
 
 
 + (UIColor *)sixsixColor{

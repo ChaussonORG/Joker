@@ -33,7 +33,7 @@
 - (void)prepareForLayout{
     
     self.GameImage = [[UIImageView alloc]init];
-    self.GameImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.GameImage.contentMode = UIViewContentModeScaleAspectFill;
         self.GameImage.layer.borderColor = [JKStyleConfiguration screenBackgroundColor].CGColor;
         self.GameImage.layer.borderWidth = 1;
     

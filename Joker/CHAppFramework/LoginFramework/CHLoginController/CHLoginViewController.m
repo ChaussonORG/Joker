@@ -81,7 +81,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.registerbgView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.registerbgView.frame = CGRectMake(25, 155, ScreenWidth - 50, 360);
     [self.view addSubview:self.registerbgView];
-    
+    self.registerbgView.layer.cornerRadius = 4;
+    self.registerbgView.layer.masksToBounds = YES;
     self.registerbgView.hidden = YES;
     
     
@@ -375,7 +376,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.loginbgView.backgroundColor = [JKStyleConfiguration whiteColor];
     self.loginbgView.frame = CGRectMake(25, 155, ScreenWidth - 50, 320);
     [self.view addSubview:self.loginbgView];
-    
+    self.loginbgView.layer.cornerRadius = 4;
+    self.loginbgView.layer.masksToBounds = YES;
     
     UILabel *titleLabel = [[UILabel alloc]init];
     titleLabel.text = @"欢迎来到看玩";
@@ -432,6 +434,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.changePassBtn.frame = CGRectMake(self.loginbgView.frame.size.width - 20 - 40, self.passWordText.frame.origin.y, 40, 20);
     [self.changePassBtn setTitle:@"显示" forState:UIControlStateNormal];
     [self.changePassBtn setTitle:@"隐藏" forState:UIControlStateSelected];
+    self.changePassBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.changePassBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.changePassBtn.titleLabel.font = [JKStyleConfiguration overstrikingFont];
     [self.loginbgView addSubview:self.changePassBtn];
@@ -445,9 +448,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     self.forgetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
-    self.forgetBtn.frame = CGRectMake(self.loginbgView.frame.size.width - 60 - 30, passwordline.frame.origin.y + passwordline.frame.size.height + 5, 60, 25);
+    self.forgetBtn.frame = CGRectMake(self.loginbgView.frame.size.width - 20 - 80, passwordline.frame.origin.y + passwordline.frame.size.height + 5, 80, 25);
     [self.forgetBtn setTitleColor:[JKStyleConfiguration twotwoColor] forState:UIControlStateNormal];
-    self.forgetBtn.titleLabel.font = [JKStyleConfiguration subcontentFont];
+    self.forgetBtn.titleLabel.font = [JKStyleConfiguration overstrikingFont];
+    self.forgetBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.loginbgView addSubview:self.forgetBtn];
     
     
