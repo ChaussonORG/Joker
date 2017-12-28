@@ -55,6 +55,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
+    //:self refreshingAction:@selector(requestHeaderData)];
     [self.mainTableView.mj_header beginRefreshing];
     @weakify(self)
     MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
@@ -82,15 +83,15 @@
             [self.mainTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         }
         [self.mainTableView.mj_header endRefreshing];
-        
+//        if (self.mainTableView.contentOffset.y <= 0) {
+//            [self.mainTableView setContentOffset:CGPointMake(0, 0) animated:NO];
+//        }
         if (self.viewModel.isFinishRequestMoreData) {
             [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.mainTableView.mj_footer endRefreshing];
         }
-        if (self.mainTableView.contentOffset.y <= 0) {
-            [self.mainTableView setContentOffset:CGPointZero animated:YES];
-        }
+        
         
     }];
     

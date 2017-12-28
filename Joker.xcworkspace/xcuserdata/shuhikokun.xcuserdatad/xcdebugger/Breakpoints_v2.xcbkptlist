@@ -19,54 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-            timestampString = "533889669.123435"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-favouriteComment"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[JKCommentListCellVM favouriteComment]"
-                  moduleName = "Joker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "535820346.932855"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "87"
-                  endingLineNumber = "87"
-                  offsetFromSymbolStart = "149">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[JKCommentListCellVM favouriteComment]_block_invoke"
-                  moduleName = "Joker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shuhikokun/Desktop/Joker/Joker/View%20+%20ViewModel/Topics/ViewModel/TopicComment/JKCommentListCellVM.m"
-                  timestampString = "535820346.942114"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Joker/View + ViewModel/Topics/ViewModel/TopicCreate/JKTopicCreateVM.m"
             timestampString = "535361320.93918"
             startingColumnNumber = "9223372036854775807"
@@ -90,6 +42,70 @@
             startingLineNumber = "417"
             endingLineNumber = "417"
             landmarkName = "-assembleTopicViewModelWithItem:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Timeline/View/JKFilmTimeLineController.m"
+            timestampString = "536153511.171413"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-binding"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Timeline/View/JKFilmTimeLineController.m"
+            timestampString = "536153511.171543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-binding"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Timeline/View/JKFilmTimeLineController.m"
+            timestampString = "536153511.171635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-binding"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Joker/View + ViewModel/Topics/ViewModel/JKTopicDetailVM.m"
+            timestampString = "536153511.171691"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-requestMoreData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

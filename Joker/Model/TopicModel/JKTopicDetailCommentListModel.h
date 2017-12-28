@@ -55,7 +55,7 @@
 
 @property (nonatomic , strong) NSString *total;
 
-
+@property (nonatomic , strong) NSString *page;
 //@property (assign ,nonatomic) int code;
 //@property (copy ,nonatomic) NSString *message;
 

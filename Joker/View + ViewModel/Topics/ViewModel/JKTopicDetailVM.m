@@ -141,7 +141,7 @@
     [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
         NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
-        self.commentCount = [request.model.total integerValue];
+        self.commentCount = [request.model.total integerValue] - ([request.model.page integerValue] - 1)*PAGELIMIT;
         
         for (int i = 0 ; i < request.model.items.count ; i ++) {
             
@@ -220,9 +220,9 @@
     api.requestModel.offset = self.cellVMs.count;
     
     [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
-        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray arrayWithArray:self.cellVMs];
+        NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
-        self.commentCount = [request.model.total integerValue];
+        self.commentCount = [request.model.total integerValue] - ([request.model.page integerValue] - 1)*PAGELIMIT;
         
         for (NSInteger i = 0 ; i < request.model.items.count ; i ++) {
             
@@ -358,14 +358,14 @@
     
     JKTopicDetailCommentListApi *api = [[JKTopicDetailCommentListApi alloc]initWithTopicId:self.topicId];
     
-    api.requestModel.limit = offset + PAGELIMIT;
+    api.requestModel.limit = PAGELIMIT;
     
-    api.requestModel.offset = 0;
+    api.requestModel.offset = offset;
     
     [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
         NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
-        self.commentCount = [request.model.total integerValue];
+        self.commentCount = [request.model.total integerValue] - ([request.model.page integerValue] - 1)*PAGELIMIT;
         
         for (int i = 0 ; i < request.model.items.count ; i ++) {
             
@@ -375,7 +375,6 @@
         }
         
         self.cellVMs = [cellViewModels copy];
-        
         
         [self.delegate scrollsToRowsIndex:offset];
     } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {
@@ -393,14 +392,14 @@
     
     JKTopicDetailCommentListApi *api = [[JKTopicDetailCommentListApi alloc]initWithTopicId:self.topicId];
     
-    api.requestModel.limit = offset + PAGELIMIT;
+    api.requestModel.limit =  PAGELIMIT;
     
-    api.requestModel.offset = 0;
+    api.requestModel.offset = offset;
     
     [api startWithSuccessBlock:^(__kindof JKTopicDetailCommentListApi *request) {
         NSMutableArray <JKCommentListCellVM *>*cellViewModels = [NSMutableArray array];
         
-        self.commentCount = [request.model.total integerValue];
+        self.commentCount = [request.model.total integerValue] - ([request.model.page integerValue] - 1)*PAGELIMIT;
         
         for (int i = 0 ; i < request.model.items.count ; i ++) {
             

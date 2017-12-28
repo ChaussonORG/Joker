@@ -48,13 +48,13 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 //    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
-    @weakify(self)
-    MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
-        @strongify(self)
-        [self.viewModel requestMoreData];
-    }];
-//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
-    self.tableView.mj_footer = footer;
+//    @weakify(self)
+//    MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+//        @strongify(self)
+//        [self.viewModel requestMoreData];
+//    }];
+////    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+//    self.tableView.mj_footer = footer;
     
     self.bottomView = [[JKTopicDetailBottomView alloc]init];
     self.bottomView.frame = CGRectMake(0, self.tableView.frame.origin.y + self.tableView.frame.size.height, ScreenWidth, 45);
@@ -131,9 +131,9 @@
     
     NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:2];
     
-    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
-    
+//    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+ 
+    [self.tableView setContentOffset:CGPointZero animated:NO];
 }
 - (void)binding{
     
@@ -149,7 +149,8 @@
         [self.tableView.mj_header endRefreshing];
         
          [self.tableView.mj_footer endRefreshing];
-
+        
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         
     }];
     

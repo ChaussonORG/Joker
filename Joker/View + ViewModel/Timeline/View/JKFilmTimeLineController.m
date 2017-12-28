@@ -29,9 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-    
- 
     
     [self.viewModel requestData];
     
@@ -59,14 +56,17 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.mainTableView.pagingEnabled = false;
-    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
-        [self requestHeaderData];
-    }];//:self refreshingAction:@selector(requestHeaderData)];
-    [self.mainTableView.mj_header beginRefreshing];
+  
     @weakify(self)
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+         @strongify(self)
+        [self requestHeaderData];
+    }];
+   //:self refreshingAction:@selector(requestHeaderData)];
+    [self.mainTableView.mj_header beginRefreshing];
+    
     MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
-        @strongify(self)
+       
         [self.viewModel requestMoreData];
     }];
 //    footer.stateLabel.font = [UIFont systemFontOfSize:12];
@@ -84,7 +84,6 @@
 }
 - (void)binding{
     
-    
     @weakify(self);
     [RACObserve(self, viewModel.cellViewModels) subscribeNext:^(id x) {
         
@@ -94,12 +93,13 @@
         if (self.viewModel.queryPage == 1) {
             [self.mainTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         }
+ 
         [self.mainTableView.mj_header endRefreshing];
         
-        if (self.mainTableView.contentOffset.y <= 0) {
-             [self.mainTableView setContentOffset:CGPointZero animated:YES];
-        }
-       
+//        if (self.mainTableView.contentOffset.y <= 0) {
+//            [self.mainTableView setContentOffset:CGPointMake(0, 0) animated:NO];
+//        }
+
         if (self.viewModel.isFinishRequestMoreData) {
             [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
         }else{
@@ -114,7 +114,7 @@
     
     [super viewWillAppear:animated];
     
-    [self.mainTableView setContentOffset:CGPointZero animated:YES];
+//    [self.mainTableView setContentOffset:CGPointZero animated:YES];
     
     
     
@@ -126,6 +126,7 @@
     
     [self.viewModel requestData];
     
+     [self.mainTableView.mj_header endRefreshing];
 }
 
 #pragma mark UITableViewDelegate
