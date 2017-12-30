@@ -10,7 +10,6 @@
 #import "JKTopicFilterView.h"
 #import "JKTopicListCell.h"
 #import "JKTopicListHeaderView.h"
-#import <MJRefresh/MJRefresh.h>
 #import "UIView+YLView.h"
 #import "YLDragZoomCycleView.h"
 #import "GKFadeNavigationController.h"

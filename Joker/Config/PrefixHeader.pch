@@ -21,7 +21,7 @@
 #import <SDBaseRequest/SDBaseRequest.h>
 #import <CHProgressHUD/CHProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <MJRefresh/MJRefresh.h>
+#import "MJRefresh.h"
 #import <Masonry/Masonry.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 //#import "UIView+viewController.h"
