@@ -186,7 +186,6 @@
             [cellVMs addObject:cellVM];
             
         }
-        
         if (cellViewModels.count == 0) {
             
             if (cellVMs.count>0) {

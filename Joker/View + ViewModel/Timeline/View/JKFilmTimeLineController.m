@@ -196,6 +196,7 @@
         }
     }
     
+    [self.mainTableView.mj_header beginRefreshing];
     [self.viewModel requestData];
     
     
