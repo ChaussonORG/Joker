@@ -14,7 +14,9 @@
 
 - (void)scrollsToTop;
 
-- (void)scrollsToRowsIndex:(NSInteger)index;
+- (void)scrollsToNext;
+
+- (void)scrollsToLast;
 
 @end
 @interface JKTopicDetailVM : NSObject

@@ -10,9 +10,10 @@
 #import "JKCommentListCell.h"
 #import "JKTopicDetailBottomView.h"
 #import "JKTopicSpareCommentCell.h"
-@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,UIWebViewDelegate,ScrollTableViewDelegate>
+#import <CHWebView.h>
+@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,CHWebViewDelegate,ScrollTableViewDelegate>
 
-@property (nonatomic , strong) UIWebView *webView;
+@property (nonatomic , strong) CHWebView *webView;
 
 @property (nonatomic , strong) UITableView *tableView;
 
@@ -85,12 +86,12 @@
 }
 - (void)setupWebView{
     
-    self.webView = [[UIWebView alloc]init];
+    self.webView = [[CHWebView alloc]initWithUIWebView];
     self.webView.delegate = self;
     
     
 }
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+- (void)webViewDidFinshLoad:(CHWebView *)webView{
     
     self.webView.scrollView.scrollEnabled = NO;
     double delayInSeconds = 0.5;
@@ -120,20 +121,42 @@
 //            self.webHeight = frame.size.height;
 //        }
 
-        NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+        NSString *output = [(UIWebView *)webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
         
         self.webHeight = [output floatValue];
     });
 
 }
 
--(void)scrollsToRowsIndex:(NSInteger)index{
+-(void)scrollsToNext{
     
-    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:2];
     
 //    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
- 
-    [self.tableView setContentOffset:CGPointZero animated:NO];
+    NSString *subtypeString;
+    subtypeString = kCATransitionFromRight;
+    [self transitionWithType:@"pageCurl" WithSubtype:subtypeString ForView:self.view];
+//    [self.tableView setContentOffset:CGPointZero animated:NO];
+}
+
+-(void)scrollsToLast{
+    
+    
+    //    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    NSString *subtypeString;
+    subtypeString = kCATransitionFromLeft;
+    [self transitionWithType:@"pageCurl" WithSubtype:subtypeString ForView:self.view];
+    //    [self.tableView setContentOffset:CGPointZero animated:NO];
+}
+
+- (void) transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.7f;
+    animation.type = type;
+    if (subtype != nil) {
+        animation.subtype = subtype;
+    }
+    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut;
+    [view.layer addAnimation:animation forKey:@"animation"];
 }
 - (void)binding{
     

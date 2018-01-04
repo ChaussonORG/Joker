@@ -376,7 +376,7 @@
         
         self.cellVMs = [cellViewModels copy];
         
-        [self.delegate scrollsToRowsIndex:offset];
+        [self.delegate scrollsToLast];
     } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {
         
         
@@ -410,7 +410,7 @@
         
         self.cellVMs = [cellViewModels copy];
         
-        [self.delegate scrollsToRowsIndex:offset];
+        [self.delegate scrollsToNext];
         
         
     } failureBlock:^(__kindof JKTopicDetailCommentListApi *request) {

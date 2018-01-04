@@ -42,7 +42,7 @@
             self.isUpable = NO;
         }
         
-        
+        [self.delegate upWithOffset:(self.currentPage -1)*PAGELIMIT];
     }
     else{
         
@@ -51,7 +51,7 @@
         
     }
     
-    [self.delegate upWithOffset:(self.currentPage -1)*PAGELIMIT];
+    
     
     
 }
@@ -74,6 +74,8 @@
         }
         
         self.isUpable = YES;
+        
+        [self.delegate downWithOffset:(self.currentPage - 1)*PAGELIMIT];
     }
     else{
         
@@ -81,7 +83,7 @@
     }
     
     
-    [self.delegate downWithOffset:(self.currentPage - 1)*PAGELIMIT];
+    
 }
 
 - (void)reply{
