@@ -86,46 +86,29 @@
 }
 - (void)setupWebView{
     
-    self.webView = [[CHWebView alloc]initWithUIWebView];
+    self.webView = [[CHWebView alloc]init];
     self.webView.delegate = self;
+    self.webView.frame = CGRectMake(0, 0, ScreenWidth, 20);
     
+    self.tableView.tableHeaderView = self.webView;
     
 }
 - (void)webViewDidFinshLoad:(CHWebView *)webView{
     
     self.webView.scrollView.scrollEnabled = NO;
     double delayInSeconds = 0.5;
-     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 //
-    
-//        CGRect frame = webView.frame;
-//        frame.origin.x = 15;
-//        frame.origin.y = 0;
-//        frame.size.width = [UIScreen mainScreen].bounds.size.width - 30;
-//        frame.size.height = 1;
-//        
-//        webView.frame = frame;
-//        
-//        frame.size.height = webView.scrollView.contentSize.height;
-//        
-//        webView.frame = frame;
-//        
-//        webView.scrollView.scrollEnabled = NO;
-//        
-//        NSLog(@"height: %f", frame.size.height);
-//        //    self.webViewHeight = webView.scrollView.contentSize.height;
-//        
-//        
-//        if (self.webHeight != frame.size.height) {
-//            self.webHeight = frame.size.height;
-//        }
-
-        NSString *output = [(UIWebView *)webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+//
+//        NSString *output = [(UIWebView *)webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+//
+//        self.webHeight = [output floatValue];
+//    });
+    [webView invokeJavaScript:@"document.body.offsetHeight;" completionHandler:^(id height, NSError *error) {
         
-        self.webHeight = [output floatValue];
-    });
-
+        self.webHeight = [height floatValue];
+    }];
 }
 
 -(void)scrollsToNext{

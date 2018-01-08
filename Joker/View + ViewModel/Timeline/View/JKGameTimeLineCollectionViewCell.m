@@ -37,6 +37,8 @@
         self.GameImage.layer.borderColor = [JKStyleConfiguration screenBackgroundColor].CGColor;
         self.GameImage.layer.borderWidth = 1;
     
+    self.GameImage.clipsToBounds = YES;
+    
     self.belongTypeLabel = [[UILabel alloc]init];
     self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];
     self.belongTypeLabel.textColor = [JKStyleConfiguration whiteColor];

@@ -17,12 +17,12 @@ PODS:
   - CHNetworking (0.5.1):
     - AFNetworking (~> 3.0.4)
   - CHProgressHUD (0.4)
-  - CHWebView (2.0.7):
-    - CHWebView/Core (= 2.0.7)
-    - CHWebView/Progress (= 2.0.7)
-  - CHWebView/Core (2.0.7):
+  - CHWebView (2.5.0):
+    - CHWebView/Core (= 2.5.0)
+    - CHWebView/Progress (= 2.5.0)
+  - CHWebView/Core (2.5.0):
     - CHWebView/Progress
-  - CHWebView/Progress (2.0.7)
+  - CHWebView/Progress (2.5.0)
   - HYBLoopScrollView (3.2.1)
   - IQKeyboardManager (5.0.6)
   - JSONModel (1.7.0)
@@ -80,7 +80,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CHNetworking: 2264be2c5eef254ebcefc4488c02a29ca84a67e9
   CHProgressHUD: 32780a715fd40989606f3a16b8a2f0ad633262cd
-  CHWebView: 382f57f185cf36096749ed18bcb2acb6211e38d1
+  CHWebView: 64450efb25bf66ef594968d671c2a4c38a60cf83
   HYBLoopScrollView: 12ff9f5764cdd76f34171164c6517d5e01ee6766
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
