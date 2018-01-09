@@ -36,6 +36,8 @@
     self.filmImage.contentMode = UIViewContentModeScaleAspectFill;
 //    self.filmImage.layer.cornerRadius = 12;
 //    self.filmImage.layer.masksToBounds = YES;
+    self.filmImage.clipsToBounds = YES;
+    
     
     self.filmName = [[UILabel alloc]init];
     self.filmName.font = [JKStyleConfiguration subcontentFont];

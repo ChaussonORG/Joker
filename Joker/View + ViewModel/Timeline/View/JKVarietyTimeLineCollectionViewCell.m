@@ -36,6 +36,7 @@
     self.VarietyImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.VarietyImage.layer.cornerRadius = 12;
     //    self.VarietyImage.layer.masksToBounds = YES;
+    self.VarietyImage.clipsToBounds = YES;
     
     self.belongTypeLabel = [[UILabel alloc]init];
     self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];

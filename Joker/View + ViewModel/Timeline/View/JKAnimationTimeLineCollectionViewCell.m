@@ -36,6 +36,7 @@
     self.AnimationImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.AnimationImage.layer.cornerRadius = 12;
     //    self.AnimationImage.layer.masksToBounds = YES;
+    self.AnimationImage.clipsToBounds = YES;
     
     self.belongTypeLabel = [[UILabel alloc]init];
     self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];
