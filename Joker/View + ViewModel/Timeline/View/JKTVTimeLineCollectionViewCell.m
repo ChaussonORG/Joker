@@ -36,6 +36,7 @@
     self.TVImage.contentMode = UIViewContentModeScaleAspectFill;
     //    self.TVImage.layer.cornerRadius = 12;
     //    self.TVImage.layer.masksToBounds = YES;
+    self.TVImage.clipsToBounds = YES;
     
     self.belongTypeLabel = [[UILabel alloc]init];
     self.belongTypeLabel.font = [JKStyleConfiguration minContentFont];
