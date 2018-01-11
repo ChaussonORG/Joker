@@ -11,7 +11,9 @@
 #import "JKTopicDetailBottomView.h"
 #import "JKTopicSpareCommentCell.h"
 #import <CHWebView.h>
-@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,CHWebViewDelegate,ScrollTableViewDelegate>
+#import <CHWebView/CHWebProgressView.h>
+
+@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,CHWebViewDelegate,ScrollTableViewDelegate,CHWebViewDelegate>
 
 @property (nonatomic , strong) CHWebView *webView;
 
@@ -23,7 +25,10 @@
 
 @end
 
-@implementation JKTopicDetailController
+@implementation JKTopicDetailController{
+    CHWebProgressView *_progressView;
+
+}
 - (instancetype)initWithTopicId:(NSString *)topicId
 {
     self = [super init];
@@ -94,6 +99,10 @@
     self.webView.pro
     self.tableView.tableHeaderView = self.webView;
     
+    _progressView = [[CHWebProgressView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 2)];
+    _progressView.color = [UIColor blackColor];
+ 
+    [self.view addSubview:_progressView];
 }
 - (void)webViewDidFinshLoad:(CHWebView *)webView{
     
@@ -385,29 +394,11 @@
 #pragma mark ScrollTableViewDelegate
 - (void)scrollsToTop{
     
-//    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    
-//    
-//    
-//    [[self tableView] scrollToRowAtIndexPath:scrollIndexPath
-//                            atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
     [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x,0) animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)webView:(CHWebView *)webVie  updateProgress:(NSProgress *)progress{
+    [_progressView setProgress:progress];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
