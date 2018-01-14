@@ -293,6 +293,7 @@
 		50F520B31F613310004B59BF /* JKVarietyTimelineCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520B21F613310004B59BF /* JKVarietyTimelineCellVM.m */; };
 		50F520B61F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F520B51F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m */; };
 		73BCE9B3985754C6611C910A /* libPods-Joker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4135C9B0D67F24FCCDC92B3 /* libPods-Joker.a */; };
+		D31FBB30200B6BA6001A0AD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D31FBB2F200B6BA6001A0AD3 /* Images.xcassets */; };
 		D32953471EF3DD29002A9DE8 /* JKTopicFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D32953461EF3DD29002A9DE8 /* JKTopicFilterView.m */; };
 		D32B03A51FCACFFD00518AB7 /* JKFogetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32B03A41FCACFFD00518AB7 /* JKFogetPasswordController.m */; };
 		D32B03A81FCAE43D00518AB7 /* JKForgetPasswordApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D32B03A71FCAE43D00518AB7 /* JKForgetPasswordApi.m */; };
@@ -903,6 +904,7 @@
 		50F520B51F613338004B59BF /* JKVarietyTimeLineCollectionViewCellVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKVarietyTimeLineCollectionViewCellVM.m; sourceTree = "<group>"; };
 		8CFE99CDCDB1472BF3275049 /* Pods-Joker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Joker/Pods-Joker.debug.xcconfig"; sourceTree = "<group>"; };
 		B4135C9B0D67F24FCCDC92B3 /* libPods-Joker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Joker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31FBB2F200B6BA6001A0AD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D32953451EF3DD29002A9DE8 /* JKTopicFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKTopicFilterView.h; sourceTree = "<group>"; };
 		D32953461EF3DD29002A9DE8 /* JKTopicFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKTopicFilterView.m; sourceTree = "<group>"; };
 		D32B03A31FCACFFD00518AB7 /* JKFogetPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKFogetPasswordController.h; sourceTree = "<group>"; };
@@ -2245,6 +2247,7 @@
 				D3973B501EEEEC200076B246 /* Vendors */,
 				D3973B511EEEEC200076B246 /* View + ViewModel */,
 				D343387F1EEECDA900F45C7E /* Info.plist */,
+				D31FBB2F200B6BA6001A0AD3 /* Images.xcassets */,
 				D343386E1EEECDA900F45C7E /* Supporting Files */,
 			);
 			path = Joker;
@@ -2929,6 +2932,7 @@
 				508C559E1F284467001F1A15 /* emo_046@2x.png in Resources */,
 				508C559B1F284467001F1A15 /* emo_043@2x.png in Resources */,
 				504253071F5ACF23006DCB66 /* PB.bundle in Resources */,
+				D31FBB30200B6BA6001A0AD3 /* Images.xcassets in Resources */,
 				504253391F5ACF23006DCB66 /* CoreSVP.bundle in Resources */,
 				508C55981F284467001F1A15 /* emo_040@2x.png in Resources */,
 				508C558A1F284467001F1A15 /* emo_026@2x.png in Resources */,

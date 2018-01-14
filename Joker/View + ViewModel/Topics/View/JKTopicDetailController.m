@@ -95,8 +95,6 @@
     self.webView.delegate = self;
     self.webView.frame = CGRectMake(0, 0, ScreenWidth, 20);
     
-    
-    self.webView.pro
     self.tableView.tableHeaderView = self.webView;
     
     _progressView = [[CHWebProgressView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 2)];
@@ -110,8 +108,7 @@
     double delayInSeconds = 0.5;
 //     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//
-//
+// 
 //        NSString *output = [(UIWebView *)webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
 //
 //        self.webHeight = [output floatValue];
