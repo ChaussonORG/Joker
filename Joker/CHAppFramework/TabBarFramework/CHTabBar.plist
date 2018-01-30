@@ -14,23 +14,23 @@
 	<array>
 		<dict>
 			<key>UIViewControllName</key>
-			<string>JKTopicsListViewController</string>
-			<key>tabbarTitle</key>
-			<string>话题</string>
-			<key>unselectedIconName</key>
-			<string>Topic</string>
-			<key>selectedIconName</key>
-			<string>TopicSelected</string>
-		</dict>
-		<dict>
+			<string>JKTimelineListViewController</string>
 			<key>tabbarTitle</key>
 			<string>时间表</string>
-			<key>UIViewControllName</key>
-			<string>JKTimelineListViewController</string>
 			<key>unselectedIconName</key>
 			<string>Timeline</string>
 			<key>selectedIconName</key>
 			<string>TimelineSelected</string>
+		</dict>
+		<dict>
+			<key>tabbarTitle</key>
+			<string>话题</string>
+			<key>UIViewControllName</key>
+			<string>JKTopicsListViewController</string>
+			<key>unselectedIconName</key>
+			<string>Topic</string>
+			<key>selectedIconName</key>
+			<string>TopicSelected</string>
 		</dict>
 		<dict>
 			<key>tabbarTitle</key>

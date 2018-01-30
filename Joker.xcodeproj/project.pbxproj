@@ -2868,7 +2868,7 @@
 				TargetAttributes = {
 					D343386A1EEECDA900F45C7E = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = XZ39NEQQXX;
+						DevelopmentTeam = F7VWXJ234D;
 						ProvisioningStyle = Automatic;
 					};
 					D34338831EEECDA900F45C7E = {
@@ -3024,13 +3024,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Joker/Pods-Joker-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/CHWebView/Resources.bundle,
+				"${PODS_CONFIGURATION_BUILD_DIR}/CHWebView/Resources.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3494,7 +3496,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				DEVELOPMENT_TEAM = F7VWXJ234D;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3507,7 +3509,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daxiong123;
+				PRODUCT_BUNDLE_IDENTIFIER = JokerMoive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3524,7 +3526,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XZ39NEQQXX;
+				DEVELOPMENT_TEAM = F7VWXJ234D;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3537,7 +3539,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Joker/Vendors/PaySdk/WxPay/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daxiong123;
+				PRODUCT_BUNDLE_IDENTIFIER = JokerMoive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
