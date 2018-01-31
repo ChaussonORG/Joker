@@ -91,7 +91,7 @@
 }
 - (void)setupWebView{
     
-    self.webView = [[CHWebView alloc]init];
+    self.webView = [[CHWebView alloc]initWithUIWebView];
     self.webView.delegate = self;
     self.webView.frame = CGRectMake(0, 0, ScreenWidth, 20);
     
@@ -102,21 +102,23 @@
  
     [self.view addSubview:_progressView];
 }
+
+ 
 - (void)webViewDidFinshLoad:(CHWebView *)webView{
     
     self.webView.scrollView.scrollEnabled = NO;
     double delayInSeconds = 0.5;
-//     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-// 
-//        NSString *output = [(UIWebView *)webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
-//
-//        self.webHeight = [output floatValue];
-//    });
-    [webView invokeJavaScript:@"document.body.offsetHeight;" completionHandler:^(id height, NSError *error) {
-        
-        self.webHeight = [height floatValue];
-    }];
+     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+ 
+        NSString *output = [(UIWebView *)webView.webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+
+        self.webHeight = [output floatValue];
+    });
+//    [webView invokeJavaScript:@"document.body.offsetHeight;" completionHandler:^(id height, NSError *error) {
+//        
+//        self.webHeight = [height floatValue];
+//    }];
 }
 
 -(void)scrollsToNext{

@@ -268,11 +268,11 @@
     self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestHeaderData)];
     
     @weakify(self)
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+    MJRefreshBackFooter *footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
         @strongify(self)
         [self.viewModel requestMoreData];
     }];
-    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+//    footer.stateLabel.font = [UIFont systemFontOfSize:12];
     self.mainTableView.mj_footer = footer;
     
     self.mainTableView.tableHeaderView = self.workDetailView;
