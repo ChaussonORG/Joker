@@ -13,9 +13,11 @@
 #import <CHWebView.h>
 #import <CHWebView/CHWebProgressView.h>
 
-@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,CHWebViewDelegate,ScrollTableViewDelegate,CHWebViewDelegate>
+@interface JKTopicDetailController ()<UITableViewDelegate,UITableViewDataSource,refreshSuperTableViewDelegate,CHWebViewDelegate,ScrollTableViewDelegate,CHWebViewDelegate,UIWebViewDelegate>
 
-@property (nonatomic , strong) CHWebView *webView;
+//@property (nonatomic , strong) CHWebView *webView;
+
+@property (nonatomic , strong) UIWebView *webView;
 
 @property (nonatomic , strong) UITableView *tableView;
 
@@ -23,11 +25,13 @@
 
 @property (nonatomic , assign) CGFloat webHeight;
 
+@property(strong,nonatomic) UIProgressView * pView;
+
 @end
 
 @implementation JKTopicDetailController{
     CHWebProgressView *_progressView;
-
+    
 }
 - (instancetype)initWithTopicId:(NSString *)topicId
 {
@@ -91,7 +95,9 @@
 }
 - (void)setupWebView{
     
-    self.webView = [[CHWebView alloc]initWithUIWebView];
+//    self.webView = [[CHWebView alloc]initWithUIWebView];
+    self.webView = [[UIWebView alloc]init];
+
     self.webView.delegate = self;
     self.webView.frame = CGRectMake(0, 0, ScreenWidth, 20);
     
@@ -101,30 +107,74 @@
     _progressView.color = [UIColor blackColor];
  
     [self.view addSubview:_progressView];
-}
-
+    
+    self.pView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 2)];
+    self.pView.progressTintColor=[UIColor blueColor];
+    self.pView.trackTintColor =[UIColor whiteColor];
+    self.pView.progress=0.0;
+    self.pView.progressViewStyle=UIProgressViewStyleDefault;
+    
+    [self.view addSubview:self.pView];
+    
+    [UIView animateWithDuration:2 animations:^{
+        [self.pView setProgress:0.6 animated:YES];
+        
+    }];
+    
  
-- (void)webViewDidFinshLoad:(CHWebView *)webView{
+}
+- (void)progressChanged:(NSTimer *)timer{
+    
+    self.pView.progress +=0.005;
+    
+    if (self.pView.progress >= 1.0) {
+        
+        self.pView.hidden = YES;
+    }
+    
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.05
+                                     target:self
+                                   selector:@selector(progressChanged:)
+                                   userInfo:nil
+                                    repeats:YES];
     
     self.webView.scrollView.scrollEnabled = NO;
     double delayInSeconds = 0.5;
-     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
- 
-        NSString *output = [(UIWebView *)webView.webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
-
+        
+        NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+        
         self.webHeight = [output floatValue];
+        
+       
     });
-//    [webView invokeJavaScript:@"document.body.offsetHeight;" completionHandler:^(id height, NSError *error) {
-//        
-//        self.webHeight = [height floatValue];
-//    }];
 }
+//- (void)webViewDidFinshLoad:(CHWebView *)webView{
+//
+//    self.webView.scrollView.scrollEnabled = NO;
+//    double delayInSeconds = 0.5;
+//     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//
+//        NSString *output = [(UIWebView *)webView.webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+//
+//        self.webHeight = [output floatValue];
+//    });
+////    [webView invokeJavaScript:@"document.body.offsetHeight;" completionHandler:^(id height, NSError *error) {
+////
+////        self.webHeight = [height floatValue];
+////    }];
+//}
 
 -(void)scrollsToNext{
     
     
-//    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITa bleViewScrollPositionTop animated:YES];
     NSString *subtypeString;
     subtypeString = kCATransitionFromRight;
     [self transitionWithType:@"pageCurl" WithSubtype:subtypeString ForView:self.view];
@@ -220,7 +270,7 @@
         
         self.tableView.tableHeaderView = self.webView;
         
-        
+         [self.tableView reloadData];
     }];
     
 }

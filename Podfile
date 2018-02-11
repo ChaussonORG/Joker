@@ -18,6 +18,7 @@ pod 'WebViewJavascriptBridge'
 pod 'HYBLoopScrollView'
 pod 'YYText'
 pod 'LTNavigationBar', '~> 2.1.6'
+pod’UMengAnalytics-NO-IDFA’
 #pod 'FDFullscreenPopGesture', '~> 1.1'
 
 end

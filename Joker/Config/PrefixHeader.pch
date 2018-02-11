@@ -27,6 +27,7 @@
 //#import "UIView+viewController.h"
 #import "ASNavigator.h"
 #import "JKStyleConfiguration.h"
+#import <UMMobClick/MobClick.h>
 //#import "YXSpritesLoadingView.h"
 //#import "UIImage+BlurryImage.h"
 //#import "NSString+urlString.h"

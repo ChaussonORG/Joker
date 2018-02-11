@@ -25,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.5</string>
+	<string>1.1.8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -34,7 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>YES</string>
+	<string>是否允许此App使用你的相机？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>YES</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -44,6 +44,7 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.2.2)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - UMengAnalytics-NO-IDFA (4.2.5)
   - WebViewJavascriptBridge (6.0.3)
   - YYText (1.0.7)
 
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8.2)
   - SVProgressHUD
   - UITableView+FDTemplateLayoutCell
+  - UMengAnalytics-NO-IDFA
   - WebViewJavascriptBridge
   - YYText
 
@@ -93,9 +95,10 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: f9bc8f86c413c156ee21afbb735b25455c6ae8e4
+PODFILE CHECKSUM: bd3acca17e1345859275775a91e3c341f56bd1b1
 
 COCOAPODS: 1.4.0

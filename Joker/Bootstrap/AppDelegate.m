@@ -27,6 +27,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
+    UMConfigInstance.appKey = @"5a75f22bf43e481f4c00051d";
+    UMConfigInstance.channelId = @"App Store";//一般是这样写，用于友盟后台的渠道统计，当然苹果也不会有其他渠道，写死就好
+    UMConfigInstance.ePolicy =SEND_INTERVAL; //上传模式，这种为最小间隔发送90S，也可按照要求选择其他上传模式。也可不设置，在友盟后台修改。
+    [MobClick startWithConfigure:UMConfigInstance];//开启SDK
+    
+    
+    
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 //    @"portal.playplus1.com"
 //    @"joker.dtxzw.com"
