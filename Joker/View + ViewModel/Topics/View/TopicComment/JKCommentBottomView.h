@@ -32,6 +32,8 @@
 
 @property (nonatomic , strong) UIButton *deleteBtn;
 
+@property (nonatomic , strong) UIButton *jubaoBtn;
+
 @property (nonatomic , strong) UIButton *commentBtn;
 
 @property (nonatomic , weak) id<CommentStatusDelegate>delegate;

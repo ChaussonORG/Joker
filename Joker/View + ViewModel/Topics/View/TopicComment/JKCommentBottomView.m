@@ -65,9 +65,21 @@
     self.commentBtn.frame = CGRectMake(ScreenWidth - 20 - 20, 10, 20, 20);
     [self.commentBtn addTarget:self action:@selector(clickCommentBtn) forControlEvents:UIControlEventTouchUpInside];
     
+    self.jubaoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.jubaoBtn setTitle:@"举报" forState:UIControlStateNormal];
+    [self.jubaoBtn setTitleColor:[JKStyleConfiguration lightGrayTextColor] forState:UIControlStateNormal];
+    self.jubaoBtn.titleLabel.font = [JKStyleConfiguration contentFont];
+    [self addSubview:self.jubaoBtn];
+    self.jubaoBtn.frame = CGRectMake(ScreenWidth - 20 - 20 - 5 - 40, 8, 40, 20);
+    [self.jubaoBtn addTarget:self action:@selector(clickJubaoBtn) forControlEvents:UIControlEventTouchUpInside];
+    
     
 }
 
+- (void)clickJubaoBtn{
+    
+    [CHProgressHUD showPlainText:@"收到您的反馈，我们尽快处理"];
+}
 - (void)clickFavourBtn{
     
     
